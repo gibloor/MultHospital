@@ -19,7 +19,7 @@ const Head = () => {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [registDisplay, setRegistDisplay] = useState(false);
 
-  const [accountInfo, setAccountInfo] = useState({});
+  const [accountInfo, setAccountInfo] = useState<Info>();
   const [token, setToken] = useState();
 
   const loginVisibility = (visibility: boolean) => {
@@ -31,7 +31,7 @@ const Head = () => {
   }
 
   const infoTaked = (info: Info) => {
-    setAccountInfo(info)
+    setAccountInfo(info);
   }
   const buttonsList = [
     {
@@ -70,14 +70,14 @@ const Head = () => {
       </div>
       <div className="right_side">
         <div>language|</div>
-        {!token &&
+        {!accountInfo &&
           <div className="authentication">
             <div onClick={() => setLoginDisplay(true)}>authorization|</div>
             <div onClick={() => setRegistDisplay(true)}>registration</div>
           </div>
         }
-        {token && 
-          <div></div>
+        {accountInfo &&
+          <div>{accountInfo.name}</div>
         }
       </div>
     </div>

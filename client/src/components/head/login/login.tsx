@@ -38,7 +38,7 @@ const Login = (prop: Prop) => {
       <OutsideClickHandler 
         onOutsideClick={() => prop.loginVisibility(false)}
       >
-        <form className="login_form" onSubmit={(e) => auth(e)}>
+        <form className="login_form" onSubmit={(e) => (auth(e), prop.loginVisibility(false))}>
           <span>Login form</span>
           <div className='login_inputs'>
             <span>Login</span>

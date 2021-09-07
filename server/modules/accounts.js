@@ -18,12 +18,10 @@ accounts.post('/regist', async (req, res) => {
 
 accounts.get('/auth/:login/:password', async (req, res) => {
   try {
-
     const { login, password } = req.params;
-    console.log(login, password)
     const auth = await pool.query("SELECT * FROM accounts WHERE login = $1 AND password = $2", [login, password])
+    
     res.json(auth.rows[0]);
-  
   } catch (err) {
     console.error(err.message);
   }
