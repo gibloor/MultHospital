@@ -1,5 +1,6 @@
 .questions_list {
   margin-top: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
