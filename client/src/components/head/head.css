@@ -4,8 +4,7 @@
   display: flex;
   font-size: 18pt;
   font-weight: bold;
-  border-bottom: black 1px solid;
-  background-color: rgb(83, 88, 94);
+
 }
 .logo img {
   height: 60px;

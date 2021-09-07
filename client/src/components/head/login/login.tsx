@@ -21,13 +21,30 @@ const Login = (prop: Prop) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  // const auth = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/accounts/auth/${login}/${password}`);
+  //     const jsonData = await response.json();
+  //     console.log(jsonData);
+  //     prop.infoTaked(jsonData);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // }
+
   const auth = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/accounts/auth/${login}/${password}`);
+      const body = { login, password };
+      const response = await fetch("http://localhost:5000/accounts/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
       const jsonData = await response.json();
-      console.log(jsonData);
       prop.infoTaked(jsonData);
+
     } catch (err) {
       console.error(err.message);
     }
@@ -38,7 +55,7 @@ const Login = (prop: Prop) => {
       <OutsideClickHandler 
         onOutsideClick={() => prop.loginVisibility(false)}
       >
-        <form className="login_form" onSubmit={(e) => auth(e)}>
+        <form className="login_form" onSubmit={(e) => (auth(e), prop.loginVisibility(false))}>
           <span>Login form</span>
           <div className='login_inputs'>
             <span>Login</span>
