@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { CookiesProvider } from 'react-cookie';
+import './i18n';
+import './index.css';
 
 ReactDOM.render(
-  <CookiesProvider>
+  <Suspense fallback="...is loading">
+    <CookiesProvider>
       <App />
-  </CookiesProvider>,
+    </CookiesProvider>
+  </Suspense>,
   document.getElementById('root')
 );
-
-reportWebVitals();

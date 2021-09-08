@@ -16,17 +16,23 @@ const tokenCreate = (account, res) => {
       features: user.features,
       acsessToken
     })
-  } else res.json('Not valid')
-}
+  } else res.json('Wrong dates')
+} 
 
 accounts.post('/regist', async (req, res) => {
   try {
     const { name, login, password } = req.body;
+
     const account = await pool.query(
-      "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
-      [name, login, password]
+      "SELECT * FROM accounts WHERE login = $1", [login]
     );
-    tokenCreate(account, res);
+    if (account.rows[0]){
+      const account = await pool.query(
+        "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
+        [name, login, password]
+      );
+      tokenCreate(account, res);
+    } else {res.json('This login is already in use')}
   } catch (err) {
     console.error(err.message);
   }

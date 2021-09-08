@@ -13,11 +13,11 @@ const Main = () => {
       {/* <video className='main_video' controls>
         <source src={'https://www.youtube.com/embed/Zlmswo0S0e0'} type='video/mp4' />
       </video> */}
-      {/* <iframe 
+      <iframe 
         className='main_video'
         src="https://www.youtube.com/embed/Zlmswo0S0e0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      /> */}
+      />
       <p>
         number of registered: {registered}
       </p>

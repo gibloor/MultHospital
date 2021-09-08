@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './head.css';
-
 import Login from './login';
 import Regist from './registration';
+import { useTranslation } from 'react-i18next';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 interface Info {
   id: number,
@@ -13,8 +14,12 @@ interface Info {
   acsessToken: string
 }
 
-const Head = () => {
+interface Lang {
+  img: string
+}
 
+const Head = () => {
+  const [langDisplay, setLangDisplay] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [registDisplay, setRegistDisplay] = useState(false);
   const [accountInfo, setAccountInfo] = useState<Info>();
@@ -36,6 +41,13 @@ const Head = () => {
       console.error(err.message);
     }
   }
+
+  const langs: {[lang: string]: Lang} = {
+    en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
+    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' }
+  };
+
+  const { t, i18n } = useTranslation();
   
   const loginVisibility = (visibility: boolean) => {
     setLoginDisplay(visibility)
@@ -44,14 +56,9 @@ const Head = () => {
     setRegistDisplay(visibility)
   }
   const infoTaked = (info: Info) => {
-
-    if (typeof(info) == 'string') {
-      console.log(info)
-    } else {
-      setAccountInfo(info);
-      localStorage.setItem('token', info.acsessToken);
-      setToken(info.acsessToken);
-    }
+    setAccountInfo(info);
+    localStorage.setItem('token', info.acsessToken);
+    setToken(info.acsessToken);
   }
   
   useEffect(() => {
@@ -79,6 +86,7 @@ const Head = () => {
 
   return (
     <div className='head'>
+
       {loginDisplay && 
         <Login loginVisibility={loginVisibility} infoTaked={infoTaked}/>
       }
@@ -101,11 +109,23 @@ const Head = () => {
         ))}
       </div>
       <div className="right_side">
-        <div>language|</div>
+        <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
+          <div className="flags">
+            <div onClick={() => setLangDisplay(true)}>
+              <img className="flags_img" src={t("flag")}/>
+            </div>
+            {langDisplay && Object.keys(langs).map(lang => (
+              <div className="flag" key={lang} onClick={() => i18n.changeLanguage(lang)}>
+                <img className="flags_img" src={langs[lang].img} />
+              </div>
+            ))}
+          </div>
+        </OutsideClickHandler>
+
         {!token &&
           <div className="authentication">
-            <div onClick={() => setLoginDisplay(true)}>authorization|</div>
-            <div onClick={() => setRegistDisplay(true)}>registration</div>
+            <div onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>
+            <div onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
           </div>
         }
         {token && accountInfo &&
@@ -117,6 +137,7 @@ const Head = () => {
           </>
         }
       </div>
+
     </div>
   )
 }

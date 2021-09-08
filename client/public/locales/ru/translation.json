@@ -1,0 +1,16 @@
+{
+  "title": "Интернационализация с i18next",
+  "description": {
+    "part1": "Чтобы начать работу, отредактируйте и сохраните файл <1>src/App.js</1>.",
+    "part2": "С помощью кнопок переключайте язык между английским и русским."
+  },
+  "head": {
+    "authorization": {
+      "button": "авторизация"
+    },
+    "registration": {
+      "button": "регистрация"
+    }
+  },
+  "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png"
+}
