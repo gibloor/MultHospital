@@ -34,13 +34,10 @@ accounts.post('/regist', async (req, res) => {
 
 accounts.post('/auth', async (req, res) => {
   try {
-    const { login, password } = req.body;
-    const account = await pool.query(
-      "SELECT * FROM accounts WHERE login = $1 AND password = $2",
-      [login, password]
-    );
-    tokenCreate(account, res)
+    const { login, password } = req.params;
+    const auth = await pool.query("SELECT * FROM accounts WHERE login = $1 AND password = $2", [login, password])
     
+    res.json(auth.rows[0]);
   } catch (err) {
     console.error(err.message);
   }

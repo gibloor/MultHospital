@@ -20,17 +20,8 @@ const Head = () => {
   const [accountInfo, setAccountInfo] = useState<Info>();
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  const authVerif = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/accounts/auth/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "Bearer " + token
-        }
-      });
-      const jsonData = await response.json();
-      setAccountInfo(jsonData)
+  const [accountInfo, setAccountInfo] = useState<Info>();
+  const [token, setToken] = useState();
 
     } catch (err) {
       console.error(err.message);
@@ -45,13 +36,8 @@ const Head = () => {
   }
   const infoTaked = (info: Info) => {
 
-    if (typeof(info) == 'string') {
-      console.log(info)
-    } else {
-      setAccountInfo(info);
-      localStorage.setItem('token', info.acsessToken);
-      setToken(info.acsessToken);
-    }
+  const infoTaked = (info: Info) => {
+    setAccountInfo(info);
   }
   
   useEffect(() => {
@@ -102,19 +88,14 @@ const Head = () => {
       </div>
       <div className="right_side">
         <div>language|</div>
-        {!token &&
+        {!accountInfo &&
           <div className="authentication">
             <div onClick={() => setLoginDisplay(true)}>authorization|</div>
             <div onClick={() => setRegistDisplay(true)}>registration</div>
           </div>
         }
-        {token && accountInfo &&
-          <>
-            <div>{accountInfo.name}</div>
-            <div onClick={() => (localStorage.removeItem('token'), setToken(''))}>
-              |deactive
-            </div>
-          </>
+        {accountInfo &&
+          <div>{accountInfo.name}</div>
         }
       </div>
     </div>
