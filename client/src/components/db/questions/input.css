@@ -1,6 +1,7 @@
 .input_quest {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 5px;
   margin-top: 20px;
 }

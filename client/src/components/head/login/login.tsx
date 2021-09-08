@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import './login.css';
 
 interface Info {
   id: number,
-  login: string,
   name: string,
-  password: string, 
   image: string, 
-  features: string[]
+  features: string[],
+  acsessToken: string
 }
 
 interface Prop {
@@ -24,10 +22,15 @@ const Login = (prop: Prop) => {
   const auth = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/accounts/auth/${login}/${password}`);
+      const body = { login, password };
+      const response = await fetch("http://localhost:5000/accounts/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(body),
+      });
       const jsonData = await response.json();
-      console.log(jsonData);
       prop.infoTaked(jsonData);
+
     } catch (err) {
       console.error(err.message);
     }

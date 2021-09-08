@@ -8,6 +8,11 @@
   font-weight: bold;
   text-align: center;
 }
+.mult_day {
+  color: rgb(182, 28, 28);
+  font-size: 20pt;
+  margin-block-end: 10px;
+}
 .main_video {
   height: 700px;
 }
