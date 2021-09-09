@@ -7,8 +7,10 @@
   position: relative;
   z-index: 100;
 }
-.logo img {
+.logo {
   height: 60px;
+  width: 60px;
+  margin-left: 10px;
 }
 .head_list {
   display: flex;
