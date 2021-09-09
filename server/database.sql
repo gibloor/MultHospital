@@ -9,11 +9,9 @@ CREATE TABLE questions (
 
 CREATE TABLE accounts (
   id SERIAL PRIMARY KEY,
-  login VARCHAR(10),
-  name VARCHAR(10),
+  login VARCHAR(20),
+  name VARCHAR(20),
   password VARCHAR(20),
   image VARCHAR(250),
   features VARCHAR(20)[],
 )
-
-gg

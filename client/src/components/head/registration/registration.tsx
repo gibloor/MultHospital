@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import { validateName, validateLogin, validatePassword } from './../../validate/authValidate';
 
 interface Info {
   id: number,
@@ -10,65 +10,40 @@ interface Info {
   features: string[],
   acsessToken: string
 }
-
 interface Prop {
   registVisibility: (boolean: boolean) => void,
   infoTaked: (info: Info) => void
 };
-
-
-
-
-function validateName(value: string) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z._%+-]{6,14}$/i.test(value)) {
-    error = 'Invalide name';
-  }
-  return error;
+interface AcDate {
+  name: string,
+  login: string,
+  password: string
 }
-function validateLogin(value: string) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]{6,14}$/i.test(value)) {
-    error = 'Invalid login';
-  }
-  return error;
-}
-function validatePassword(value: string) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]{6,14}$/i.test(value)) {
-    error = 'Invalid password';
-  }
-  return error;
-}
-
-
-
-
 
 const Regist = (prop: Prop) => {
 
-  const [name, setName] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const newLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const newLogin = async (dates: AcDate) => {
     try {
-      const body = { name, login, password };
+      const body = {
+        name: dates.name,
+        login: dates.login,
+        password: dates.password
+      };
       const response = await fetch("http://localhost:5000/accounts/regist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       const jsonData = await response.json();
-      prop.infoTaked(jsonData);
 
+      if (typeof(jsonData) == 'string') {
+        setError(jsonData)
+      } else {
+        prop.infoTaked(jsonData);
+        prop.registVisibility(false);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -76,37 +51,7 @@ const Regist = (prop: Prop) => {
 
   return (
     <div className='login'>
-      <OutsideClickHandler 
-        onOutsideClick={() => prop.registVisibility(false)}
-      >
-        <form className="login_form" onSubmit={(e) => (newLogin(e), prop.registVisibility(false)) }>
-          <span>Registration form</span>
-          <div className='login_inputs'>
-            <span>Name</span>
-            <input 
-              type='text'
-              value={name} 
-              onChange={e => setName(e.target.value)} 
-            >
-            </input>
-            <span>Login</span>
-            <input 
-              type='text' 
-              value={login} 
-              onChange={e => setLogin(e.target.value)} 
-            >
-            </input>
-            <span>Password</span>
-            <input
-              type='password'
-              value={password} 
-              onChange={e => setPassword(e.target.value)} 
-            >
-            </input>
-          </div>
-          <input type='submit' value='Submit'></input>
-        </form>
-
+      <OutsideClickHandler onOutsideClick={() => prop.registVisibility(false)}>
         <Formik
           initialValues={{
             name: '',
@@ -114,22 +59,30 @@ const Regist = (prop: Prop) => {
             password: '',
           }}
           onSubmit={values => {
-            
-            console.log(values);
+            newLogin(values);
           }}
         >
           {({ errors, touched, isValidating }) => (
-            <Form>
-              <Field name="name" validate={validateName} />
-              {errors.name && touched.name && <div>{errors.name}</div>}
+            <Form className='login_form'>
+              <span>Registration form</span>
+              <div className="login_inputs">
+                <label className="login_label">Name</label>
+                <Field name="name" validate={validateName} />
+                {errors.name && touched.name && <div>{errors.name}</div>}
 
-              <Field name="login" validate={validateLogin} />
-              {errors.login && touched.login && <div>{errors.login}</div>}
+                <label className="login_label">Login</label>
+                <Field name="login" validate={validateLogin} />
+                {errors.login && touched.login && <div>{errors.login}</div>}
 
-              <Field name="password" validate={validatePassword} />
-              {errors.password && touched.password && <div>{errors.password}</div>}
+                <label className="login_label">Password</label>
+                <Field name="password" validate={validatePassword} />
+                {errors.password && touched.password && <div>{errors.password}</div>}
+              </div>
     
               <button type="submit">Submit</button>
+              {error && 
+                <span>{error}</span>
+              }
             </Form>
           )}
         </Formik>

@@ -1,0 +1,16 @@
+{
+  "title": "Internationalizing with i18next",
+  "description": {
+    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
+    "part2": "Switch language between english and russian using buttons above."
+  },
+  "head": {
+    "authorization": {
+      "button": "authorization"
+    },
+    "registration": {
+      "button": "registration"
+    }
+  },
+  "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png"
+}
