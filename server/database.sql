@@ -5,6 +5,8 @@ CREATE TABLE questions (
   topic VARCHAR(20),
   question VARCHAR(100),
   serial_num VARCHAR(3),
+  image varchar(255),
+  meaning varchar(20)
 )
 
 CREATE TABLE accounts (

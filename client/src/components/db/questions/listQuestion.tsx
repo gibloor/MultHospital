@@ -1,14 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
-import EditQuestion from './editQuestion';
+import EditQuestion from './EditQuestion';
 import './list.css';
 
-const ListItems = () => {
+const ListQuestions = () => {
 
   interface Question {
     id: number,
     topic: string | never,
     question: string,
-    serial_num: number
+    serial_num: number,
+    image: string,
+    meaning: string
   }
 
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -42,7 +44,9 @@ const ListItems = () => {
   return (
     <Fragment>
       <div>
-        {questions.sort((a, b) => a.topic > b.topic ? 1 : -1).map(quest => (
+        {questions.sort((a, b) => a.id < b.id ? 1 : -1)
+                  .sort((a, b) => a.topic > b.topic ? 1 : -1)
+                  .map(quest => (
           <div className='questions_list' key={quest.id}>
             <EditQuestion {...quest}/>
             <button onClick={() => deleteQuestion(quest.id)} >
@@ -55,4 +59,4 @@ const ListItems = () => {
   );
 };
 
-export default ListItems;
+export default ListQuestions;

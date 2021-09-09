@@ -1,15 +1,25 @@
 {
-  "title": "Internationalizing with i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and russian using buttons above."
-  },
   "head": {
     "authorization": {
       "button": "authorization"
     },
     "registration": {
       "button": "registration"
+    }
+  },
+  "greetNew": {
+    "greet": {
+      "string1": "Greetings you in MultHospital",
+      "string2": "Choose your case"
+    },
+    "buttons": {
+      "nextSlide": "Press on me",
+      "complite": "Complite"
+    },
+    "questions": {
+      "question1": "Cartoons for kids only",
+      "question2": "I watch from time to time",
+      "question3": "Cartoons are life"
     }
   },
   "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png"

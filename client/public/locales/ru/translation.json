@@ -1,9 +1,4 @@
 {
-  "title": "Интернационализация с i18next",
-  "description": {
-    "part1": "Чтобы начать работу, отредактируйте и сохраните файл <1>src/App.js</1>.",
-    "part2": "С помощью кнопок переключайте язык между английским и русским."
-  },
   "head": {
     "authorization": {
       "button": "авторизация"
@@ -11,6 +6,21 @@
     "registration": {
       "button": "регистрация"
     }
+  },
+  "greetNew": {
+    "greet": {
+      "string1": "Приветствуем вас в MultHospital",
+      "string2": "Выберите ваш случай"
+    },
+    "buttons": {
+      "nextSlide": "Нажми на меня",
+      "complite": "Завершить"
+    },
+    "questions": {
+      "question1": "Мультики только для детей",
+      "question2": "Смотрю время от времени",
+      "question3": "Мультфильмы - это жизнь"
+    } 
   },
   "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png"
 }

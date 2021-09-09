@@ -23,9 +23,9 @@ questions.get('/topic/:topic', async (req, res) => {
 
 questions.post('/', async (req, res) => {
   try {
-    const { topic, question, serialNum } = req.body;
+    const { topic, question, serialNum, image, meaning } = req.body;
     const newQuestion = await pool.query(
-      "INSERT INTO questions (topic, question, serial_num) VALUES($1, $2, $3) RETURNING *", [topic, question, serialNum]
+      "INSERT INTO questions (topic, question, serial_num, image, meaning) VALUES($1, $2, $3, $4, $5) RETURNING *", [topic, question, serialNum, image, meaning]
     );
 
     res.json(newQuestion.rows[0]);
@@ -37,8 +37,8 @@ questions.post('/', async (req, res) => {
 questions.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { topic, question, serialNum } = req.body;
-    const updateQuestion = await pool.query("UPDATE questions SET topic = $1, question = $2, serial_num = $3 WHERE id = $4", [topic, question, serialNum, id]);
+    const { topic, question, serialNum, image, meaning } = req.body;
+    const updateQuestion = await pool.query("UPDATE questions SET topic = $1, question = $2, serial_num = $3, image = $4, meaning = $5 WHERE id = $6", [topic, question, serialNum, image, meaning, id]);
     res.json("Question was updated!");
   } catch (err) {
     console.error(err.message);

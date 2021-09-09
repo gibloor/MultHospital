@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Formik, Form, Field } from 'formik';
-import { validateLogin, validatePassword } from './../../validate/authValidate';
+import { validateLogin, validatePassword } from '../../validate/authValidate';
 
 interface Info {
   id: number,

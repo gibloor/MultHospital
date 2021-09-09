@@ -5,11 +5,13 @@ const InputQuestion = () => {
   const [serialNum, setSerialNum] = useState(0);
   const [topic, setTopic] = useState('');
   const [question, setQuestion] = useState('');
+  const [image, setImage] = useState('');
+  const [meaning, setMeaning] = useState('');
 
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const body = { topic, question, serialNum };
+      const body = { topic, question, serialNum, image, meaning };
       const response = await fetch("http://localhost:5000/questions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -46,6 +48,22 @@ const InputQuestion = () => {
             type="text"
             value={question}
             onChange={e => setQuestion(e.target.value)}
+          />
+        </div>
+        <div>
+          <span>image</span>
+          <input
+            type="text"
+            value={image}
+            onChange={e => setImage(e.target.value)}
+          />
+        </div>
+        <div>
+          <span>meaning</span>
+          <input
+            type="text"
+            value={meaning}
+            onChange={e => setMeaning(e.target.value)}
           />
         </div>
         <button type="submit">ADD</button>

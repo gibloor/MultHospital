@@ -3,18 +3,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
-import Head from './components/head';
-import Main from './components/pages/main';
-import Basement from './components/pages/basement';
-import Aducation from './components/pages/aducation';
-import Progres from './components/pages/progres';
-import AboutProject from './components/pages/aboutProject';
-import Setting from './components/pages/setting';
-import GreetNew from './components/greetNew';
+import Head from './components/Head';
+import Main from './components/pages/Main';
+import Basement from './components/pages/Basement';
+import Aducation from './components/pages/Aducation';
+import Progres from './components/pages/Progres';
+import AboutProject from './components/pages/AboutProject';
+import Setting from './components/pages/Setting';
+import GreetNew from './components/GreetNew';
 
 //DevTime
-import InputQuestion from './components/devTools/inputQuestion';
-import ListQuestion from './components/devTools/listQuestion';
+import InputQuestion from './components/db/questions/InputQuestion';
+import ListQuestion from './components/db/questions/ListQuestion';
 
 function App() {
   
