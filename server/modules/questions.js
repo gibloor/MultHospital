@@ -27,7 +27,6 @@ questions.post('/', async (req, res) => {
     const newQuestion = await pool.query(
       "INSERT INTO questions (topic, question, serial_num, image, meaning) VALUES($1, $2, $3, $4, $5) RETURNING *", [topic, question, serialNum, image, meaning]
     );
-
     res.json(newQuestion.rows[0]);
   } catch (err) {
     console.error(err.message);

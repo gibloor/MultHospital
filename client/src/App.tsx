@@ -15,6 +15,8 @@ import GreetNew from './components/GreetNew';
 //DevTime
 import InputQuestion from './components/db/questions/InputQuestion';
 import ListQuestion from './components/db/questions/ListQuestion';
+import InputMultfilm from './components/db/multfilms/InputMultfilm';
+import ListMultfilms from './components/db/multfilms/ListMultfilm';
 
 function App() {
   
@@ -47,6 +49,8 @@ function App() {
       {/* dev */}
       <InputQuestion />
       <ListQuestion />
+      <InputMultfilm />
+      <ListMultfilms />
       <button onClick ={() => localStorage.removeItem('visiter')}>Чистим инфу о первом посещении</button>
     </BrowserRouter>
   );

@@ -34,7 +34,7 @@ const GreetNew = (props: Prop ) => {
   };
 
   useEffect(() => {
-    getQuestions('first list');
+    getQuestions('involvement');
   }, []);
 
 
@@ -43,14 +43,13 @@ const GreetNew = (props: Prop ) => {
       <div  className='greetNew_page'>
         <p>{t('greetNew.greet.string1')}</p>
         <span>{t('greetNew.greet.string2')}</span>
-        
         <div className='questions'>
           {questions.map((quest: Question) => (
             <div className="question" key={quest.id} onClick={() => props.changeVisiter()}>
               <div className="question_image_carcas">
-                <img className="question_image" src={quest.image}/>
+                <img alt={quest.image} className="question_image" src={quest.image}/>
               </div>
-              <span>{t(quest.question)}</span>
+              <span>{t("greetNew.questions." + quest.question)}</span>
             </div> 
           ))}
         </div>

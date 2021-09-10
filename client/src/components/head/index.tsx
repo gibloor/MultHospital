@@ -5,6 +5,7 @@ import Login from './Login';
 import Regist from './Registration';
 import { useTranslation } from 'react-i18next';
 import OutsideClickHandler from 'react-outside-click-handler';
+import Auth from './Auth'
 
 interface Info {
   id: number,
@@ -22,6 +23,7 @@ const Head = () => {
   const [langDisplay, setLangDisplay] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [registDisplay, setRegistDisplay] = useState(false);
+  const [authDisplay, setAuthDisplay] = useState(false);
   const [accountInfo, setAccountInfo] = useState<Info>();
   const [token, setToken] = useState(localStorage.getItem('token'));
 
@@ -55,6 +57,9 @@ const Head = () => {
   const registVisibility = (visibility: boolean) => {
     setRegistDisplay(visibility)
   }
+  const authVisibility = (visibility: boolean) => {
+    setAuthDisplay(visibility)
+  }
   const infoTaked = (info: Info) => {
     setAccountInfo(info);
     localStorage.setItem('token', info.acsessToken);
@@ -63,35 +68,41 @@ const Head = () => {
   
   useEffect(() => {
     token && !accountInfo && authVerif()
-  }, [token, accountInfo])
+  }, [accountInfo])
 
   const buttonsList = [
     {
       name: 'Aducation',
-      link: '/aducation'
+      link: '/aducation',
+      access: 'authorize'
     },
     {
       name: 'Progres',
-      link: '/progres'
+      link: '/progres',
+      access: 'authorize'
     },
     {
       name: 'About project',
-      link: '/aboutProject'
+      link: '/aboutProject',
+      access: 'free'
     },
     {
       name: 'Settings',
-      link: '/settings'
+      link: '/settings',
+      access: 'free'
     }
    ];
 
   return (
     <div className='head'>
-
       {loginDisplay && 
         <Login loginVisibility={loginVisibility} infoTaked={infoTaked}/>
       }
       {registDisplay &&
         <Regist registVisibility={registVisibility} infoTaked={infoTaked}/>
+      }
+      {authDisplay && 
+        <Auth authVisibility={authVisibility} registVisibility={registVisibility} loginVisibility={loginVisibility}/>
       }
       <Link to='/'>
         <div className='logo'>
@@ -106,44 +117,60 @@ const Head = () => {
           </svg>
         </div>
       </Link>
+
       <div className='head_list'>
-        {buttonsList.map((button) => (
-          <Link key={button.link} to={button.link}>
-            {button.name}
-          </Link>
-        ))}
+        {token &&
+          buttonsList.map((button) => (
+            <Link key={button.link} to={button.link}>
+              {button.name}
+            </Link>
+          ))
+        ||
+          !token &&
+          buttonsList.map((button) => (
+            <>
+              {button.access === 'free' &&
+                <Link key={button.link} to={button.link}>
+                  {button.name}
+                </Link>
+                ||
+                button.access === 'authorize' && 
+                <a key={button.link} onClick={() => setAuthDisplay(true)}>{button.name}</a>
+              }
+            </>
+          ))}
       </div>
+      
       <div className="right_side">
         <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
           <div className="flags">
             <div onClick={() => setLangDisplay(true)}>
-              <img className="flags_img" src={t("flag")}/>
+              <img alt={t("flag")} className="flags_img" src={t("flag")}/>
             </div>
             {langDisplay && Object.keys(langs).map(lang => (
               <div className="flag" key={lang} onClick={() => i18n.changeLanguage(lang)}>
-                <img className="flags_img" src={langs[lang].img} />
+                <img alt={lang} className="flags_img" src={langs[lang].img} />
               </div>
             ))}
           </div>
         </OutsideClickHandler>
-
-        {!token &&
-          <div className="authentication">
-            <div onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>
-            |
-            <div onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
-          </div>
-        }
-        {token && accountInfo &&
-          <>
-            <div>{accountInfo.name}</div>
-            <div onClick={() => (localStorage.removeItem('token'), setToken(''))}>
-              |deactive
-            </div>
-          </>
-        }
+        <div className="authentication">
+          {!token &&
+            <>
+              <div onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>|
+              <div onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
+            </>
+            ||
+            accountInfo &&
+            <>
+              <div>{accountInfo.name}</div>
+              <div onClick={() => (localStorage.removeItem('token'), setToken(''))}>
+                |deactive
+              </div>
+            </>
+          }
+        </div>
       </div>
-
     </div>
   )
 }

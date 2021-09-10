@@ -1,0 +1,42 @@
+.multfilms {
+  display: flex;
+  justify-content: space-around;
+}
+.multfilms_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 18pt;
+  cursor: pointer;
+}
+.vertical {
+  height: 300px;
+  width: 250px;
+}
+.horizontal {
+  height: 300px;
+  width: 350px;
+}
+
+.multfilms_list:hover {
+  font-size: 20pt;
+}
+
+.multfilms_list:hover .multfilms_list_logo {
+  max-width: 85%;
+  max-height: 85%;
+}
+
+.multfilms_list_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+
+.multfilms_list_logo {
+  max-width: 80%;
+  max-height: 80%;
+}

@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import './input.css';
 const InputQuestion = () => {
 
   const [serialNum, setSerialNum] = useState(0);
@@ -25,7 +24,7 @@ const InputQuestion = () => {
 
   return (
     <Fragment>
-      <form className="input_quest" onSubmit={onSubmitForm}>
+      <form className="db_quest" onSubmit={onSubmitForm}>
         <div>
           <span>serial number</span>
           <input

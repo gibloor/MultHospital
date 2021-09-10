@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import './edit.css';
 
 interface Question {
   id: number,
@@ -39,7 +38,7 @@ const EditQuestion = (quest: Question) => {
 
   return (
     <Fragment>
-      <div className='questions_text'>
+      <div className='db_text'>
         <input type="number" value={serialNum} onChange={e => setSerialNum(Number(e.target.value))}/>
         <input type="text" value={topic} onChange={e => setTopic(e.target.value)}/>
         <input type="text" value={question} onChange={e => setQuestion(e.target.value)} />

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditQuestion from './EditQuestion';
-import './list.css';
+import './styles.css';
 
 const ListQuestions = () => {
 
@@ -47,7 +47,7 @@ const ListQuestions = () => {
         {questions.sort((a, b) => a.id < b.id ? 1 : -1)
                   .sort((a, b) => a.topic > b.topic ? 1 : -1)
                   .map(quest => (
-          <div className='questions_list' key={quest.id}>
+          <div className='db_list' key={quest.id}>
             <EditQuestion {...quest}/>
             <button onClick={() => deleteQuestion(quest.id)} >
               Delete

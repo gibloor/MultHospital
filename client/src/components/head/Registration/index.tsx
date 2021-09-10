@@ -37,7 +37,6 @@ const Regist = (prop: Prop) => {
         body: JSON.stringify(body),
       });
       const jsonData = await response.json();
-
       if (typeof(jsonData) == 'string') {
         setError(jsonData)
       } else {

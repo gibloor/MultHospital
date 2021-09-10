@@ -15,6 +15,7 @@ const Main = () => {
       </video> */}
       <iframe 
         className='main_video'
+        title="main_video"
         src="https://www.youtube.com/embed/Zlmswo0S0e0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       />
