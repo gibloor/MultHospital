@@ -22,7 +22,7 @@ const ListQuestions = () => {
       });
 
       setQuestions(questions.filter(question => question.id !== id));
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
@@ -32,7 +32,7 @@ const ListQuestions = () => {
       const response = await fetch("http://localhost:5000/questions");
       const jsonData = await response.json();
       setQuestions(jsonData);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };

@@ -24,6 +24,13 @@
   color: white;
   border-radius: 10px;
 }
+.head_list_pseudoA {
+  margin-left: 15px;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+}
 .head_list a:hover {
   color: rgb(31, 28, 28);
   background-color: rgb(213, 219, 226);

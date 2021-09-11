@@ -17,7 +17,7 @@ const InputQuestion = () => {
         body: JSON.stringify(body)
       });
       window.location.href = "/";
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };

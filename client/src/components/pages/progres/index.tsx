@@ -18,7 +18,7 @@ const Progres = () => {
       const response = await fetch("http://localhost:5000/multfilms");
       const jsonData = await response.json();
       setMultfilms(jsonData);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
@@ -34,7 +34,7 @@ const Progres = () => {
                 .map(multfilm => (
         <div className={'multfilms_list '+ multfilm.image_direction} key={multfilm.id}>
           <div className='multfilms_list_block'>
-            <img className='multfilms_list_logo' src={multfilm.logo} />
+            <img alt={multfilm.logo} className='multfilms_list_logo' src={multfilm.logo} />
           </div>
           <span>{multfilm.name}</span>
         </div>

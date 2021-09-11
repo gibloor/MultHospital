@@ -19,7 +19,7 @@ interface Lang {
   img: string
 }
 
-const Head = () => {
+const Header = () => {
   const [langDisplay, setLangDisplay] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [registDisplay, setRegistDisplay] = useState(false);
@@ -39,7 +39,7 @@ const Head = () => {
       const jsonData = await response.json();
       setAccountInfo(jsonData)
 
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   }
@@ -68,6 +68,8 @@ const Head = () => {
   
   useEffect(() => {
     token && !accountInfo && authVerif()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accountInfo])
 
   const buttonsList = [
@@ -119,26 +121,25 @@ const Head = () => {
       </Link>
 
       <div className='head_list'>
-        {token &&
+        {
+          (accountInfo &&
           buttonsList.map((button) => (
-            <Link key={button.link} to={button.link}>
+            <Link key={button.name} to={button.link}>
               {button.name}
             </Link>
-          ))
-        ||
-          !token &&
-          buttonsList.map((button) => (
-            <>
-              {button.access === 'free' &&
-                <Link key={button.link} to={button.link}>
+          )))
+          || (
+            buttonsList.map((button) => (
+              (button.access === 'free' &&
+                <Link key={button.name} to={button.link}>
                   {button.name}
                 </Link>
-                ||
-                button.access === 'authorize' && 
-                <a key={button.link} onClick={() => setAuthDisplay(true)}>{button.name}</a>
-              }
-            </>
-          ))}
+              ) || (
+              button.access === 'authorize' && 
+              <span className="head_list_bseudoA" key={button.name} onClick={() => setAuthDisplay(true)}>{button.name}</span>
+            )
+          )))
+        }
       </div>
       
       <div className="right_side">
@@ -155,24 +156,24 @@ const Head = () => {
           </div>
         </OutsideClickHandler>
         <div className="authentication">
-          {!token &&
+          {(!token &&
             <>
               <div onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>|
               <div onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
             </>
-            ||
+          ) || (
             accountInfo &&
             <>
               <div>{accountInfo.name}</div>
-              <div onClick={() => (localStorage.removeItem('token'), setToken(''))}>
+              <div onClick={() => ((localStorage.removeItem('token'), setToken('')))}>
                 |deactive
               </div>
             </>
-          }
+          )}
         </div>
       </div>
     </div>
   )
 }
 
-export default Head;
+export default Header;

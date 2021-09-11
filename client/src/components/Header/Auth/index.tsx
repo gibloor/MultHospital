@@ -12,8 +12,8 @@ const Auth = (prop: Prop) => {
     <div className="login">
       <OutsideClickHandler onOutsideClick={() => prop.authVisibility(false)}>
       <div className="login_form">
-        <span className="login_label" onClick={() => (prop.authVisibility(false), prop.registVisibility(true))}>Registration</span>
-        <span className="login_label" onClick={() => (prop.authVisibility(false), prop.loginVisibility(true))}>Login</span>
+        <span className="login_label" onClick={() => ((prop.authVisibility(false), prop.registVisibility(true)))}>Registration</span>
+        <span className="login_label" onClick={() => ((prop.authVisibility(false), prop.loginVisibility(true)))}>Login</span>
       </div>
       </OutsideClickHandler>
     </div>

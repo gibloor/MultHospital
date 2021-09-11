@@ -43,7 +43,7 @@ const Regist = (prop: Prop) => {
         prop.infoTaked(jsonData);
         prop.registVisibility(false);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   }

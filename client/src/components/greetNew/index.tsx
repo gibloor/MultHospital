@@ -28,13 +28,14 @@ const GreetNew = (props: Prop ) => {
         .sort((a:Question, b:Question) => a.topic > b.topic ? 1 : -1)
         .sort((a:Question, b:Question) => a.serial_num > b.serial_num ? 1 : -1)
       );
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
 
   useEffect(() => {
     getQuestions('involvement');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

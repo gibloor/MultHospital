@@ -20,7 +20,7 @@ const ListMultfilms = () => {
         method: "DELETE"
       });
       setMultfilms(multfilms.filter(multfilm => multfilm.id !== id));
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
@@ -30,7 +30,7 @@ const ListMultfilms = () => {
       const response = await fetch("http://localhost:5000/multfilms");
       const jsonData = await response.json();
       setMultfilms(jsonData);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 import './App.css';
 
-import Head from './components/Head';
+import Header from './components/Header';
 import Main from './components/pages/Main';
 import Basement from './components/pages/Basement';
 import Aducation from './components/pages/Aducation';
@@ -29,11 +28,11 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <>
       {(
         visiter && 
           <div>
-            <Head/>
+            <Header/>
             <Switch>
               <Route exact path="/" component={() => <Main/>} />
               <Route path="/aducation" component={() => <Aducation/>} />
@@ -52,7 +51,7 @@ function App() {
       <InputMultfilm />
       <ListMultfilms />
       <button onClick ={() => localStorage.removeItem('visiter')}>Чистим инфу о первом посещении</button>
-    </BrowserRouter>
+      </>
   );
 }
 

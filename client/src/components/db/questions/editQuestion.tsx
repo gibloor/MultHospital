@@ -31,7 +31,7 @@ const EditQuestion = (quest: Question) => {
       );
 
       window.location.href = "/";
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };

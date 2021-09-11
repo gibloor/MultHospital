@@ -41,7 +41,7 @@ const Login = (prop: Prop) => {
         prop.infoTaked(jsonData);
         prop.loginVisibility(false);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   }
