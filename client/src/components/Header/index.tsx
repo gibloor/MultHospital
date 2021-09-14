@@ -70,7 +70,7 @@ const Header = () => {
     token && !accountInfo && authVerif()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accountInfo])
+  }, [accountInfo, token])
 
   const buttonsList = [
     {
@@ -124,19 +124,19 @@ const Header = () => {
         {
           (accountInfo &&
           buttonsList.map((button) => (
-            <Link key={button.name} to={button.link}>
+            <Link className="head_button" key={button.name} to={button.link}>
               {button.name}
             </Link>
           )))
           || (
             buttonsList.map((button) => (
               (button.access === 'free' &&
-                <Link key={button.name} to={button.link}>
+                <Link className="head_button" key={button.name} to={button.link}>
                   {button.name}
                 </Link>
               ) || (
               button.access === 'authorize' && 
-              <span className="head_list_bseudoA" key={button.name} onClick={() => setAuthDisplay(true)}>{button.name}</span>
+              <span className="head_button" key={button.name} onClick={() => setAuthDisplay(true)}>{button.name}</span>
             )
           )))
         }
@@ -158,14 +158,14 @@ const Header = () => {
         <div className="authentication">
           {(!token &&
             <>
-              <div onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>|
-              <div onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
+              <div className="head_button" onClick={() => setLoginDisplay(true)}>{t("head.authorization.button")}</div>|
+              <div className="head_button" onClick={() => setRegistDisplay(true)}>{t("head.registration.button")}</div>
             </>
           ) || (
-            accountInfo &&
+            accountInfo && token &&
             <>
               <div>{accountInfo.name}</div>
-              <div onClick={() => ((localStorage.removeItem('token'), setToken('')))}>
+              <div className="head_button" onClick={() => ((localStorage.removeItem('token'), setToken('')))}>
                 |deactive
               </div>
             </>

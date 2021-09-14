@@ -46,7 +46,10 @@ const GreetNew = (props: Prop ) => {
         <span>{t('greetNew.greet.string2')}</span>
         <div className='questions'>
           {questions.map((quest: Question) => (
-            <div className="question" key={quest.id} onClick={() => props.changeVisiter()}>
+            <div className="question" key={quest.id}
+                 onClick={() => ((props.changeVisiter(), 
+                                  localStorage.setItem('involvement', quest.meaning)))}
+            >
               <div className="question_image_carcas">
                 <img alt={quest.image} className="question_image" src={quest.image}/>
               </div>

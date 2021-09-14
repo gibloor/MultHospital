@@ -50,7 +50,14 @@ function App() {
       <ListQuestion />
       <InputMultfilm />
       <ListMultfilms />
-      <button onClick ={() => localStorage.removeItem('visiter')}>Чистим инфу о первом посещении</button>
+      <span>
+        visiter: {localStorage.getItem('visiter')},
+        involvement: {localStorage.getItem('involvement')}
+      </span>
+      <button onClick ={() => ((localStorage.removeItem('visiter'),
+                                localStorage.removeItem('involvement')))}>
+        Чистим инфу о первом посещении
+      </button>
       </>
   );
 }

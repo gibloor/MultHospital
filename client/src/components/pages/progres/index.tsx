@@ -33,7 +33,7 @@ const Progres = () => {
                 .sort((a, b) => a.popularity > b.popularity ? 1 : -1)
                 .map(multfilm => (
         <div className={'multfilms_list '+ multfilm.image_direction} key={multfilm.id}>
-          <div className='multfilms_list_block'>
+          <div className={'multfilms_list_block '+ multfilm.image_direction}>
             <img alt={multfilm.logo} className='multfilms_list_logo' src={multfilm.logo} />
           </div>
           <span>{multfilm.name}</span>
