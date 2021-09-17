@@ -1,10 +1,8 @@
 {
   "head": {
-    "authorization": {
-      "button": "авторизация"
-    },
-    "registration": {
-      "button": "регистрация"
+    "buttons": {
+      "login": "Авторизация",
+      "registration": "Регистрация"
     }
   },
   "greetNew": {
@@ -16,10 +14,10 @@
       "nextSlide": "Нажми на меня",
       "complite": "Завершить"
     },
-    "questions": {
-      "question1": "Мультики только для детей",
-      "question2": "Смотрю время от времени",
-      "question3": "Мультфильмы - это жизнь"
+    "chooser": {
+      "text1": "Мультики только для детей",
+      "text2": "Смотрю время от времени",
+      "text3": "Мультфильмы - это жизнь"
     } 
   },
   "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png"

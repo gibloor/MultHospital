@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Switch, Route} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Switch, Route } from "react-router-dom";
 import './App.css';
 
 import Header from './components/Header';
@@ -18,7 +18,7 @@ import InputMultfilm from './components/db/multfilms/InputMultfilm';
 import ListMultfilms from './components/db/multfilms/ListMultfilm';
 
 function App() {
-  
+
   const [visiter, setVisiter] = useState(localStorage.getItem('visiter'))
 
   const changeVisiter = () => {
@@ -26,6 +26,19 @@ function App() {
     localStorage.setItem('visiter', 'true')
   }
 
+  const info = {
+    pending: false,
+    error: false,
+    info: {
+      id: 55,
+      image: 'sad',
+      name: 'ads',
+      features: ['sadasda', 'sdada'],
+      acsessToken: "sad",
+      test_passed: false,
+      involvement: 'sdadas'
+    }
+  }
 
   return (
     <>
@@ -45,7 +58,7 @@ function App() {
         ) ||
         <GreetNew changeVisiter={changeVisiter} />
       }
-      {/* dev */}
+      {/* dev time*/}
       <InputQuestion />
       <ListQuestion />
       <InputMultfilm />
@@ -58,7 +71,7 @@ function App() {
                                 localStorage.removeItem('involvement')))}>
         Чистим инфу о первом посещении
       </button>
-      </>
+    </>
   );
 }
 

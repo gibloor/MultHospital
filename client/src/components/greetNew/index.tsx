@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './styles.css';
 
@@ -8,52 +8,52 @@ interface Prop {
 
 const GreetNew = (props: Prop ) => {
 
-  interface Question {
-    id: number,
-    topic: string,
-    question: string,
+  interface Select {
+    text: string,
     image: string,
-    meaning: string,
-    serial_num: string
+    select: string,
   }
 
   const { t } = useTranslation();
-  const [questions, setQuestions] = useState([]);
 
-  const getQuestions = async (questionsList: string) => {
-    try {
-      const response = await fetch(`http://localhost:5000/questions/topic/${questionsList}`);
-      const jsonData = await response.json();
-      setQuestions(jsonData
-        .sort((a:Question, b:Question) => a.topic > b.topic ? 1 : -1)
-        .sort((a:Question, b:Question) => a.serial_num > b.serial_num ? 1 : -1)
-      );
-    } catch (err: any) {
-      console.error(err.message);
+  const chooser = [
+    {
+      text: "text1",
+      image: "https://i.ibb.co/1dyPjPX/first-List-Face-Up.png",
+      select: "common"
+    },
+    { 
+      text: "text2",
+      image: "https://i.ibb.co/0VfV5Hv/first-List-Futurama.png",
+      select: "uncommon"
+    },
+    {
+      text: "text3",
+      image: "https://i.ibb.co/1fGdYLC/first-List-Watashi.png",
+      select: "rare"
     }
-  };
-
-  useEffect(() => {
-    getQuestions('involvement');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  ]
 
   return (
     <div className='greetNew'>
-      <div  className='greetNew_page'>
+      <div className='greetNew_page'>
         <p>{t('greetNew.greet.string1')}</p>
         <span>{t('greetNew.greet.string2')}</span>
         <div className='questions'>
-          {questions.map((quest: Question) => (
-            <div className="question" key={quest.id}
+          {chooser.map((choose: Select) => (
+            <div className="question" key={choose.select}
                  onClick={() => ((props.changeVisiter(), 
-                                  localStorage.setItem('involvement', quest.meaning)))}
+                                  localStorage.setItem('involvement',
+                                  choose.select)))}
             >
               <div className="question_image_carcas">
-                <img alt={quest.image} className="question_image" src={quest.image}/>
+                <img 
+                  alt={choose.select} 
+                  className="question_image" 
+                  src={choose.image}
+                />
               </div>
-              <span>{t("greetNew.questions." + quest.question)}</span>
+              <span>{t("greetNew.chooser." + choose.text)}</span>
             </div> 
           ))}
         </div>

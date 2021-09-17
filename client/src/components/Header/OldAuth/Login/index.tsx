@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Formik, Form, Field } from 'formik';
-import { validateName, validateLogin, validatePassword } from '../../validate/authValidate';
+import { validateLogin, validatePassword } from '../../../validate/authValidate';
 
 interface Info {
   id: number,
@@ -11,29 +11,27 @@ interface Info {
   acsessToken: string
 }
 interface Prop {
-  registVisibility: (boolean: boolean) => void,
+  loginVisibility: (boolean: boolean) => void,
   infoTaked: (info: Info) => void
-};
+}
 interface AcDate {
-  name: string,
   login: string,
   password: string
 }
 
-const Regist = (prop: Prop) => {
+const Login = (prop: Prop) => {
 
   const [error, setError] = useState('');
 
-  const newLogin = async (dates: AcDate) => {
+  const auth = async (dates: AcDate) => {
     try {
       const body = {
-        name: dates.name,
         login: dates.login,
         password: dates.password
       };
-      const response = await fetch("http://localhost:5000/accounts/regist", {
+      const response = await fetch("http://localhost:5000/accounts/auth", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body),
       });
       const jsonData = await response.json();
@@ -41,7 +39,7 @@ const Regist = (prop: Prop) => {
         setError(jsonData)
       } else {
         prop.infoTaked(jsonData);
-        prop.registVisibility(false);
+        prop.loginVisibility(false);
       }
     } catch (err: any) {
       console.error(err.message);
@@ -50,24 +48,20 @@ const Regist = (prop: Prop) => {
 
   return (
     <div className='login'>
-      <OutsideClickHandler onOutsideClick={() => prop.registVisibility(false)}>
+      <OutsideClickHandler onOutsideClick={() => prop.loginVisibility(false)}>
         <Formik
           initialValues={{
-            name: '',
             login: '',
             password: '',
           }}
           onSubmit={values => {
-            newLogin(values);
+            auth(values);
           }}
         >
-          {({ errors, touched, isValidating }) => (
+          {({ errors, touched }) => (
             <Form className='login_form'>
-              <span>Registration form</span>
+              <span>Login form</span>
               <div className="login_inputs">
-                <label className="login_label">Name</label>
-                <Field name="name" validate={validateName} />
-                {errors.name && touched.name && <div>{errors.name}</div>}
 
                 <label className="login_label">Login</label>
                 <Field name="login" validate={validateLogin} />
@@ -90,5 +84,4 @@ const Regist = (prop: Prop) => {
   )
 }
 
-
-export default Regist;
+export default Login;

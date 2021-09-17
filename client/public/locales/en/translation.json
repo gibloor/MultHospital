@@ -1,10 +1,8 @@
 {
   "head": {
-    "authorization": {
-      "button": "authorization"
-    },
-    "registration": {
-      "button": "registration"
+    "buttons": {
+      "login": "login",
+      "registration": "registration"
     }
   },
   "greetNew": {
@@ -16,10 +14,10 @@
       "nextSlide": "Press on me",
       "complite": "Complite"
     },
-    "questions": {
-      "question1": "Cartoons for kids only",
-      "question2": "I watch from time to time",
-      "question3": "Cartoons are life"
+    "chooser": {
+      "text1": "Cartoons for kids only",
+      "text2": "I watch from time to time",
+      "text3": "Cartoons are life"
     }
   },
   "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png"

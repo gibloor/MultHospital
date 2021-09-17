@@ -19,7 +19,7 @@ const tokenCreate = (account, res) => {
   } else res.json('Wrong dates')
 } 
 
-accounts.post('/regist', async (req, res) => {
+accounts.post('/registration', async (req, res) => {
   try {
     const { name, login, password } = req.body;
 
@@ -38,7 +38,7 @@ accounts.post('/regist', async (req, res) => {
   }
 })
 
-accounts.post('/auth', async (req, res) => {
+accounts.post('/login', async (req, res) => {
   try {
     const { login, password } = req.body;
     const account = await pool.query(
