@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css'
+import { useSelector } from 'react-redux';
+import './styles.css';
+import { useDispatch } from 'react-redux';
+import { questionsTakeRequest } from '../../../redux-saga/actions/questionsActions'
+import { getAccountSelector } from '../../../redux-saga/selectors/accountSelector';
+import Test from './Test';
 const Progres = () => {
 
   interface Multfilm {
@@ -11,8 +16,19 @@ const Progres = () => {
     image_direction: string
   }
 
-  const [multfilms, setMultfilms] = useState<Multfilm[]>([]);
+  interface Topic {
+    topic: string
+  } 
 
+  const dispatch = useDispatch();
+
+  const [multfilms, setMultfilms] = useState<Multfilm[]>([]);
+  const authInfo = useSelector(getAccountSelector);
+
+  let topic:Topic = {
+    topic: authInfo.involvement
+  }
+ 
   const getMultfilms = async () => {
     try {
       const response = await fetch("http://localhost:5000/multfilms");
@@ -24,21 +40,27 @@ const Progres = () => {
   };
 
   useEffect(() => {
-    getMultfilms();
-  }, []);
+    authInfo.test_passed && getMultfilms();
+    !authInfo.test_passed && dispatch(questionsTakeRequest(topic));
+  }, [authInfo]);
 
   return (
     <div className="multfilms">
-      {multfilms.sort((a, b) => a.name > b.name ? 1 : -1)
-                .sort((a, b) => a.popularity > b.popularity ? 1 : -1)
-                .map(multfilm => (
-        <div className={'multfilms_list '+ multfilm.image_direction} key={multfilm.id}>
-          <div className={'multfilms_list_block '+ multfilm.image_direction}>
-            <img alt={multfilm.logo} className='multfilms_list_logo' src={multfilm.logo} />
+      {(!authInfo.name && <span>Ты не авторизован</span>)
+        ||
+       (!authInfo.test_passed && <Test/>)
+        ||
+       (multfilms.sort((a, b) => a.name > b.name ? 1 : -1)
+                  .sort((a, b) => a.popularity > b.popularity ? 1 : -1)
+                  .map(multfilm => (
+          <div className={'multfilms_list '+ multfilm.image_direction} key={multfilm.id}>
+            <div className={'multfilms_list_block '+ multfilm.image_direction}>
+              <img alt={multfilm.logo} className='multfilms_list_logo' src={multfilm.logo} />
+            </div>
+            <span>{multfilm.name}</span>
           </div>
-          <span>{multfilm.name}</span>
-        </div>
-      ))}
+        )))
+      }
     </div>
   )
 }

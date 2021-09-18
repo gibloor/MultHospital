@@ -2,6 +2,7 @@ import {
   USER_AUTH,
   USER_AUTH_REQUEST,
   USER_AUTH_FAILURE,
+  USER_DEAUTH,
 } from "../actions/userActions";
 
 export interface UserInfo {
@@ -30,7 +31,12 @@ export interface UserAuthFailure {
   payload: {error: boolean};
 }
 
+export interface UserDeauth {
+  type: typeof USER_DEAUTH;
+}
+
 export type UserAuthActions = 
 | UserAuthRequest
 | UserAuth
-| UserAuthFailure;
+| UserAuthFailure
+| UserDeauth;

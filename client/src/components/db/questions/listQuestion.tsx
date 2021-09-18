@@ -10,7 +10,7 @@ const ListQuestions = () => {
     question: string,
     serial_num: number,
     image: string,
-    meaning: string
+    answer: string
   }
 
   const [questions, setQuestions] = useState<Question[]>([]);

@@ -2,12 +2,14 @@ import {
   UserAuth,
   UserAuthRequest,
   UserAuthFailure,
-  UserInfo
+  UserInfo,
+  UserDeauth
 } from "../types/accountTypes";
 
 export const USER_AUTH = "USER_AUTH";
 export const USER_AUTH_REQUEST = "USER_AUTH_REQUEST";
 export const USER_AUTH_FAILURE = "USER_AUTH_FAILURE";
+export const USER_DEAUTH = "USER_DEAUTH";
 
 export const userAuthRequest = (): UserAuthRequest => ({
   type: USER_AUTH_REQUEST,
@@ -26,3 +28,7 @@ export const userAuthFailure = (
   type: USER_AUTH_FAILURE,
   payload,
 });
+
+export const userDeauth = (): UserDeauth => ({
+  type: USER_DEAUTH,
+})

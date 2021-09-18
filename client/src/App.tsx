@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 
 import Header from './components/Header';
 import Main from './components/pages/Main';
 import Basement from './components/pages/Basement';
-import Aducation from './components/pages/Aducation';
 import Progres from './components/pages/Progres';
 import AboutProject from './components/pages/AboutProject';
 import Setting from './components/pages/Setting';
@@ -26,20 +25,6 @@ function App() {
     localStorage.setItem('visiter', 'true')
   }
 
-  const info = {
-    pending: false,
-    error: false,
-    info: {
-      id: 55,
-      image: 'sad',
-      name: 'ads',
-      features: ['sadasda', 'sdada'],
-      acsessToken: "sad",
-      test_passed: false,
-      involvement: 'sdadas'
-    }
-  }
-
   return (
     <>
       {(
@@ -48,7 +33,6 @@ function App() {
             <Header/>
             <Switch>
               <Route exact path="/" component={() => <Main/>} />
-              <Route path="/aducation" component={() => <Aducation/>} />
               <Route path="/progres" component={() => <Progres/>} />
               <Route path="/aboutProject" component={() => <AboutProject/>} />
               <Route path="/settings" component={() => <Setting/>} />

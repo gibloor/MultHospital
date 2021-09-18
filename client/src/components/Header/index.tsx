@@ -2,34 +2,31 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import OutsideClickHandler from 'react-outside-click-handler';
-import './style.css';
-import Authorization from './Authorization';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { pagesList } from './pagesList';
-
-import { useDispatch } from 'react-redux';
-import { userAuth } from '../../redux-saga/actions/userActions';
-
-interface Info {
-  id: number,
-  name: string,
-  image: string, 
-  features: string[],
-  acsessToken: string,
-  test_passed: boolean,
-  involvement: string
-}
+import { userAuth, userDeauth } from '../../redux-saga/actions/userActions';
+import { getAccountSelector } from '../../redux-saga/selectors/accountSelector';
+import Logo from './Logo';
+import Authorization from './Authorization';
+import './style.css';
 
 interface Lang {
   img: string
 }
 
 const Header = () => {
-  const dispatch = useDispatch();
-
   const [langDisplay, setLangDisplay] = useState(false);
   const [authVariant, setAuthVariant] = useState('');
-  const [accountInfo, setAccountInfo] = useState<Info>();
   const [token, setToken] = useState(localStorage.getItem('token'));
+
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const authInfo = useSelector(getAccountSelector);
+  const langs: {[lang: string]: Lang} = {
+    en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
+    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' }
+  };
 
   const authVerif = async () => {
     try {
@@ -38,10 +35,9 @@ const Header = () => {
         headers: {
           "Content-Type": "application/json",
           authorization: "Bearer " + token
-        }
+        }   
       });
       const jsonData = await response.json();
-      setAccountInfo(jsonData);
       const info = {pending: false, error: false, info:jsonData}
       dispatch(userAuth(info));
     } catch (err: any) {
@@ -49,26 +45,18 @@ const Header = () => {
     }
   }
 
-  const langs: {[lang: string]: Lang} = {
-    en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
-    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' }
-  };
-
-  const { t, i18n } = useTranslation();
-  
-  const infoTaked = (info: Info) => {
-    setAccountInfo(info);
-    localStorage.setItem('token', info.acsessToken);
-    setToken(info.acsessToken);
+  const infoTaked = (token: string) => {
+    localStorage.setItem('token', token);
+    setToken(token);
   }
   const authClose = () => {
     setAuthVariant('');
   }
   
   useEffect(() => {
-    token && !accountInfo && authVerif()
+    token && !authInfo.name && authVerif();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accountInfo, token])
+  }, [token, authInfo])
 
   return (
     <div className='head'>
@@ -80,22 +68,11 @@ const Header = () => {
         />
       }
       <Link to='/'>
-        <div className='logo'>
-           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 283.46">
-            <g fill="#FFFFFF">
-              <path d="M129.19,139.91c-0.95-17.86-2.09-39.33-1.9-55.29h-0.57c-4.37,15.01-9.69,30.97-16.15,48.64l-22.61,62.13H75.42
-                L54.71,134.4c-6.08-18.05-11.21-34.58-14.82-49.78h-0.38c-0.38,15.96-1.33,37.43-2.47,56.62l-3.42,54.91H17.85l8.93-128.06h21.09
-                l21.85,61.94c5.32,15.77,9.69,29.83,12.92,43.13h0.57c3.23-12.92,7.79-26.98,13.49-43.13l22.8-61.94h21.09l7.98,128.06h-16.15
-                L129.19,139.91z"/>
-              <path d="M148.01,68.09v53.58h61.94V68.09h16.72v128.06h-16.72v-60.04h-61.94v60.04h-16.53V68.09H148.01z"/>
-            </g>
-          </svg>
-        </div>
+        <Logo />
       </Link>
-
       <div className='head_list'>
         {
-          (accountInfo &&
+          (token &&
             pagesList.map((button) => (
               <Link className="head_button" key={button.name} to={button.link}>
                 {button.name}
@@ -133,17 +110,22 @@ const Header = () => {
         <div className="authentication">
           {(!token &&
             <>
-              <div className="head_button" onClick={() => setAuthVariant('login')}>{t("head.buttons.login")}</div>|
-              <div className="head_button" onClick={() => setAuthVariant('registration')}>{t("head.buttons.registration")}</div>
+              <div className="head_button" onClick={() => setAuthVariant('login')}>
+                {t("head.buttons.login")}
+              </div>|
+              <div className="head_button" onClick={() => setAuthVariant('registration')}>
+                {t("head.buttons.registration")}
+              </div>
             </>
           ) || (
-            accountInfo && token &&
             <>
-              <div>{accountInfo.name}</div>
+              <div>{authInfo.name}</div>
               |
               <div 
                 className="head_button" 
-                onClick={() => ((localStorage.removeItem('token'), setToken('')))}
+                onClick={() => ((localStorage.removeItem('token'),
+                                              setToken(''),
+                                              dispatch(userDeauth())))}
               >
                 deactive
               </div>

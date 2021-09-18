@@ -7,24 +7,16 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { userAuth } from '../../../redux-saga/actions/userActions';
 
-interface Info {
-  id: number,
-  name: string,
-  image: string, 
-  features: string[],
-  acsessToken: string,
-  test_passed: boolean,
-  involvement: string
-}
 interface Prop {
   authClose: () => void,
-  infoTaked: (info: Info) => void,
+  infoTaked: (token: string) => void,
   authVariant: string
 };
 interface AcDate {
   name: string,
   login: string,
-  password: string
+  password: string,
+  involvement: string
 }
 
 const GlobalAuth = (prop: Prop) => {
@@ -33,13 +25,15 @@ const GlobalAuth = (prop: Prop) => {
   const [typeForm, setTypeForm] = useState(prop.authVariant);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const  authentication = async (dates: AcDate) => {
     try {
       const body = {
         name: dates.name,
         login: dates.login,
-        password: dates.password
+        password: dates.password,
+        involvement: dates.involvement
       };
       const response = await fetch("http://localhost:5000/accounts/"+typeForm, {
         method: "POST",
@@ -50,7 +44,7 @@ const GlobalAuth = (prop: Prop) => {
       if (typeof(jsonData) == 'string') {
         setError(jsonData)
       } else {
-        prop.infoTaked(jsonData);
+        prop.infoTaked(jsonData.acsessToken);
         const info = {pending: false, error: false, info:jsonData}
         dispatch(userAuth(info));
         prop.authClose();
@@ -59,8 +53,6 @@ const GlobalAuth = (prop: Prop) => {
       console.error(err.message);
     }
   }
-
-  const { t } = useTranslation();
 
   return (
     <div className='auth'>
@@ -82,6 +74,7 @@ const GlobalAuth = (prop: Prop) => {
               name: '',
               login: '',
               password: '',
+              involvement: localStorage.getItem('involvement') || 'I don`t now'
             }}
             onSubmit={values => {
               authentication(values);

@@ -6,7 +6,7 @@ interface Question {
   question: string,
   serial_num: number,
   image: string,
-  meaning: string
+  answer: string
 }
 
 const EditQuestion = (quest: Question) => {
@@ -15,12 +15,12 @@ const EditQuestion = (quest: Question) => {
   const [topic, setTopic] = useState(quest.topic);
   const [question, setQuestion] = useState(quest.question);
   const [image, setImage] = useState(quest.image);
-  const [meaning, setMeaning] = useState(quest.meaning);
+  const [answer, setAnswer] = useState(quest.answer);
 
   const updateQuestion = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const body = { topic, question, serialNum, image, meaning };
+      const body = { topic, question, serialNum, image, answer };
       const response = await fetch(
         `http://localhost:5000/questions/${quest.id}`,
         {
@@ -43,7 +43,7 @@ const EditQuestion = (quest: Question) => {
         <input type="text" value={topic} onChange={e => setTopic(e.target.value)}/>
         <input type="text" value={question} onChange={e => setQuestion(e.target.value)} />
         <input type="text" value={image} onChange={e => setImage(e.target.value)} />
-        <input type="text" value={meaning} onChange={e => setMeaning(e.target.value)} />
+        <input type="text" value={answer} onChange={e => setAnswer(e.target.value)} />
         <button type="button" onClick={e => updateQuestion(e)}>
           UPDATE
         </button>
