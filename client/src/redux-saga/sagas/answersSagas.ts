@@ -18,7 +18,7 @@ function* answerAcceptSaga(action: AnswerTakeRequest) {
     const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/accounts/acceptAnswer/${action.payload.id}`,
       { features });
     yield call(acceptAnswer);
-    yield put(answerTake({ features: action.payload.features }));
+    yield put(answerTake({ features }));
   } catch (e: any) {
     yield put(
       answerTakeFailure({
