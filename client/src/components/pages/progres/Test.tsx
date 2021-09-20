@@ -27,7 +27,6 @@ const Test = () => {
   };
 
   useEffect(() => {
-    console.log(answers);
     if (counter === questions.length) {
       const answer = { features: answers, id: userId };
       dispatch(answerTakeRequest(answer));
