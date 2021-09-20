@@ -1,11 +1,13 @@
 import React from 'react';
 
 const Setting = () => {
+  const settings = 'setting';
+
   return (
     <div>
-      'Setting'
+      {settings}
     </div>
-  )
-}
+  );
+};
 
 export default Setting;

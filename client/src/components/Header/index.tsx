@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { pagesList } from './pagesList';
+import pagesList from './pagesList';
 import { userAuth, userDeauth } from '../../redux-saga/actions/userActions';
 import { getAccountSelector } from '../../redux-saga/selectors/accountSelector';
 import Logo from './Logo';
@@ -25,107 +25,152 @@ const Header = () => {
   const authInfo = useSelector(getAccountSelector);
   const langs: {[lang: string]: Lang} = {
     en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
-    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' }
+    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' },
   };
 
   const authVerif = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/accounts/auth/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "Bearer " + token
-        }   
-      });
-      const jsonData = await response.json();
-      const info = {pending: false, error: false, info:jsonData}
-      dispatch(userAuth(info));
-    } catch (err: any) {
-      console.error(err.message);
+    if (token && !authInfo.name) {
+      try {
+        const response = await fetch('http://localhost:5000/accounts/auth/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+          },
+        });
+        const jsonData = await response.json();
+        const info = { pending: false, error: false, info: jsonData };
+        dispatch(userAuth(info));
+      } catch (err: any) {
+        console.error(err.message);
+      }
     }
-  }
+  };
 
-  const infoTaked = (token: string) => {
-    localStorage.setItem('token', token);
-    setToken(token);
-  }
+  const infoTaked = (tokenAc: string) => {
+    localStorage.setItem('token', tokenAc);
+    setToken(tokenAc);
+  };
   const authClose = () => {
     setAuthVariant('');
-  }
-  
+  };
   useEffect(() => {
-    token && !authInfo.name && authVerif();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, authInfo])
+    authVerif();
+  }, [token]);
 
   return (
-    <div className='head'>
-      {authVariant &&
+    <div className="head">
+      {authVariant
+        && (
         <Authorization
-          infoTaked={infoTaked} 
+          infoTaked={infoTaked}
           authClose={authClose}
           authVariant={authVariant}
         />
-      }
-      <Link to='/'>
+        )}
+      <Link to="/">
         <Logo />
       </Link>
-      <div className='head_list'>
+      <div className="head_list">
         {
-          (token &&
-            pagesList.map((button) => (
-              <Link className="head_button" key={button.name} to={button.link}>
-                {button.name}
-              </Link>
-            ))
-          )
-          || (
-            pagesList.map((button) => (
-              (button.access === 'free' &&
+          (token
+            && (
+              pagesList.map((button) => (
                 <Link className="head_button" key={button.name} to={button.link}>
                   {button.name}
                 </Link>
-              ) || (
-                button.access === 'authorize' && 
-                <span className="head_button" key={button.name} onClick={() => setAuthVariant('something')}>{button.name}</span>
-              )
+              )))
+          )
+          || (
+            pagesList.map((button) => (
+              (button.access === 'free'
+                && (
+                <Link className="head_button" key={button.name} to={button.link}>
+                  {button.name}
+                </Link>
+                ))
+                || (
+                  button.access === 'authorize'
+                    && (
+                    <span
+                      role="button"
+                      tabIndex={-3}
+                      onKeyDown={() => setAuthVariant('something')}
+                      className="head_button"
+                      key={button.name}
+                      onClick={() => setAuthVariant('something')}
+                    >
+                      {button.name}
+                    </span>
+                    )
+                )
             ))
           )
         }
       </div>
-      
       <div className="right_side">
         <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
           <div className="flags">
-            <div onClick={() => setLangDisplay(true)}>
-              <img alt={t("flag")} className="flags_img" src={t("flag")}/>
+            <div
+              role="button"
+              tabIndex={-4}
+              onKeyDown={() => setLangDisplay(true)}
+              onClick={() => setLangDisplay(true)}
+            >
+              <img alt={t('flag')} className="flags_img" src={t('flag')} />
             </div>
-            {langDisplay && Object.keys(langs).map(lang => (
-              <div className="flag" key={lang} onClick={() => i18n.changeLanguage(lang)}>
+            {langDisplay && Object.keys(langs).map((lang) => (
+              <div
+                role="button"
+                tabIndex={-5}
+                onKeyDown={() => i18n.changeLanguage(lang)}
+                className="flag"
+                key={lang}
+                onClick={() => i18n.changeLanguage(lang)}
+              >
                 <img alt={lang} className="flags_img" src={langs[lang].img} />
               </div>
             ))}
           </div>
         </OutsideClickHandler>
         <div className="authentication">
-          {(!token &&
+          {(!token
+            && (
             <>
-              <div className="head_button" onClick={() => setAuthVariant('login')}>
-                {t("head.buttons.login")}
-              </div>|
-              <div className="head_button" onClick={() => setAuthVariant('registration')}>
-                {t("head.buttons.registration")}
+              <div
+                role="button"
+                tabIndex={-6}
+                onKeyDown={() => setAuthVariant('login')}
+                className="head_button"
+                onClick={() => setAuthVariant('login')}
+              >
+                {t('head.buttons.login')}
+              </div>
+              |
+              <div
+                role="button"
+                tabIndex={-7}
+                onKeyDown={() => setAuthVariant('registration')}
+                className="head_button"
+                onClick={() => setAuthVariant('registration')}
+              >
+                {t('head.buttons.registration')}
               </div>
             </>
-          ) || (
+            )) || (
             <>
               <div>{authInfo.name}</div>
               |
-              <div 
-                className="head_button" 
+              <div
+                role="button"
+                tabIndex={-8}
+                onKeyDown={() => ((localStorage.removeItem('token'),
+                setToken(''),
+                dispatch(userDeauth())))}
+                className="head_button"
                 onClick={() => ((localStorage.removeItem('token'),
-                                              setToken(''),
-                                              dispatch(userDeauth())))}
+                setToken(''),
+                dispatch(userDeauth())))}
               >
                 deactive
               </div>
@@ -134,7 +179,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Header;

@@ -1,17 +1,17 @@
-export const pagesList = [
+export default [
   {
     name: 'Progres',
     link: '/progres',
-    access: 'authorize'
+    access: 'authorize',
   },
   {
     name: 'About project',
     link: '/aboutProject',
-    access: 'free'
+    access: 'free',
   },
   {
     name: 'Settings',
     link: '/settings',
-    access: 'free'
-  }
- ];
+    access: 'free',
+  },
+];

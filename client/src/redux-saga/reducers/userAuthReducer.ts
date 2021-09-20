@@ -1,13 +1,13 @@
+import { Reducer } from 'redux';
+
 import {
   USER_AUTH_REQUEST,
   USER_AUTH,
   USER_AUTH_FAILURE,
-  USER_DEAUTH
-} from "../actions/userActions";
+  USER_DEAUTH,
+} from '../actions/userActions';
 
-import { Reducer } from "redux";
-
-import { UserAuthActions, UserInfo } from "../types/accountTypes";
+import { UserAuthActions, UserInfo } from '../types/accountTypes';
 
 const initialState: UserInfo = {
   pending: false,
@@ -15,15 +15,18 @@ const initialState: UserInfo = {
   info: {
     id: 0,
     name: '',
-    image: '', 
+    image: '',
     features: [],
     acsessToken: '',
     test_passed: false,
-    involvement: ''
-  }
+    involvement: '',
+  },
 };
 
-const userAuthReducer: Reducer<UserInfo, UserAuthActions> = (state = initialState, action: UserAuthActions) => {
+const userReducer: Reducer<UserInfo, UserAuthActions> = (
+  state = initialState,
+  action: UserAuthActions,
+) => {
   switch (action.type) {
     case USER_AUTH_REQUEST:
       return {
@@ -49,8 +52,8 @@ const userAuthReducer: Reducer<UserInfo, UserAuthActions> = (state = initialStat
     case USER_DEAUTH:
       return {
         ...state,
-        info: initialState.info
-      }
+        info: initialState.info,
+      };
 
     default:
       return {
@@ -59,4 +62,4 @@ const userAuthReducer: Reducer<UserInfo, UserAuthActions> = (state = initialStat
   }
 };
 
-export default userAuthReducer;
+export default userReducer;

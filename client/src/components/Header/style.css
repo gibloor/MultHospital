@@ -78,9 +78,9 @@
   flex-direction: column;
   margin-bottom: 15px;
 }
-.auth_label{
-  margin-top: 15px;
-  margin-bottom: 5px;
+.auth_button{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .auth_inputs input {
   width: 350px;

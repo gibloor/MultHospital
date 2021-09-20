@@ -1,13 +1,23 @@
-.multTest {
+.multTest_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.multTest_form {
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(165, 42, 42, 0.205);
+  padding: 30px;
+  border-radius: 30px;
+}
+.multTest_form:hover {
+  background-color: rgba(165, 42, 42, 0.418);
 }
 .question_text {
- text-align: center;
-}
-.question_image {
-  height: 400px;
+  text-align: center;
+  font-size: 16pt;
 }

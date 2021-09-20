@@ -3,6 +3,19 @@ const accounts = express.Router();
 const pool = require("./../db");
 const jsw = require('jsonwebtoken');
 
+accounts.put(`/acceptAnswer/:id`, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { features } = req.body;
+    const testPassed = true;
+    const account = await pool.query(
+    "UPDATE accounts SET features = $1, test_passed = $2 WHERE id = $3", [features, testPassed, id]);
+    res.json("Answer Accepted");
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
 const tokenCreate = (account, res) => {
   const user = account.rows[0];
   if (user) {

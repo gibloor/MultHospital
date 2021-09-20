@@ -2,11 +2,13 @@ import React from 'react';
 import './aboutProject.css';
 
 const AboutProject = () => {
-  return(
+  const something = 'something';
+
+  return (
     <div>
-      'About project'
+      {something}
     </div>
-  )
-}
+  );
+};
 
 export default AboutProject;

@@ -6,7 +6,8 @@ export const validateName = (value: string) => {
     error = 'Invalide name';
   }
   return error;
-}
+};
+
 export const validateLogin = (value: string) => {
   let error;
   if (!value) {
@@ -15,7 +16,8 @@ export const validateLogin = (value: string) => {
     error = 'Invalid login';
   }
   return error;
-}
+};
+
 export const validatePassword = (value: string) => {
   let error;
   if (!value) {
@@ -24,4 +26,4 @@ export const validatePassword = (value: string) => {
     error = 'Invalid password';
   }
   return error;
-}
+};

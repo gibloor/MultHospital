@@ -2,11 +2,12 @@ CREATE DATABASE multhospital;
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
-  topic VARCHAR(20),
+  topic VARCHAR(10),
+  level VARCHAR(20),
   question VARCHAR(100),
-  serial_num VARCHAR(3),
+  serial_num INTEGER,
   image varchar(255),
-  meaning varchar(20)
+  answer varchar(20)
 )
 ;
 CREATE TABLE accounts (
@@ -16,12 +17,14 @@ CREATE TABLE accounts (
   password VARCHAR(20),
   image VARCHAR(250),
   features VARCHAR(20)[],
+  test_passed BOOLEAN,
+  involvement VARCHAR(20)
 );
 
 CREATE TABLE multfilms (
   id SERIAL PRIMARY KEY,
   logo VARCHAR(250),
-  involvment VARCHAR(20),
+  involvement VARCHAR(20),
   popularity VARCHAR(15),
   name VARCHAR(20),
   image_direction VARCHAR(15)

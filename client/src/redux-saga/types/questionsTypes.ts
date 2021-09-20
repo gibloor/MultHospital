@@ -1,15 +1,17 @@
 import {
   QUESTIONS_TAKE,
   QUESTIONS_TAKE_FAILURE,
-  QUESTIONS_TAKE_REQUEST
+  QUESTIONS_TAKE_REQUEST,
 } from "../actions/questionsActions";
 
 export interface Question {
   id: number,
   topic: string,
+  level: string,
   question: string,
   image: string,
-  answer: string
+  answer: string,
+  serial_num: number
 }
 
 export interface Questions {
@@ -18,7 +20,7 @@ export interface Questions {
 }
 
 export interface QuestionsTopic {
-  topic: string,
+  level: string,
 }
 
 export interface QuestionsTakeRequest {
@@ -34,6 +36,8 @@ export interface QuestionsTakeFailure {
   type: typeof QUESTIONS_TAKE_FAILURE;
   payload: {error: boolean};
 }
+
+
 
 export type QuestionsActions = 
 | QuestionsTake
