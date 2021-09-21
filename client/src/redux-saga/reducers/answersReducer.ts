@@ -1,11 +1,9 @@
 import { Reducer } from 'redux';
-
 import {
   ANSWER_TAKE_REQUEST,
   ANSWER_TAKE,
   ANSWER_TAKE_FAILURE,
 } from '../actions/answersActions';
-
 import { Answer, AnswersActions } from '../types/answersTypes';
 
 interface InitialState extends Answer {
