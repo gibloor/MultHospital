@@ -39,9 +39,13 @@ accounts.post('/registration', async (req, res) => {
       "SELECT * FROM accounts WHERE login = $1", [login]
     );
     if (!account.rows[0]){
+      let testPassed = false;
+      if (involvement === 'common') {
+        testPassed = true
+      };
       const account = await pool.query(
-        "INSERT INTO accounts (name, login, password, involvement) VALUES($1, $2, $3, $4) RETURNING *",
-        [name, login, password, involvement]
+        "INSERT INTO accounts (name, login, password, involvement, test_passed) VALUES($1, $2, $3, $4, $5) RETURNING *",
+        [name, login, password, involvement, testPassed]
       );
       tokenCreate(account, res);
     } else {res.json('This login is already in use')}

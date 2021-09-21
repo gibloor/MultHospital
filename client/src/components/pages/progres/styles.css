@@ -20,24 +20,23 @@
   height: 300px;
   width: 280px;
 }
-
 .multfilms_list:hover {
   font-size: 20pt;
 }
-
 .multfilms_list:hover .multfilms_list_logo {
   max-width: 99%;
   max-height: 99%;
 }
-
 .multfilms_list_block {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 250px;
 }
-
 .multfilms_list_logo {
   max-width: 95%;
   max-height: 95%;
+}
+.multfilms_watched {
+  position: absolute;
 }

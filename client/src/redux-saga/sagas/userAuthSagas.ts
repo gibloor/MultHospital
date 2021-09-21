@@ -1,13 +1,21 @@
-import { all, put, takeEvery } from 'redux-saga/effects';
 import {
-  USER_AUTH,
+  all,
+  put,
+  takeEvery,
+  takeLatest,
+} from 'redux-saga/effects';
+import {
   USER_DEAUTH,
   userAuthFailure,
+  USER_REQUARE,
+  userAuth,
 } from '../actions/userActions';
+import { UserAuth } from '../types/userTypes';
 
-function* authSaga() {
+function* authSaga(action: UserAuth) {
   try {
-    console.log('you authorizated');
+    console.log(action.payload);
+    yield put(userAuth(action.payload));
   } catch (e: any) {
     yield put(
       userAuthFailure({
@@ -33,7 +41,7 @@ function* deuthSaga() {
   Allows concurrent increments.
 */
 function* accountSagas() {
-  yield all([takeEvery(USER_AUTH, authSaga), takeEvery(USER_DEAUTH, deuthSaga)]);
+  yield all([takeLatest(USER_REQUARE, authSaga), takeEvery(USER_DEAUTH, deuthSaga)]);
 }
 
 export default accountSagas;

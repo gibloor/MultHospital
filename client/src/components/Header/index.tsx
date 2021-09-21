@@ -5,8 +5,8 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch, useSelector } from 'react-redux';
 
 import pagesList from './pagesList';
-import { userAuth, userDeauth } from '../../redux-saga/actions/userActions';
-import { getAccountSelector } from '../../redux-saga/selectors/accountSelector';
+import { userRequare, userDeauth } from '../../redux-saga/actions/userActions';
+import { getAccountSelector } from '../../redux-saga/selectors/userSelector';
 import Logo from './Logo';
 import Authorization from './Authorization';
 import './style.css';
@@ -39,8 +39,7 @@ const Header = () => {
           },
         });
         const jsonData = await response.json();
-        const info = { pending: false, error: false, info: jsonData };
-        dispatch(userAuth(info));
+        dispatch(userRequare({ ...jsonData }));
       } catch (err: any) {
         console.error(err.message);
       }

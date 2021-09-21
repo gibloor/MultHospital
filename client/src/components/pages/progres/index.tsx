@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './styles.css';
 import { questionsTakeRequest } from '../../../redux-saga/actions/questionsActions';
-import { getAccountSelector } from '../../../redux-saga/selectors/accountSelector';
+import { getAccountPendingSelector, getAccountSelector } from '../../../redux-saga/selectors/userSelector';
 import Test from './Test';
 
 const Progres = () => {
@@ -13,16 +13,18 @@ const Progres = () => {
     involvement: string,
     popularity: string,
     direction: string,
+    reduction: string,
+    viewed: boolean,
   }
 
   interface Topic {
     level: string,
   }
 
+  const pending = useSelector(getAccountPendingSelector);
   const dispatch = useDispatch();
-  const [multfilms, setMultfilms] = useState<Multfilm[]>([]);
+  const [multfilms, setMultfilms] = useState<Multfilm[]>();
   const authInfo = useSelector(getAccountSelector);
-
   const level:Topic = {
     level: authInfo.involvement,
   };
@@ -36,32 +38,37 @@ const Progres = () => {
       } catch (err: any) {
         console.error(err.message);
       }
-    } else {
+    } else if (authInfo.name) {
       dispatch(questionsTakeRequest(level));
     }
   };
 
   useEffect(() => {
     getInfo();
-  }, [authInfo]);
-
+  }, [authInfo.test_passed, authInfo.name]);
   // .sort((a, b) => (a.name > b.name ? 1 : -1))
   // .sort((a, b) => (a.popularity > b.popularity ? 1 : -1))
 
   return (
     <div className="multfilms">
-      {(!authInfo.name && <span>Ты не авторизован</span>)
+      {!pending && authInfo
+      && (
+        (!authInfo.name && <span>Ты не авторизован</span>)
         || (!authInfo.test_passed && <Test />)
-        || (
-          multfilms.map((multfilm) => (
-            <div className={`multfilms_list ${multfilm.direction}`} key={multfilm.id}>
-              <div className={`multfilms_list_block ${multfilm.direction}`}>
-                <img alt={multfilm.logo} className="multfilms_list_logo" src={multfilm.logo} />
-              </div>
-              <span>{multfilm.name}</span>
+        || (multfilms && multfilms.map((multfilm) => (
+          <div key={multfilm.id} className={`multfilms_list ${multfilm.direction}`}>
+            {authInfo.features
+            && authInfo.features.map((features) => (
+              features === multfilm.reduction && <div>fuck</div>
+            ))}
+            <div className={`multfilms_list_block ${multfilm.direction}`}>
+              <img alt={multfilm.logo} className="multfilms_list_logo" src={multfilm.logo} />
             </div>
-          ))
-        )}
+            <span>
+              {multfilm.name}
+            </span>
+          </div>
+        ))))}
     </div>
   );
 };
