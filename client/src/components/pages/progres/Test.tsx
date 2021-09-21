@@ -28,11 +28,7 @@ const Test = () => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     if (counter === questions.length && counter !== 0) {
-=======
-    if (counter === questions.length) {
->>>>>>> liveBranch
       const answer = { features: answers, id: userId };
       dispatch(answerTakeRequest(answer));
       dispatch(userTestComplete({ feature: answers }));
