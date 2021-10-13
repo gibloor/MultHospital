@@ -11,10 +11,10 @@ questions.get('/', async (req, res) =>{
   }
 })
 
-questions.get('/level/:level', async (req, res) => {
+questions.get('/take', async (req, res) => {
   try {
-    const {level} = req.params;
-    const quest = await pool.query( "SELECT * FROM questions WHERE level = $1", [level])
+    const {level, topic} = req.query;
+    const quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND topic = $2 ORDER BY serial_num", [level, topic])
     res.json(quest.rows);
   } catch (err) {
     console.error(err.message);

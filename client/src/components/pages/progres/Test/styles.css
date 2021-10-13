@@ -10,14 +10,25 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(165, 42, 42, 0.205);
   padding: 30px;
   border-radius: 30px;
+  width: 100%;
+  height: 60vh;
 }
-.multTest_form:hover {
-  background-color: rgba(165, 42, 42, 0.418);
-}
-.question_text {
+.test_text {
   text-align: center;
   font-size: 16pt;
+}
+.test_image {
+  margin: 20px;
+  height: 400px;
+}
+.test_answers {
+  display: flex;
+}
+.test_answer {
+  height: 30px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 14pt;
 }

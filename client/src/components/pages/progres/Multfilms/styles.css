@@ -1,0 +1,118 @@
+.multfilms {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.multfilms_line {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.multfilm_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 18pt;
+  cursor: pointer;
+  height: 290px;
+  width: 280px;
+  position: relative;
+}
+
+.multfilm_active {
+  background-color:rgba(160, 27, 67, 0.35);
+}
+.multfilm_deactive {
+  background-color:rgba(160, 27, 67, 0.35);
+  text-align: center;
+}
+
+.multfilms_list_block:hover .multfilms_list{
+  font-size: 20pt;
+}
+.multfilms_list_block:hover .multfilms_list_logo {
+  max-width: 95%;
+  max-height: 95%;
+}
+.multfilms_list_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+.multfilms_list_logo {
+  max-width: 90%;
+  max-height: 90%;
+}
+.multfilm_name {
+  margin-bottom: 10px;
+}
+.multfilms_watched {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  background: url(../../../assets/decorations/Stamp_seal.png) no-repeat center/100%;
+}
+.multfilm_block {
+  height: 290px;
+  width: 280px;
+  position: relative;
+  border-radius: 10%;
+  overflow: hidden;
+  z-index: 0;
+  margin: 10px;
+}
+.multfilm_viewed {
+  background:rgba(160, 27, 67, 0.7);
+}
+.multfilm_unviewed {
+  background:rgba(160, 27, 67, 0.35);
+}
+.multfilm_unviewed::before {
+  content: '';
+  position: absolute;
+  background:rgba(160, 27, 67, 0.35);
+  width: 100%;
+  bottom: 0;
+  animation: wipe 4s cubic-bezier(.2,.2,.2,.2) forwards;
+  animation-delay: 1s;
+  z-index: 0;
+}
+.multfilm_unviewed .pour {
+  width: 25px;
+  position: absolute;
+  left: 50%;
+  margin-left: -12.5px;
+  bottom: 0;
+  top: 0;
+  z-index: -1;
+  animation: pourAction linear 5s;
+}
+@keyframes pourAction {
+  0% {
+    background:rgba(160, 27, 67, 0.35);
+    transform: translateY(-100%);
+  }
+  20% {
+    transform: translateY(0);
+    background:rgba(160, 27, 67, 0.35);
+  }
+  100% {
+    transform: translateY(-100%);
+    background:rgba(160, 27, 67, 0.35);
+  }
+}
+@keyframes wipe {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}

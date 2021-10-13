@@ -9,6 +9,7 @@ import Progres from './components/pages/Progres';
 import AboutProject from './components/pages/AboutProject';
 import Setting from './components/pages/Setting';
 import GreetNew from './components/GreetNew';
+import Multfilm from './components/Multfilm';
 
 function App() {
   const [visiter, setVisiter] = useState(localStorage.getItem('visiter'));
@@ -30,6 +31,7 @@ function App() {
             <Route path="/progres" component={() => <Progres />} />
             <Route path="/aboutProject" component={() => <AboutProject />} />
             <Route path="/settings" component={() => <Setting />} />
+            <Route exact path="/multfilm:name?" component={() => <Multfilm />} />
           </Switch>
           <Basement />
         </div>

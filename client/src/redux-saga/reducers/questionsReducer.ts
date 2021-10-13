@@ -8,22 +8,16 @@ import {
 
 import { Questions, QuestionsActions } from '../types/questionsTypes';
 
-const initialState: Questions = {
-  questions: [
-    {
-      id: 0,
-      question: '',
-      image: '',
-      answer: '',
-      topic: '',
-      level: '',
-      serial_num: 0,
-    },
-  ],
+interface InitialState extends Questions {
+  error: boolean,
+}
+
+const initialState: InitialState = {
+  questions: [],
   error: false,
 };
 
-const questionsReducer: Reducer<Questions, QuestionsActions> = (state = initialState, action) => {
+const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initialState, action) => {
   switch (action.type) {
     case QUESTIONS_TAKE_REQUEST:
       return {

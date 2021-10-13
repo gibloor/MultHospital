@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../reducers/rootReducer';
 
-const getAccount = (state: AppState) => state.userAuth;
-const getError = (state: AppState) => state.userAuth;
-const getId = (state: AppState) => state.userAuth.id;
-const getPending = (state: AppState) => state.userAuth.pending;
+const getAccount = (state: AppState) => state.user;
+const getError = (state: AppState) => state.user;
+const getId = (state: AppState) => state.user.id;
+const getPending = (state: AppState) => state.user.pending;
 
 export const getAccountSelector = createSelector(getAccount, (info) => info);
 export const getAccountErrorSelector = createSelector(getError, (error) => error);

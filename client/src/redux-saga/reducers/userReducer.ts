@@ -4,8 +4,9 @@ import {
   USER_AUTH,
   USER_AUTH_FAILURE,
   USER_DEAUTH,
-  USER_REQUARE,
-  USER_TEST_COMPLETE,
+  USER_AUTH_REQUARE,
+  USER_TESTING,
+  USER_TESTING_REQUARE,
 } from '../actions/userActions';
 
 import { UserAuthActions, UserInfo } from '../types/userTypes';
@@ -21,8 +22,6 @@ const initialState: InitialState = {
   id: 0,
   name: '',
   image: '',
-  features: ['ANYTHING'],
-  acsessToken: '',
   test_passed: false,
   involvement: '',
 };
@@ -32,20 +31,17 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
   action: UserAuthActions,
 ) => {
   switch (action.type) {
-    case USER_REQUARE:
+    case USER_AUTH_REQUARE:
       return {
         ...state,
         pending: true,
       };
     case USER_AUTH:
-      console.log(action.payload);
       return {
         ...state,
         id: action.payload.id,
         name: action.payload.name,
         image: action.payload.image,
-        features: action.payload.features,
-        acsessToken: action.payload.acsessToken,
         test_passed: action.payload.test_passed,
         involvement: action.payload.involvement,
         pending: false,
@@ -63,18 +59,22 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         id: 0,
         name: '',
         image: '',
-        feature: [],
-        acsessToken: '',
+        features: [],
         test_passed: false,
         involvement: '',
       };
-    case USER_TEST_COMPLETE:
+    case USER_TESTING:
       return {
         ...state,
         test_passed: true,
-        feature: action.payload.feature,
+        features: action.payload.features,
+        pending: false,
       };
-
+    case USER_TESTING_REQUARE:
+      return {
+        ...state,
+        pending: true,
+      };
     default:
       return {
         ...state,

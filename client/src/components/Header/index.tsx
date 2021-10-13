@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import pagesList from './pagesList';
 import { userRequare, userDeauth } from '../../redux-saga/actions/userActions';
 import { getAccountSelector } from '../../redux-saga/selectors/userSelector';
+import { multfilmTakeRequare } from '../../redux-saga/actions/multfilmsActions';
 import Logo from './Logo';
 import Authorization from './Authorization';
 import './style.css';
@@ -44,6 +45,9 @@ const Header = () => {
         console.error(err.message);
       }
     }
+    if (authInfo.test_passed) {
+      dispatch(multfilmTakeRequare({ id: authInfo.id }));
+    }
   };
 
   const infoTaked = (tokenAc: string) => {
@@ -55,7 +59,7 @@ const Header = () => {
   };
   useEffect(() => {
     authVerif();
-  }, [token]);
+  }, [authInfo.test_passed]);
 
   return (
     <div className="head">

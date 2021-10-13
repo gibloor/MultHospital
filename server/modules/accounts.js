@@ -8,7 +8,7 @@ accounts.put(`/acceptAnswer/:id`, async (req, res) => {
     const { id } = req.params;
     const { features } = req.body;
     const testPassed = true;
-    const account = await pool.query(
+    await pool.query(
     "UPDATE accounts SET features = $1, test_passed = $2 WHERE id = $3", [features, testPassed, id]);
     res.json("Answer Accepted");
   } catch (err) {
@@ -26,7 +26,9 @@ const tokenCreate = (account, res) => {
     res.json({
       name: user.name,
       image: user.image,
-      features: user.features,
+      involvement: user.involvement,
+      test_passed: user.test_passed,
+      id: user.id,
       acsessToken
     })
   } else res.json('Wrong dates')
@@ -89,9 +91,7 @@ accounts.post('/auth/token', verify, async (req, res) => {
     const authAccount = await pool.query(
       "SELECT * FROM accounts WHERE id = $1", [id]
     );
-    const user = authAccount.rows[0]
-    res.json(user)
-    
+    res.json(authAccount.rows[0]);
   } catch (err) {
     console.error(err.message);
   }

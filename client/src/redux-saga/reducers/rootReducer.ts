@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import userReducer from './userAuthReducer';
+import userReducer from './userReducer';
 import questionsReducer from './questionsReducer';
-import answersReducer from './answersReducer';
+import multfilmsReducer from './multfilmsReducer';
+import viewedReducer from './viewedReducer';
 
 const rootReducer = combineReducers({
-  userAuth: userReducer,
+  user: userReducer,
   questions: questionsReducer,
-  answer: answersReducer,
+  multfilms: multfilmsReducer,
+  viewed: viewedReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

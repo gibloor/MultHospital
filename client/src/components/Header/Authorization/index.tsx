@@ -4,7 +4,8 @@ import { Formik, Form, Field } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { validateName, validateLogin, validatePassword } from '../../validate/authValidate';
-import { userRequare, userTestComplete } from '../../../redux-saga/actions/userActions';
+import { userRequare } from '../../../redux-saga/actions/userActions';
+import { multfilmTakeRequare } from '../../../redux-saga/actions/multfilmsActions';
 
 interface AcDate {
   name: string,
@@ -32,14 +33,10 @@ const GlobalAuth = ({ ...prop }) => {
         body: JSON.stringify(body),
       });
       const jsonData = await response.json();
-      if (typeof (jsonData) === 'string') {
-        setError(jsonData);
-      } else {
-        prop.infoTaked(jsonData.acsessToken);
-        dispatch(userTestComplete({ feature: [] }));
-        dispatch(userRequare({ ...jsonData }));
-        prop.authClose();
-      }
+      prop.infoTaked(jsonData.acsessToken);
+      dispatch(userRequare({ ...jsonData }));
+      prop.authClose();
+      
     } catch (err: any) {
       console.error(err.message);
     }

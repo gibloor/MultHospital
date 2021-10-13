@@ -8,9 +8,7 @@
 }
 
 .greetNew_page {
-  border: 100px solid #40c4c8;
   padding: 20px;
-  border-image: url(media/borderImgBig.png) 240 round round;
   display: flex;
   flex-direction: column;
   justify-content: center;

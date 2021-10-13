@@ -1,23 +1,28 @@
 import {
   USER_AUTH,
+  USER_AUTH_REQUARE,
   USER_AUTH_FAILURE,
   USER_DEAUTH,
-  USER_TEST_COMPLETE,
-  USER_REQUARE,
+  USER_TESTING,
+  USER_TESTING_REQUARE,
 } from "../actions/userActions";
 
+export interface Answer {
+  features: string[],
+}
 export interface UserInfo {
   id: number,
   name: string,
   image: string, 
-  features: string[],
-  acsessToken: string,
   test_passed: boolean,
   involvement: string
 }
+export interface UserAnswer extends Answer {
+  userId: number,
+}
 
-export interface UserRequare {
-  type: typeof USER_REQUARE;
+export interface UserAuthRequare {
+  type: typeof USER_AUTH_REQUARE;
   payload: UserInfo;
 }
 export interface UserAuth {
@@ -31,15 +36,19 @@ export interface UserAuthFailure {
 export interface UserDeauth {
   type: typeof USER_DEAUTH;
 }
-export interface UserTestComplete {
-  type: typeof USER_TEST_COMPLETE;
-  payload: {feature: string[]}
+export interface UserTesting {
+  type: typeof USER_TESTING;
+  payload: Answer
+}
+export interface UserTestingRequare {
+  type: typeof USER_TESTING_REQUARE;
+  payload: UserAnswer
 }
 
-
 export type UserAuthActions =
-| UserRequare
+| UserAuthRequare
 | UserAuth
 | UserAuthFailure
 | UserDeauth
-| UserTestComplete;
+| UserTesting
+| UserTestingRequare;
