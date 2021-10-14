@@ -12,35 +12,51 @@ const Multfilms = () => {
   const multfilms = useSelector(getMultfilmsSelector);
   const userId = useSelector(getAccountIdSelector);
   let viewed: string[] = [];
+  let delayCounter = 0;
 
   useEffect(() => {
-    return function viewedSave() {
-      (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
-    }
-  }, [])
+    // return function viewedSave() {
+    //   (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
+    // }
+  }, [multfilms])
 
   return (
     <div className="multfilms">
-      {Object.keys(multfilms).map((category) =>(
-        <div key={category} className="multfilms_line">
+      {Object.keys(multfilms).map((category) => (
+        <div key={category}>
           {multfilms[category].map((multfilm, index) => (
-            index === 0 || multfilms[category][index-1].watched === true ? (
+            index === 0 || multfilms[category][index-1].watched ? (
               <div
                 key={multfilm.name}
-                className={classNames(
-                  'multfilm_block',
+                className='multfilm_block'
+              >
+                <div className={classNames(
                   { 'multfilm_unviewed': !multfilm.viewed },
                   { 'multfilm_viewed': multfilm.viewed }
                 )}
-              >
-                {multfilm.watched && !multfilm.viewed && viewed.push(multfilm.name) && (multfilm.viewed = true)}
-                <div className="multfilm_list multfilm_active">
-                  <div className="pour"></div>
-                  {
-                    multfilm.watched
+                  style={{
+                    animationDelay: `${delayCounter + 1}s`
+                  }}
+                /> 
+                {!multfilm.viewed
+                  && <div className="pour" 
+                    style={{
+                      animationDelay: `${delayCounter}s`
+                    }}
+                  />
+                }
+                {
+                  !multfilm.viewed
+                  && (delayCounter += 5)
+                  && multfilm.watched
+                  && viewed.push(multfilm.name)
+                  && (multfilm.viewed = true)
+                }
+                <div className="multfilm_list">
+                  {multfilm.watched
                     && <div className="multfilms_watched" key={multfilm.name}/>
                   }
-                  <Link className="multfilms_list_block" to={`/multfilm?name=${multfilm.name}`}>
+                  <Link className="multfilms_image_block" to={`/multfilm?name=${multfilm.name}`}>
                     <img
                       alt={multfilm.logo}
                       className="multfilms_list_logo"
@@ -52,10 +68,13 @@ const Multfilms = () => {
                   </span>
                 </div>
               </div>
-            ) : <div key={multfilm.name} className="multfilm_block multfilm_deactive">
+            ) : <div key={multfilm.name} className="multfilm_block">
                   close
                 </div>
           ))}
+          {
+            delayCounter=0
+          }
         </div>
       ))}
     </div>

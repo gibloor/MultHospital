@@ -1,12 +1,10 @@
 import React from 'react';
 import './styles.css';
+import { CSSTransition } from 'react-transition-group';
 
 const Pipe = () => {
   return (
     <>
-      <div id="banner">
-        <div className="pour"></div>
-      </div>
     </>
   )
 }

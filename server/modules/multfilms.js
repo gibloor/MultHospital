@@ -11,7 +11,8 @@ multfilms.get('/:id', async (req, res) =>{
 
     allMults.rows.map(multfilm => (
       featuresTake.rows.map(multfilmMod => (
-        (multfilm.name === multfilmMod.multfilm) && (multfilm.watched = true, multfilm.viewed = multfilmMod.viewed)
+        (multfilm.name === multfilmMod.multfilm)
+        && (multfilm.watched = true, multfilm.viewed = multfilmMod.viewed)
       ))
     ))
 
@@ -22,17 +23,6 @@ multfilms.get('/:id', async (req, res) =>{
         return a.watched === b.watched ? 0 : a.watched ? -1 : 1;
       })
     }
-    // filteredMults = branches.map(branch => (
-    //   console.log(
-    //   filteredMults[`${branch}Mults`] = allMults.rows.filter(multfilm => multfilm.involvement === branch).sort(function(a, b) {return a.watched === b.watched ? 0 : a.watched ? -1 : 1})
-    //   )
-    // ))
-
-    // const filteredMults = {
-    //   commonMults: allMults.rows.filter(multfilm => multfilm.involvement === 'common').sort(function(a, b) {return a.watched === b.watched ? 0 : a.watched ? -1 : 1}),
-    //   uncommonMults: allMults.rows.filter(multfilm => multfilm.involvement === 'uncommon').sort(function(a, b) {return a.watched === b.watched ? 0 : a.watched ? -1 : 1}),
-    //   rareMults: allMults.rows.filter(multfilm => multfilm.involvement === 'rare').sort(function(a, b) {return a.watched === b.watched ? 0 : a.watched ? -1 : 1}),
-    // }
     res.json({...filteredMults});
   } catch (err) {
     console.error(err.message);

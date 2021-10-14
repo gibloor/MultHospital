@@ -12,6 +12,7 @@ export interface Multfilm {
   serial_number: string,
   watched: boolean,
   viewed: boolean,
+  displayed: boolean,
 }
 export interface Id {
   id: number,
