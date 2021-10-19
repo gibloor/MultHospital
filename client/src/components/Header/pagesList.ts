@@ -1,17 +1,25 @@
-export default [
+interface PagesList {
+  access: string,
+  name: string,
+  link: string,
+}
+
+const pagesList:PagesList[] = [
   {
+    access: 'close',
     name: 'Progres',
-    link: '/progres',
-    access: 'authorize',
+    link: '/progres'
   },
   {
+    access: 'free',
     name: 'About project',
-    link: '/aboutProject',
-    access: 'free',
+    link: '/aboutproject'
   },
   {
-    name: 'Settings',
-    link: '/settings',
     access: 'free',
+    name: 'Setting',
+    link: '/setting'
   },
-];
+]
+
+export default pagesList

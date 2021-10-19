@@ -39,13 +39,11 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
         multfilms: action.payload.multfilms,
         pending: false,
       };
-
     case MULTFILM_FAILURE:
       return {
         ...state,
         error: action.payload.error,
       };
-
     default:
       return {
         ...state,

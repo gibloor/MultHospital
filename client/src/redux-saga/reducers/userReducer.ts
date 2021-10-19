@@ -36,6 +36,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         ...state,
         pending: true,
       };
+
     case USER_AUTH:
       return {
         ...state,
@@ -63,6 +64,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         test_passed: false,
         involvement: '',
       };
+
     case USER_TESTING:
       return {
         ...state,
@@ -70,11 +72,13 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         features: action.payload.features,
         pending: false,
       };
+
     case USER_TESTING_REQUARE:
       return {
         ...state,
         pending: true,
       };
+      
     default:
       return {
         ...state,

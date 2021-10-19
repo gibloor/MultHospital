@@ -26,10 +26,6 @@ function* multfilmTakeSaga(action: MultfilmTakeRequare) {
   }
 }
 
-/*
-  Starts worker saga on latest dispatched `FETCH_TODO_REQUEST` action.
-  Allows concurrent increments.
-*/
 function* multfilmsSagas() {
   yield all([takeLatest(MULTFILM_TAKE_REQUARE, multfilmTakeSaga)]);
 }

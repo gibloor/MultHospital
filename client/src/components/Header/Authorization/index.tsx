@@ -33,10 +33,11 @@ const GlobalAuth = ({ ...prop }) => {
         body: JSON.stringify(body),
       });
       const jsonData = await response.json();
-      prop.infoTaked(jsonData.acsessToken);
-      dispatch(userRequare({ ...jsonData }));
-      prop.authClose();
-      
+      if (typeof jsonData !== 'string') {
+        prop.infoTaked(jsonData.acsessToken);
+        dispatch(userRequare({ ...jsonData }));
+        prop.authClose();
+      }
     } catch (err: any) {
       console.error(err.message);
     }

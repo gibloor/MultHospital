@@ -4,12 +4,12 @@ import './App.css';
 
 import Header from './components/Header';
 import Main from './components/pages/Main';
-import Basement from './components/pages/Basement';
+import Basement from './components/Basement';
 import Progres from './components/pages/Progres';
 import AboutProject from './components/pages/AboutProject';
 import Setting from './components/pages/Setting';
 import GreetNew from './components/GreetNew';
-import Multfilm from './components/Multfilm';
+import Multfilm from './components/pages/Progres/Multfilms/Multfilm';
 
 function App() {
   const [visiter, setVisiter] = useState(localStorage.getItem('visiter'));
@@ -24,19 +24,20 @@ function App() {
       {(
         visiter
         && (
-        <div>
+        <>
           <Header />
           <Switch>
             <Route exact path="/" component={() => <Main />} />
-            <Route path="/progres" component={() => <Progres />} />
+            <Route exact path="/progres" component={() => <Progres />} />
             <Route path="/aboutProject" component={() => <AboutProject />} />
-            <Route path="/settings" component={() => <Setting />} />
-            <Route exact path="/multfilm:name?" component={() => <Multfilm />} />
+            <Route path="/setting" component={() => <Setting />} />
+            <Route path="/progres/multfilm:name?" component={() => <Multfilm />} />
           </Switch>
           <Basement />
-        </div>
+        </>
         ))
-        || <GreetNew changeVisiter={changeVisiter} />}
+        || <GreetNew changeVisiter={changeVisiter} />
+      }
 
       {/* dev time */}
       <span>

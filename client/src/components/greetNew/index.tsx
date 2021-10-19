@@ -38,29 +38,26 @@ const GreetNew = (props: Prop) => {
       <div className="greetNew_page">
         <p>{t('greetNew.greet.string1')}</p>
         <span>{t('greetNew.greet.string2')}</span>
-        <div className="questions">
+        <div className="greet_answers">
           {chooser.map((choose: Select) => (
             <div
               role="button"
-              className="question"
+              className="greet_answer"
               key={choose.select}
               tabIndex={0}
               onClick={() => ((props.changeVisiter(),
               localStorage.setItem('involvement',
                 choose.select)
               ))}
-              onKeyDown={() => ((props.changeVisiter(),
-              localStorage.setItem('involvement',
-                choose.select)))}
             >
-              <div className="question_image_carcas">
+              <div className="greet_answer_image_carcas">
                 <img
                   alt={choose.select}
-                  className="question_image"
+                  className="greet_answer_image"
                   src={choose.image}
                 />
               </div>
-              <span>{t(`greetNew.chooser.${choose.text}`)}</span>
+              <span className="greet_text">{t(`greetNew.chooser.${choose.text}`)}</span>
             </div>
           ))}
         </div>

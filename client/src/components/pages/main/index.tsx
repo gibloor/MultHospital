@@ -8,13 +8,12 @@ const Main = () => {
 
   return (
     <div className="main">
-      <p className="mult_day">
+      <span className="mult_day">
         Multfilm of day:
+      </span>
+      <span className="mult_day">
         {multName}
-      </p>
-      {/* <video className='main_video' controls>
-        <source src={'https://www.youtube.com/embed/Zlmswo0S0e0'} type='video/mp4' />
-      </video> */}
+      </span>
       <iframe
         className="main_video"
         title="main_video"

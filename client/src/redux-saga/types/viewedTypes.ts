@@ -20,6 +20,7 @@ export interface ViewedFailure {
   payload: {error: boolean};
 }
 
+
 export type ViewedActions =
 | ViewedSaveRequest
 | ViewedSave

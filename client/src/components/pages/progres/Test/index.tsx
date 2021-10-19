@@ -36,7 +36,7 @@ const Test = () => {
         <form className="multTest_form" onSubmit={(e) => submitQuestion(e)}>
           <span className="test_text">{questions[counter].question}</span>
           <img alt={questions[counter].topic} className="test_image" src={`${process.env.PUBLIC_URL}/assets/images/multTests/${questions[counter].image}`} />
-          <div className="text_answers">
+          <div className="test_answers">
             {questions[counter].answers.map(answer => (
               <input className="test_answer" key={answer} value={answer} type="submit" onClick={() => setUserAnswer(answer)} />
             ))}

@@ -1,30 +1,26 @@
 .head {
-  width: 100%;
   height: 60px;
   display: flex;
   font-size: 18pt;
   font-weight: bold;
-  position: relative;
-  z-index: 100;
-}
-.logo {
-  height: 60px;
-  width: 60px;
-  margin-left: 10px;
 }
 .head_list {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.head_menu {
+  width: 100%;
+}
+.head_menu_list {
+  display: flex;
+}
 .head_button {
-  margin-left: 15px;
   padding: 15px;
   text-decoration: none;
   color: white;
   border-radius: 10px;
 }
-
 .head_button:hover {
   color: rgb(31, 28, 28);
   background-color: rgb(213, 219, 226);
@@ -46,12 +42,10 @@
   width: 70px;
   height: 40px;
 }
-
 .authentication {
   display: flex;
   align-items: center;
 }
-
 .auth {
   width: 100%;
   height: 100%;
@@ -84,4 +78,36 @@
 }
 .auth_inputs input {
   width: 350px;
+}
+.burger_menu {
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .head_menu {
+    display: none;
+  }
+  .burger_menu {
+    display: flex;
+  }
+  .head_list {
+    flex-direction: column;
+  }
+  .head_menu_list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .right_side {
+    flex-direction: column;
+    align-items: center;
+  }
+  .head_menu_mobile {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(139, 0, 0, 0.808);
+    z-index: 100;
+  }
+  .auth {
+    z-index: 101;
+  }
 }

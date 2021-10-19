@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMultfilmsSelector } from '../../../../redux-saga/selectors/multfilmsSelector';
 import { getAccountIdSelector } from '../../../../redux-saga/selectors/userSelector';
 import { viewedSaveRequest } from '../../../../redux-saga/actions/viewedActions';
+import MultfilmBlock from './MultfilmBlock';
 import './styles.css';
 
 const Multfilms = () => {
@@ -12,69 +11,32 @@ const Multfilms = () => {
   const multfilms = useSelector(getMultfilmsSelector);
   const userId = useSelector(getAccountIdSelector);
   let viewed: string[] = [];
-  let delayCounter = 0;
+
+  const viewedChange = (name: string) => {
+    viewed.push(name)
+  };
 
   useEffect(() => {
-    // return function viewedSave() {
-    //   (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
-    // }
-  }, [multfilms])
+    return function viewedSave() {
+      (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
+    }
+  }, []);
 
   return (
     <div className="multfilms">
       {Object.keys(multfilms).map((category) => (
-        <div key={category}>
+        <div key={category} className="multfilms_category">
           {multfilms[category].map((multfilm, index) => (
             index === 0 || multfilms[category][index-1].watched ? (
-              <div
+              <MultfilmBlock
+                multfilm={multfilm}
+                viewedChange={viewedChange}
                 key={multfilm.name}
-                className='multfilm_block'
-              >
-                <div className={classNames(
-                  { 'multfilm_unviewed': !multfilm.viewed },
-                  { 'multfilm_viewed': multfilm.viewed }
-                )}
-                  style={{
-                    animationDelay: `${delayCounter + 1}s`
-                  }}
-                /> 
-                {!multfilm.viewed
-                  && <div className="pour" 
-                    style={{
-                      animationDelay: `${delayCounter}s`
-                    }}
-                  />
-                }
-                {
-                  !multfilm.viewed
-                  && (delayCounter += 5)
-                  && multfilm.watched
-                  && viewed.push(multfilm.name)
-                  && (multfilm.viewed = true)
-                }
-                <div className="multfilm_list">
-                  {multfilm.watched
-                    && <div className="multfilms_watched" key={multfilm.name}/>
-                  }
-                  <Link className="multfilms_image_block" to={`/multfilm?name=${multfilm.name}`}>
-                    <img
-                      alt={multfilm.logo}
-                      className="multfilms_list_logo"
-                      src={`${process.env.PUBLIC_URL}/assets/images/multPosters/${multfilm.logo}`}
-                    />
-                  </Link>
-                  <span className="multfilm_name">
-                    {multfilm.name}
-                  </span>
-                </div>
+              />
+            ) :
+              <div key={multfilm.name} className="multfilm_block multfilm_locked">
               </div>
-            ) : <div key={multfilm.name} className="multfilm_block">
-                  close
-                </div>
           ))}
-          {
-            delayCounter=0
-          }
         </div>
       ))}
     </div>

@@ -13,7 +13,9 @@ export interface Multfilm {
   watched: boolean,
   viewed: boolean,
   displayed: boolean,
+  delay: number,
 }
+
 export interface Id {
   id: number,
 }
@@ -39,4 +41,4 @@ export interface MultfilmFailure {
 export type MultfilmsActions =
 | MultfilmTakeRequare
 | MultfilmTake
-| MultfilmFailure;
+| MultfilmFailure

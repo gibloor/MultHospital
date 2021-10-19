@@ -10,7 +10,6 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
   border-radius: 30px;
   width: 100%;
   height: 60vh;
@@ -20,15 +19,27 @@
   font-size: 16pt;
 }
 .test_image {
-  margin: 20px;
   height: 400px;
 }
 .test_answers {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 .test_answer {
   height: 30px;
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
   cursor: pointer;
   font-size: 14pt;
+}
+@media screen and (max-width: 850px) {
+  .multTest_form {
+    margin-top: 20px;
+  }
+  .test_image {
+    max-height: 300px;
+    max-width: 100%;
+  }
 }
