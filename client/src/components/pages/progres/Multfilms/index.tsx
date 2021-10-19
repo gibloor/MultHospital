@@ -4,7 +4,7 @@ import { getMultfilmsSelector } from '../../../../redux-saga/selectors/multfilms
 import { getAccountIdSelector } from '../../../../redux-saga/selectors/userSelector';
 import { viewedSaveRequest } from '../../../../redux-saga/actions/viewedActions';
 import MultfilmBlock from './MultfilmBlock';
-import './styles.css';
+import './styles.scss';
 
 const Multfilms = () => {
   const dispatch = useDispatch();

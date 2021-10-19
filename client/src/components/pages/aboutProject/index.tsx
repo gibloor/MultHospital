@@ -1,5 +1,5 @@
 import React from 'react';
-import './aboutProject.css';
+import './aboutProject.scss';
 
 const AboutProject = () => {
   const something = 'something';

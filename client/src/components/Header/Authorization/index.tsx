@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { validateName, validateLogin, validatePassword } from '../../validate/authValidate';
 import { userRequare } from '../../../redux-saga/actions/userActions';
-import { multfilmTakeRequare } from '../../../redux-saga/actions/multfilmsActions';
+import './styles.scss';
 
 interface AcDate {
   name: string,
@@ -15,7 +15,6 @@ interface AcDate {
 }
 
 const GlobalAuth = ({ ...prop }) => {
-  const [error, setError] = useState('');
   const [typeForm, setTypeForm] = useState(prop.authVariant);
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -53,7 +52,6 @@ const GlobalAuth = ({ ...prop }) => {
               <div
                 onClick={() => (setTypeForm('login'))}
                 tabIndex={-1}
-                onKeyDown={() => (setTypeForm('login'))}
                 role="button"
                 className="auth_button"
               >
@@ -62,7 +60,6 @@ const GlobalAuth = ({ ...prop }) => {
               <div
                 onClick={() => (setTypeForm('registration'))}
                 tabIndex={-2}
-                onKeyDown={() => (setTypeForm('registration'))}
                 role="button"
                 className="auth_button"
               >
@@ -102,7 +99,6 @@ const GlobalAuth = ({ ...prop }) => {
                     {errors.password && touched.password && <div>{errors.password}</div>}
                   </div>
                   <button type="submit">Submit</button>
-                  {error && <span>{error}</span>}
                 </Form>
               )}
             </Formik>

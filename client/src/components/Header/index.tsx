@@ -9,7 +9,7 @@ import { getAccountSelector } from '../../redux-saga/selectors/userSelector';
 import { multfilmTakeRequare } from '../../redux-saga/actions/multfilmsActions';
 import Logo from './Logo';
 import Authorization from './Authorization';
-import './style.css';
+import './style.scss';
 import classNames from 'classnames';
 
 interface Lang {
@@ -107,28 +107,30 @@ const Header = () => {
               }
             </div>
             <div className="right_side">
-              <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
-                <div className="flags">
-                  <div
-                    role="button"
-                    tabIndex={-4}
-                    onClick={() => setLangDisplay(true)}
-                  >
-                    <img alt={t('flag')} className="flags_img" src={t('flag')} />
-                  </div>
-                  {langDisplay && Object.keys(langs).map((lang) => (
+              <div className="flags">
+                <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
+                  <div className="flags_block">
                     <div
                       role="button"
-                      tabIndex={-5}
-                      className="flag"
-                      key={lang}
-                      onClick={() => i18n.changeLanguage(lang)}
+                      tabIndex={-4}
+                      onClick={() => setLangDisplay(true)}
                     >
-                      <img alt={lang} className="flags_img" src={langs[lang].img} />
+                      <img alt={t('flag')} className="flags_img" src={t('flag')} />
                     </div>
-                  ))}
-                </div>
-              </OutsideClickHandler>
+                    {langDisplay && Object.keys(langs).map((lang) => (
+                      <div
+                        role="button"
+                        tabIndex={-5}
+                        className="flag"
+                        key={lang}
+                        onClick={() => i18n.changeLanguage(lang)}
+                      >
+                        <img alt={lang} className="flags_img" src={langs[lang].img} />
+                      </div>
+                    ))}
+                  </div>
+                </OutsideClickHandler>
+              </div>
               <div className="authentication">
                 {(!token
                   && (
@@ -141,7 +143,6 @@ const Header = () => {
                     >
                       {t('head.buttons.login')}
                     </div>
-                    |
                     <div
                       role="button"
                       tabIndex={-7}
@@ -154,7 +155,6 @@ const Header = () => {
                   )) || (
                   <>
                     <div>{authInfo.name}</div>
-                    |
                     <div
                       role="button"
                       tabIndex={-8}

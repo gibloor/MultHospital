@@ -1,5 +1,5 @@
 import React from 'react';
-import './main.css';
+import './main.scss';
 // import video from './videos/onFirstDays.mp4';
 
 const Main = () => {
@@ -14,12 +14,12 @@ const Main = () => {
       <span className="mult_day">
         {multName}
       </span>
-      <iframe
+      {/* <iframe
         className="main_video"
         title="main_video"
         src="https://www.youtube.com/embed/Zlmswo0S0e0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />
+      /> */}
       <p>
         number of registered:
         {registered}

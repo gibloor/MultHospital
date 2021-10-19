@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './styles.css';
+import './styles.scss';
 import { getQuestionsSelector } from '../../../../redux-saga/selectors/questionsSelector';
 import { getAccountIdSelector } from '../../../../redux-saga/selectors/userSelector';
 import { userTestingRequare } from '../../../../redux-saga/actions/userActions';
@@ -42,7 +42,8 @@ const Test = () => {
             ))}
           </div>
         </form>
-        )}
+        )
+      }
     </>
   );
 };

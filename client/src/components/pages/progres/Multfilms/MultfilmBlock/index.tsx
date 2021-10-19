@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Multfilm } from '../../../../../redux-saga/types/multfilmsTypes';
-import './styles.css';
+import './styles.scss';
 
 interface Props {
   multfilm: Multfilm,

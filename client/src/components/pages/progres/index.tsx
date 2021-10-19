@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './styles.css';
+import './styles.scss';
 import { questionsTakeRequest } from '../../../redux-saga/actions/questionsActions';
 import { getAccountPendingSelector, getAccountSelector } from '../../../redux-saga/selectors/userSelector';
 import { getMultfilmsPendingSelector } from '../../../redux-saga/selectors/multfilmsSelector';
