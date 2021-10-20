@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import pagesList from './pagesList';
-import { userRequare, userDeauth } from '../../redux-saga/actions/userActions';
+import { userDeauth, userAutoAuthorization } from '../../redux-saga/actions/userActions';
 import { getAccountSelector } from '../../redux-saga/selectors/userSelector';
 import { multfilmTakeRequare } from '../../redux-saga/actions/multfilmsActions';
 import Logo from './Logo';
@@ -19,8 +19,9 @@ interface Lang {
 const Header = () => {
   const [langDisplay, setLangDisplay] = useState(false);
   const [authVariant, setAuthVariant] = useState('');
-  const [token, setToken] = useState(localStorage.getItem('token'));
   const [menuVisible, setMenuVisible] = useState(false);
+
+  const token = localStorage.getItem('token') || '';
 
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -31,33 +32,16 @@ const Header = () => {
   };
 
   const authVerif = async () => {
-    if (token && !authInfo.name) {
-      try {
-        const response = await fetch('http://localhost:5000/accounts/auth/token', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${token}`,
-          },
-        });
-        const jsonData = await response.json();
-        dispatch(userRequare({ ...jsonData }));
-      } catch (err: any) {
-        console.error(err.message);
-      }
-    }
-    if (authInfo.test_passed) {
-      dispatch(multfilmTakeRequare({ id: authInfo.id }));
-    }
-  };
+    (token && !authInfo.name)
+    && dispatch(userAutoAuthorization({token: token}));
 
-  const infoTaked = (tokenAc: string) => {
-    localStorage.setItem('token', tokenAc);
-    setToken(tokenAc);
+    (authInfo.test_passed)
+    && dispatch(multfilmTakeRequare({ id: authInfo.id }));
   };
   const authClose = () => {
     setAuthVariant('');
   };
+
   useEffect(() => {
     authVerif();
   }, [authInfo.test_passed]);
@@ -67,7 +51,6 @@ const Header = () => {
       {authVariant
         && (
         <Authorization
-          infoTaked={infoTaked}
           authClose={authClose}
           authVariant={authVariant}
         />
@@ -86,7 +69,7 @@ const Header = () => {
             <div className="head_list">
               {
                 pagesList.map((button) => (
-                  (token || button.access === 'free')
+                  (authInfo.name || button.access === 'free')
                     && (
                     <Link className="head_button" key={button.name} to={button.link} onClick={() => setMenuVisible(false)}>
                       {button.name}
@@ -132,7 +115,7 @@ const Header = () => {
                 </OutsideClickHandler>
               </div>
               <div className="authentication">
-                {(!token
+                {(!authInfo.name
                   && (
                   <>
                     <div
@@ -161,7 +144,6 @@ const Header = () => {
                       className="head_button"
                       onClick={() => ((
                         localStorage.removeItem('token'),
-                        setToken(''),
                         dispatch(userDeauth()),
                         setMenuVisible(false)
                       ))}

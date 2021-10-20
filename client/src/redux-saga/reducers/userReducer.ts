@@ -7,6 +7,8 @@ import {
   USER_AUTH_REQUARE,
   USER_TESTING,
   USER_TESTING_REQUARE,
+  USER_AUTHORIZATION,
+  USER_AUTO_AUTHORIZATION,
 } from '../actions/userActions';
 
 import { UserAuthActions, UserInfo } from '../types/userTypes';
@@ -31,6 +33,18 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
   action: UserAuthActions,
 ) => {
   switch (action.type) {
+    case USER_AUTHORIZATION:
+      return {
+        ...state,
+        pending: true
+      };
+      
+    case USER_AUTO_AUTHORIZATION:
+      return {
+        ...state,
+        pending: true
+      };
+
     case USER_AUTH_REQUARE:
       return {
         ...state,

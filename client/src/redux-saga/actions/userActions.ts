@@ -1,13 +1,18 @@
 import {
   UserAuth,
   UserAuthFailure,
-  UserInfo,
   UserDeauth,
   UserTesting,
   UserTestingRequare,
   UserAuthRequare,
+  UserAuthorization,
+  UserAutoAuthorization,
+
   UserAnswer,
+  AuthorizationDates,
+  UserInfo,
   Answer,
+  Token,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
@@ -16,7 +21,21 @@ export const USER_AUTH_FAILURE = 'USER_AUTH_FAILURE';
 export const USER_DEAUTH = 'USER_DEAUTH';
 export const USER_TESTING = 'USER_TESTING';
 export const USER_TESTING_REQUARE = 'USER_TESTING_REQUARE';
+export const USER_AUTHORIZATION = 'USER_AUTHORIZATION';
+export const USER_AUTO_AUTHORIZATION = 'USER_AUTO_AUTHORIZATION';
 
+export const userAuthorization = (
+  payload: AuthorizationDates
+): UserAuthorization => ({
+  type: USER_AUTHORIZATION,
+  payload,
+})
+export const userAutoAuthorization = (
+  payload: Token
+): UserAutoAuthorization => ({
+  type: USER_AUTO_AUTHORIZATION,
+  payload,
+})
 
 export const userAuth = (
   payload: UserInfo,

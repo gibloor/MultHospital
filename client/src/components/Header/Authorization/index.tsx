@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { validateName, validateLogin, validatePassword } from '../../validate/authValidate';
-import { userRequare } from '../../../redux-saga/actions/userActions';
+import { userAuthorization } from '../../../redux-saga/actions/userActions';
 import './styles.scss';
 
 interface AcDate {
@@ -18,25 +18,17 @@ const GlobalAuth = ({ ...prop }) => {
   const [typeForm, setTypeForm] = useState(prop.authVariant);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const authentication = async (dates: AcDate) => {
+  const authentication = async (date: AcDate) => {
     try {
-      const body = {
-        name: dates.name,
-        login: dates.login,
-        password: dates.password,
-        involvement: dates.involvement,
+      const dates = {
+        name: date.name,
+        login: date.login,
+        password: date.password,
+        involvement: date.involvement,
       };
-      const response = await fetch(`http://localhost:5000/accounts/${typeForm}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      const jsonData = await response.json();
-      if (typeof jsonData !== 'string') {
-        prop.infoTaked(jsonData.acsessToken);
-        dispatch(userRequare({ ...jsonData }));
-        prop.authClose();
-      }
+      dispatch(userAuthorization({dates, typeForm}));
+      
+      prop.authClose();
     } catch (err: any) {
       console.error(err.message);
     }

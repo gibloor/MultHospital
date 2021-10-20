@@ -56,7 +56,9 @@ const GreetNew = (props: Prop) => {
                 src={choose.image}
               />
             </div>
-            <span className="greet_text">{t(`greetNew.chooser.${choose.text}`)}</span>
+            <span className="greet_text">
+              {t(`greetNew.chooser.${choose.text}`)}
+            </span>
           </div>
         ))}
       </div>

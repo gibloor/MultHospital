@@ -21,21 +21,23 @@ function App() {
 
   return (
     <>
-      {(
-        visiter
-        && (
-        <>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={() => <Main />} />
-            <Route exact path="/progres" component={() => <Progres />} />
-            <Route path="/aboutProject" component={() => <AboutProject />} />
-            <Route path="/setting" component={() => <Setting />} />
-            <Route path="/progres/multfilm:name?" component={() => <Multfilm />} />
-          </Switch>
-          <Basement />
-        </>
-        ))
+      {
+        (
+          visiter
+          && (
+          <>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={() => <Main />} />
+              <Route exact path="/progres" component={() => <Progres />} />
+              <Route path="/aboutProject" component={() => <AboutProject />} />
+              <Route path="/setting" component={() => <Setting />} />
+              <Route path="/progres/multfilm:name?" component={() => <Multfilm />} />
+            </Switch>
+            <Basement />
+          </>
+          )
+        )
         || <GreetNew changeVisiter={changeVisiter} />
       }
 
