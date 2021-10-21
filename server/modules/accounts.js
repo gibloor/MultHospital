@@ -91,7 +91,6 @@ accounts.post('/auth/token', verify, async (req, res) => {
     const authAccount = await pool.query(
       "SELECT * FROM accounts WHERE id = $1", [id]
     );
-    console.log(authAccount.rows[0])
     res.json(authAccount.rows[0]);
   } catch (err) {
     console.error(err.message);

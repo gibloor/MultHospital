@@ -29,7 +29,8 @@ const MultfilmBlock = (props: Props) => {
         }}
       /> 
       {!multfilm.viewed
-        && <>
+        &&
+        <>
           <div className="pour" 
             style={{
               animationDelay: `${multfilm.delay + 2}s`
@@ -42,21 +43,21 @@ const MultfilmBlock = (props: Props) => {
           />
         </>
       }
-      <div className="multfilm_list">
+      <Link className="multfilm_list" to={`/progres/multfilm?name=${multfilm.name}`}>
         {multfilm.watched
           && <div className="multfilms_watched" key={multfilm.name}/>
         }
-        <Link className="multfilms_image_block" to={`/progres/multfilm?name=${multfilm.name}`}>
+        <div className="multfilms_image_block">
           <img
             alt={multfilm.logo}
             className="multfilms_list_logo"
             src={`${process.env.PUBLIC_URL}/assets/images/multPosters/${multfilm.logo}`}
           />
-        </Link>
+        </div>
         <span className="multfilm_name">
           {multfilm.name}
         </span>
-      </div>
+      </Link>
     </div>
   )
 }

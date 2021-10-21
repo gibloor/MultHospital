@@ -35,8 +35,8 @@ const GreetNew = (props: Prop) => {
 
   return (
     <div className="greetNew">
-      <p>{t('greetNew.greet.string1')}</p>
-      <span>{t('greetNew.greet.string2')}</span>
+      <h2 className="greet_text">{t('greetNew.greet.string1')}</h2>
+      <h3>{t('greetNew.greet.string2')}</h3>
       <div className="greet_answers">
         {chooser.map((choose: Select) => (
           <div
@@ -44,6 +44,10 @@ const GreetNew = (props: Prop) => {
             className="greet_answer"
             key={choose.select}
             tabIndex={0}
+            onKeyPress={() => ((props.changeVisiter(),
+              localStorage.setItem('involvement',
+                choose.select)
+              ))}
             onClick={() => ((props.changeVisiter(),
             localStorage.setItem('involvement',
               choose.select)
@@ -56,9 +60,9 @@ const GreetNew = (props: Prop) => {
                 src={choose.image}
               />
             </div>
-            <span className="greet_text">
+            <h4>
               {t(`greetNew.chooser.${choose.text}`)}
-            </span>
+            </h4>
           </div>
         ))}
       </div>

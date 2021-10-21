@@ -33,9 +33,7 @@ const Multfilms = () => {
                 viewedChange={viewedChange}
                 key={multfilm.name}
               />
-            ) :
-              <div key={multfilm.name} className="multfilm_block multfilm_locked">
-              </div>
+            ) : <div key={multfilm.name} className="multfilm_block multfilm_locked" />
           ))}
         </div>
       ))}

@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import pagesList from './pagesList';
-import { userDeauth, userAutoAuthorization } from '../../redux-saga/actions/userActions';
+import classNames from 'classnames';
+import './style.scss';
+import { userAutoAuthorization } from '../../redux-saga/actions/userActions';
 import { getAccountSelector } from '../../redux-saga/selectors/userSelector';
 import { multfilmTakeRequare } from '../../redux-saga/actions/multfilmsActions';
 import Logo from './Logo';
+import pagesList from './pagesList';
 import Authorization from './Authorization';
-import './style.scss';
-import classNames from 'classnames';
+import AuthMenu from './AuthMenu';
 
-interface Lang {
+interface Img {
   img: string
 }
 
@@ -26,7 +27,7 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const authInfo = useSelector(getAccountSelector);
-  const langs: {[lang: string]: Lang} = {
+  const langs: {[lang: string]: Img} = {
     en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
     ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' },
   };
@@ -41,6 +42,12 @@ const Header = () => {
   const authClose = () => {
     setAuthVariant('');
   };
+  const changeAuthVariant = (variant: string) => {
+    setAuthVariant(variant)
+  }
+  const closeMenu = () => {
+    setMenuVisible(false)
+  };
 
   useEffect(() => {
     authVerif();
@@ -48,14 +55,7 @@ const Header = () => {
 
   return (
     <div className="head">
-      {authVariant
-        && (
-        <Authorization
-          authClose={authClose}
-          authVariant={authVariant}
-        />
-        )
-      }
+      <h1 className="h1_hidden">MultHospital</h1>
       <Logo />
       <div className="right_side burger_menu" onClick={() => setMenuVisible(true)}>
         <img src="https://img.icons8.com/color/48/000000/hamburger.png"/>
@@ -67,27 +67,31 @@ const Header = () => {
         <OutsideClickHandler onOutsideClick={() => setMenuVisible(false)}>
           <div className="head_menu_list">
             <div className="head_list">
-              {
-                pagesList.map((button) => (
-                  (authInfo.name || button.access === 'free')
-                    && (
-                    <Link className="head_button" key={button.name} to={button.link} onClick={() => setMenuVisible(false)}>
+              {pagesList.map((button) => (
+                (authInfo.name || button.access === 'free')
+                  && (
+                  <Link
+                    className="head_button"
+                    key={button.name}
+                    to={button.link}
+                    onClick={() => setMenuVisible(false)}
+                  >
+                    {button.name}
+                  </Link>
+                  )
+                  || (
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      className="head_button"
+                      key={button.name}
+                      onKeyPress={() => (setAuthVariant('something'))}
+                      onClick={() => (setAuthVariant('something'))}
+                    >
                       {button.name}
-                    </Link>
-                    )
-                    || (
-                      <span
-                        role="button"
-                        tabIndex={-3}
-                        className="head_button"
-                        key={button.name}
-                        onClick={() => (setAuthVariant('something'))}
-                      >
-                        {button.name}
-                      </span>
-                    )
-                ))
-              }
+                    </span>
+                  )
+              ))}
             </div>
             <div className="right_side">
               <div className="flags">
@@ -95,7 +99,8 @@ const Header = () => {
                   <div className="flags_block">
                     <div
                       role="button"
-                      tabIndex={-4}
+                      tabIndex={0}
+                      onKeyPress={() => setLangDisplay(true)}
                       onClick={() => setLangDisplay(true)}
                     >
                       <img alt={t('flag')} className="flags_img" src={t('flag')} />
@@ -103,10 +108,11 @@ const Header = () => {
                     {langDisplay && Object.keys(langs).map((lang) => (
                       <div
                         role="button"
-                        tabIndex={-5}
+                        tabIndex={0}
                         className="flag"
                         key={lang}
-                        onClick={() => i18n.changeLanguage(lang)}
+                        onKeyPress={() => (i18n.changeLanguage(lang), setLangDisplay(false))}
+                        onClick={() => (i18n.changeLanguage(lang), setLangDisplay(false))}
                       >
                         <img alt={lang} className="flags_img" src={langs[lang].img} />
                       </div>
@@ -114,49 +120,22 @@ const Header = () => {
                   </div>
                 </OutsideClickHandler>
               </div>
-              <div className="authentication">
-                {(!authInfo.name
-                  && (
-                  <>
-                    <div
-                      role="button"
-                      tabIndex={-6}
-                      className="head_button"
-                      onClick={() => (setAuthVariant('login'), setMenuVisible(false))}
-                    >
-                      {t('head.buttons.login')}
-                    </div>
-                    <div
-                      role="button"
-                      tabIndex={-7}
-                      className="head_button"
-                      onClick={() => (setAuthVariant('registration'), setMenuVisible(false))}
-                    >
-                      {t('head.buttons.registration')}
-                    </div>
-                  </>
-                  )) || (
-                  <>
-                    <div>{authInfo.name}</div>
-                    <div
-                      role="button"
-                      tabIndex={-8}
-                      className="head_button"
-                      onClick={() => ((
-                        localStorage.removeItem('token'),
-                        dispatch(userDeauth()),
-                        setMenuVisible(false)
-                      ))}
-                    >
-                      deactive
-                    </div>
-                  </>
-                )}
-              </div>
+              <AuthMenu
+                closeMenu={closeMenu}
+                changeAuthVariant={changeAuthVariant}
+              />
             </div>
           </div>
         </OutsideClickHandler>
       </div>
+      {authVariant
+        && (
+        <Authorization
+          authClose={authClose}
+          authVariant={authVariant}
+        />
+        )
+      }
     </div>
   );
 };

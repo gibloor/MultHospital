@@ -8,22 +8,19 @@ const Main = () => {
 
   return (
     <div className="main">
-      <span className="mult_day">
-        Multfilm of day:
-      </span>
-      <span className="mult_day">
-        {multName}
-      </span>
-      {/* <iframe
+      <h3>
+        Multfilm of day: {multName}
+      </h3>
+      <iframe
         className="main_video"
         title="main_video"
         src="https://www.youtube.com/embed/Zlmswo0S0e0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      /> */}
-      <p>
+      />
+      <h3>
         number of registered:
         {registered}
-      </p>
+      </h3>
     </div>
   );
 };

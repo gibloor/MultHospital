@@ -34,7 +34,7 @@ const Test = () => {
       {counter < questions.length
         && (
         <form className="multTest_form" onSubmit={(e) => submitQuestion(e)}>
-          <span className="test_text">{questions[counter].question}</span>
+          <h3>{questions[counter].question}</h3>
           <img alt={questions[counter].topic} className="test_image" src={`${process.env.PUBLIC_URL}/assets/images/multTests/${questions[counter].image}`} />
           <div className="test_answers">
             {questions[counter].answers.map(answer => (

@@ -6,6 +6,10 @@
   min-height: 100vh;
   text-align: center;
 
+  .greet_text {
+    margin-bottom: 0;
+  }
+
   .greet_answers {
     display: flex;
 
@@ -29,9 +33,6 @@
           max-width: 90%;
           max-height: 90%;
         }
-      }
-      .greet_text {
-        padding-bottom: 10px;
       }
     }
     .greet_answer:hover {
