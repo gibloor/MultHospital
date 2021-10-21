@@ -3,6 +3,19 @@ const accounts = express.Router();
 const pool = require("./../db");
 const jsw = require('jsonwebtoken');
 
+accounts.put(`/acceptAnswer/:id`, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { features } = req.body;
+    const testPassed = true;
+    await pool.query(
+    "UPDATE accounts SET features = $1, test_passed = $2 WHERE id = $3", [features, testPassed, id]);
+    res.json("Answer Accepted");
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
 const tokenCreate = (account, res) => {
   const user = account.rows[0];
   if (user) {
@@ -13,23 +26,28 @@ const tokenCreate = (account, res) => {
     res.json({
       name: user.name,
       image: user.image,
-      features: user.features,
-      acsessToken
+      involvement: user.involvement,
+      test_passed: user.test_passed,
+      id: user.id,
+      acsessToken,
     })
   } else res.json('Wrong dates')
 } 
 
-accounts.post('/regist', async (req, res) => {
+accounts.post('/registration', async (req, res) => {
   try {
-    const { name, login, password } = req.body;
-
+    const { name, login, password, involvement } = req.body;
     const account = await pool.query(
       "SELECT * FROM accounts WHERE login = $1", [login]
     );
-    if (account.rows[0]){
+    if (!account.rows[0]){
+      let testPassed = false;
+      if (involvement === 'common') {
+        testPassed = true
+      };
       const account = await pool.query(
-        "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
-        [name, login, password]
+        "INSERT INTO accounts (name, login, password, involvement, test_passed) VALUES($1, $2, $3, $4, $5) RETURNING *",
+        [name, login, password, involvement, testPassed]
       );
       tokenCreate(account, res);
     } else {res.json('This login is already in use')}
@@ -38,7 +56,7 @@ accounts.post('/regist', async (req, res) => {
   }
 })
 
-accounts.post('/auth', async (req, res) => {
+accounts.post('/login', async (req, res) => {
   try {
     const { login, password } = req.params;
     const auth = await pool.query("SELECT * FROM accounts WHERE login = $1 AND password = $2", [login, password])
@@ -70,9 +88,7 @@ accounts.post('/auth/token', verify, async (req, res) => {
     const authAccount = await pool.query(
       "SELECT * FROM accounts WHERE id = $1", [id]
     );
-    const user = authAccount.rows[0]
-    res.json(user)
-    
+    res.json(authAccount.rows[0]);
   } catch (err) {
     console.error(err.message);
   }

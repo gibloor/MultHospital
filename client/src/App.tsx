@@ -1,54 +1,61 @@
 import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import './App.scss';
 
-import Head from './components/head';
-import Main from './components/pages/main';
-import Basement from './components/pages/basement';
-import Aducation from './components/pages/aducation';
-import Progres from './components/pages/progres';
-import AboutProject from './components/pages/aboutProject';
-import Setting from './components/pages/setting';
-import GreetNew from './components/greetNew';
-
-//DevTime
-import InputQuestion from './components/devTools/inputQuestion';
-import ListQuestion from './components/devTools/listQuestion';
+import Header from './components/Header';
+import Main from './components/pages/Main';
+import Basement from './components/Basement';
+import Progres from './components/pages/Progres';
+import AboutProject from './components/pages/AboutProject';
+import Setting from './components/pages/Setting';
+import GreetNew from './components/GreetNew';
+import Multfilm from './components/pages/Progres/Multfilms/Multfilm';
 
 function App() {
-  
-  const [visiter, setVisiter] = useState(localStorage.getItem('visiter'))
+  const [visiter, setVisiter] = useState(localStorage.getItem('visiter'));
 
   const changeVisiter = () => {
     setVisiter('true');
-    localStorage.setItem('visiter', 'true')
-  }
-
+    localStorage.setItem('visiter', 'true');
+  };
 
   return (
-    <BrowserRouter>
-      {(
-        visiter && 
-          <div>
-            <Head/>
+    <>
+      {
+        (
+          visiter
+          && (
+          <>
+            <Header />
             <Switch>
-              <Route exact path="/" component={() => <Main/>} />
-              <Route path="/aducation" component={() => <Aducation/>} />
-              <Route path="/progres" component={() => <Progres/>} />
-              <Route path="/aboutProject" component={() => <AboutProject/>} />
-              <Route path="/settings" component={() => <Setting/>} />
+              <Route exact path="/" component={() => <Main />} />
+              <Route exact path="/progres" component={() => <Progres />} />
+              <Route path="/aboutProject" component={() => <AboutProject />} />
+              <Route path="/setting" component={() => <Setting />} />
+              <Route path="/progres/multfilm:name?" component={() => <Multfilm />} />
             </Switch>
-            <Basement/>
-          </div>
-        ) ||
-        <GreetNew changeVisiter={changeVisiter} />
+            <Basement />
+          </>
+          )
+        )
+        || <GreetNew changeVisiter={changeVisiter} />
       }
-      {/* dev */}
-      <InputQuestion />
-      <ListQuestion />
-      <button onClick ={() => localStorage.removeItem('visiter')}>Чистим инфу о первом посещении</button>
-    </BrowserRouter>
+
+      {/* dev time */}
+      <span>
+        visiter:
+        {localStorage.getItem('visiter')}
+        , involvement:
+        {localStorage.getItem('involvement')}
+      </span>
+      <button
+        type="submit"
+        onClick={() => ((localStorage.removeItem('visiter'),
+        localStorage.removeItem('involvement')))}
+      >
+        Чистим инфу о первом посещении
+      </button>
+    </>
   );
 }
 
