@@ -3,6 +3,10 @@
   display: flex;
   font-size: 18pt;
   font-weight: bold;
+
+  .burger_menu {
+    display: none;
+  }
 }
 .h1_hidden {
   visibility: hidden;
@@ -50,21 +54,21 @@
   display: flex;
   align-items: center;
 }
-.burger_menu {
-  display: none;
-}
 .right_side {
   display: flex;
   margin-left: auto;
   margin-right: 10px;
 }
 
+
 @media screen and (max-width: 850px) {
   .head_menu {
     display: none;
   }
-  .burger_menu {
-    display: flex;
+  .head {
+    .burger_menu {
+      display: flex;
+    }
   }
   .head_list {
     flex-direction: column;

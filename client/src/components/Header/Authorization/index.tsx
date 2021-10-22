@@ -44,7 +44,7 @@ const Authorization = ({ ...prop }) => {
       formType === 'registration' && setError('already registered')
       || formType === 'login' && setError('wrond dates')
     );
-  }, [authInfo]);
+  }, [authInfo, formType]);
 
   return (
     <div className="auth">

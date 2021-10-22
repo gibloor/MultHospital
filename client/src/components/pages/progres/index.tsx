@@ -23,7 +23,7 @@ const Progres = () => {
 
   useEffect(() => {
     getInfo();
-  }, [authInfo.test_passed, authInfo.name]);
+  }, [authInfo.test_passed]);
 
   return (
     <div>

@@ -32,13 +32,6 @@ const Header = () => {
     ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' },
   };
 
-  const authVerif = async () => {
-    (token && !authInfo.name)
-    && dispatch(userAutoAuthorization({token: token}));
-
-    (authInfo.test_passed)
-    && dispatch(multfilmTakeRequare({ id: authInfo.id }));
-  };
   const authClose = () => {
     setAuthVariant('');
   };
@@ -50,7 +43,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    authVerif();
+    (token && !authInfo.name)
+    && dispatch(userAutoAuthorization({token: token}));
+
+    (authInfo.test_passed)
+    && dispatch(multfilmTakeRequare({ id: authInfo.id }));
   }, [authInfo.test_passed]);
 
   return (
