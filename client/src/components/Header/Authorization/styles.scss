@@ -8,7 +8,7 @@
   z-index: 50;
   position:fixed;
 
-  .auth_form {
+  &__form {
     opacity: 1;
     display: flex;
     flex-direction: column;
@@ -18,37 +18,45 @@
     padding: 20px;
     border-radius: 20px;
     font-size: 14pt;
+  }
 
-    .close_form {
-      width: 100%;
-    }
-    .close_form_button {
-      float: right;
-    }
-    .auth_button {
-      cursor: pointer;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
+  &__close_form {
+    width: 100%;
+  }
 
-    .auth_inputs{
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
+  &__close_form_button {
+    float: right;
+  }
+  
+  &__button {
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
-      input {
-        width: 350px;
-      }
-    }
+  &__inputs{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  &__input {
+    width: 350px;
+  }
+
+  &__text{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  &__error {
+    margin: 0;
+    margin-top: 10;
   }
 }
 
-.error_text {
-  margin: 0;
-  margin-top: 10;
-}
-
-.auth_text{
-  margin-top: 10px;
-  margin-bottom: 10px;
+@media screen and (max-width: 850px) {
+  .auth {
+    z-index: 101;
+  }
 }

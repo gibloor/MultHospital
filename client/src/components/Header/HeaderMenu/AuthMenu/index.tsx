@@ -1,8 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { userDeauth } from '../../../redux-saga/actions/userActions';
-import { getAccountSelector } from '../../../redux-saga/selectors/userSelector';
+
+import { userDeauth } from 'redux-saga/actions/userActions';
+import { getAccountSelector } from 'redux-saga/selectors/userSelector';
+
+import './styles.scss';
 
 interface Props {
   closeMenu: () => void,
@@ -23,7 +26,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="head_button"
+            className="head__button"
             onKeyPress={() => (
               props.changeAuthVariant('login'),
               props.closeMenu()
@@ -35,10 +38,11 @@ const AuthMenu = (props: Props) => {
           >
             {t('head.buttons.login')}
           </div>
+
           <div
             role="button"
             tabIndex={0}
-            className="head_button"
+            className="head__button"
             onKeyPress={() => (
               props.changeAuthVariant('registration'),
               props.closeMenu()
@@ -53,11 +57,11 @@ const AuthMenu = (props: Props) => {
         </>
         )) || (
         <>
-          <div>{authInfo.name}</div>
+          <span>{authInfo.name}</span>
           <div
             role="button"
             tabIndex={0}
-            className="head_button"
+            className="head__button"
             onKeyPress={() => (
               localStorage.removeItem('token'),
               dispatch(userDeauth()),

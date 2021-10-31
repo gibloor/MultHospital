@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { Multfilm } from '../../../../../redux-saga/types/multfilmsTypes';
+
+import { Multfilm } from 'redux-saga/types/multfilmsTypes';
+
 import './styles.scss';
 
 interface Props {
@@ -18,43 +20,37 @@ const MultfilmBlock = (props: Props) => {
   }, [])
 
   return (
-    <div className='multfilm_block' >
+    <div className='multfilm__block' >
       <div
         className={classNames(
-          { 'multfilm_unviewed': !multfilm.viewed },
-          { 'multfilm_viewed': multfilm.viewed }
+          { 'multfilm__unviewed': !multfilm.viewed },
+          { 'multfilm__viewed': multfilm.viewed }
         )}
-        style={{
-          animationDelay: `${multfilm.delay + 3}s`
-        }}
+        style={{ animationDelay: `${multfilm.delay + 3}s` }}
       /> 
       {!multfilm.viewed
         &&
         <>
           <div className="pour" 
-            style={{
-              animationDelay: `${multfilm.delay + 2}s`
-            }}
+            style={{ animationDelay: `${multfilm.delay + 2}s` }}
           />
-          <div className="multfilm_locked multfilm_opened" 
-            style={{
-              animationDelay: `${multfilm.delay}s`
-            }}
+          <div className="multfilm__locked multfilm__opened" 
+            style={{ animationDelay: `${multfilm.delay}s` }}
           />
         </>
       }
-      <Link className="multfilm_list" to={`/progres/multfilm?name=${multfilm.name}`}>
+      <Link className="multfilm__list" to={`/progres/multfilm?name=${multfilm.name}`}>
         {multfilm.watched
-          && <div className="multfilms_watched" key={multfilm.name}/>
+          && <div className="multfilm__watched" key={multfilm.name}/>
         }
-        <div className="multfilms_image_block">
+        <div className="multfilm__image_block">
           <img
             alt={multfilm.logo}
-            className="multfilms_list_logo"
-            src={`${process.env.PUBLIC_URL}/assets/images/multPosters/${multfilm.logo}`}
+            className="multfilm__list_logo"
+            src={`assets/images/multPosters/${multfilm.logo}`}
           />
         </div>
-        <span className="multfilm_name">
+        <span className="multfilm__name">
           {multfilm.name}
         </span>
       </Link>
