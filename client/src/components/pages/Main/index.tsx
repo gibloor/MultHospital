@@ -1,6 +1,5 @@
 import React from 'react';
 import './main.scss';
-// import video from './videos/onFirstDays.mp4';
 
 const Main = () => {
   const multName = 'Futurama 1s 1s';
@@ -8,19 +7,19 @@ const Main = () => {
 
   return (
     <div className="main">
-      <h3>
+      <p className="title">
         Multfilm of day: {multName}
-      </h3>
+      </p>
       <iframe
-        className="main_video"
+        className="main__video"
         title="main_video"
         src="https://www.youtube.com/embed/Zlmswo0S0e0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       />
-      <h3>
+      <span className="title">
         number of registered:
         {registered}
-      </h3>
+      </span>
     </div>
   );
 };

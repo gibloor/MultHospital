@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './styles.scss';
-import { questionsTakeRequest } from '../../../redux-saga/actions/questionsActions';
-import { getAccountPendingSelector, getAccountSelector } from '../../../redux-saga/selectors/userSelector';
-import { getMultfilmsPendingSelector } from '../../../redux-saga/selectors/multfilmsSelector';
+
+import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
+import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
+import { getMultfilmsPendingSelector } from 'redux-saga/selectors/multfilmsSelector';
+
 import Test from './Test';
 import Multfilms from './Multfilms';
+
+import './styles.scss';
 
 const Progres = () => {
   const pendingAccount = useSelector(getAccountPendingSelector);
@@ -26,16 +29,11 @@ const Progres = () => {
   }, [authInfo.test_passed]);
 
   return (
-    <div>
+    <div className="progres">
       {!pendingAccount && authInfo
-      && (
-        (!authInfo.name && <span>Ты не авторизован</span>)
+      && ((!authInfo.name && <span>Ты не авторизован</span>)
         || (!authInfo.test_passed && <Test />)
-        || (!pendingMultfilms
-          &&  <div className="multfilms_main">
-                <Multfilms />
-              </div>
-            )
+        || (!pendingMultfilms &&  <Multfilms />)
         )
       }
     </div>

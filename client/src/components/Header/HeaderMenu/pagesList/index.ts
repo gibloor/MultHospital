@@ -2,24 +2,24 @@ interface PagesList {
   access: string,
   name: string,
   link: string,
-}
+};
 
 const pagesList:PagesList[] = [
   {
-    access: 'close',
     name: 'Progres',
-    link: '/progres'
+    link: '/progres',
+    access: 'close',
   },
   {
-    access: 'free',
     name: 'About project',
-    link: '/aboutproject'
+    link: '/aboutproject',
+    access: 'free',
   },
   {
-    access: 'free',
     name: 'Setting',
-    link: '/setting'
+    link: '/setting',
+    access: 'free',
   },
-]
+];
 
-export default pagesList
+export default pagesList;

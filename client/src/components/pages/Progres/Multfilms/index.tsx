@@ -24,19 +24,21 @@ const Multfilms = () => {
 
   return (
     <div className="multfilms">
-      {Object.keys(multfilms).map((category) => (
-        <div key={category} className="multfilms_category">
-          {multfilms[category].map((multfilm, index) => (
-            index === 0 || multfilms[category][index-1].watched ? (
-              <MultfilmBlock
-                multfilm={multfilm}
-                viewedChange={viewedChange}
-                key={multfilm.name}
-              />
-            ) : <div key={multfilm.name} className="multfilm_block multfilm_locked" />
-          ))}
-        </div>
-      ))}
+      <div className="multfilms__main">
+        {Object.keys(multfilms).map((category) => (
+          <div key={category} className="multfilms__category">
+            {multfilms[category].map((multfilm, index) => (
+              index === 0 || multfilms[category][index-1].watched ? (
+                <MultfilmBlock
+                  multfilm={multfilm}
+                  viewedChange={viewedChange}
+                  key={multfilm.name}
+                />
+              ) : <div key={multfilm.name} className="multfilm__block multfilm__locked" />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

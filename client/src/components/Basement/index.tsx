@@ -4,7 +4,7 @@ import './styles.scss';
 const Basement = () => {
 
   return (
-    <h4 className="basement">site basement</h4>
+    <div className="text basement">site basement</div>
   )
 }
 
