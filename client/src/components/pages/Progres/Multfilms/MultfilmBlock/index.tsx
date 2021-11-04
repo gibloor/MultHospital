@@ -47,7 +47,11 @@ const MultfilmBlock = (props: Props) => {
           <img
             alt={multfilm.logo}
             className="multfilm__list_logo"
+<<<<<<< HEAD
             src={`assets/images/multPosters/${multfilm.logo}`}
+=======
+            src={`${process.env.PUBLIC_URL}/assets/images/multPosters/${multfilm.logo}`}
+>>>>>>> liveBranch
           />
         </div>
         <span className="multfilm__name">

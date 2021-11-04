@@ -3,6 +3,26 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
+
+  &__main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__block {
+    height: 290px;
+    width: 280px;
+    position: relative;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color:rgba(160, 27, 67, 0.35);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18pt;
+  }
 }
 .multfilm {
   &__locked {
@@ -29,6 +49,7 @@
   .multfilms {
     flex-direction: row;
 
+<<<<<<< HEAD
     &__category {
       width: 30%;
     }
@@ -43,5 +64,20 @@
       font-size: 14pt;
     }
   }
+=======
+    &__block {
+      width: 100%;
+      height: auto;
+      text-align: center;
+      height: 150px;
+      font-weight: lighter;
+      font-size: 14pt;
+    }
+
+    &__category {
+      width: 33%;
+    }
+  }
+>>>>>>> liveBranch
 
 }
