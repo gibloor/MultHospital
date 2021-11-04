@@ -49,7 +49,6 @@
   .multfilms {
     flex-direction: row;
 
-<<<<<<< HEAD
     &__category {
       width: 30%;
     }
@@ -64,20 +63,4 @@
       font-size: 14pt;
     }
   }
-=======
-    &__block {
-      width: 100%;
-      height: auto;
-      text-align: center;
-      height: 150px;
-      font-weight: lighter;
-      font-size: 14pt;
-    }
-
-    &__category {
-      width: 33%;
-    }
-  }
->>>>>>> liveBranch
-
 }
