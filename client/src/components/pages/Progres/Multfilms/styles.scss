@@ -3,37 +3,64 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
+
+  &__main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__block {
+    height: 290px;
+    width: 280px;
+    position: relative;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color:rgba(160, 27, 67, 0.35);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18pt;
+  }
 }
-.multfilm_block {
-  height: 290px;
-  width: 280px;
-  position: relative;
-  border-radius: 10%;
-  overflow: hidden;
-  margin-bottom: 10px;
-  background-color:rgba(160, 27, 67, 0.35);
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 18pt;
+.multfilm {
+  &__locked {
+    height: 290px;
+    width: 280px;
+    background: url(../../../assets/decorations/Lock.png) no-repeat center/100% rgba(160, 27, 67, 0.35);
+  }
+
+  &__block {
+    height: 290px;
+    width: 280px;
+    position: relative;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color:rgba(160, 27, 67, 0.35);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18pt;
+  }
 }
-.multfilm_locked {
-  height: 290px;
-  width: 280px;
-  background: url(../../../assets/decorations/Lock.png) no-repeat center/100% rgba(160, 27, 67, 0.35);
-}
+
 @media screen and (max-width: 850px) {
   .multfilms {
     flex-direction: row;
+
+    &__category {
+      width: 30%;
+    }
   }
-  .multfilm_block {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    height: 150px;
-    font-weight: lighter;
-    font-size: 14pt;
-  }
-  .multfilms_category {
-    width: 33%;
+  .multfilm {
+    &__block {
+      width: 100%;
+      height: auto;
+      text-align: center;
+      height: 150px;
+      font-weight: lighter;
+      font-size: 14pt;
+    }
   }
 }

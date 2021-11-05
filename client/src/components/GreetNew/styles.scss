@@ -1,4 +1,4 @@
-.greetNew {
+.greet {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -6,55 +6,64 @@
   min-height: 100vh;
   text-align: center;
 
-  .greet_text {
-    margin-bottom: 0;
+  &__answers {
+    display: flex;
   }
 
-  .greet_answers {
+  &__answer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background-color:rgba(160, 27, 67, 0.35);
+    border-radius: 25px;
+    margin: 10px 10px 0px 0px;
+  }
 
-    .greet_answer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      background-color:rgba(160, 27, 67, 0.35);
-      border-radius: 25px;
-      margin: 10px 10px 0px 0px;
+  &__answer_carcas {
+    height: 275px;
+    width: 275px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-      .greet_answer_image_carcas {
-        height: 275px;
-        width: 275px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  &__answer_image {
+    max-width: 90%;
+    max-height: 90%;
+  }
 
-        .greet_answer_image {
-          max-width: 90%;
-          max-height: 90%;
-        }
-      }
-    }
-    .greet_answer:hover {
-      background-color:rgba(160, 27, 67, 0.7);
-    }
-    .greet_answer:hover .greet_answer_image {
-      max-width: 95%;
-      max-height: 95%;
-    }
-  };
+  &__text {
+    margin-bottom: 5px;
+  }
+
+  &__answer:hover {
+    background-color:rgba(160, 27, 67, 0.7);
+  }
+
+  &__answer:hover &__answer_image {
+    max-width: 95%;
+    max-height: 95%;
+  }
 }
 
 @media screen and (max-width: 850px) {
-  .greet_answers {
-    flex-direction: column;
-  }
-  .greet_answer {
-    margin: 0px 0px 10px 0px;
-  }
-  .greet_answer_image_carcas {
-    height: 150px;
-    width: 150px;
+  .greet {
+
+    &__answers {
+      flex-direction: column;
+    }
+
+    &__answer {
+      margin: 0px 0px 10px 0px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    &__answer_carcas {
+      height: 150px;
+      width: 150px;
+    }
   }
 }
 

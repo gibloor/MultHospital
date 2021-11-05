@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
 import './styles.scss';
 
 interface Prop {
@@ -34,14 +35,18 @@ const GreetNew = (props: Prop) => {
   ];
 
   return (
-    <div className="greetNew">
-      <h2 className="greet_text">{t('greetNew.greet.string1')}</h2>
-      <h3>{t('greetNew.greet.string2')}</h3>
-      <div className="greet_answers">
+    <div className="greet">
+      <p className="title">
+        {t('greetNew.greet.string1')}
+      </p>
+      <span className="text">
+        {t('greetNew.greet.string2')}
+      </span>
+      <div className="greet__answers">
         {chooser.map((choose: Select) => (
           <div
             role="button"
-            className="greet_answer"
+            className="greet__answer"
             key={choose.select}
             tabIndex={0}
             onKeyPress={() => ((props.changeVisiter(),
@@ -53,16 +58,16 @@ const GreetNew = (props: Prop) => {
               choose.select)
             ))}
           >
-            <div className="greet_answer_image_carcas">
+            <div className="greet__answer_carcas">
               <img
+                className="greet__answer_image"
                 alt={choose.select}
-                className="greet_answer_image"
                 src={choose.image}
               />
             </div>
-            <h4>
+            <span className="text greet__text">
               {t(`greetNew.chooser.${choose.text}`)}
-            </h4>
+            </span>
           </div>
         ))}
       </div>

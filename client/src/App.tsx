@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.scss';
 
-import Header from './components/Header';
-import Main from './components/pages/Main';
-import Basement from './components/Basement';
-import Progres from './components/pages/Progres';
-import AboutProject from './components/pages/AboutProject';
-import Setting from './components/pages/Setting';
-import GreetNew from './components/GreetNew';
-import Multfilm from './components/pages/Progres/Multfilms/Multfilm';
+import GreetNew from 'components/GreetNew';
+import Header from 'components/Header';
+import Basement from 'components/Basement';
+import Main from 'components/pages/Main';
+import Progres from 'components/pages/Progres';
+import AboutProject from 'components/pages/AboutProject';
+import Setting from 'components/pages/Setting';
+import Multfilm from 'components/pages/Progres/Multfilms/Multfilm';
+
+import './App.scss';
 
 function App() {
   const [visiter, setVisiter] = useState(localStorage.getItem('visiter'));
@@ -53,7 +54,7 @@ function App() {
         onClick={() => ((localStorage.removeItem('visiter'),
         localStorage.removeItem('involvement')))}
       >
-        Чистим инфу о первом посещении
+        Clear information
       </button>
     </>
   );
