@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { userDeauth } from 'redux-saga/actions/userActions';
+import { userDeauthRequire } from 'redux-saga/actions/userActions';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 
 import './styles.scss';
@@ -64,12 +64,12 @@ const AuthMenu = (props: Props) => {
             className="head__button"
             onKeyPress={() => (
               localStorage.removeItem('token'),
-              dispatch(userDeauth()),
+              dispatch(userDeauthRequire()),
               props.closeMenu()
             )}
             onClick={() => (
               localStorage.removeItem('token'),
-              dispatch(userDeauth()),
+              dispatch(userDeauthRequire()),
               props.closeMenu()
             )}
           >

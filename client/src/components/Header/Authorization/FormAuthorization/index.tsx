@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { userAuthorization } from 'redux-saga/actions/userActions';
+import { userAuthRequire } from 'redux-saga/actions/userActions';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 
 import { validateName, validateLogin, validatePassword } from 'components/validate/authValidate';
@@ -40,7 +40,7 @@ const FormAuthorization = (props:Props) => {
         password: date.password,
         involvement: date.involvement,
       };
-      dispatch(userAuthorization({dates, typeForm}));
+      dispatch(userAuthRequire({dates, typeForm}));
       setFormType(typeForm);      
       
     } catch (err: any) {

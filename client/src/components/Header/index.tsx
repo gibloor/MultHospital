@@ -5,7 +5,7 @@ import Logo from './Logo';
 import Authorization from './Authorization';
 import HeaderMenu from './HeaderMenu';
 
-import { userAutoAuthorization } from 'redux-saga/actions/userActions';
+import { userAutoAuthRequire } from 'redux-saga/actions/userActions';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 import { multfilmTakeRequare } from 'redux-saga/actions/multfilmsActions';
 
@@ -28,7 +28,7 @@ const Header = () => {
 
   useEffect(() => {
     (token && !authInfo.name)
-    && dispatch(userAutoAuthorization({token: token}));
+    && dispatch(userAutoAuthRequire({token: token}));
   }, []);
 
   useEffect(() => {

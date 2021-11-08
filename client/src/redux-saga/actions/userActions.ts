@@ -1,65 +1,67 @@
 import {
   UserAuth,
-  UserAuthFailure,
+  UserAuthRequire,
+  UserAutoAuthRequire,
+
   UserDeauth,
+  UserDeauthRequire,
+
   UserTesting,
   UserTestingRequare,
-  UserAuthRequare,
-  UserAuthorization,
-  UserAutoAuthorization,
-
   UserAnswer,
-  AuthorizationDates,
-  UserInfo,
-  Answer,
+
+  UserFailure,
+
+  AuthDates,
   Token,
+  UserInfoTaked,
+  Answer,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
-export const USER_AUTH_REQUARE = 'USER_AUTH_REQUARE';
-export const USER_AUTH_FAILURE = 'USER_AUTH_FAILURE';
+export const USER_AUTH_REQUIRE = 'USER_AUTH_REQUIRE';
+export const USER_AUTO_AUTH_REQUIRE = 'USER_AUTO_AUTH_REQUIRE';
+
 export const USER_DEAUTH = 'USER_DEAUTH';
+export const USER_DEAUTH_REQUIRE = 'USER_DEAUTH_REQUIRE';
+
 export const USER_TESTING = 'USER_TESTING';
 export const USER_TESTING_REQUARE = 'USER_TESTING_REQUARE';
-export const USER_AUTHORIZATION = 'USER_AUTHORIZATION';
-export const USER_AUTO_AUTHORIZATION = 'USER_AUTO_AUTHORIZATION';
 
-export const userAuthorization = (
-  payload: AuthorizationDates
-): UserAuthorization => ({
-  type: USER_AUTHORIZATION,
-  payload,
-})
-export const userAutoAuthorization = (
-  payload: Token
-): UserAutoAuthorization => ({
-  type: USER_AUTO_AUTHORIZATION,
-  payload,
-})
+export const USER_FAILURE = 'USER_AUTH_FAILURE';
 
 export const userAuth = (
-  payload: UserInfo,
+  payload: UserInfoTaked
 ): UserAuth => ({
   type: USER_AUTH,
   payload,
 });
-
-export const userRequare = (
-  payload: UserInfo,
-): UserAuthRequare => ({
-  type: USER_AUTH_REQUARE,
+export const userAuthRequire = (
+  payload: AuthDates
+): UserAuthRequire => ({
+  type: USER_AUTH_REQUIRE,
   payload,
-});
+})
 
-export const userAuthFailure = (
-  payload: {error: boolean},
-): UserAuthFailure => ({
-  type: USER_AUTH_FAILURE,
+export const userAutoAuthRequire = (
+  payload: Token
+): UserAutoAuthRequire => ({
+  type: USER_AUTO_AUTH_REQUIRE,
   payload,
-});
+})
 
 export const userDeauth = (): UserDeauth => ({
   type: USER_DEAUTH,
+});
+export const userDeauthRequire = (): UserDeauthRequire => ({
+  type: USER_DEAUTH_REQUIRE,
+});
+
+export const userFailure = (
+  payload: {error: boolean},
+): UserFailure => ({
+  type: USER_FAILURE,
+  payload,
 });
 
 export const userTesting = (

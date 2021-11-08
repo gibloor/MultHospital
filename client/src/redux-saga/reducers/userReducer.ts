@@ -2,13 +2,16 @@ import { Reducer } from 'redux';
 
 import {
   USER_AUTH,
-  USER_AUTH_FAILURE,
+  USER_AUTH_REQUIRE,
+  USER_AUTO_AUTH_REQUIRE,
+
   USER_DEAUTH,
-  USER_AUTH_REQUARE,
+  USER_DEAUTH_REQUIRE,
+
   USER_TESTING,
   USER_TESTING_REQUARE,
-  USER_AUTHORIZATION,
-  USER_AUTO_AUTHORIZATION,
+  
+  USER_FAILURE,
 } from '../actions/userActions';
 
 import { UserAuthActions, UserInfo } from '../types/userTypes';
@@ -33,24 +36,6 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
   action: UserAuthActions,
 ) => {
   switch (action.type) {
-    case USER_AUTHORIZATION:
-      return {
-        ...state,
-        pending: true
-      };
-      
-    case USER_AUTO_AUTHORIZATION:
-      return {
-        ...state,
-        pending: true
-      };
-
-    case USER_AUTH_REQUARE:
-      return {
-        ...state,
-        pending: true,
-      };
-
     case USER_AUTH:
       return {
         ...state,
@@ -62,10 +47,16 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         pending: false,
       };
 
-    case USER_AUTH_FAILURE:
+    case USER_AUTH_REQUIRE:
       return {
         ...state,
-        error: action.payload.error,
+        pending: true,
+      };
+      
+    case USER_AUTO_AUTH_REQUIRE:
+      return {
+        ...state,
+        pending: true
       };
 
     case USER_DEAUTH:
@@ -74,9 +65,13 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         id: 0,
         name: '',
         image: '',
-        features: [],
         test_passed: false,
         involvement: '',
+      };
+    case USER_DEAUTH_REQUIRE:
+      return {
+        ...state,
+        pending: true,
       };
 
     case USER_TESTING:
@@ -86,11 +81,16 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         features: action.payload.features,
         pending: false,
       };
-
     case USER_TESTING_REQUARE:
       return {
         ...state,
         pending: true,
+      };
+
+    case USER_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
       };
       
     default:

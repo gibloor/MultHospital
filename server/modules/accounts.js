@@ -19,7 +19,7 @@ accounts.put(`/acceptAnswer/:id`, async (req, res) => {
 const tokenCreate = (account, res) => {
   const user = account.rows[0];
   if (user) {
-    const acsessToken = jsw.sign(
+    const token = jsw.sign(
       {id: user.id},
       'GibloorKey'
     );
@@ -29,7 +29,7 @@ const tokenCreate = (account, res) => {
       involvement: user.involvement,
       test_passed: user.test_passed,
       id: user.id,
-      acsessToken,
+      token,
     })
   } else res.json('Wrong dates')
 } 
@@ -58,10 +58,10 @@ accounts.post('/registration', async (req, res) => {
 
 accounts.post('/login', async (req, res) => {
   try {
-    const { login, password } = req.params;
-    const auth = await pool.query("SELECT * FROM accounts WHERE login = $1 AND password = $2", [login, password])
-    
-    res.json(auth.rows[0]);
+    const { login, password } = req.body;
+    const auth = await pool.query("SELECT * FROM accounts WHERE login = $1 AND password = $2", [login, password]);
+ 
+    tokenCreate(auth, res);
   } catch (err) {
     console.error(err.message);
   }
@@ -82,13 +82,14 @@ const verify = (req, res, next) => {
   }
 }
 
-accounts.post('/auth/token', verify, async (req, res) => {
+accounts.post('/auto_auth', verify, async (req, res) => {
   try {
     const { id } = req.body;
     const authAccount = await pool.query(
       "SELECT * FROM accounts WHERE id = $1", [id]
     );
-    res.json(authAccount.rows[0]);
+
+    tokenCreate(authAccount, res);
   } catch (err) {
     console.error(err.message);
   }
