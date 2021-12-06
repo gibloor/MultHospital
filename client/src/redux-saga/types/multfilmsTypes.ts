@@ -4,6 +4,11 @@ import {
   MULTFILM_FAILURE,
 } from "../actions/multfilmsActions";
 
+export interface Character {
+  name: string,
+  id: number,
+}
+
 export interface Multfilm {
   id: number,
   logo: string,
@@ -14,6 +19,7 @@ export interface Multfilm {
   viewed: boolean,
   displayed: boolean,
   delay: number,
+  characters: Character[],
 }
 
 export interface Id {

@@ -35,5 +35,11 @@ CREATE TABLE multfilms (
 CREATE TABLE viewed (
   id SERIAL PRIMARY KEY,
   multfilm VARCHAR(40),
-  user_id INTEGER
+  user_id INTEGER REFERENCES accounts (id)
+);
+
+CREATE TABLE characters (
+  id SERIAL PRIMARY KEY,
+  multfilm_id INTEGER REFERENCES multfilms (id),
+  name VARCHAR(30),
 );

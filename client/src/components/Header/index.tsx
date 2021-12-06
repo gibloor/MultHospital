@@ -9,7 +9,7 @@ import { userAutoAuthRequire } from 'redux-saga/actions/userActions';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 import { multfilmTakeRequare } from 'redux-saga/actions/multfilmsActions';
 
-import './style.scss';
+import './styles.scss';
 
 const Header = () => {
   const [authVariant, setAuthVariant] = useState('');

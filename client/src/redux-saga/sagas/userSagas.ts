@@ -9,7 +9,6 @@ import {
   USER_AUTH_REQUIRE,
   USER_AUTO_AUTH_REQUIRE,
   USER_TESTING_REQUARE,
-  USER_DEAUTH,
 
   userFailure,
   userAuth,

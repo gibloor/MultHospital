@@ -1,0 +1,30 @@
+.multfilm_page {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__title_img {
+    width: 40%;
+  }
+
+  &__title_container {
+    width: 40%;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  &__description {
+    text-indent: 30px;
+  }
+}

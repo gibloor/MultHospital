@@ -8,7 +8,7 @@ import Main from 'components/pages/Main';
 import Progres from 'components/pages/Progres';
 import AboutProject from 'components/pages/AboutProject';
 import Setting from 'components/pages/Setting';
-import Multfilm from 'components/pages/Progres/Multfilms/Multfilm';
+import Multfilm from 'components/pages/Progres/Multfilms/MultfilmPage';
 
 import './App.scss';
 
@@ -33,7 +33,7 @@ function App() {
               <Route exact path="/progres" component={() => <Progres />} />
               <Route path="/aboutProject" component={() => <AboutProject />} />
               <Route path="/setting" component={() => <Setting />} />
-              <Route path="/progres/multfilm:name?" component={() => <Multfilm />} />
+              <Route path="/progres/multfilm/:section/:name" component={() => <Multfilm />} />
             </Switch>
             <Basement />
           </>

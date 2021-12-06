@@ -7,29 +7,44 @@ multfilms.get('/:id', async (req, res) =>{
     const { id } = req.params;
 
     let allMults = await pool.query(`SELECT * FROM multfilms ORDER BY involvement, serial_number`);
-    const featuresTake = await pool.query("SELECT multfilm, viewed FROM watched WHERE user_id = $1", [id]);
-    
-    allMults.rows.map(multfilm => (
-      featuresTake.rows.map(multfilmMod => (
+    const features = await pool.query("SELECT multfilm, viewed FROM watched WHERE user_id = $1", [id]);
+    const characters = await pool.query("SELECT * FROM characters");
+
+    allMults.rows.map(multfilm => {
+      features.rows.map(multfilmMod => (
         (multfilm.name === multfilmMod.multfilm)
         && (multfilm.watched = true, multfilm.viewed = multfilmMod.viewed)
       ))
-    ))
 
-    let filteredMults = {};
+      multfilm.characters = [];
+      characters.rows.map(character => {    
+        character.multfilm_id === multfilm.id
+        && multfilm.characters.push(character)
+      })
+    })
+
+    // allMults.rows.map(multfilm => (
+    //   multfilm.involvement === 'common' ? filteredMults.commonMulst.push(multfilm) :
+    //   multfilm.involvement === 'uncommon' ? filteredMults.uncommonMulst.push(multfilm) :
+    //   filteredMults.rareMulst.push(multfilm)
+    // ));
+
+    let sortedMults = {};
     let delay;
     const branches = ['common', 'uncommon', 'rare'];
+
     for (let i= 0 ; i < branches.length ; i++) {
-      filteredMults[`${branches[i]}Mults`] = allMults.rows.filter(multfilm => multfilm.involvement === branches[i]).sort(function(a, b) {
+      sortedMults[branches[i]] = allMults.rows.filter(multfilm => multfilm.involvement === branches[i]).sort(function(a, b) {
         return a.watched === b.watched ? 0 : a.watched ? -1 : 1;
       })
-      delay = 0,
-      filteredMults[`${branches[i]}Mults`].map(multfilm => (
-        !multfilm.viewed && (multfilm.delay = delay, delay += 5 ) 
-      ))
+
+      delay = 0;
+      sortedMults[branches[i]].map(multfilm => {
+        !multfilm.viewed && (multfilm.delay = delay, delay += 5 );
+      })
     }
 
-    res.json({...filteredMults});
+    res.json({...sortedMults});
   } catch (err) {
     console.error(err.message);
   }

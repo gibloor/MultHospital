@@ -10,6 +10,6 @@ export default function* rootSaga() {
     fork(userSagas),
     fork(questionsSagas),
     fork(multfilmsSagas),
-    fork(viewedSagas)
+    fork(viewedSagas),
   ]);
 }

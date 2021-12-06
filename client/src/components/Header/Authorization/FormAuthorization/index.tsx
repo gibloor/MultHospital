@@ -53,7 +53,7 @@ const FormAuthorization = (props:Props) => {
       || (formType === 'registration' && setError('already registered')
       || formType === 'login' && setError('wrond dates')
     );
-  }, [authInfo, formType]);
+  }, [authInfo]);
 
   return (
     <Formik
