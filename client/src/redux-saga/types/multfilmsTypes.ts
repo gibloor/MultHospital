@@ -11,13 +11,11 @@ export interface Character {
 
 export interface Multfilm {
   id: number,
-  logo: string,
   involvement: string,
   name: string,
   serial_number: string,
   watched: boolean,
   viewed: boolean,
-  displayed: boolean,
   delay: number,
   characters: Character[],
 }

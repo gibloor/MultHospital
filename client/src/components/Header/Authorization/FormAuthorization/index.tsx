@@ -17,7 +17,6 @@ interface AcDate {
   name: string,
   login: string,
   password: string,
-  involvement: string
 };
 
 const FormAuthorization = (props:Props) => {
@@ -38,7 +37,6 @@ const FormAuthorization = (props:Props) => {
         name: date.name,
         login: date.login,
         password: date.password,
-        involvement: date.involvement,
       };
       dispatch(userAuthRequire({dates, typeForm}));
       setFormType(typeForm);      
@@ -61,7 +59,6 @@ const FormAuthorization = (props:Props) => {
         name: '',
         login: '',
         password: '',
-        involvement: localStorage.getItem('involvement') || 'I don`t now',
       }}
       onSubmit={(values) => {
         authentication(values);

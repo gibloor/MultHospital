@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { AppState } from '../reducers/rootReducer';
 
 const getAccount = (state: AppState) => state.user;
-const getError = (state: AppState) => state.user;
+const getError = (state: AppState) => state.user.error;
 const getId = (state: AppState) => state.user.id;
 const getPending = (state: AppState) => state.user.pending;
 

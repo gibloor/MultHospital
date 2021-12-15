@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
-import { useSelector } from 'react-redux';
-
-import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { Trans } from 'react-i18next';
 
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
@@ -12,37 +10,38 @@ import './styles.scss';
 
 interface Props {
   multName: string,
-  multSection: string
+  characters: Character[]
 }
-
 
 const Characters = (props:Props) => {
 
-  const multfilms = useSelector(getMultfilmsSelector);
-
-  const [characters, setCharacters] = useState<Character[] > ();
+  const extension = [1, 2];
+  const { characters, multName } = props;
 
   const classChecker = (length: number) => {
-    switch (length) {
-      case 4 :
-        return 'characters__increased_slider';
-
-      case 3 :
-        return 'characters__average_slider';
-
-      case 2 :
-        return 'characters__decreased_slider';
-
-      case 1 :
-        return 'characters__small_slider';
-
-      default :
-        return 'characters__big_slider';
+    if (characters.length < length) {
+      length = characters.length;
     }
+      switch (length) {
+        case 4 :
+          return 'characters__increased_slider';
+
+        case 3 :
+          return 'characters__average_slider';
+
+        case 2 :
+          return 'characters__decreased_slider';
+
+        case 1 :
+          return 'characters__small_slider';
+
+        default :
+          return 'characters__big_slider';
+      }
   };
 
   const lengthChecker = (length: number) => 
-    characters && characters.length > length ? length : characters?.length;
+    characters.length > length ? length : characters.length;
 
   const settings = {
     speed: 100,
@@ -82,51 +81,44 @@ const Characters = (props:Props) => {
     ]
   };
 
-  useEffect(() => {
-    if (multfilms[props.multSection] !== undefined) {
-      multfilms[props.multSection].map(multfilm => {
-        if (multfilm.name === props.multName) {
-          setCharacters(multfilm.characters)
-        }
-      })
-    }
-  }, []);
-
   return (
     <div className="characters">
       <div className="characters__container">
-        {characters
-        && <Slider {...settings}>
-          {characters.map((character) => (
-            <div key={character.name}>
-              <div className="characters__block">
-                <div className="characters__head">
-                  <span className="characters__name">{character.name}</span>
-                  <img
-                    className="characters__avatar"
-                    src={`/assets/images/multHeroes/${props.multName}/avatars/${character.name}.png`}
-                    alt={character.name}
-                  />
-                </div>
-                <div className="characters__info">
-                  <div className="characters__info_container">
+        <Slider {...settings}>
+          {extension.map(() => (
+            characters.map((character) => (
+              <div key={character.name}>
+                <div className="characters__block">
+                  <div className="characters__head">
+                    <span className="characters__name">{character.name}</span>
                     <img
-                      className="characters__full_length"
-                      src={`/assets/images/multHeroes/${props.multName}/fullLength/${character.name}.png`}
+                      className="characters__avatar"
+                      src={`/assets/images/multfilms/${multName}/multHeroes/avatars/${character.name}.png`}
                       alt={character.name}
                     />
-                    <div className="characters__text_container">
-                      <div className="characters__text">
-                        {character.name}
+                  </div>
+                  <div className="characters__info">
+                    <div className="characters__info_container">
+                      <img
+                        className="characters__full_length"
+                        src={`/assets/images/multfilms/${multName}/multHeroes/fullLength/${character.name}.png`}
+                        alt={character.name}
+                      />
+                      <div className="characters__text_container">
+                        <div className="characters__text">
+                          <Trans i18nKey={`multfilms.personal.${multName}.characters.${character.name}`}>
+                            <p className="characters__text_name">Name</p>
+                            <p className="characters__text_info">Big text</p>
+                          </Trans>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))
           ))}
         </Slider>
-        }
       </div>
     </div>
   )

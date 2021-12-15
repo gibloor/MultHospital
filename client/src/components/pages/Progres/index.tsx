@@ -5,10 +5,12 @@ import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
 import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
 import { getMultfilmsPendingSelector } from 'redux-saga/selectors/multfilmsSelector';
 
+import GreetNew from 'components/pages/Progres/GreetNew';
 import Test from './Test';
 import Multfilms from './Multfilms';
 
 import './styles.scss';
+
 
 const Progres = () => {
   const pendingAccount = useSelector(getAccountPendingSelector);
@@ -26,14 +28,16 @@ const Progres = () => {
 
   useEffect(() => {
     getInfo();
-  }, [authInfo.test_passed]);
+  }, [authInfo.test_passed, authInfo.involvement]);
 
   return (
     <div className="progres">
-      {!pendingAccount && authInfo
-      && ((!authInfo.name && <span>Ты не авторизован</span>)
-        || (!authInfo.test_passed && <Test />)
-        || (!pendingMultfilms &&  <Multfilms />)
+      {!pendingAccount &&
+        (
+          (!authInfo.involvement && <GreetNew />) ||
+          (!authInfo.name && <span>Ты не авторизован</span>) ||
+          (!authInfo.test_passed && <Test />) ||
+          (!pendingMultfilms &&  <Multfilms />)
         )
       }
     </div>

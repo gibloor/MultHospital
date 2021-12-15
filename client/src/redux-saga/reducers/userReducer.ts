@@ -10,6 +10,9 @@ import {
 
   USER_TESTING,
   USER_TESTING_REQUARE,
+
+  USER_INVOLVEMENT_CHANGE,
+  USER_INVOLVEMENT_CHANGE_REQUARE,
   
   USER_FAILURE,
 } from '../actions/userActions';
@@ -77,11 +80,23 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
     case USER_TESTING:
       return {
         ...state,
-        test_passed: true,
         features: action.payload.features,
         pending: false,
       };
     case USER_TESTING_REQUARE:
+      return {
+        ...state,
+        pending: true,
+        test_passed: true,
+      };
+    
+    case USER_INVOLVEMENT_CHANGE:
+      return {
+        ...state,
+        pending: false,
+        involvement: action.payload.involvement
+      }
+    case USER_INVOLVEMENT_CHANGE_REQUARE:
       return {
         ...state,
         pending: true,

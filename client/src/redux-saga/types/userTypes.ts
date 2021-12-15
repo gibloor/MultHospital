@@ -9,6 +9,9 @@ import {
   USER_TESTING,
   USER_TESTING_REQUARE,
 
+  USER_INVOLVEMENT_CHANGE,
+  USER_INVOLVEMENT_CHANGE_REQUARE,
+
   USER_FAILURE,
 } from "../actions/userActions";
 
@@ -17,12 +20,18 @@ export interface UserAuthDates {
   login: string,
   password: string,
 }
-export interface UserInfo {
+export interface Involvement {
+  involvement: string,
+}
+export interface InvolvementDates extends Involvement {
+  id: number,
+}
+
+export interface UserInfo extends Involvement {
   id: number,
   name: string,
   image: string,
   test_passed: boolean,
-  involvement: string,
 }
 export interface Token {
   token: string,
@@ -69,6 +78,15 @@ export interface UserTestingRequare {
   payload: UserAnswer,
 }
 
+export interface UserInvolvementChange {
+  type: typeof USER_INVOLVEMENT_CHANGE,
+  payload: Involvement,
+}
+export interface UserInvolvementChangeRequare {
+  type: typeof USER_INVOLVEMENT_CHANGE_REQUARE,
+  payload: InvolvementDates,
+}
+
 export interface UserFailure {
   type: typeof USER_FAILURE,
   payload: {error: boolean},
@@ -82,4 +100,6 @@ export type UserAuthActions =
 | UserDeauthRequire
 | UserTesting
 | UserTestingRequare
+| UserInvolvementChange
+| UserInvolvementChangeRequare
 | UserFailure;

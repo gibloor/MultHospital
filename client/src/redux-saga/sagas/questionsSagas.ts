@@ -22,7 +22,7 @@ const shuffler = (array:string[]) => {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
+  
   return array;
 }
 

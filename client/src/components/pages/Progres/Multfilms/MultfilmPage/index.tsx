@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { getMultfilmsPendingSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { getMultfilmsPendingSelector, getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { Character } from 'redux-saga/types/multfilmsTypes';
 
 import Characters from './Characters';
 
@@ -17,6 +18,9 @@ const MultfilmPage = () => {
   const pendingAccount = useSelector(getAccountPendingSelector);
   const pendingMultfilms = useSelector(getMultfilmsPendingSelector);
   const authInfo = useSelector(getAccountSelector);
+  const multfilms = useSelector(getMultfilmsSelector);
+
+  const [characters, setCharacters] = useState<Character[] > ();
 
   interface Params {
     name: string,
@@ -27,30 +31,42 @@ const MultfilmPage = () => {
   const multName = params.name;
   const multSection = params.section;
 
+  useEffect(() => {
+    if (multfilms[multSection] !== undefined) {
+      multfilms[multSection].map(multfilm => {
+        if (multfilm.name === multName) {
+          setCharacters(multfilm.characters)
+        }
+      });
+    };
+  }, [multfilms]);
+
   return (
     <div className="multfilm_page">
-      {!pendingAccount && authInfo.test_passed && !pendingMultfilms
+      {!pendingAccount && authInfo.test_passed && !pendingMultfilms && characters
       && (
           <>
             <div className="multfilm_page__container">
-              <img
-                className="mulftilm_page__title_img"
-                src={`assets/images/multPosters/${multName}`}
-              />
+              <div className="multfilm_page__title_img_container">
+                <img
+                  className="multfilm_page__title_img"
+                  src={`/assets/images/multfilms/${multName}/collective/${multName}.png`}
+                />
+              </div>
               <div className="multfilm_page__title_container">
                 <p className="multfilm_page__title">
                   {t(`multfilms.personal.${multName}.title`)}
                 </p>
                 <p className="multfilm_page__description">
                   <Trans i18nKey={`multfilms.personal.${multName}.description`}>
-                    <strong title={t('nameTitle')}>multfilm name</strong> - short description.
+                    <strong>multfilm name</strong> - short description.
                   </Trans>
                 </p>
               </div>
             </div>
-            <Characters multSection={multSection} multName={multName}/>
+            <Characters multName={multName} characters={characters} />
           </>
-        )
+         )
       }
     </div>
   )

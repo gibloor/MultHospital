@@ -24,7 +24,14 @@
     "personal": {
       "Rick&Morty": {
         "title": "Rick and Morty",
-        "description": "<0>Rik and Morty</0> is an animated series "
+        "description": "<0>Rik and Morty</0> is an animated series",
+        "characters": {
+          "RickSanchez": "<0>Rick Sanchez</0><1>1</1>",
+          "MortySmith": "<0>Morty Smith</0><1>1</1>",
+          "JerrySmith": "<0>Jerry Smith</0><1>1</1>",
+          "SummerSmith": "<0>Summer Smith</0><1>1</1>",
+          "BethSmith": "<0>Beth Smith</0><1>1</1>"
+        }
       } 
     }
   },

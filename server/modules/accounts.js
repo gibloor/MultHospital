@@ -6,10 +6,9 @@ const jsw = require('jsonwebtoken');
 accounts.put(`/acceptAnswer/:id`, async (req, res) => {
   try {
     const { id } = req.params;
-    const { features } = req.body;
     const testPassed = true;
     await pool.query(
-    "UPDATE accounts SET features = $1, test_passed = $2 WHERE id = $3", [features, testPassed, id]);
+    "UPDATE accounts SET test_passed = $1 WHERE id = $2", [testPassed, id]);
     res.json("Answer Accepted");
   } catch (err) {
     console.error(err.message);
@@ -41,13 +40,9 @@ accounts.post('/registration', async (req, res) => {
       "SELECT * FROM accounts WHERE login = $1", [login]
     );
     if (!account.rows[0]){
-      let testPassed = false;
-      if (involvement === 'common') {
-        testPassed = true
-      };
       const account = await pool.query(
-        "INSERT INTO accounts (name, login, password, involvement, test_passed) VALUES($1, $2, $3, $4, $5) RETURNING *",
-        [name, login, password, involvement, testPassed]
+        "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
+        [name, login, password]
       );
       tokenCreate(account, res);
     } else {res.json('This login is already in use')}
@@ -90,6 +85,18 @@ accounts.post('/auto_auth', verify, async (req, res) => {
     );
 
     tokenCreate(authAccount, res);
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
+accounts.put(`/saveInvolvement/:id`, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { involvement } = req.body;
+    await pool.query(
+    "UPDATE accounts SET involvement = $1 WHERE id = $2", [involvement, id]);
+    res.json("Answer Accepted");
   } catch (err) {
     console.error(err.message);
   }

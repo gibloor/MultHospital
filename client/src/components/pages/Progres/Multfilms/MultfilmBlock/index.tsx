@@ -45,9 +45,9 @@ const MultfilmBlock = (props: Props) => {
         }
         <div className="multfilm__image_block">
           <img
-            alt={multfilm.logo}
+            alt={multfilm.name}
             className="multfilm__list_logo"
-            src={`assets/images/multPosters/${multfilm.logo}`}
+            src={`assets/images/multfilms/${multfilm.name}/multPosters/${multfilm.name}.png`}
           />
         </div>
         <span className="multfilm__name">
