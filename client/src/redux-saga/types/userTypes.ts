@@ -47,6 +47,8 @@ export interface Answer {
 }
 export interface UserAnswer extends Answer {
   userId: number,
+  level: string,
+  topic: string,
 }
 
 export interface UserAuth {

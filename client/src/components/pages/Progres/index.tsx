@@ -6,7 +6,7 @@ import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/select
 import { getMultfilmsPendingSelector } from 'redux-saga/selectors/multfilmsSelector';
 
 import GreetNew from 'components/pages/Progres/GreetNew';
-import Test from './Test';
+import Survey from './Survey';
 import Multfilms from './Multfilms';
 
 import './styles.scss';
@@ -19,16 +19,16 @@ const Progres = () => {
   const dispatch = useDispatch();
   const level = authInfo.involvement;
 
-  const getInfo = async () => {
-    if (authInfo.name && !authInfo.test_passed) {
-      const action = {level, topic: 'newcomers'}
-      dispatch(questionsTakeRequest(action));
-    }
-  };
+  // const getInfo = async () => {
+  //   if (authInfo.name && !authInfo.test_passed) {
+  //     const action = {level, topic: 'newcomers'}
+  //     dispatch(questionsTakeRequest(action));
+  //   }
+  // };
 
-  useEffect(() => {
-    getInfo();
-  }, [authInfo.test_passed, authInfo.involvement]);
+  // useEffect(() => {
+  //   getInfo();
+  // }, [authInfo.test_passed, authInfo.involvement]);
 
   return (
     <div className="progres">
@@ -36,7 +36,7 @@ const Progres = () => {
         (
           (!authInfo.involvement && <GreetNew />) ||
           (!authInfo.name && <span>Ты не авторизован</span>) ||
-          (!authInfo.test_passed && <Test />) ||
+          (!authInfo.test_passed && <Survey topic='newcomers' />) ||
           (!pendingMultfilms &&  <Multfilms />)
         )
       }

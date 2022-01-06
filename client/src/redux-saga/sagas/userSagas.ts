@@ -75,9 +75,13 @@ function* autoAuthSaga(action: UserAutoAuthRequire) {
 
 function* testingSaga(action: UserTestingRequare) {
   try {
-    const { features, userId } = action.payload;
+    let { features, userId, level, topic } = action.payload;
     const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
-      { features });
+      { features, level, topic }
+    );
+    if (topic !== 'newcomers') {
+      features = [features[0]];
+    }
     yield call(acceptAnswer);
     yield put(userTesting({ features }));
   } catch (e: any) {
