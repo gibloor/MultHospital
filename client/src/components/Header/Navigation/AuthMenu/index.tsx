@@ -20,8 +20,8 @@ const AuthMenu = (props: Props) => {
 
   return (
     <div className="authentication">
-      {(!authInfo.name
-        && (
+      {
+        !authInfo.name && 
         <>
           <div
             role="button"
@@ -55,9 +55,11 @@ const AuthMenu = (props: Props) => {
             {t('head.buttons.registration')}
           </div>
         </>
-        )) || (
+        || 
         <>
-          <span>{authInfo.name}</span>
+          <span>
+            {authInfo.name}
+          </span>
           <div
             role="button"
             tabIndex={0}
@@ -76,7 +78,7 @@ const AuthMenu = (props: Props) => {
             deactive
           </div>
         </>
-      )}
+      }
     </div>
   )
 }

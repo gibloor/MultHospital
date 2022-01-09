@@ -22,18 +22,16 @@ const Authorization = (props: Props) => {
     <div className="auth">
       <OutsideClickHandler onOutsideClick={() => props.authClose()}>
         {
-          (typeForm === 'something'
-            && (
-            <FormUnauthorized
-              changeTypeForm={changeTypeForm}
-              authClose={props.authClose}
-            />
-            )) || (
-            <FormAuthorization
-              authClose={props.authClose}
-              typeForm={typeForm}
-            />
-          )
+          typeForm === 'something' && 
+          <FormUnauthorized
+            changeTypeForm={changeTypeForm}
+            authClose={props.authClose}
+          />
+          || 
+          <FormAuthorization
+            authClose={props.authClose}
+            typeForm={typeForm}
+          />
         }
       </OutsideClickHandler>
     </div>

@@ -6,8 +6,8 @@ interface PagesList {
 
 const pagesList:PagesList[] = [
   {
-    name: 'Progres',
-    link: '/progres',
+    name: 'Multfilms',
+    link: '/multfilms',
     access: 'close',
   },
   {

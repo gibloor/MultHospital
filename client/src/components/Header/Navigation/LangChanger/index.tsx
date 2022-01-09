@@ -4,14 +4,14 @@ import OutsideClickHandler from 'react-outside-click-handler';
 
 import './styles.scss';
 
-interface Img {
-  img: string
-}
-
 const LangChanger = () => {
 
   const [langDisplay, setLangDisplay] = useState(false);
   const { t, i18n } = useTranslation();
+
+  interface Img {
+    img: string
+  }
 
   const langs: {[lang: string]: Img} = {
     en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },

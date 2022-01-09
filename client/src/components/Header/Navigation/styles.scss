@@ -1,4 +1,4 @@
-.head {
+.navigation {
   &__menu {
     width: 100%;
   }
@@ -25,18 +25,19 @@
     transition: 0.7s;
   }
 
-  .burger_menu {
-    display: none;
-  }
-  .right_side {
+  &__right_side {
     display: flex;
     margin-left: auto;
     margin-right: 10px;
   }
+  
+  &__burger_menu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 850px) {
-  .head {
+  .navigation {
     &__menu {
       display: none;
     }
@@ -58,15 +59,16 @@
       align-items: center;
     }
 
-    .burger_menu {
-      display: flex;
-      margin-left: auto;
-      margin-right: 10px;
-    }
-    .right_side {
+    &__right_side {
       margin: 0px;
       flex-direction: column;
       align-items: center;
+    }
+    
+    &__burger_menu {
+      display: flex;
+      margin-left: auto;
+      margin-right: 10px;
     }
   }
 }

@@ -10,7 +10,7 @@ import MultfilmBlock from './MultfilmBlock';
 
 import './styles.scss';
 
-const Multfilms = () => {
+const MultChain = () => {
   const dispatch = useDispatch();
   const multfilms = useSelector(getMultfilmsSelector);
   const userId = useSelector(getAccountIdSelector);
@@ -28,19 +28,18 @@ const Multfilms = () => {
   }, []);
 
   return (
-    <div className="multfilms">
+    <div className="multChain">
       {!pending && Object.keys(multfilms).map((category) => (
-        <div key={category} className="multfilms__category">
+        <div key={category} className="multChain__category">
           {multfilms[category].map((multfilm, index) => (
-            index === 0 || multfilms[category][index-1].watched
-            ? (
+            index === 0 || multfilms[category][index-1].watched ?
               <MultfilmBlock
                 multfilm={multfilm}
                 viewedChange={viewedChange}
                 key={multfilm.name}
               />
-            )
-            : <div
+              :
+              <div
                 key={multfilm.name}
                 className="multfilm__block multfilm__locked"
               />
@@ -51,4 +50,4 @@ const Multfilms = () => {
   )
 }
 
-export default Multfilms;
+export default MultChain;

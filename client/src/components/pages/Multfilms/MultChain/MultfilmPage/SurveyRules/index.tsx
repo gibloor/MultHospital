@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Trans, useTranslation } from 'react-i18next';
 
-import Survey from 'components/pages/Progres/Survey';
+import Survey from 'components/pages/Multfilms/Survey';
 
 import './styles.scss';
 

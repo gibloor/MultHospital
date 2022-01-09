@@ -41,6 +41,7 @@ const MultfilmPage = () => {
         }
       });
     };
+    console.log(params)
   }, [multfilms]);
 
   return (

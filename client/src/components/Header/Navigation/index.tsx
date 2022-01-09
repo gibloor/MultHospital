@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import OutsideClickHandler from 'react-outside-click-handler';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 
@@ -16,10 +16,9 @@ interface Props {
   changeAuthVariant: (variant: string) => void,
 }
 
-const HeaderMenu = (props: Props) => {
+const Navigation = (props: Props) => {
 
   const [menuVisible, setMenuVisible] = useState(false);
-
   const authInfo = useSelector(getAccountSelector);
 
   const closeMenu = () => {
@@ -28,18 +27,20 @@ const HeaderMenu = (props: Props) => {
 
   return (
     <>
-      <div className={classNames(
-        { 'head__menu': !menuVisible },
-        { 'head__menu_mobile': menuVisible },
-      )}>
+      <div 
+        className={classNames(
+          { 'navigation__menu': !menuVisible },
+          { 'navigation__menu_mobile': menuVisible },
+        )}
+      >
         <OutsideClickHandler onOutsideClick={() => setMenuVisible(false)}>
-          <div className="head__menu_list">
-            <div className="head__list">
+          <div className="navigation__menu_list">
+            <div className="navigation__list">
               {pagesList.map((button) => (
                 (authInfo.name || button.access === 'free')
                   && (
                   <Link
-                    className="head__button"
+                    className="navigation__button"
                     key={button.name}
                     to={button.link}
                     onClick={() => setMenuVisible(false)}
@@ -51,7 +52,7 @@ const HeaderMenu = (props: Props) => {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="head__button"
+                    className="navigation__button"
                     key={button.name}
                     onKeyPress={() => (props.changeAuthVariant('something'))}
                     onClick={() => (props.changeAuthVariant('something'))}
@@ -61,7 +62,7 @@ const HeaderMenu = (props: Props) => {
                   )
               ))}
             </div>
-            <div className="right_side">
+            <div className="navigation__right_side">
               <LangChanger />
               <AuthMenu
                 closeMenu={closeMenu}
@@ -71,11 +72,14 @@ const HeaderMenu = (props: Props) => {
           </div>
         </OutsideClickHandler>
       </div>
-      <div className="burger_menu" onClick={() => setMenuVisible(true)}>
+      <div
+        className="navigation__burger_menu"
+        onClick={() => setMenuVisible(true)}
+      >
         <img src="https://img.icons8.com/color/48/000000/hamburger.png"/>
       </div>
     </>
   )
 }
 
-export default HeaderMenu;
+export default Navigation;

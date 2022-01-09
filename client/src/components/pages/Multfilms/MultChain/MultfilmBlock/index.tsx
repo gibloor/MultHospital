@@ -39,7 +39,7 @@ const MultfilmBlock = (props: Props) => {
           />
         </>
       }
-      <Link className="multfilm__list" to={`/progres/multfilm/${multfilm.involvement}/${multfilm.name}`}>
+      <Link className="multfilm__list" to={`/multfilms/${multfilm.involvement}/${multfilm.name}`}>
         {multfilm.watched
           && <div className="multfilm__watched" key={multfilm.name}/>
         }
