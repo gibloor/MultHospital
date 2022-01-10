@@ -57,9 +57,135 @@
           }
         }
       },
-      "": {
+      "AdventureTime": {
+        "title": "Adventure Time",
+        "description": "<0>Adventure Time</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "InfinityTrain": {
+        "title": "Infinity Train",
+        "description": "<0>Infinity Train</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Kaiji": {
+        "title": "Kaiji",
+        "description": "<0>Kaiji</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Neverland": {
+        "title": "The promised neverland",
+        "description": "<0>The promised neverland</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "SchoolLive": {
+        "title": "School Live",
+        "description": "<0>School Live</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "SouthPark": {
+        "title": "South Park",
+        "description": "<0>South Park</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Futurama": {
+        "title": "Futurama",
+        "description": "<0>Futurama</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "HorseBojack": {
+        "title": "Horse Bojack",
+        "description": "<0>Horse Bojack</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Rainbow": {
+        "title": "Rainbow",
+        "description": "<0>Rainbow</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "10": {
         "title": "",
-        "description": "<0></0>",
+        "description": "<0></0> is an animated series",
         "characters": {
           "": {
             "name": "",

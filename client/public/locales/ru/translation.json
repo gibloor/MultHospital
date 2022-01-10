@@ -1,3 +1,4 @@
+
 {
   "head": {
     "buttons": {
@@ -54,6 +55,146 @@
           "BethSmith": {
             "name": "Бет Смит",
             "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+          }
+        }
+      },
+      "AdventureTime": {
+        "title": "Время приключений",
+        "description": "<0>Время приключений</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "InfinityTrain": {
+        "title": "Бесконечный поезд",
+        "description": "<0>Бесконечный поезд</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Kaiji": {
+        "title": "Кайдзи",
+        "description": "<0>Кайдзи</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Neverland": {
+        "title": "Обещанный Неверленд",
+        "description": "<0>Обещанный Неверленд</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "SchoolLive": {
+        "title": "Школьная жизнь",
+        "description": "<0>Школьная жизнь</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "SouthPark": {
+        "title": "Южный парк",
+        "description": "<0>Южный парк</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Futurama": {
+        "title": "Футурама",
+        "description": "<0>Футурама</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "HorseBojack": {
+        "title": "Конь Боджек",
+        "description": "<0>Конь Боджек</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "Rainbow": {
+        "title": "Радуга",
+        "description": "<0>Радуга</0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
+          }
+        }
+      },
+      "10": {
+        "title": "",
+        "description": "<0></0> is an animated series",
+        "characters": {
+          "": {
+            "name": "",
+            "description": ""
+          },
+          "2": {
+            "name": "",
+            "description": ""
           }
         }
       }
