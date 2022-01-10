@@ -38,7 +38,7 @@ const AuthMenu = (props: Props) => {
           >
             {t('head.buttons.login')}
           </div>
-
+          |
           <div
             role="button"
             tabIndex={0}
@@ -60,6 +60,7 @@ const AuthMenu = (props: Props) => {
           <span>
             {authInfo.name}
           </span>
+          <span>|</span>
           <div
             role="button"
             tabIndex={0}
@@ -75,7 +76,7 @@ const AuthMenu = (props: Props) => {
               props.closeMenu()
             )}
           >
-            deactive
+            {t('head.buttons.deactive')}
           </div>
         </>
       }

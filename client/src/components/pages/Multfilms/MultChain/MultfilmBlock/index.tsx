@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Multfilm } from 'redux-saga/types/multfilmsTypes';
 
@@ -14,6 +15,7 @@ interface Props {
 const MultfilmBlock = (props: Props) => {
 
   const multfilm = props.multfilm;
+  const { t } = useTranslation();
 
   useEffect(() => {
     !multfilm.viewed && props.viewedChange(multfilm.name), multfilm.viewed = true
@@ -51,7 +53,7 @@ const MultfilmBlock = (props: Props) => {
           />
         </div>
         <span className="multfilm__name">
-          {multfilm.name}
+          {t(`multfilms.personal.${multfilm.name}.title`)}
         </span>
       </Link>
     </div>

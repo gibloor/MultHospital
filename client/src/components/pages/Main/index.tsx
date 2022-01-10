@@ -1,21 +1,18 @@
 import React from 'react';
 
+import staff from 'components/assets/mainPage/staff.png';
+
 import './styles.scss';
 
 const Main = () => {
-  const multName = 'Futurama 1s 1s';
-  const registered = '666';
 
   return (
     <div className="main">
-      <p className="title">
-        Multfilm of day: {multName}
-      </p>
-
-      <span className="title">
-        number of registered:
-        {registered}
-      </span>
+      <h2 className="main__h2">
+        Mult Hospital
+      </h2>
+      {/* cправа табличка с mult hospital, слева-центр мультяшный персонал 1920x1080*/}
+      <img src={staff} className="main__staff" />
     </div>
   );
 };

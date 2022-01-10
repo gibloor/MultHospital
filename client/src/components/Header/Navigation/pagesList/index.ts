@@ -1,23 +1,19 @@
 interface PagesList {
   access: string,
   name: string,
-  link: string,
 };
 
 const pagesList:PagesList[] = [
   {
-    name: 'Multfilms',
-    link: '/multfilms',
+    name: 'multfilms',
     access: 'close',
   },
   {
-    name: 'About project',
-    link: '/aboutproject',
+    name: 'aboutProject',
     access: 'free',
   },
   {
-    name: 'Setting',
-    link: '/setting',
+    name: 'setting',
     access: 'free',
   },
 ];

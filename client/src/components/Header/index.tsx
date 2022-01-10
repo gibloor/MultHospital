@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <div className="head">
-      <h1 className="head__h1">MultHospital</h1>
+      <h1 className="head__h1">Mult Hospital</h1>
       <Logo />
       <Navigation changeAuthVariant={changeAuthVariant}/>
       {

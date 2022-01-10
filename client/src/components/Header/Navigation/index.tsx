@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
@@ -20,6 +21,7 @@ const Navigation = (props: Props) => {
 
   const [menuVisible, setMenuVisible] = useState(false);
   const authInfo = useSelector(getAccountSelector);
+  const { t } = useTranslation();
 
   const closeMenu = () => {
     setMenuVisible(false)
@@ -42,10 +44,10 @@ const Navigation = (props: Props) => {
                   <Link
                     className="navigation__button"
                     key={button.name}
-                    to={button.link}
+                    to={`/${button.name}`}
                     onClick={() => setMenuVisible(false)}
                   >
-                    {button.name}
+                    {t(`head.buttons.${button.name}`)}
                   </Link>
                   )
                   || (
@@ -57,7 +59,7 @@ const Navigation = (props: Props) => {
                     onKeyPress={() => (props.changeAuthVariant('something'))}
                     onClick={() => (props.changeAuthVariant('something'))}
                   >
-                    {button.name}
+                    {t(`head.buttons.${button.name}`)}
                   </span>
                   )
               ))}

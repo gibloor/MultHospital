@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
@@ -17,6 +17,7 @@ const Characters = (props:Props) => {
 
   const extension = [1, 2];
   const { characters, multName } = props;
+  const { t } = useTranslation();
 
   const classChecker = (length: number) => {
     if (characters.length < length) {
@@ -90,7 +91,9 @@ const Characters = (props:Props) => {
               <div key={character.name}>
                 <div className="characters__block">
                   <div className="characters__head">
-                    <span className="characters__name">{character.name}</span>
+                    <span className="characters__name">
+                      {t(`multfilms.personal.${multName}.characters.${character.name}.name`)}
+                    </span>
                     <img
                       className="characters__avatar"
                       src={`/assets/images/multfilms/${multName}/multHeroes/avatars/${character.name}.png`}
@@ -106,10 +109,12 @@ const Characters = (props:Props) => {
                       />
                       <div className="characters__text_container">
                         <div className="characters__text">
-                          <Trans i18nKey={`multfilms.personal.${multName}.characters.${character.name}`}>
-                            <p className="characters__text_name">Name</p>
-                            <p className="characters__text_info">Big text</p>
-                          </Trans>
+                            <p className="characters__text_name">
+                              {t(`multfilms.personal.${multName}.characters.${character.name}.name`)}
+                            </p>
+                            <p className="characters__text_info">
+                            {t(`multfilms.personal.${multName}.characters.${character.name}.description`)}
+                            </p>
                         </div>
                       </div>
                     </div>

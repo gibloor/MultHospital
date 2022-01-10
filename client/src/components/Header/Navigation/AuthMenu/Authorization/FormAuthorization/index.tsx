@@ -76,25 +76,46 @@ const FormAuthorization = (props:Props) => {
               X
             </button>
           </div>
-          <span>{t(`head.buttons.${typeForm}`)}</span>
+          <span>
+            {t(`head.buttons.${typeForm}`)}
+          </span>
           <div className="auth__inputs">
-            {(typeForm === 'registration'
-            ) && (
+            {typeForm === 'registration' &&
               <>
-                <label className="auth__text">Name</label>
+                <label className="auth__text">
+                  {t('head.authentication.name')}
+                </label>
                 <Field name="name" validate={validateName} />
-                {errors.name && touched.name && <span className="error_text">{errors.name}</span>}
+                {errors.name && touched.name &&
+                  <span className="error_text">
+                    {errors.name}
+                  </span>
+                }
               </>
-            )}
-            <label className="auth__text">Login</label>
+            }
+            <label className="auth__text">
+              {t('head.authentication.login')}
+            </label>
             <Field name="login" validate={validateLogin} />
-            {errors.login && touched.login && <span className="error_text">{errors.login}</span>}
+            {errors.login && touched.login &&
+              <span className="error_text">
+                {errors.login}
+              </span>
+            }
 
-            <label className="auth__text">Password</label>
+            <label className="auth__text">
+              {t('head.authentication.password')}
+            </label>
             <Field name="password" validate={validatePassword} />
-            {errors.password && touched.password && <span className="error_text">{errors.password}</span>}
+            {errors.password && touched.password &&
+              <span className="error_text">
+                {errors.password}
+              </span>
+            }
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">
+            Submit
+          </button>
           <span className="auth__error">{error}</span>
         </Form>
       )}
