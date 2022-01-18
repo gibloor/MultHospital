@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useTranslation } from 'react-i18next';
 
 interface Props {
@@ -13,14 +14,13 @@ const FormUnauthorized = (props: Props) => {
   return (
     <div className="auth__form">
       <div className="auth__close_form">
-        <button
+        <div
           onKeyPress={() => props.authClose()}
           onClick={() => props.authClose()}
-          className="auth__close_form_button"
-          type="button"
+          className="auth__close_button"
         >
           X
-        </button>
+        </div>
       </div>
       <span
         onKeyPress={() => (props.changeTypeForm('login'))}

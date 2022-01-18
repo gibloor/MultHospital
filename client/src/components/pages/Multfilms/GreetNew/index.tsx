@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userInvolvementChangeRequare } from 'redux-saga/actions/userActions';
+import { userInvolvementChangeRequire } from 'redux-saga/actions/userActions';
 import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
 
 import './styles.scss';
@@ -40,7 +40,7 @@ const GreetNew = () => {
   ];
 
   const saveInvolvement = (involvement: string) => {
-    dispatch(userInvolvementChangeRequare({involvement: involvement, id: userId}));
+    dispatch(userInvolvementChangeRequire({involvement: involvement, id: userId}));
   }
 
   return (

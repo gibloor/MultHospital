@@ -67,14 +67,13 @@ const FormAuthorization = (props:Props) => {
       {({ errors, touched }) => (
         <Form className="auth__form">
           <div className="auth__close_form">
-            <button
-              onKeyPress={() => props.authClose()}
-              onClick={() => props.authClose()}
-              className="auth__close_form_button"
-              type="button"
+            <div
+            onKeyPress={() => props.authClose()}
+            onClick={() => props.authClose()}
+            className="auth__close_button"
             >
               X
-            </button>
+            </div>
           </div>
           <span>
             {t(`head.buttons.${typeForm}`)}
@@ -97,7 +96,8 @@ const FormAuthorization = (props:Props) => {
               {t('head.authentication.login')}
             </label>
             <Field name="login" validate={validateLogin} />
-            {errors.login && touched.login &&
+            {
+              errors.login && touched.login &&
               <span className="error_text">
                 {errors.login}
               </span>
@@ -107,7 +107,8 @@ const FormAuthorization = (props:Props) => {
               {t('head.authentication.password')}
             </label>
             <Field name="password" validate={validatePassword} />
-            {errors.password && touched.password &&
+            {
+              errors.password && touched.password &&
               <span className="error_text">
                 {errors.password}
               </span>

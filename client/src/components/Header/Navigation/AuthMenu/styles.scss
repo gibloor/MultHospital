@@ -1,4 +1,21 @@
-.authentication {
+.auth_menu {
   display: flex;
   align-items: center;
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+
+  &__avatar {
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  &__delimiter {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }

@@ -9,11 +9,14 @@ import {
   USER_DEAUTH_REQUIRE,
 
   USER_TESTING,
-  USER_TESTING_REQUARE,
+  USER_TESTING_REQUIRE,
 
   USER_INVOLVEMENT_CHANGE,
-  USER_INVOLVEMENT_CHANGE_REQUARE,
-  
+  USER_INVOLVEMENT_CHANGE_REQUIRE,
+
+  USER_IMG_CHANGE,
+  USER_IMG_CHANGE_REQUIRE,
+    
   USER_FAILURE,
 } from '../actions/userActions';
 
@@ -29,9 +32,11 @@ const initialState: InitialState = {
   pending: false,
   id: 0,
   name: '',
-  image: '',
+  image: false,
   test_passed: false,
   involvement: '',
+  login: '',
+  position: '',
 };
 
 const userReducer: Reducer<InitialState, UserAuthActions> = (
@@ -47,6 +52,8 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         image: action.payload.image,
         test_passed: action.payload.test_passed,
         involvement: action.payload.involvement,
+        login: action.payload.login,
+        position: action.payload.position,
         pending: false,
       };
 
@@ -67,7 +74,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         ...state,
         id: 0,
         name: '',
-        image: '',
+        image: false,
         test_passed: false,
         involvement: '',
       };
@@ -83,7 +90,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         features: action.payload.features,
         pending: false,
       };
-    case USER_TESTING_REQUARE:
+    case USER_TESTING_REQUIRE:
       return {
         ...state,
         pending: true,
@@ -95,8 +102,20 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         ...state,
         pending: false,
         involvement: action.payload.involvement
-      }
-    case USER_INVOLVEMENT_CHANGE_REQUARE:
+      };
+    case USER_INVOLVEMENT_CHANGE_REQUIRE:
+      return {
+        ...state,
+        pending: true,
+      };
+
+    case USER_IMG_CHANGE:
+      return {
+        ...state,
+        pending: false,
+        image: true,
+      };
+    case USER_IMG_CHANGE_REQUIRE:
       return {
         ...state,
         pending: true,

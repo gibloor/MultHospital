@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getQuestionsSelector } from 'redux-saga/selectors/questionsSelector';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { userTestingRequare } from 'redux-saga/actions/userActions';
+import { userTestingRequire } from 'redux-saga/actions/userActions';
 import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
 
 import Timer from './Timer';
@@ -15,6 +15,9 @@ interface Props {
 }
 
 const Survey = (props: Props) => {
+
+  const dispatch = useDispatch();
+
   const [counter, setCounter] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [userAnswer, setUserAnswer] = useState('');
@@ -25,8 +28,6 @@ const Survey = (props: Props) => {
 
   const level = user.involvement;
   const topic = props.topic;
-
-  const dispatch = useDispatch();
 
   const submitQuestion = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,11 +54,11 @@ const Survey = (props: Props) => {
 
   useEffect(() => {
     if (counter === questions.length && counter !== 0) {
-      if (topic !== 'newcomers' && answers.length < 7) {
+      if (topic !== 'newcomers') {
 
       } else {
         const answer = { features: answers, userId: user.id, level, topic };
-        dispatch(userTestingRequare(answer));
+        dispatch(userTestingRequire(answer));
       }
     }
   }, [counter]);
@@ -73,7 +74,7 @@ const Survey = (props: Props) => {
             <img
               alt={questions[counter].topic}
               className="survey__image"
-              src={`/assets/images/multTests/${topic}/${level}/${questions[counter].image}`}
+              src={`/assets/images/multfilms/${questions[counter].multfilm}/multTests/${level}/${questions[counter].image}.png`}
             />
             <div className="survey__answers">
               {questions[counter].answers.map(answer => (
@@ -90,9 +91,9 @@ const Survey = (props: Props) => {
             <Timer timer={timer} changeTimer={changeTimer} />
           }
         </> ||
-        topic !== 'newcomers' && counter === 10 &&
+        topic !== 'newcomers' && counter === questions.length &&
         (
-          answers.length > 7 && <div>NICE</div> ||
+          answers.length > questions.length * 0.7 && <div>NICE</div> ||
           <div>loose</div>
         )
       }

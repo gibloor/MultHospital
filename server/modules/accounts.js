@@ -2,6 +2,7 @@ const express = require('express');
 const accounts = express.Router();
 const pool = require("./../db");
 const jsw = require('jsonwebtoken');
+const multer = require("multer");
 
 accounts.put(`/acceptAnswer/:id`, async (req, res) => {
   try {
@@ -28,6 +29,8 @@ const tokenCreate = (account, res) => {
       involvement: user.involvement,
       test_passed: user.test_passed,
       id: user.id,
+      login: user.login,
+      position: user.position,
       token,
     })
   } else res.json('Wrong dates')
@@ -35,7 +38,7 @@ const tokenCreate = (account, res) => {
 
 accounts.post('/registration', async (req, res) => {
   try {
-    const { name, login, password, involvement } = req.body;
+    const { name, login, password } = req.body;
     const account = await pool.query(
       "SELECT * FROM accounts WHERE login = $1", [login]
     );
@@ -45,7 +48,7 @@ accounts.post('/registration', async (req, res) => {
         [name, login, password]
       );
       tokenCreate(account, res);
-    } else {res.json('This login is already in use')}
+    } else {res.json('This login is already use')}
   } catch (err) {
     console.error(err.message);
   }
@@ -100,6 +103,16 @@ accounts.put(`/saveInvolvement/:id`, async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-})
+})   
+
+accounts.post('/saveImg/:id', async (req, res) => {
+  try  {
+    console.log('save img (no)')
+  }
+  catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 module.exports = accounts;

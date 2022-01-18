@@ -2,6 +2,20 @@ const express = require('express');
 const questions = express.Router();
 const pool = require("./../db");
 
+const shuffler = (array) => {
+  let currentIndex = array.length;
+
+  while (0 !== currentIndex) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    let temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  
+  return array;
+}
+
 questions.get('/', async (req, res) =>{
   try {
     const allQuestions = await pool.query("SELECT * FROM questions");
@@ -13,9 +27,24 @@ questions.get('/', async (req, res) =>{
 
 questions.get('/take', async (req, res) => {
   try {
-    const {level, topic} = req.query;
-    const quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND topic = $2", [level, topic])
-    res.json(quest.rows);
+    const { level, topic } = req.query;
+    let quest = [];
+    if (topic === 'newcomers') {
+      const newcomers = true;
+      quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND newcomers = $2", [level, newcomers] );
+    } else {
+      quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND multfilm = $2", [level, topic]);
+    }
+    quest.rows.map(question => (
+      question.answers = shuffler(
+        [
+          question.answer,
+          question.blende1,
+          question.blende2,
+        ]
+      )
+    ));
+    await res.json(quest.rows);
   } catch (err) {
     console.error(err.message);
   }

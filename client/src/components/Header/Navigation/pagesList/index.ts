@@ -16,6 +16,10 @@ const pagesList:PagesList[] = [
     name: 'setting',
     access: 'free',
   },
+  {
+    name: '',
+    access: '',
+  }
 ];
 
 export default pagesList;

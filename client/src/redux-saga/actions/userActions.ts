@@ -7,11 +7,14 @@ import {
   UserDeauthRequire,
 
   UserTesting,
-  UserTestingRequare,
+  UserTestingRequire,
   UserAnswer,
 
   UserInvolvementChange,
-  UserInvolvementChangeRequare,
+  UserInvolvementChangeRequire,
+
+  UserImgChange,
+  UserImgChangeRequire,
 
   UserFailure,
 
@@ -21,6 +24,7 @@ import {
   Answer,
   Involvement,
   InvolvementDates,
+  ImgTake,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
@@ -31,10 +35,13 @@ export const USER_DEAUTH = 'USER_DEAUTH';
 export const USER_DEAUTH_REQUIRE = 'USER_DEAUTH_REQUIRE';
 
 export const USER_TESTING = 'USER_TESTING';
-export const USER_TESTING_REQUARE = 'USER_TESTING_REQUARE';
+export const USER_TESTING_REQUIRE = 'USER_TESTING_REQUIRE';
 
 export const USER_INVOLVEMENT_CHANGE = 'USER_INVOLVEMENT_CHANGE';
-export const USER_INVOLVEMENT_CHANGE_REQUARE = 'USER_INVOLVEMENT_CHANGE_REQUARE';
+export const USER_INVOLVEMENT_CHANGE_REQUIRE = 'USER_INVOLVEMENT_CHANGE_REQUIRE';
+
+export const USER_IMG_CHANGE = 'USER_IMG_CHANGE';
+export const USER_IMG_CHANGE_REQUIRE = 'USER_IMG_CHANGE_REQUIRE';
 
 export const USER_FAILURE = 'USER_AUTH_FAILURE';
 
@@ -71,10 +78,10 @@ export const userTesting = (
   type: USER_TESTING,
   payload,
 });
-export const userTestingRequare = (
+export const userTestingRequire = (
   payload: UserAnswer,
-): UserTestingRequare => ({
-  type: USER_TESTING_REQUARE,
+): UserTestingRequire => ({
+  type: USER_TESTING_REQUIRE,
   payload,
 });
 
@@ -84,11 +91,21 @@ export const userInvolvementChange = (
   type: USER_INVOLVEMENT_CHANGE,
   payload,
 });
-export const userInvolvementChangeRequare = (
+export const userInvolvementChangeRequire = (
   payload: InvolvementDates,
-): UserInvolvementChangeRequare => ({
-  type: USER_INVOLVEMENT_CHANGE_REQUARE,
+): UserInvolvementChangeRequire => ({
+  type: USER_INVOLVEMENT_CHANGE_REQUIRE,
   payload,
+});
+
+export const userImgChange = (): UserImgChange => ({
+  type: USER_IMG_CHANGE
+});
+export const userImgChangeRequire = (
+  payload: ImgTake,
+): UserImgChangeRequire => ({
+  type: USER_IMG_CHANGE_REQUIRE,
+  payload
 });
 
 export const userFailure = (

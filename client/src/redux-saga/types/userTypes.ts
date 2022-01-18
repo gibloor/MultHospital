@@ -7,10 +7,13 @@ import {
   USER_DEAUTH_REQUIRE,
 
   USER_TESTING,
-  USER_TESTING_REQUARE,
+  USER_TESTING_REQUIRE,
 
   USER_INVOLVEMENT_CHANGE,
-  USER_INVOLVEMENT_CHANGE_REQUARE,
+  USER_INVOLVEMENT_CHANGE_REQUIRE,
+
+  USER_IMG_CHANGE,
+  USER_IMG_CHANGE_REQUIRE,
 
   USER_FAILURE,
 } from "../actions/userActions";
@@ -30,8 +33,10 @@ export interface InvolvementDates extends Involvement {
 export interface UserInfo extends Involvement {
   id: number,
   name: string,
-  image: string,
+  image: boolean,
   test_passed: boolean,
+  login: string,
+  position: string
 }
 export interface Token {
   token: string,
@@ -49,6 +54,12 @@ export interface UserAnswer extends Answer {
   userId: number,
   level: string,
   topic: string,
+}
+
+export interface ImgTake {
+  img: FormData,
+  id: number,
+  availability: boolean,
 }
 
 export interface UserAuth {
@@ -75,8 +86,8 @@ export interface UserTesting {
   type: typeof USER_TESTING,
   payload: Answer,
 }
-export interface UserTestingRequare {
-  type: typeof USER_TESTING_REQUARE,
+export interface UserTestingRequire {
+  type: typeof USER_TESTING_REQUIRE,
   payload: UserAnswer,
 }
 
@@ -84,9 +95,17 @@ export interface UserInvolvementChange {
   type: typeof USER_INVOLVEMENT_CHANGE,
   payload: Involvement,
 }
-export interface UserInvolvementChangeRequare {
-  type: typeof USER_INVOLVEMENT_CHANGE_REQUARE,
+export interface UserInvolvementChangeRequire {
+  type: typeof USER_INVOLVEMENT_CHANGE_REQUIRE,
   payload: InvolvementDates,
+}
+
+export interface UserImgChange {
+  type: typeof USER_IMG_CHANGE,
+}
+export interface UserImgChangeRequire {
+  type: typeof USER_IMG_CHANGE_REQUIRE,
+  payload: ImgTake,
 }
 
 export interface UserFailure {
@@ -101,7 +120,9 @@ export type UserAuthActions =
 | UserDeauth
 | UserDeauthRequire
 | UserTesting
-| UserTestingRequare
+| UserTestingRequire
 | UserInvolvementChange
-| UserInvolvementChangeRequare
+| UserInvolvementChangeRequire
+| UserImgChange
+| UserImgChangeRequire
 | UserFailure;

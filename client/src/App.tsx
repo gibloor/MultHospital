@@ -8,6 +8,7 @@ import Multfilms from 'components/pages/Multfilms';
 import AboutProject from 'components/pages/AboutProject';
 import Setting from 'components/pages/Setting';
 import Multfilm from 'components/pages/Multfilms/MultChain/MultfilmPage';
+import Profile from 'components/pages/Profile';
 
 import './App.scss';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/aboutProject" component={() => <AboutProject />} />
         <Route path="/setting" component={() => <Setting />} />
         <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
+        <Route path="/profile/:id" component={() => <Profile />} />
       </Switch>
       <Basement />
     </>

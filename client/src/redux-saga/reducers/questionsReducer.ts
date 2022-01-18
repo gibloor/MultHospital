@@ -10,11 +10,13 @@ import { Questions, QuestionsActions } from '../types/questionsTypes';
 
 interface InitialState extends Questions {
   error: boolean,
+  pending: boolean,
 }
 
 const initialState: InitialState = {
   questions: [],
   error: false,
+  pending: false,
 };
 
 const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initialState, action) => {
@@ -22,6 +24,7 @@ const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initi
     case QUESTIONS_TAKE_REQUEST:
       return {
         ...state,
+        pending: true,
       };
 
     case QUESTIONS_TAKE:
@@ -29,6 +32,7 @@ const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initi
         ...state,
         error: false,
         questions: action.payload.questions,
+        pending: false,
       };
 
     case QUESTIONS_TAKE_FAILURE:

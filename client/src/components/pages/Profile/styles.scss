@@ -1,0 +1,71 @@
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &__left {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__avatar_case {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+  }
+
+  &__avatar {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__message {
+    position: absolute;
+    color: white;
+    background-color: black;
+  }
+
+  &__drop_case {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    z-index: 51;
+  }
+
+  &__drop_fon {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(104, 96, 96, 0.555);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  &__drop_effect {
+    border: 4px solid rgba(53, 50, 50, 0.733);
+    border-radius: 20px;
+    animation: extension linear infinite 1s;
+  }
+
+  &__right {
+    width: 40%;
+  }
+}
+
+@keyframes extension {
+  0% {
+    width: 10px;
+    height: 10px;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
