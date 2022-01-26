@@ -8,3 +8,7 @@ body {
   font-size: 14pt;
   font-family: 'Roboto', sans-serif;
 }
+input[type=file] {
+  visibility: hidden;
+  position: absolute;
+}

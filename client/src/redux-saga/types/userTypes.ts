@@ -33,7 +33,6 @@ export interface InvolvementDates extends Involvement {
 export interface UserInfo extends Involvement {
   id: number,
   name: string,
-  image: boolean,
   test_passed: boolean,
   login: string,
   position: string
@@ -57,9 +56,8 @@ export interface UserAnswer extends Answer {
 }
 
 export interface ImgTake {
-  img: FormData,
-  id: number,
-  availability: boolean,
+  img: string,
+  login: string,
 }
 
 export interface UserAuth {

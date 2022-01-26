@@ -21,13 +21,7 @@ multfilms.get('/:id', async (req, res) =>{
         character.multfilm_id === multfilm.id
         && multfilm.characters.push(character)
       })
-    })
-
-    // allMults.rows.map(multfilm => (
-    //   multfilm.involvement === 'common' ? filteredMults.commonMulst.push(multfilm) :
-    //   multfilm.involvement === 'uncommon' ? filteredMults.uncommonMulst.push(multfilm) :
-    //   filteredMults.rareMulst.push(multfilm)
-    // ));
+    });
 
     let sortedMults = {};
     let delay;

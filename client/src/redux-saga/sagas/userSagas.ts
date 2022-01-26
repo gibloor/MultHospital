@@ -31,11 +31,13 @@ import {
 } from '../types/userTypes';
 
 import axios, { AxiosResponse } from 'axios';
+import { avatarTakeRequire } from 'redux-saga/actions/imagesActions';
 
 function* authSaga(dates: UserInfoTaked) {
   try {
     yield put(userAuth(dates));
     localStorage.setItem('token', dates.token);
+    yield put(avatarTakeRequire({id: dates.id, type: 'ownAvatar'}))
   } catch (e: any) {
     yield put(
       userFailure({error: e.message}),
@@ -125,11 +127,12 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   }
 }
 
-function* changeImgSaga(action: UserImgChangeRequire) {
+function* changeAvatarSaga(action: UserImgChangeRequire) {
   try {
-    const { img, id, availability } = action.payload;
-    const saveImg = () => axios.post<string[]>(`http://localhost:5000/accounts/saveImg/${id}`,
-      { img, availability });
+    const { login, img } = action.payload;
+    const saveImg = () => axios.post<string[]>(`http://localhost:5000/images/saveAvatar/${login}`,
+      { img }
+    );
     yield call(saveImg);
     yield put(userImgChange());
   } catch (e: any) {
@@ -148,7 +151,7 @@ function* userSagas() {
     takeLatest(USER_TESTING_REQUIRE, testingSaga),
     takeLatest(USER_DEAUTH_REQUIRE, deuthSaga),
     takeLatest(USER_INVOLVEMENT_CHANGE_REQUIRE, changeInvolvementSaga),
-    takeLatest(USER_IMG_CHANGE_REQUIRE, changeImgSaga),
+    takeLatest(USER_IMG_CHANGE_REQUIRE, changeAvatarSaga),
   ]);
 }
 

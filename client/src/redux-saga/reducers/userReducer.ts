@@ -32,7 +32,6 @@ const initialState: InitialState = {
   pending: false,
   id: 0,
   name: '',
-  image: false,
   test_passed: false,
   involvement: '',
   login: '',
@@ -49,7 +48,6 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         ...state,
         id: action.payload.id,
         name: action.payload.name,
-        image: action.payload.image,
         test_passed: action.payload.test_passed,
         involvement: action.payload.involvement,
         login: action.payload.login,
@@ -113,7 +111,6 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
       return {
         ...state,
         pending: false,
-        image: true,
       };
     case USER_IMG_CHANGE_REQUIRE:
       return {

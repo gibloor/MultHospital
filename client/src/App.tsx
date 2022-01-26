@@ -23,7 +23,7 @@ function App() {
         <Route path="/aboutProject" component={() => <AboutProject />} />
         <Route path="/setting" component={() => <Setting />} />
         <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
-        <Route path="/profile/:id" component={() => <Profile />} />
+        <Route path="/profile/:login" component={() => <Profile />} />
       </Switch>
       <Basement />
     </>

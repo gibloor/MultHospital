@@ -1,8 +1,8 @@
 const express = require('express');
 const accounts = express.Router();
-const pool = require("./../db");
 const jsw = require('jsonwebtoken');
-const multer = require("multer");
+const fs = require('fs');
+const pool = require("./../db");
 
 accounts.put(`/acceptAnswer/:id`, async (req, res) => {
   try {
@@ -47,6 +47,10 @@ accounts.post('/registration', async (req, res) => {
         "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
         [name, login, password]
       );
+      fs.mkdir(`./app_data/images/users/${login}`, (err) => {
+        if (err) throw err;
+        console.log('The dir has been created!');
+      });
       tokenCreate(account, res);
     } else {res.json('This login is already use')}
   } catch (err) {
@@ -98,21 +102,12 @@ accounts.put(`/saveInvolvement/:id`, async (req, res) => {
     const { id } = req.params;
     const { involvement } = req.body;
     await pool.query(
-    "UPDATE accounts SET involvement = $1 WHERE id = $2", [involvement, id]);
+      "UPDATE accounts SET involvement = $1 WHERE id = $2", [involvement, id]
+    );
     res.json("Answer Accepted");
   } catch (err) {
     console.error(err.message);
   }
-})   
-
-accounts.post('/saveImg/:id', async (req, res) => {
-  try  {
-    console.log('save img (no)')
-  }
-  catch (err) {
-    console.error(err.message);
-  }
-});
-
+})
 
 module.exports = accounts;
