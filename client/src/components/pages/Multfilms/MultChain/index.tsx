@@ -25,6 +25,8 @@ const MultChain = () => {
     return function viewedSave() {
       (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

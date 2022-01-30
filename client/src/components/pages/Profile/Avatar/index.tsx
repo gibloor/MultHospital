@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Cropper from 'react-cropper';
+import { useParams } from 'react-router';
 
-import { userImgChangeRequire } from 'redux-saga/actions/userActions';
+import { avatarSelector } from 'redux-saga/selectors/profileSelector';
+import { profileTakeRequire } from 'redux-saga/actions/profileActions';
+import { userAvatarSaveRequire } from 'redux-saga/actions/userActions';
+
 
 import 'cropperjs/dist/cropper.css';
 import './styles.scss';
 
-interface Props {
-  login: string,
+interface Params {
+  id: string,
 }
 
-const Avatar = (props: Props) => {
+const Avatar = () => {
 
   const dispatch = useDispatch();
+  const params:Params = useParams();
+  const avatar = useSelector(avatarSelector);
 
   const [drag, setDrag] = useState(false);
-  const [image, setImage] = useState();
+  const [image, setImage] = useState<any>();
   const [crop, setCrop] = useState<any>();
-  const { login } = props;
+
+  const id = Number(params.id);
 
   const settings = {
     src: image,
@@ -69,15 +76,22 @@ const Avatar = (props: Props) => {
   }
 
   const getCrop = () => {
-    dispatch(userImgChangeRequire({
-      img: crop.getCroppedCanvas().toDataURL(),
-      login: login,
+    dispatch(userAvatarSaveRequire({
+      avatar: crop.getCroppedCanvas().toDataURL(),
+      id: id,
     }));
+    setImage('');
   };
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = '/assets/images/users/default.png';
   }
+
+  useEffect(() => {
+    dispatch(profileTakeRequire({ id: id }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='avatar drop_avatar' >
@@ -90,14 +104,13 @@ const Avatar = (props: Props) => {
       <>
         <img
           className='avatar__img'
-          src={`/assets/images/users/${login}.png`}
+          src={avatar}
           alt='avatar'
           onError={(e) => (imageCheck(e))}
         />
         <span className='avatar__message'>
           drop you img
         </span> 
-
         <label
           className='avatar__drop_case drop_avatar'
           onDragLeave={e => dragLeave(e)}

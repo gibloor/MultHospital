@@ -11,6 +11,7 @@ multfilms.get('/:id', async (req, res) =>{
     const characters = await pool.query("SELECT * FROM characters");
 
     allMults.rows.map(multfilm => {
+      
       features.rows.map(multfilmMod => (
         (multfilm.name === multfilmMod.multfilm)
         && (multfilm.watched = true, multfilm.viewed = multfilmMod.viewed)

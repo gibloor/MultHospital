@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { userDeauthRequire } from 'redux-saga/actions/userActions';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { ownAvatarSelector } from 'redux-saga/selectors/imagesSelector';
 
 import './styles.scss';
 
@@ -18,8 +17,7 @@ const AuthMenu = (props: Props) => {
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const authInfo = useSelector(getAccountSelector);
-  const avatar = useSelector(ownAvatarSelector);
+  const user = useSelector(getAccountSelector);
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = '/assets/images/users/default.png';
@@ -28,7 +26,7 @@ const AuthMenu = (props: Props) => {
   return (
     <div className="auth_menu">
       {
-        !authInfo.name && 
+        !user.name && 
         <>
           <div
             role="button"
@@ -64,14 +62,14 @@ const AuthMenu = (props: Props) => {
         </>
         || 
         <>
-          <Link to={`profile/${authInfo.id}`} className='auth_menu__profile'>
+          <Link to={`profile/${user.id}`} className='auth_menu__profile'>
             <img
               className='auth_menu__avatar'
-              src={avatar}
+              src={user.avatar}
               onError={(e) => (imageCheck(e))}
             />
             <span>
-              {authInfo.name}
+              {user.name}
             </span>
           </Link>
           <span className='auth_menu__delimiter'>|</span>

@@ -11,22 +11,23 @@ import Multfilm from 'components/pages/Multfilms/MultChain/MultfilmPage';
 import Profile from 'components/pages/Profile';
 
 import './App.scss';
+import AutoSignUp from 'components/AutoSignUp';
 
 function App() {
 
   return (
-    <>
+    <AutoSignUp>
       <Header />
       <Switch>
         <Route exact path="/" component={() => <Main />} />
-        <Route exact path="/multfilms" component={() => <Multfilms />} />
         <Route path="/aboutProject" component={() => <AboutProject />} />
         <Route path="/setting" component={() => <Setting />} />
+        <Route exact path="/multfilms" component={() => <Multfilms />} />
         <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
-        <Route path="/profile/:login" component={() => <Profile />} />
+        <Route path="/profile/:id" component={() => <Profile />} />
       </Switch>
       <Basement />
-    </>
+    </AutoSignUp>
   );
 }
 

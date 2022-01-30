@@ -3,14 +3,14 @@ import userReducer from './userReducer';
 import questionsReducer from './questionsReducer';
 import multfilmsReducer from './multfilmsReducer';
 import viewedReducer from './viewedReducer';
-import imagesReducer from './imagesReducer';
+import profileReducer from './profileReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   questions: questionsReducer,
   multfilms: multfilmsReducer,
   viewed: viewedReducer,
-  images: imagesReducer,
+  profile: profileReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

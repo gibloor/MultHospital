@@ -41,5 +41,12 @@ CREATE TABLE viewed (
 CREATE TABLE characters (
   id SERIAL PRIMARY KEY,
   multfilm_id INTEGER REFERENCES multfilms (id),
-  name VARCHAR(30),
+  name VARCHAR(30)
+);
+
+CREATE TABLE achievements (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES accounts (id),
+  title INTEGER,
+  degree INTEGER
 );

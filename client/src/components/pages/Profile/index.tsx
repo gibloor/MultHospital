@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 
+import Achievements from './Achievements';
 import Avatar from './Avatar';
+import Statistic from './Statistic';
 
 import './styles.scss';
 
@@ -14,15 +16,12 @@ const Profile = () => {
   return (
     <div className='profile'>
       <div className='profile__left'>
-        <Avatar login={user.login} />
-        <div>
-          achievements
-        </div>
+        <Avatar />
+        <Statistic />
       </div>
       <div className='profile__right'>
-        statistic
+        <Achievements />
       </div>
-
     </div>
   )
 }

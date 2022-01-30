@@ -41,7 +41,8 @@ const MultfilmPage = () => {
         }
       });
     };
-    console.log(params)
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [multfilms]);
 
   return (

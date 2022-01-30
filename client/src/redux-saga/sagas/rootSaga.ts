@@ -4,7 +4,7 @@ import userSagas from './userSagas';
 import questionsSagas from './questionsSagas';
 import multfilmsSagas from './multfilmsSagas';
 import viewedSagas from './viewedSagas';
-import imagesSagas from './imagesSagas';
+import profileSagas from './profileSagas';
 
 export default function* rootSaga() {
   yield all([
@@ -12,6 +12,6 @@ export default function* rootSaga() {
     fork(questionsSagas),
     fork(multfilmsSagas),
     fork(viewedSagas),
-    fork(imagesSagas)
+    fork(profileSagas)
   ]);
 }

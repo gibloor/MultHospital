@@ -13,8 +13,8 @@ import {
   UserInvolvementChange,
   UserInvolvementChangeRequire,
 
-  UserImgChange,
-  UserImgChangeRequire,
+  UserAvatarSave,
+  UserAvatarSaveRequire,
 
   UserFailure,
 
@@ -24,7 +24,8 @@ import {
   Answer,
   Involvement,
   InvolvementDates,
-  ImgTake,
+  Avatar,
+  ImgInfo,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
@@ -40,8 +41,8 @@ export const USER_TESTING_REQUIRE = 'USER_TESTING_REQUIRE';
 export const USER_INVOLVEMENT_CHANGE = 'USER_INVOLVEMENT_CHANGE';
 export const USER_INVOLVEMENT_CHANGE_REQUIRE = 'USER_INVOLVEMENT_CHANGE_REQUIRE';
 
-export const USER_IMG_CHANGE = 'USER_IMG_CHANGE';
-export const USER_IMG_CHANGE_REQUIRE = 'USER_IMG_CHANGE_REQUIRE';
+export const USER_AVATAR_SAVE = 'USER_AVATAR_SAVE';
+export const USER_AVATAR_SAVE_REQUIRE = 'USER_AVATAR_SAVE_REQUIRE';
 
 export const USER_FAILURE = 'USER_AUTH_FAILURE';
 
@@ -98,14 +99,17 @@ export const userInvolvementChangeRequire = (
   payload,
 });
 
-export const userImgChange = (): UserImgChange => ({
-  type: USER_IMG_CHANGE
+export const userAvatarSave = (
+  payload: Avatar
+): UserAvatarSave => ({
+  type: USER_AVATAR_SAVE,
+  payload,
 });
-export const userImgChangeRequire = (
-  payload: ImgTake,
-): UserImgChangeRequire => ({
-  type: USER_IMG_CHANGE_REQUIRE,
-  payload
+export const userAvatarSaveRequire = (
+  payload: ImgInfo,
+): UserAvatarSaveRequire => ({
+  type: USER_AVATAR_SAVE_REQUIRE,
+  payload,
 });
 
 export const userFailure = (

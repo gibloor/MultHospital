@@ -2,6 +2,7 @@ const express = require('express');
 const accounts = express.Router();
 const jsw = require('jsonwebtoken');
 const fs = require('fs');
+
 const pool = require("./../db");
 
 accounts.put(`/acceptAnswer/:id`, async (req, res) => {
@@ -23,16 +24,25 @@ const tokenCreate = (account, res) => {
       {id: user.id},
       'GibloorKey'
     );
-    res.json({
-      name: user.name,
-      image: user.image,
-      involvement: user.involvement,
-      test_passed: user.test_passed,
-      id: user.id,
-      login: user.login,
-      position: user.position,
-      token,
-    })
+
+    fs.readFile(`./app_data/images/users/${user.login}/avatar.png`, (err, data) => {
+      if (data) {
+        let base64 = Buffer.from(data).toString('base64');
+        base64 = 'data:image/png;base64,' + base64;
+        res.json({
+          ...user,
+          avatar: base64,
+          token,
+        })
+      } else {
+        res.json({
+          ...user,
+          avatar: '',
+          token,
+        })
+      }
+    });
+
   } else res.json('Wrong dates')
 } 
 
@@ -47,12 +57,16 @@ accounts.post('/registration', async (req, res) => {
         "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
         [name, login, password]
       );
+
       fs.mkdir(`./app_data/images/users/${login}`, (err) => {
         if (err) throw err;
         console.log('The dir has been created!');
       });
+      
       tokenCreate(account, res);
-    } else {res.json('This login is already use')}
+    } else {
+      res.json('This login is already use')
+    }
   } catch (err) {
     console.error(err.message);
   }

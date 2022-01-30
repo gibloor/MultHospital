@@ -3,6 +3,7 @@ import {
   put,
   call,
   takeLatest,
+  takeEvery,
 } from 'redux-saga/effects';
 
 import {
@@ -11,33 +12,31 @@ import {
   USER_TESTING_REQUIRE,
   USER_DEAUTH_REQUIRE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
-  USER_IMG_CHANGE_REQUIRE,
+  USER_AVATAR_SAVE_REQUIRE,
 
   userFailure,
   userAuth,
   userTesting,
   userDeauth,
   userInvolvementChange,
-  userImgChange,
+  userAvatarSave
 } from '../actions/userActions';
 
 import {
   UserAuthRequire,
   UserAutoAuthRequire,
-  UserImgChangeRequire,
   UserInfoTaked,
   UserInvolvementChangeRequire,
-  UserTestingRequire
+  UserTestingRequire,
+  UserAvatarSaveRequire,
 } from '../types/userTypes';
 
 import axios, { AxiosResponse } from 'axios';
-import { avatarTakeRequire } from 'redux-saga/actions/imagesActions';
 
 function* authSaga(dates: UserInfoTaked) {
   try {
     yield put(userAuth(dates));
     localStorage.setItem('token', dates.token);
-    yield put(avatarTakeRequire({id: dates.id, type: 'ownAvatar'}))
   } catch (e: any) {
     yield put(
       userFailure({error: e.message}),
@@ -127,14 +126,14 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   }
 }
 
-function* changeAvatarSaga(action: UserImgChangeRequire) {
+function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   try {
-    const { login, img } = action.payload;
-    const saveImg = () => axios.post<string[]>(`http://localhost:5000/images/saveAvatar/${login}`,
-      { img }
+    const { id, avatar } = action.payload;
+    const saveAvatar = () => axios.post<string[]>(`http://localhost:5000/profile/saveAvatar/${id}`,
+      { avatar }
     );
-    yield call(saveImg);
-    yield put(userImgChange());
+    yield put(userAvatarSave({avatar: avatar}));
+    const response: AxiosResponse<string> = yield call(saveAvatar);
   } catch (e: any) {
     yield put(
       userFailure({
@@ -151,7 +150,7 @@ function* userSagas() {
     takeLatest(USER_TESTING_REQUIRE, testingSaga),
     takeLatest(USER_DEAUTH_REQUIRE, deuthSaga),
     takeLatest(USER_INVOLVEMENT_CHANGE_REQUIRE, changeInvolvementSaga),
-    takeLatest(USER_IMG_CHANGE_REQUIRE, changeAvatarSaga),
+    takeEvery(USER_AVATAR_SAVE_REQUIRE, avatarSaveSaga),
   ]);
 }
 

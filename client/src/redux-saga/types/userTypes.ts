@@ -12,8 +12,8 @@ import {
   USER_INVOLVEMENT_CHANGE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
 
-  USER_IMG_CHANGE,
-  USER_IMG_CHANGE_REQUIRE,
+  USER_AVATAR_SAVE,
+  USER_AVATAR_SAVE_REQUIRE,
 
   USER_FAILURE,
 } from "../actions/userActions";
@@ -35,7 +35,8 @@ export interface UserInfo extends Involvement {
   name: string,
   test_passed: boolean,
   login: string,
-  position: string
+  position: string,
+  avatar: string,
 }
 export interface Token {
   token: string,
@@ -54,10 +55,11 @@ export interface UserAnswer extends Answer {
   level: string,
   topic: string,
 }
-
-export interface ImgTake {
-  img: string,
-  login: string,
+export interface Avatar {
+  avatar: string,
+}
+export interface ImgInfo extends Avatar {
+  id: number
 }
 
 export interface UserAuth {
@@ -98,12 +100,13 @@ export interface UserInvolvementChangeRequire {
   payload: InvolvementDates,
 }
 
-export interface UserImgChange {
-  type: typeof USER_IMG_CHANGE,
+export interface UserAvatarSave {
+  type: typeof USER_AVATAR_SAVE,
+  payload: Avatar,
 }
-export interface UserImgChangeRequire {
-  type: typeof USER_IMG_CHANGE_REQUIRE,
-  payload: ImgTake,
+export interface UserAvatarSaveRequire {
+  type: typeof USER_AVATAR_SAVE_REQUIRE,
+  payload: ImgInfo,
 }
 
 export interface UserFailure {
@@ -121,6 +124,6 @@ export type UserAuthActions =
 | UserTestingRequire
 | UserInvolvementChange
 | UserInvolvementChangeRequire
-| UserImgChange
-| UserImgChangeRequire
+| UserAvatarSave
+| UserAvatarSaveRequire
 | UserFailure;

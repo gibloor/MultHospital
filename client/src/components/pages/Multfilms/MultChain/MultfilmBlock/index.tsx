@@ -18,7 +18,9 @@ const MultfilmBlock = (props: Props) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    !multfilm.viewed && props.viewedChange(multfilm.name), multfilm.viewed = true
+    !multfilm.viewed && props.viewedChange(multfilm.name), multfilm.viewed = true;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

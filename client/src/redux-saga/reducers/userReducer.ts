@@ -14,8 +14,8 @@ import {
   USER_INVOLVEMENT_CHANGE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
 
-  USER_IMG_CHANGE,
-  USER_IMG_CHANGE_REQUIRE,
+  USER_AVATAR_SAVE,
+  USER_AVATAR_SAVE_REQUIRE,
     
   USER_FAILURE,
 } from '../actions/userActions';
@@ -36,6 +36,7 @@ const initialState: InitialState = {
   involvement: '',
   login: '',
   position: '',
+  avatar: '',
 };
 
 const userReducer: Reducer<InitialState, UserAuthActions> = (
@@ -52,6 +53,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         involvement: action.payload.involvement,
         login: action.payload.login,
         position: action.payload.position,
+        avatar: action.payload.avatar,
         pending: false,
       };
 
@@ -75,6 +77,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         image: false,
         test_passed: false,
         involvement: '',
+        pending: false,
       };
     case USER_DEAUTH_REQUIRE:
       return {
@@ -107,16 +110,19 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         pending: true,
       };
 
-    case USER_IMG_CHANGE:
+    
+    case USER_AVATAR_SAVE:
       return {
         ...state,
+        avatar: action.payload.avatar,
         pending: false,
       };
-    case USER_IMG_CHANGE_REQUIRE:
+    case USER_AVATAR_SAVE_REQUIRE:
       return {
         ...state,
         pending: true,
       };
+  
 
     case USER_FAILURE:
       return {

@@ -51,6 +51,8 @@ const FormAuthorization = (props:Props) => {
       || (formType === 'registration' && setError('already registered')
       || formType === 'login' && setError('wrond dates')
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authInfo]);
 
   return (

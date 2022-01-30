@@ -18,7 +18,6 @@ const GreetNew = () => {
   const userId = useSelector(getAccountIdSelector);
 
   const dispatch = useDispatch();
-
   const { t } = useTranslation();
 
   const chooser = [
@@ -40,8 +39,10 @@ const GreetNew = () => {
   ];
 
   const saveInvolvement = (involvement: string) => {
-    dispatch(userInvolvementChangeRequire({involvement: involvement, id: userId}));
-  }
+    dispatch(userInvolvementChangeRequire({
+      involvement: involvement, id: userId
+    }));
+  };
 
   return (
     <div className="greet">

@@ -43,6 +43,8 @@ const Survey = (props: Props) => {
 
   useEffect(() => {
     timer < 0 && setCounter(counter + 1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[timer]);
 
   useEffect(() => {
@@ -50,6 +52,8 @@ const Survey = (props: Props) => {
       const action = {level, topic: topic}
       dispatch(questionsTakeRequest(action));
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.test_passed, user.involvement]);
 
   useEffect(() => {
@@ -61,6 +65,8 @@ const Survey = (props: Props) => {
         dispatch(userTestingRequire(answer));
       }
     }
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   return (
