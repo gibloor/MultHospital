@@ -12,7 +12,7 @@ const GreetNew = () => {
   interface Select {
     text: string,
     image: string,
-    select: string,
+    level: number,
   }
 
   const userId = useSelector(getAccountIdSelector);
@@ -24,23 +24,23 @@ const GreetNew = () => {
     {
       text: 'text1',
       image: 'https://i.ibb.co/1dyPjPX/first-List-Face-Up.png',
-      select: 'common',
+      level: 1,
     },
     {
       text: 'text2',
       image: 'https://i.ibb.co/0VfV5Hv/first-List-Futurama.png',
-      select: 'uncommon',
+      level: 2,
     },
     {
       text: 'text3',
       image: 'https://i.ibb.co/1fGdYLC/first-List-Watashi.png',
-      select: 'rare',
+      level: 3,
     },
   ];
 
-  const saveInvolvement = (involvement: string) => {
+  const saveInvolvement = (level: number) => {
     dispatch(userInvolvementChangeRequire({
-      involvement: involvement, id: userId
+      involvement: level, id: userId
     }));
   };
 
@@ -57,15 +57,15 @@ const GreetNew = () => {
           <div
             role="button"
             className="greet__answer"
-            key={choose.select}
+            key={choose.level}
             tabIndex={0}
-            onKeyPress={() => (saveInvolvement(choose.select))}
-            onClick={() => (saveInvolvement(choose.select))}
+            onKeyPress={() => (saveInvolvement(choose.level))}
+            onClick={() => (saveInvolvement(choose.level))}
           >
             <div className="greet__answer_carcas">
               <img
                 className="greet__answer_image"
-                alt={choose.select}
+                alt={choose.text}
                 src={choose.image}
               />
             </div>

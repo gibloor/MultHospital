@@ -24,7 +24,7 @@ const Navigation = (props: Props) => {
   const { t } = useTranslation();
 
   const closeMenu = () => {
-    setMenuVisible(false)
+    setMenuVisible(false);
   };
 
   return (
@@ -56,8 +56,8 @@ const Navigation = (props: Props) => {
                     tabIndex={0}
                     className="navigation__button"
                     key={button.name}
-                    onKeyPress={() => (props.changeAuthVariant('something'))}
-                    onClick={() => (props.changeAuthVariant('something'))}
+                    onKeyPress={() => (props.changeAuthVariant('login'))}
+                    onClick={() => (props.changeAuthVariant('login'))}
                   >
                     {t(`head.buttons.${button.name}`)}
                   </span>

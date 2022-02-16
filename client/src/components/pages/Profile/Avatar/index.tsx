@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Cropper from 'react-cropper';
-import { useParams } from 'react-router';
 
-import { avatarSelector } from 'redux-saga/selectors/profileSelector';
-import { profileTakeRequire } from 'redux-saga/actions/profileActions';
 import { userAvatarSaveRequire } from 'redux-saga/actions/userActions';
-
+import { avatarSelector } from 'redux-saga/selectors/profileSelector';
+import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 
 import 'cropperjs/dist/cropper.css';
 import './styles.scss';
 
-interface Params {
-  id: string,
+interface Props {
+  id: number,
 }
 
-const Avatar = () => {
+const Avatar = (props: Props) => {
 
   const dispatch = useDispatch();
-  const params:Params = useParams();
   const avatar = useSelector(avatarSelector);
+  const user = useSelector(getAccountSelector);
 
   const [drag, setDrag] = useState(false);
   const [image, setImage] = useState<any>();
   const [crop, setCrop] = useState<any>();
 
-  const id = Number(params.id);
+  const id = props.id;
 
   const settings = {
     src: image,
@@ -63,9 +61,10 @@ const Avatar = () => {
     e.preventDefault();
     let file = e.dataTransfer.files[0];
     setDrag(false);
-    if (file.type === 'image/png') {
+    if (file.type === 'image/png' || file.type === 'image/jpeg') {
       takeImg(file);
     }
+
   }
   const onDrop = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -87,44 +86,45 @@ const Avatar = () => {
     e.currentTarget.src = '/assets/images/users/default.png';
   }
 
-  useEffect(() => {
-    dispatch(profileTakeRequire({ id: id }));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
     <div className='avatar drop_avatar' >
       {image &&
-      <>
-        <Cropper className='avatar__img' {...settings} />
-        <div className='avatar__crop' onClick={() => getCrop()}>Обрезать</div>
-      </>
+        <>
+          <Cropper className='avatar__img' {...settings} />
+          <div className='avatar__crop' onClick={() => getCrop()}>Обрезать</div>
+        </>
+      || user.id === id &&
+        <>
+          <img
+            className='avatar__img'
+            src={user.avatar}
+            alt='avatar'
+            onError={(e) => (imageCheck(e))}
+          />
+          <span className='avatar__message'>
+            drop you img
+          </span> 
+          <label
+            className='avatar__drop_case drop_avatar'
+            onDragLeave={e => dragLeave(e)}
+            onDragOver={e => dragOver(e)}
+            onDrop={e => onDropHandler(e)}
+            htmlFor='drop_box'
+          />
+          {drag &&
+            <div className='avatar__drop_fon drop_avatar'>
+              <div className='avatar__drop_effect' />
+            </div>
+          }
+          <input accept="image/png, image/jpeg" onChange={e => onDrop(e)} id='drop_box' type='file' />
+        </>
       ||
-      <>
         <img
           className='avatar__img'
           src={avatar}
           alt='avatar'
           onError={(e) => (imageCheck(e))}
         />
-        <span className='avatar__message'>
-          drop you img
-        </span> 
-        <label
-          className='avatar__drop_case drop_avatar'
-          onDragLeave={e => dragLeave(e)}
-          onDragOver={e => dragOver(e)}
-          onDrop={e => onDropHandler(e)}
-          htmlFor='drop_box'
-        />
-        {drag &&
-          <div className='avatar__drop_fon drop_avatar'>
-            <div className='avatar__drop_effect' />
-          </div>
-        }
-        <input accept='image/png' onChange={e => onDrop(e)} id='drop_box' type='file' />
-      </>
       }
     </div>
   )

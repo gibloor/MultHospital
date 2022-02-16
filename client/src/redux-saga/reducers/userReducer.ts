@@ -16,6 +16,8 @@ import {
 
   USER_AVATAR_SAVE,
   USER_AVATAR_SAVE_REQUIRE,
+
+  USER_ERROR_CLEANING,
     
   USER_FAILURE,
 } from '../actions/userActions';
@@ -30,10 +32,12 @@ interface InitialState extends UserInfo {
 const initialState: InitialState = {
   error: false,
   pending: false,
+  errorType: '',
+
   id: 0,
   name: '',
   test_passed: false,
-  involvement: '',
+  involvement: 0,
   login: '',
   position: '',
   avatar: '',
@@ -54,6 +58,8 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         login: action.payload.login,
         position: action.payload.position,
         avatar: action.payload.avatar,
+
+        errorType: action.payload.errorType,
         pending: false,
       };
 
@@ -76,7 +82,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         name: '',
         image: false,
         test_passed: false,
-        involvement: '',
+        involvement: 0,
         pending: false,
       };
     case USER_DEAUTH_REQUIRE:
@@ -123,6 +129,11 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         pending: true,
       };
   
+    case USER_ERROR_CLEANING:
+      return {
+        ...state,
+        errorType: '',
+      }
 
     case USER_FAILURE:
       return {

@@ -13,13 +13,14 @@ import {
   USER_DEAUTH_REQUIRE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
   USER_AVATAR_SAVE_REQUIRE,
+  USER_ERROR_CLEANING,
 
   userFailure,
   userAuth,
   userTesting,
   userDeauth,
   userInvolvementChange,
-  userAvatarSave
+  userAvatarSave,
 } from '../actions/userActions';
 
 import {
@@ -50,7 +51,7 @@ function* hendAuthSaga(action: UserAuthRequire) {
     const authorization = () => axios.post(`http://localhost:5000/accounts/${typeForm}`,
       { ...dates });
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization);
-    yield authSaga({...response.data});
+    yield authSaga(response.data);
   } catch (e: any) {
     yield put(
       userFailure({
@@ -143,6 +144,18 @@ function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   }
 }
 
+function* errorCleaningSaga() {
+  try {
+    console.log('bb error');
+  } catch (e: any) {
+    yield put(
+      userFailure({
+        error: e.message,
+      }),
+    );
+  }
+}
+
 function* userSagas() {
   yield all([
     takeLatest(USER_AUTH_REQUIRE, hendAuthSaga),
@@ -151,6 +164,7 @@ function* userSagas() {
     takeLatest(USER_DEAUTH_REQUIRE, deuthSaga),
     takeLatest(USER_INVOLVEMENT_CHANGE_REQUIRE, changeInvolvementSaga),
     takeEvery(USER_AVATAR_SAVE_REQUIRE, avatarSaveSaga),
+    takeEvery(USER_ERROR_CLEANING, errorCleaningSaga)
   ]);
 }
 

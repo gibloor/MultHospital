@@ -26,6 +26,7 @@ import {
   InvolvementDates,
   Avatar,
   ImgInfo,
+  UserErrorCleaning,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
@@ -43,6 +44,8 @@ export const USER_INVOLVEMENT_CHANGE_REQUIRE = 'USER_INVOLVEMENT_CHANGE_REQUIRE'
 
 export const USER_AVATAR_SAVE = 'USER_AVATAR_SAVE';
 export const USER_AVATAR_SAVE_REQUIRE = 'USER_AVATAR_SAVE_REQUIRE';
+
+export const USER_ERROR_CLEANING = 'USER_ERROR_CLEANING';
 
 export const USER_FAILURE = 'USER_AUTH_FAILURE';
 
@@ -110,6 +113,10 @@ export const userAvatarSaveRequire = (
 ): UserAvatarSaveRequire => ({
   type: USER_AVATAR_SAVE_REQUIRE,
   payload,
+});
+
+export const userErrorCleaning = (): UserErrorCleaning => ({
+  type: USER_ERROR_CLEANING
 });
 
 export const userFailure = (

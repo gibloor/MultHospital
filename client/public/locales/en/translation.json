@@ -10,8 +10,31 @@
     },
     "authentication": {
       "name": "Name",
+      "email": "E-mail",
       "login": "Login",
-      "password": "Password"
+      "password": "Password",
+      "errors": {
+        "name": {
+          "required": "1",
+          "invalid": "2"
+        },
+        "email": {
+          "required": "1",
+          "invalid": "2"
+        },
+        "login": {
+          "required": "1",
+          "invalid": "2"
+        },
+        "password": {
+          "required": "1",
+          "invalid": "2"
+        },
+        "used": {
+          "signIn": "Wrong dates",
+          "signUp": "Такие логин или почта уже используются end"
+        }
+      }
     }
   },
   "greetNew": {

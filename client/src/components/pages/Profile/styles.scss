@@ -2,19 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-
-  &__left {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  &__right {
-    width: 40%;
-  }
 }
-
 @keyframes extension {
   0% {
     width: 10px;

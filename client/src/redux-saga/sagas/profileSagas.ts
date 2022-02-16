@@ -20,10 +20,16 @@ import axios, { AxiosResponse } from 'axios';
 
 function* profileTakeSaga(action: ProfileTakeRequire ) {
   try {
-    const takeProfile = () => axios.get<string[]>(`http://localhost:5000/profile/takeInfo/${action.payload.id}`);
+    const { id } = action.payload;
+    const takeProfile = () => axios.get<string[]>(`http://localhost:5000/profile/takeInfo/${id}`);
     const response: AxiosResponse<Profile> = yield call(takeProfile);
-    const { id, avatar, achievements, statistic, } = response.data;
-    // yield put(profileTake({ avatar: avatar }));
+    const { avatar, achievements } = response.data;
+    yield put(profileTake({
+      id: id,
+      avatar: avatar,
+      achievements: achievements,
+      statistic: []
+    }));
   } catch (e: any) {
     yield put(
       profileFailure({

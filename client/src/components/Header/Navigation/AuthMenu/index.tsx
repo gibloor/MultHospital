@@ -31,7 +31,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="head__button"
+            className="auth__button"
             onKeyPress={() => (
               props.changeAuthVariant('login'),
               props.closeMenu()
@@ -47,7 +47,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="head__button"
+            className="auth__button"
             onKeyPress={() => (
               props.changeAuthVariant('registration'),
               props.closeMenu()
@@ -62,7 +62,7 @@ const AuthMenu = (props: Props) => {
         </>
         || 
         <>
-          <Link to={`profile/${user.id}`} className='auth_menu__profile'>
+          <Link to={`/profile/${user.id}`} className='auth_menu__profile'>
             <img
               className='auth_menu__avatar'
               src={user.avatar}
@@ -76,7 +76,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="head__button"
+            className="auth__button"
             onKeyPress={() => (
               localStorage.removeItem('token'),
               dispatch(userDeauthRequire()),

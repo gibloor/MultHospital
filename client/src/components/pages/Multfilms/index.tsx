@@ -11,9 +11,10 @@ import MultChain from './MultChain';
 import './styles.scss';
 
 const Multfilms = () => {
+
+  const authInfo = useSelector(getAccountSelector);
   const pendingAccount = useSelector(getAccountPendingSelector);
   const pendingMultfilms = useSelector(getMultfilmsPendingSelector);
-  const authInfo = useSelector(getAccountSelector);
 
   return (
     <div className="multfilms">

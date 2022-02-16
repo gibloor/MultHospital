@@ -9,9 +9,10 @@ import AboutProject from 'components/pages/AboutProject';
 import Setting from 'components/pages/Setting';
 import Multfilm from 'components/pages/Multfilms/MultChain/MultfilmPage';
 import Profile from 'components/pages/Profile';
+import AutoSignUp from 'components/AutoSignUp';
+import TakeMultfilms from 'components/TakeMultfilms';
 
 import './App.scss';
-import AutoSignUp from 'components/AutoSignUp';
 
 function App() {
 
@@ -21,10 +22,12 @@ function App() {
       <Switch>
         <Route exact path="/" component={() => <Main />} />
         <Route path="/aboutProject" component={() => <AboutProject />} />
-        <Route path="/setting" component={() => <Setting />} />
-        <Route exact path="/multfilms" component={() => <Multfilms />} />
-        <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
         <Route path="/profile/:id" component={() => <Profile />} />
+        <Route path="/setting" component={() => <Setting />} />
+        <TakeMultfilms>
+          <Route exact path="/multfilms" component={() => <Multfilms />} />
+          <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
+        </TakeMultfilms>
       </Switch>
       <Basement />
     </AutoSignUp>

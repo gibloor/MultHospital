@@ -7,7 +7,7 @@ import {
 interface QuestionForm {
   id: number,
   topic: string,
-  level: string,
+  level: number,
   question: string,
   image: string,
   serial_num: number,
@@ -29,7 +29,7 @@ export interface Questions {
 }
 
 export interface QuestionsTopic {
-  level: string,
+  level: number,
   topic: string,
 }
 

@@ -15,6 +15,8 @@ import {
   USER_AVATAR_SAVE,
   USER_AVATAR_SAVE_REQUIRE,
 
+  USER_ERROR_CLEANING,
+
   USER_FAILURE,
 } from "../actions/userActions";
 
@@ -23,13 +25,15 @@ export interface UserAuthDates {
   login: string,
   password: string,
 }
+export interface ErrorType {
+  errorType: string
+}
 export interface Involvement {
-  involvement: string,
+  involvement: number,
 }
 export interface InvolvementDates extends Involvement {
   id: number,
 }
-
 export interface UserInfo extends Involvement {
   id: number,
   name: string,
@@ -37,6 +41,8 @@ export interface UserInfo extends Involvement {
   login: string,
   position: string,
   avatar: string,
+
+  errorType: string,
 }
 export interface Token {
   token: string,
@@ -52,7 +58,7 @@ export interface Answer {
 }
 export interface UserAnswer extends Answer {
   userId: number,
-  level: string,
+  level: number,
   topic: string,
 }
 export interface Avatar {
@@ -109,6 +115,10 @@ export interface UserAvatarSaveRequire {
   payload: ImgInfo,
 }
 
+export interface UserErrorCleaning {
+  type: typeof USER_ERROR_CLEANING;
+}
+
 export interface UserFailure {
   type: typeof USER_FAILURE,
   payload: {error: boolean},
@@ -126,4 +136,5 @@ export type UserAuthActions =
 | UserInvolvementChangeRequire
 | UserAvatarSave
 | UserAvatarSaveRequire
+| UserErrorCleaning
 | UserFailure;

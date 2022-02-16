@@ -26,10 +26,9 @@ multfilms.get('/:id', async (req, res) =>{
 
     let sortedMults = {};
     let delay;
-    const branches = ['common', 'uncommon', 'rare'];
-
+    const branches = [1, 2, 3];
     for (let i= 0 ; i < branches.length ; i++) {
-      sortedMults[branches[i]] = allMults.rows.filter(multfilm => multfilm.involvement === branches[i]).sort(function(a, b) {
+      sortedMults[branches[i]] = allMults.rows.filter(multfilm => multfilm.involvement == branches[i]).sort(function(a, b) {
         return a.watched === b.watched ? 0 : a.watched ? -1 : 1;
       })
 

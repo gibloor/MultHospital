@@ -1,7 +1,8 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
 
-import { getAccountSelector } from 'redux-saga/selectors/userSelector';
+import { profileTakeRequire } from 'redux-saga/actions/profileActions';
 
 import Achievements from './Achievements';
 import Avatar from './Avatar';
@@ -9,19 +10,28 @@ import Statistic from './Statistic';
 
 import './styles.scss';
 
+interface Params {
+  id: string,
+}
+
 const Profile = () => {
 
-  const user = useSelector(getAccountSelector);
+  const dispatch = useDispatch();
+  const params:Params = useParams();
+
+  const id = Number(params.id);
+
+  useEffect(() => {
+    dispatch(profileTakeRequire({ id: id }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='profile'>
-      <div className='profile__left'>
-        <Avatar />
-        <Statistic />
-      </div>
-      <div className='profile__right'>
-        <Achievements />
-      </div>
+      <Avatar id={id} />
+      <Statistic />
+      <Achievements />
     </div>
   )
 }

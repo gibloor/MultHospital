@@ -43,19 +43,19 @@ const tokenCreate = (account, res) => {
       }
     });
 
-  } else res.json('Wrong dates')
+  } else res.json({errorType: 'signIn'})
 } 
 
 accounts.post('/registration', async (req, res) => {
   try {
-    const { name, login, password } = req.body;
+    const { name, login, password, email, mailing } = req.body;
     const account = await pool.query(
       "SELECT * FROM accounts WHERE login = $1", [login]
     );
     if (!account.rows[0]){
       const account = await pool.query(
-        "INSERT INTO accounts (name, login, password) VALUES($1, $2, $3) RETURNING *",
-        [name, login, password]
+        "INSERT INTO accounts (name, login, password, email, mailing) VALUES($1, $2, $3, $4, $5) RETURNING *",
+        [name, login, password, email, mailing]
       );
 
       fs.mkdir(`./app_data/images/users/${login}`, (err) => {
@@ -65,7 +65,7 @@ accounts.post('/registration', async (req, res) => {
       
       tokenCreate(account, res);
     } else {
-      res.json('This login is already use')
+      res.json({errorType: 'signUp'})
     }
   } catch (err) {
     console.error(err.message);
