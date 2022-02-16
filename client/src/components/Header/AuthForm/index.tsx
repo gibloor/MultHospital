@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-import { userAuthRequire } from 'redux-saga/actions/userActions';
+import { userAuthRequire, userErrorCleaning } from 'redux-saga/actions/userActions';
 import { getAccountSelector, getAuthErrorTypeSelector } from 'redux-saga/selectors/userSelector';
 
 import inputs from './inputs';
@@ -101,9 +101,11 @@ const FormAuthorization = (props:Props) => {
                     />
                     {errors[input.name] && touched[input.name] &&
                       <div className="auth__error_case">
-                        <span className="auth__error_text">
-                          {t(`head.authentication.errors.${input.name}.${errors[input.name]}`)}
-                        </span>
+                        <div className="auth__error_block">
+                          <span className="auth__error_text">
+                            {t(`head.authentication.errors.${input.name}.${errors[input.name]}`)}
+                          </span>
+                        </div>
                       </div>
                     }
                   </div>
@@ -122,19 +124,15 @@ const FormAuthorization = (props:Props) => {
                   </label>
                 </div>
                 ||
-                <span onClick={() => setTypeForm('registration')}>
+                <span onClick={() => ( dispatch(userErrorCleaning()), setTypeForm('registration') )}>
                   Sign Up
                 </span>
               }
 
               {error &&
-                <div className="auth__error_case">
-                  <div className="auth__error_block">
-                    <span className="auth__error_text">
-                      {t(`head.authentication.errors.used.${error}`)}
-                    </span>
-                  </div>
-                </div>
+                <span className="auth__global_error">
+                  {t(`head.authentication.errors.used.${error}`)}
+                </span>
               }
               
             </Form>
