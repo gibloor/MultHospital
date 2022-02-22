@@ -3,14 +3,26 @@ import {
   put,
   call,
   takeLatest,
+  takeEvery,
 } from 'redux-saga/effects';
+
+import axios, { AxiosResponse } from 'axios';
+
 import {
   MULTFILM_TAKE_REQUARE,
+  MULTFILM_TESTING_REQUIRE,
   multfilmsTake,
   multfilmsFailure,
+  multfilmTesting,
 } from '../actions/multfilmsActions';
-import { MultfilmList, MultfilmTakeRequare } from '../types/multfilmsTypes'
-import axios, { AxiosResponse } from 'axios';
+
+import {
+  MultfilmList,
+  MultfilmTakeRequare,
+  MultfilmTestingRequire
+} from '../types/multfilmsTypes';
+
+import { userTestingRequire } from 'redux-saga/actions/userActions';
 
 function* multfilmTakeSaga(action: MultfilmTakeRequare) {
   try {
@@ -26,8 +38,36 @@ function* multfilmTakeSaga(action: MultfilmTakeRequare) {
   }
 }
 
+function* multfilmTestingSaga(action: MultfilmTestingRequire) {
+  try {
+    const { userId, userLevel, topic, features, questLevel } = action.payload;
+
+    const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
+      { features, level: userLevel, topic }
+    );
+    const response: AxiosResponse<string> = yield call(acceptAnswer);
+    
+    if (topic !== 'newcomers' && questLevel) {
+      const topic = features[0];
+      yield put(multfilmTesting({ topic, level:questLevel }));
+    } else {
+      yield put(userTestingRequire());
+    }
+
+  } catch (e: any) {
+    yield put(
+      multfilmsFailure({
+        error: e.message,
+      }),
+    );
+  }
+}
+
 function* multfilmsSagas() {
-  yield all([takeLatest(MULTFILM_TAKE_REQUARE, multfilmTakeSaga)]);
+  yield all([
+    takeLatest(MULTFILM_TAKE_REQUARE, multfilmTakeSaga),
+    takeEvery(MULTFILM_TESTING_REQUIRE, multfilmTestingSaga)
+  ]);
 }
 
 export default multfilmsSagas;

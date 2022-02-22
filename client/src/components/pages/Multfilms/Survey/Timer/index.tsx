@@ -1,21 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './styles.scss';
 
 interface Props {
-  timer: number,
-  changeTimer: () => void,
+  counter: number
+  counterChange: () => void,
 }
 
-const Timer = (props:Props) => {
+const Timer = (props: Props) => {
 
-  const { timer, changeTimer } = props 
+  const [timer, setTimer] = useState(15);
+  const { counterChange, counter } = props;
 
   useEffect(() => {
-    setTimeout(
-      () => changeTimer(), 1000
-    )
-  });
+    if (timer < 0) {
+      counterChange();
+    } else {
+      setTimeout(() => setTimer(timer - 1), 1000);
+    }
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timer]);
+
+  useEffect(() => {
+    setTimer(15);
+  },[counter])
 
   return (
     <span>

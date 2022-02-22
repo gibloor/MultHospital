@@ -6,9 +6,6 @@ import {
   USER_DEAUTH,
   USER_DEAUTH_REQUIRE,
 
-  USER_TESTING,
-  USER_TESTING_REQUIRE,
-
   USER_INVOLVEMENT_CHANGE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
 
@@ -16,6 +13,10 @@ import {
   USER_AVATAR_SAVE_REQUIRE,
 
   USER_ERROR_CLEANING,
+  USER_ERROR_CLEANING_REQUIRE,
+
+  USER_TESTING,
+  USER_TESTING_REQUIRE,
 
   USER_FAILURE,
 } from "../actions/userActions";
@@ -29,7 +30,7 @@ export interface ErrorType {
   errorType: string
 }
 export interface Involvement {
-  involvement: number,
+  level: number,
 }
 export interface InvolvementDates extends Involvement {
   id: number,
@@ -41,7 +42,6 @@ export interface UserInfo extends Involvement {
   login: string,
   position: string,
   avatar: string,
-
   errorType: string,
 }
 export interface Token {
@@ -53,14 +53,6 @@ export interface AuthDates {
 }
 export interface UserInfoTaked extends UserInfo, Token {}
 
-export interface Answer {
-  features: string[],
-}
-export interface UserAnswer extends Answer {
-  userId: number,
-  level: number,
-  topic: string,
-}
 export interface Avatar {
   avatar: string,
 }
@@ -90,11 +82,9 @@ export interface UserDeauthRequire {
 
 export interface UserTesting {
   type: typeof USER_TESTING,
-  payload: Answer,
 }
 export interface UserTestingRequire {
   type: typeof USER_TESTING_REQUIRE,
-  payload: UserAnswer,
 }
 
 export interface UserInvolvementChange {
@@ -118,6 +108,9 @@ export interface UserAvatarSaveRequire {
 export interface UserErrorCleaning {
   type: typeof USER_ERROR_CLEANING;
 }
+export interface UserErrorCleaningRequire {
+  type: typeof USER_ERROR_CLEANING_REQUIRE;
+}
 
 export interface UserFailure {
   type: typeof USER_FAILURE,
@@ -137,4 +130,5 @@ export type UserAuthActions =
 | UserAvatarSave
 | UserAvatarSaveRequire
 | UserErrorCleaning
+| UserErrorCleaningRequire
 | UserFailure;

@@ -92,7 +92,7 @@ const Characters = (props:Props) => {
                 <div className="characters__block">
                   <div className="characters__head">
                     <span className="characters__name">
-                      {t(`multfilms.personal.${multName}.characters.${character.name}.name`)}
+                      {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                     </span>
                     <img
                       className="characters__avatar"
@@ -110,10 +110,10 @@ const Characters = (props:Props) => {
                       <div className="characters__text_container">
                         <div className="characters__text">
                             <p className="characters__text_name">
-                              {t(`multfilms.personal.${multName}.characters.${character.name}.name`)}
+                              {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                             </p>
                             <p className="characters__text_info">
-                            {t(`multfilms.personal.${multName}.characters.${character.name}.description`)}
+                            {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
                             </p>
                         </div>
                       </div>

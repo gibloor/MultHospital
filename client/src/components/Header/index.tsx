@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { userErrorCleaning } from 'redux-saga/actions/userActions';
+import { userErrorCleaningRequire } from 'redux-saga/actions/userActions';
 
 import Logo from './Logo';
 import Navigation from './Navigation';
@@ -17,7 +17,7 @@ const Header = () => {
 
   const authClose = () => {
     setAuthVariant('');
-    dispatch(userErrorCleaning());
+    dispatch(userErrorCleaningRequire());
   };
   const changeAuthVariant = (variant:string) => {
     setAuthVariant(variant);

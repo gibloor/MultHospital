@@ -11,17 +11,24 @@
   &__image {
     height: 400px;
   }
+  
   &__answers {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
   }
+
   &__answer {
     height: 30px;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin: 10px 10px 0px 0px;
+    padding: 10px;
     cursor: pointer;
+    background-color: black;
+  }
+
+  &__answer_button {
+    visibility: hidden;
   }
 }
 
@@ -31,6 +38,7 @@
     &__form {
       margin-top: 20px;
     }
+
     &__image {
       max-height: 300px;
       max-width: 100%;

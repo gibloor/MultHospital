@@ -20,14 +20,14 @@ CREATE TABLE accounts (
   image VARCHAR(250),
   features VARCHAR(20)[],
   test_passed BOOLEAN,
-  involvement VARCHAR(20),
+  level VARCHAR(20),
   acsess_token VARCHAR(255),
 );
 
 CREATE TABLE multfilms (
   id SERIAL PRIMARY KEY,
   logo VARCHAR(250),
-  involvement VARCHAR(20),
+  level VARCHAR(20),
   name VARCHAR(30),
   direction VARCHAR(15),
 );

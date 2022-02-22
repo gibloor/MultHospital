@@ -112,20 +112,33 @@ const FormAuthorization = (props:Props) => {
                 ))}
               </div>
 
-              <button type="submit">
-                Submit
+              <button type="submit" className="auth__submit">
+                {t(`head.buttons.${typeForm}`)}
               </button>
 
               {typeForm === 'registration' &&
                 <div className="auth__checkbox_case">
-                  <span>receive mailing</span>
+                  <span>
+                    {t('head.buttons.mailing')}
+                  </span>
                   <label>
-                    <Field type="checkbox" name="mailing" className="auth__checkbox" />
+                    <Field
+                      type="checkbox"
+                      name="mailing"
+                      className="auth__checkbox"
+                      checked
+                    />
                   </label>
                 </div>
                 ||
-                <span onClick={() => ( dispatch(userErrorCleaning()), setTypeForm('registration') )}>
-                  Sign Up
+                <span
+                  onClick={() => (
+                    dispatch(userErrorCleaning()),
+                    setTypeForm('registration')
+                  )}
+                  className="auth__form_changer"
+                >
+                  {t('head.buttons.registration')}
                 </span>
               }
 

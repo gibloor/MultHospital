@@ -6,27 +6,27 @@ import {
   UserDeauth,
   UserDeauthRequire,
 
-  UserTesting,
-  UserTestingRequire,
-  UserAnswer,
-
   UserInvolvementChange,
   UserInvolvementChangeRequire,
 
   UserAvatarSave,
   UserAvatarSaveRequire,
 
+  UserErrorCleaning,
+  UserErrorCleaningRequire,
+
+  UserTesting,
+  UserTestingRequire,
+
   UserFailure,
 
   AuthDates,
   Token,
   UserInfoTaked,
-  Answer,
   Involvement,
   InvolvementDates,
   Avatar,
   ImgInfo,
-  UserErrorCleaning,
 } from '../types/userTypes';
 
 export const USER_AUTH = 'USER_AUTH';
@@ -46,6 +46,7 @@ export const USER_AVATAR_SAVE = 'USER_AVATAR_SAVE';
 export const USER_AVATAR_SAVE_REQUIRE = 'USER_AVATAR_SAVE_REQUIRE';
 
 export const USER_ERROR_CLEANING = 'USER_ERROR_CLEANING';
+export const USER_ERROR_CLEANING_REQUIRE = 'USER_ERROR_CLEANING_REQUIRE';
 
 export const USER_FAILURE = 'USER_AUTH_FAILURE';
 
@@ -76,17 +77,11 @@ export const userDeauthRequire = (): UserDeauthRequire => ({
   type: USER_DEAUTH_REQUIRE,
 });
 
-export const userTesting = (
-  payload: Answer,
-): UserTesting => ({
+export const userTesting = (): UserTesting => ({
   type: USER_TESTING,
-  payload,
 });
-export const userTestingRequire = (
-  payload: UserAnswer,
-): UserTestingRequire => ({
+export const userTestingRequire = (): UserTestingRequire => ({
   type: USER_TESTING_REQUIRE,
-  payload,
 });
 
 export const userInvolvementChange = (
@@ -117,6 +112,9 @@ export const userAvatarSaveRequire = (
 
 export const userErrorCleaning = (): UserErrorCleaning => ({
   type: USER_ERROR_CLEANING
+});
+export const userErrorCleaningRequire = (): UserErrorCleaningRequire => ({
+  type: USER_ERROR_CLEANING_REQUIRE
 });
 
 export const userFailure = (

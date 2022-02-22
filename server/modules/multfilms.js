@@ -6,7 +6,7 @@ multfilms.get('/:id', async (req, res) =>{
   try {
     const { id } = req.params;
 
-    let allMults = await pool.query(`SELECT * FROM multfilms ORDER BY involvement, serial_number`);
+    let allMults = await pool.query(`SELECT * FROM multfilms ORDER BY level, serial_number`);
     const features = await pool.query("SELECT multfilm, viewed FROM watched WHERE user_id = $1", [id]);
     const characters = await pool.query("SELECT * FROM characters");
 
@@ -28,7 +28,7 @@ multfilms.get('/:id', async (req, res) =>{
     let delay;
     const branches = [1, 2, 3];
     for (let i= 0 ; i < branches.length ; i++) {
-      sortedMults[branches[i]] = allMults.rows.filter(multfilm => multfilm.involvement == branches[i]).sort(function(a, b) {
+      sortedMults[branches[i]] = allMults.rows.filter(multfilm => multfilm.level == branches[i]).sort(function(a, b) {
         return a.watched === b.watched ? 0 : a.watched ? -1 : 1;
       })
 

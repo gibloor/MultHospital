@@ -25,25 +25,27 @@ const MultfilmBlock = (props: Props) => {
 
   return (
     <div className='multfilm__block' >
-      <div
-        className={classNames(
-          { 'multfilm__unviewed': !multfilm.viewed },
-          { 'multfilm__viewed': multfilm.viewed }
-        )}
-        style={{ animationDelay: `${multfilm.delay + 3}s` }}
-      /> 
-      {!multfilm.viewed
-        &&
-        <>
-          <div className="pour" 
-            style={{ animationDelay: `${multfilm.delay + 2}s` }}
-          />
-          <div className="multfilm__locked multfilm__opened" 
-            style={{ animationDelay: `${multfilm.delay}s` }}
-          />
-        </>
-      }
-      <Link className="multfilm__list" to={`/multfilms/${multfilm.involvement}/${multfilm.name}`}>
+      <div className='water_animation'>
+        <div
+          className={classNames(
+            { 'multfilm__unviewed': !multfilm.viewed },
+            { 'multfilm__viewed': multfilm.viewed }
+          )}
+          style={{ animationDelay: `${multfilm.delay + 3}s` }}
+        /> 
+        {!multfilm.viewed
+          &&
+          <>
+            <div className="pour" 
+              style={{ animationDelay: `${multfilm.delay + 2}s` }}
+            />
+            <div className="multfilm__locked multfilm__opened" 
+              style={{ animationDelay: `${multfilm.delay}s` }}
+            />
+          </>
+        }
+      </div>
+      <Link className="multfilm__list" to={`/multfilms/${multfilm.level}/${multfilm.name}`}>
         {multfilm.watched
           && <div className="multfilm__watched" key={multfilm.name}/>
         }
@@ -55,7 +57,7 @@ const MultfilmBlock = (props: Props) => {
           />
         </div>
         <span className="multfilm__name">
-          {t(`multfilms.personal.${multfilm.name}.title`)}
+          {t(`multfilms.${multfilm.name}.personal.title`)}
         </span>
       </Link>
     </div>

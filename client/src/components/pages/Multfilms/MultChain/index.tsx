@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
 import { viewedSaveRequest } from 'redux-saga/actions/viewedActions';
-import { getMultfilmsPendingSelector } from 'redux-saga/selectors/multfilmsSelector';
 
 import MultfilmBlock from './MultfilmBlock';
 
@@ -14,7 +13,7 @@ const MultChain = () => {
   const dispatch = useDispatch();
   const multfilms = useSelector(getMultfilmsSelector);
   const userId = useSelector(getAccountIdSelector);
-  const pending = useSelector(getMultfilmsPendingSelector);
+
   let viewed: string[] = [];
 
   const viewedChange = (name: string) => {
@@ -31,8 +30,8 @@ const MultChain = () => {
 
   return (
     <div className="multChain">
-      {!pending && Object.keys(multfilms).map((category) => (
-        <div key={category} className="multChain__category">
+      {Object.keys(multfilms).map((category) => (
+        <div key={category}>
           {multfilms[category].map((multfilm, index) => (
             index === 0 || multfilms[category][index-1].watched ?
               <MultfilmBlock

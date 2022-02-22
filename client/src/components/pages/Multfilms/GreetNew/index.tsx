@@ -40,7 +40,7 @@ const GreetNew = () => {
 
   const saveInvolvement = (level: number) => {
     dispatch(userInvolvementChangeRequire({
-      involvement: level, id: userId
+      level: level, id: userId
     }));
   };
 

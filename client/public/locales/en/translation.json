@@ -6,7 +6,8 @@
       "multfilms": "Multfilms",
       "aboutProject": "About project",
       "setting": "Settings",
-      "deactive": "Exit"
+      "deactive": "Exit",
+      "mailing": "Receive mailing"
     },
     "authentication": {
       "name": "Name",
@@ -37,6 +38,7 @@
       }
     }
   },
+
   "greetNew": {
     "greet": {
       "string1": "Greetings you in MultHospital",
@@ -52,9 +54,16 @@
       "text3": "Cartoons are life"
     }
   },
+
+  "rules": {
+    "title": "Rules",
+    "text": "<0>First rule</0><1>Second rule</1><2>next rule</2>",
+    "passTest": "Pass test"
+  },
+
   "multfilms": {
-    "personal": {
-      "Rick&Morty": {
+    "Rick&Morty": {
+      "personal": {
         "title": "Rick and Morty",
         "description": "<0>Rik and Morty</0> is an animated series",
         "characters": {
@@ -80,7 +89,35 @@
           }
         }
       },
-      "AdventureTime": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "chooseSuitable1": {
+            "question": "Choose the most suitable",
+            "right": "Smarf",
+            "blende1": "Alcohol",
+            "blende2": "Best friend"
+          }
+        }
+      }
+    },
+    "AdventureTime": {
+      "personal": {
         "title": "Adventure Time",
         "description": "<0>Adventure Time</0> is an animated series",
         "characters": {
@@ -94,7 +131,35 @@
           }
         }
       },
-      "InfinityTrain": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "chooseSuitable1": {
+            "question": "Choose the most suitable",
+            "right": "Tree Trunk",
+            "blende1": "Apples",
+            "blende2": "Granny"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "InfinityTrain": {
+      "personal": {
         "title": "Infinity Train",
         "description": "<0>Infinity Train</0> is an animated series",
         "characters": {
@@ -108,7 +173,35 @@
           }
         }
       },
-      "Kaiji": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "Kaiji": {
+      "personal": {
         "title": "Kaiji",
         "description": "<0>Kaiji</0> is an animated series",
         "characters": {
@@ -122,7 +215,35 @@
           }
         }
       },
-      "Neverland": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "gameCompite1": {
+            "question": "In which game did he compete with the main character",
+            "right": "Pochinko",
+            "blende1": "Dice with special rules",
+            "blende2": "Black Jack"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "Neverland": {
+      "personal": {
         "title": "The promised neverland",
         "description": "<0>The promised neverland</0> is an animated series",
         "characters": {
@@ -136,7 +257,35 @@
           }
         }
       },
-      "SchoolLive": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "SchoolLive": {
+      "personal": {
         "title": "School Live",
         "description": "<0>School Live</0> is an animated series",
         "characters": {
@@ -150,7 +299,35 @@
           }
         }
       },
-      "SouthPark": {
+      "questions": {
+        "1": {
+          "genre1": {
+            "question": "The genre of this anime",
+            "right": "Thriller",
+            "blende1": "Detective",
+            "blende2": "Everyday life"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "SouthPark": {
+      "personal": {
         "title": "South Park",
         "description": "<0>South Park</0> is an animated series",
         "characters": {
@@ -164,7 +341,35 @@
           }
         }
       },
-      "Futurama": {
+      "questions": {
+        "1": {
+          "seriesDescription1": {
+            "question": "What is this animated series",
+            "right": "Satirical",
+            "blende1": "Racist and intolerant",
+            "blende2": "Nonsensical"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "Futurama": {
+      "personal": {
         "title": "Futurama",
         "description": "<0>Futurama</0> is an animated series",
         "characters": {
@@ -178,7 +383,35 @@
           }
         }
       },
-      "HorseBojack": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "HorseBojack": {
+      "personal": {
         "title": "Horse Bojack",
         "description": "<0>Horse Bojack</0> is an animated series",
         "characters": {
@@ -192,7 +425,35 @@
           }
         }
       },
-      "Rainbow": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "relationshipStatus1": {
+            "question": "Relationship status at the end of the animated series",
+            "right": "Lonely",
+            "blende1": "with Diane Nguyen",
+            "blende2": "with Pickles"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "Rainbow": {
+      "personal": {
         "title": "Rainbow",
         "description": "<0>Rainbow</0> is an animated series",
         "characters": {
@@ -206,7 +467,35 @@
           }
         }
       },
-      "10": {
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        }
+      }
+    },
+    "10": {
+      "personal": {
         "title": "",
         "description": "<0></0> is an animated series",
         "characters": {
@@ -217,6 +506,32 @@
           "2": {
             "name": "",
             "description": ""
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "2": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
+          }
+        },
+        "3": {
+          "nameQuestion": {
+            "question": "text question",
+            "right": "right answer",
+            "blende1": "blende text 1",
+            "blende2": "blende text 2"
           }
         }
       }

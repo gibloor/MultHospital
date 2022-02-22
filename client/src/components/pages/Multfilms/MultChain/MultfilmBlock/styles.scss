@@ -3,7 +3,7 @@
   &__list {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
     flex-direction: column;
     height: 100%;
     width: 100%;
@@ -16,7 +16,7 @@
     background-color:rgba(160, 27, 67, 0.2);
   }
 
-  &__image_block:hover .multfilms_list_logo {
+  &__list_logo:hover {
     max-width: 95%;
     max-height: 95%;
   }
@@ -25,16 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80%;
+    height: 89%;
   }
 
   &__list_logo {
     max-width: 90%;
     max-height: 90%;
-  }
-
-  &__name {
-    margin-bottom: 10px;
   }
 
   &__watched {

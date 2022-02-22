@@ -114,9 +114,9 @@ accounts.post('/auto_auth', verify, async (req, res) => {
 accounts.put(`/saveInvolvement/:id`, async (req, res) => {
   try {
     const { id } = req.params;
-    const { involvement } = req.body;
+    const { level } = req.body;
     await pool.query(
-      "UPDATE accounts SET involvement = $1 WHERE id = $2", [involvement, id]
+      "UPDATE accounts SET level = $1 WHERE id = $2", [level, id]
     );
     res.json("Answer Accepted");
   } catch (err) {

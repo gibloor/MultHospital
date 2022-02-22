@@ -28,19 +28,19 @@ questions.get('/', async (req, res) =>{
 questions.get('/take', async (req, res) => {
   try {
     const { level, topic } = req.query;
-    let quest = [];
+    let quest = {};
     if (topic === 'newcomers') {
-      const newcomers = true;
-      quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND newcomers = $2", [level, newcomers] );
+      quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND newcomers = true", [level] );
     } else {
       quest = await pool.query( "SELECT * FROM questions WHERE level = $1 AND multfilm = $2", [level, topic]);
     }
+
     quest.rows.map(question => (
       question.answers = shuffler(
         [
-          question.answer,
-          question.blende1,
-          question.blende2,
+          'right',
+          'blende1',
+          'blende2',
         ]
       )
     ));

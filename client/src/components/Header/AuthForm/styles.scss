@@ -15,10 +15,9 @@
     justify-content: center;
     align-items: center;
     background-color:rgba(19, 19, 53, 0.911);
-    padding: 20px;
+    padding: 20px 30px 20px 30px;
     border-radius: 20px;
     font-size: 14pt;
-    width: 450px;
   }
 
   &__close_form {
@@ -32,7 +31,6 @@
 
   &__form_name {
     font-size: 20pt;
-    margin-bottom: 20px;
   }
   
   &__button {
@@ -44,8 +42,9 @@
   &__inputs{
     display: flex;
     justify-content: space-around;
-    width: 60%;
+    width: 300px;
     flex-wrap: wrap;
+    margin: 20px 0px 20px 0px;
   }
 
   &__input_case {
@@ -60,10 +59,12 @@
     height: 35px;
     font-size: 16px;
     border-radius: 5px;
+    z-index: 20;
   }
   
   .error_border {
-    border-color: red;
+    border: 1px solid red;
+    outline: none;
   }
 
   &__text{
@@ -73,6 +74,7 @@
 
   &__error_case {
     position: absolute;
+    z-index: 19;
   }
 
   &__error_block {
@@ -103,6 +105,16 @@
     font-size: 14pt;
   }
 
+  &__form_changer {
+    cursor: pointer;
+  }
+
+  &__submit {
+    margin-bottom: 10px;
+    font-size: 12pt;
+    cursor: pointer;
+  }
+
   &__checkbox_case {
     width: 100%;
     display: flex;
@@ -112,6 +124,7 @@
   &__checkbox {
     width: 16px;
     height: 16px;
+    cursor: pointer;
   }
 }
 

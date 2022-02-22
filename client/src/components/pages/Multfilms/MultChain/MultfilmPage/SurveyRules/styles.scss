@@ -1,0 +1,11 @@
+.rules {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__test_button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(207, 182, 134, 0.397);
+  }
+}

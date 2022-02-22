@@ -11,7 +11,6 @@ const MultfilmPage = () => {
   const { t } = useTranslation();
 
   const [surveyOn, setSurveyOn] = useState(false);
-  const [answers, setAnswers] = useState<number>();
 
   interface Params {
     name: string,
@@ -19,16 +18,27 @@ const MultfilmPage = () => {
   }
 
   const params:Params = useParams();
-  const multName = params.name;
+  const { name, section } = params;
 
   return (
-    surveyOn && <Survey topic={multName} />
-    || <>
-      <div>Правила</div>
-      <div onClick={() => setSurveyOn(true)}>
-        Пройти тест
+    surveyOn && <Survey topic={name} questLevel={ Number(section) } /> ||
+    <div className="rules">
+      <div>
+        {t('rules.title')}
       </div>
-    </>
+      <span>
+        <ol>
+          <Trans i18nKey={'rules.text'}>
+            <li>1 rule</li>
+            <li>2 rule</li>
+            <li>3 rule</li>
+          </Trans>
+        </ol>
+      </span>
+      <div onClick={() => setSurveyOn(true)} className="rules__test_button">
+        {t('rules.passTest')}
+      </div>
+    </div>
   )
 }
 

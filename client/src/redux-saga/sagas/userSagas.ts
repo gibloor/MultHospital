@@ -6,6 +6,8 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 
+import axios, { AxiosResponse } from 'axios';
+
 import {
   USER_AUTH_REQUIRE,
   USER_AUTO_AUTH_REQUIRE,
@@ -13,14 +15,15 @@ import {
   USER_DEAUTH_REQUIRE,
   USER_INVOLVEMENT_CHANGE_REQUIRE,
   USER_AVATAR_SAVE_REQUIRE,
-  USER_ERROR_CLEANING,
+  USER_ERROR_CLEANING_REQUIRE,
 
   userFailure,
   userAuth,
-  userTesting,
   userDeauth,
   userInvolvementChange,
   userAvatarSave,
+  userErrorCleaning,
+  userTesting,
 } from '../actions/userActions';
 
 import {
@@ -28,11 +31,8 @@ import {
   UserAutoAuthRequire,
   UserInfoTaked,
   UserInvolvementChangeRequire,
-  UserTestingRequire,
   UserAvatarSaveRequire,
 } from '../types/userTypes';
-
-import axios, { AxiosResponse } from 'axios';
 
 function* authSaga(dates: UserInfoTaked) {
   try {
@@ -78,26 +78,6 @@ function* autoAuthSaga(action: UserAutoAuthRequire) {
   }
 }
 
-function* testingSaga(action: UserTestingRequire) {
-  try {
-    let { features, userId, level, topic } = action.payload;
-    const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
-      { features, level, topic }
-    );
-    if (topic !== 'newcomers') {
-      features = [features[0]];
-    }
-    yield call(acceptAnswer);
-    yield put(userTesting({ features }));
-  } catch (e: any) {
-    yield put(
-      userFailure({
-        error: e.message,
-      }),
-    );
-  }
-}
-
 function* deuthSaga() {
   try {
     yield put(userDeauth());
@@ -112,12 +92,12 @@ function* deuthSaga() {
 
 function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   try {
-    const involvement = action.payload.involvement;
+    const level = action.payload.level;
     const userId = action.payload.id
     const saveInvolvement = () => axios.put<string[]>(`http://localhost:5000/accounts/saveInvolvement/${userId}`,
-      { involvement });
+      { level });
     yield call(saveInvolvement);
-    yield put(userInvolvementChange({involvement: involvement}));
+    yield put(userInvolvementChange({level: level}));
   } catch (e: any) {
     yield put(
       userFailure({
@@ -144,9 +124,21 @@ function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   }
 }
 
+function* userTestingSaga() {
+  try {
+    yield put(userTesting());
+  } catch (e: any) {
+    yield put(
+      userFailure({
+        error: e.message,
+      }),
+    );
+  }
+}
+
 function* errorCleaningSaga() {
   try {
-    console.log('bb error');
+    yield put(userErrorCleaning())
   } catch (e: any) {
     yield put(
       userFailure({
@@ -160,11 +152,11 @@ function* userSagas() {
   yield all([
     takeLatest(USER_AUTH_REQUIRE, hendAuthSaga),
     takeLatest(USER_AUTO_AUTH_REQUIRE, autoAuthSaga),
-    takeLatest(USER_TESTING_REQUIRE, testingSaga),
     takeLatest(USER_DEAUTH_REQUIRE, deuthSaga),
     takeLatest(USER_INVOLVEMENT_CHANGE_REQUIRE, changeInvolvementSaga),
     takeEvery(USER_AVATAR_SAVE_REQUIRE, avatarSaveSaga),
-    takeEvery(USER_ERROR_CLEANING, errorCleaningSaga)
+    takeEvery(USER_ERROR_CLEANING_REQUIRE, errorCleaningSaga),
+    takeEvery(USER_TESTING_REQUIRE, userTestingSaga)
   ]);
 }
 

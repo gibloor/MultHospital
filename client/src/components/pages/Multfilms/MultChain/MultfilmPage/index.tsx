@@ -4,11 +4,11 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { getMultfilmsPendingSelector, getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
 import Characters from './Characters';
-import Survey from './SurveyRules';
+import SurveyRules from './SurveyRules';
 
 import './styles.scss';
 
@@ -17,7 +17,6 @@ const MultfilmPage = () => {
   const { t } = useTranslation();
 
   const pendingAccount = useSelector(getAccountPendingSelector);
-  const pendingMultfilms = useSelector(getMultfilmsPendingSelector);
   const authInfo = useSelector(getAccountSelector);
   const multfilms = useSelector(getMultfilmsSelector);
 
@@ -47,9 +46,9 @@ const MultfilmPage = () => {
 
   return (
     <div className="multfilm_page">
-      {!pendingAccount && authInfo.test_passed && !pendingMultfilms && characters
+      {!pendingAccount && authInfo.test_passed && characters
       && (
-        surveyOn && <Survey />
+        surveyOn && <SurveyRules />
         || <>
           <div className="multfilm_page__container">
             <div className="multfilm_page__title_img_container">
@@ -60,10 +59,10 @@ const MultfilmPage = () => {
             </div>
             <div className="multfilm_page__title_container">
               <p className="multfilm_page__title">
-                {t(`multfilms.personal.${multName}.title`)}
+                {t(`multfilms.${multName}.personal.title`)}
               </p>
               <p className="multfilm_page__description">
-                <Trans i18nKey={`multfilms.personal.${multName}.description`}>
+                <Trans i18nKey={`multfilms.${multName}.personal.description`}>
                   <strong>multfilm name</strong> - short description.
                 </Trans>
               </p>
