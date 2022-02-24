@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 import { profileTakeRequire } from 'redux-saga/actions/profileActions';
+import { profileIdSelector } from 'redux-saga/selectors/profileSelector';
 
 import Achievements from './Achievements';
 import Avatar from './Avatar';
@@ -20,9 +21,12 @@ const Profile = () => {
   const params:Params = useParams();
 
   const id = Number(params.id);
+  const profileId = useSelector(profileIdSelector);
 
   useEffect(() => {
-    dispatch(profileTakeRequire({ id: id }));
+    if (profileId !== id) {
+      dispatch(profileTakeRequire({ id: id }));
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

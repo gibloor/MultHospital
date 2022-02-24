@@ -6,7 +6,9 @@ const Basement = () => {
 
   return (
     <div className="text basement">
-      site basement
+      <div className='basement__case'>
+        site basement
+      </div>
     </div>
   )
 }

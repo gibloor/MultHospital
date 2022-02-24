@@ -19,8 +19,7 @@ const initialState: InitialState = {
   pending: false,
   id: 0,
   avatar: '',
-  achievements: [],
-  statistic: [],
+  statistic: {},
 };
 
 const profileReducer: Reducer<InitialState, ImagesActions> = (
@@ -33,7 +32,6 @@ const profileReducer: Reducer<InitialState, ImagesActions> = (
         ...state,
         id: action.payload.id,
         avatar: action.payload.avatar,
-        achievements: action.payload.achievements,
         statistic: action.payload.statistic,
         pending: false,
       };

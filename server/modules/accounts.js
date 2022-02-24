@@ -50,8 +50,9 @@ accounts.post('/registration', async (req, res) => {
   try {
     const { name, login, password, email, mailing } = req.body;
     const account = await pool.query(
-      "SELECT * FROM accounts WHERE login = $1", [login]
+      "SELECT * FROM accounts WHERE login = $1 OR email = $2", [login, email]
     );
+    
     if (!account.rows[0]){
       const account = await pool.query(
         "INSERT INTO accounts (name, login, password, email, mailing) VALUES($1, $2, $3, $4, $5) RETURNING *",

@@ -6,9 +6,12 @@ watched.put('/tested/:userId', async (req, res) => {
   try {
     const { features, level } = req.body;
     const { userId } = req.params;
+
+    const date = Date().toLocaleString();
+
     for (multfilm of features) {
-      pool.query(
-        "INSERT INTO watched (user_id, level, multfilm) VALUES($1, $2, $3)", [userId, level, multfilm]
+      await pool.query(
+        "INSERT INTO watched (user_id, level, multfilm, date) VALUES($1, $2, $3, $4)", [userId, level, multfilm, date]
       )
     };
     await pool.query("UPDATE accounts SET test_passed = $1 WHERE id = $2", [true, userId]);

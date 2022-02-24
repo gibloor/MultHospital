@@ -18,18 +18,18 @@ function App() {
 
   return (
     <AutoSignUp>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={() => <Main />} />
-        <Route path="/aboutProject" component={() => <AboutProject />} />
-        <Route path="/profile/:id" component={() => <Profile />} />
-        <Route path="/setting" component={() => <Setting />} />
-        <TakeMultfilms>
+      <TakeMultfilms>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={() => <Main />} />
+          <Route path="/aboutProject" component={() => <AboutProject />} />
+          <Route path="/profile/:id" component={() => <Profile />} />
+          <Route path="/setting" component={() => <Setting />} />
           <Route exact path="/multfilms" component={() => <Multfilms />} />
           <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
-        </TakeMultfilms>
-      </Switch>
-      <Basement />
+        </Switch>
+        <Basement />
+      </TakeMultfilms>
     </AutoSignUp>
   );
 }

@@ -14,12 +14,10 @@ export interface Achievement {
   viewed: boolean,
 }
 export interface Statistic {
-  title: string,
-  count: number,
+  [title: string]: number,
 }
 export interface Profile extends Id {
-  achievements: Achievement[],
-  statistic: Statistic[],
+  statistic: Statistic,
   avatar: string,
 }
 

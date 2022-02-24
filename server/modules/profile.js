@@ -54,22 +54,35 @@ profile.get('/takeInfo/:id', async (req, res) => {
     const login = await pool.query(
       "SELECT login FROM accounts WHERE id = $1", [id]
     );
-    const achievements = await pool.query(
-      "SELECT title, degree, viewed FROM achievements WHERE user_id = $1", [id]
+    const watched = await pool.query(
+      "SELECT multfilm, level FROM watched WHERE user_id = $1", [id]
     );
 
+    let statistic = {
+      totalAmount: watched.rows.length,
+      level1: 0,
+      level2: 0,
+      level3: 0,
+      greet: 0,
+      [`firstTime${watched.rows[0].level}`]: watched.rows[0].level,
+    };
+
+    watched.rows.map(watched => {
+      statistic[`level${watched.level}`] = statistic[`level${watched.level}`] + 1;
+    });
+                   
     fs.readFile(`./app_data/images/users/${login.rows[0].login}/avatar.png`, function (err, data) {
       if (!data) {
         res.send({
           avatar: '',
-          achievements: achievements.rows,
+          statistic: statistic
         });
       } else {
         let base64 = Buffer.from(data).toString('base64');
         base64 = 'data:image/png;base64,' + base64;
         res.send({
           avatar: base64,
-          achievements: achievements.rows,
+          statistic: statistic
         });
       }
     }); 

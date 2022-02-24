@@ -13,18 +13,20 @@ const Timer = (props: Props) => {
   const { counterChange, counter } = props;
 
   useEffect(() => {
+
     if (timer < 0) {
       counterChange();
-    } else {
-      setTimeout(() => setTimer(timer - 1), 1000);
     }
+
+    const timeOut = setTimeout(() => setTimer(timer - 1), 1000);
   
+    return () => clearTimeout(timeOut);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer]);
 
   useEffect(() => {
     setTimer(15);
-  },[counter])
+  },[counter]);
 
   return (
     <span>

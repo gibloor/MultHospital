@@ -13,14 +13,15 @@ const TakeMultfilms = (props: Props) => {
 
   const dispatch = useDispatch();
 
-  const authInfo = useSelector(getAccountSelector);
+  const user = useSelector(getAccountSelector);
   
   useEffect(() => {
-    (authInfo.test_passed) &&
-    dispatch(multfilmTakeRequare({ id: authInfo.id }));
+    if (user.test_passed) {
+      dispatch(multfilmTakeRequare({ id: user.id }));
+    };
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authInfo.test_passed]);
+  }, [user.test_passed, user.id]);
 
   return (
     <>
