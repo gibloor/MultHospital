@@ -7,9 +7,6 @@ const UserOffer = () => {
   return (
     <div className='useroffer'>
       user offer
-      
     </div>
   )
 };
-
-export default UserOffer;
