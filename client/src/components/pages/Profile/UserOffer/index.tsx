@@ -10,3 +10,5 @@ const UserOffer = () => {
     </div>
   )
 };
+
+export default UserOffer;
