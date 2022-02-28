@@ -17,7 +17,7 @@ export interface Statistic {
   [title: string]: number,
 }
 export interface Profile extends Id {
-  statistic: Statistic,
+  statistics: Statistic,
   avatar: string,
 }
 

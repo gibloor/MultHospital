@@ -23,12 +23,12 @@ function* profileTakeSaga(action: ProfileTakeRequire ) {
     const { id } = action.payload;
     const takeProfile = () => axios.get<string[]>(`http://localhost:5000/profile/takeInfo/${id}`);
     const response: AxiosResponse<Profile> = yield call(takeProfile);
-    const { avatar, statistic } = response.data;
+    const { avatar, statistics } = response.data;
 
     yield put(profileTake({
       id: id,
       avatar: avatar,
-      statistic: statistic
+      statistics: statistics
     }));
   } catch (e: any) {
     yield put(

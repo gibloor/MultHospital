@@ -61,6 +61,14 @@
     "passTest": "Pass test"
   },
 
+  "statistics": {
+    "totalAmount": "Total views",
+    "level1": "Viewed 1 difficulty",
+    "level2": "Viewed 2 difficulty",
+    "level3": "Viewed 3 difficulty",
+    "firstTime": "Credited for welcome test"
+  },
+
   "multfilms": {
     "Rick&Morty": {
       "personal": {
@@ -537,5 +545,6 @@
       }
     }
   },
+
   "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png"
 }

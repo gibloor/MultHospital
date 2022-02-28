@@ -5,9 +5,9 @@ import { useParams } from 'react-router';
 import { profileTakeRequire } from 'redux-saga/actions/profileActions';
 import { profileIdSelector } from 'redux-saga/selectors/profileSelector';
 
-import Achievements from './Achievements';
 import Avatar from './Avatar';
 import Statistic from './Statistic';
+import UserOffer from './UserOffer';
 
 import './styles.scss';
 
@@ -33,9 +33,11 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <Avatar id={id} />
-      <Statistic />
-      <Achievements />
+      <div className='profile__case'>
+        <Avatar id={id} />
+        <Statistic />
+        <UserOffer />
+      </div>
     </div>
   )
 }

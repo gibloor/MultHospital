@@ -19,7 +19,7 @@ const initialState: InitialState = {
   pending: false,
   id: 0,
   avatar: '',
-  statistic: {},
+  statistics: {},
 };
 
 const profileReducer: Reducer<InitialState, ImagesActions> = (
@@ -32,7 +32,7 @@ const profileReducer: Reducer<InitialState, ImagesActions> = (
         ...state,
         id: action.payload.id,
         avatar: action.payload.avatar,
-        statistic: action.payload.statistic,
+        statistics: action.payload.statistics,
         pending: false,
       };
     case PROFILE_TAKE_REQUIRE:
