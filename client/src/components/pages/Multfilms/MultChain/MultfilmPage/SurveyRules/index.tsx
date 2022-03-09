@@ -21,7 +21,7 @@ const MultfilmPage = () => {
   const { name, section } = params;
 
   return (
-    surveyOn && <Survey topic={name} questLevel={ Number(section) } /> ||
+    surveyOn && <Survey topic={name} multLevel={ Number(section) } /> ||
     <div className="rules">
       <div>
         {t('rules.title')}

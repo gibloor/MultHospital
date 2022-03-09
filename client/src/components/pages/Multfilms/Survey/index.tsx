@@ -13,7 +13,7 @@ import './styles.scss';
 
 interface Props {
   topic: string,
-  questLevel?: number,
+  multLevel?: number,
 }
 
 const Survey = (props: Props) => {
@@ -24,15 +24,13 @@ const Survey = (props: Props) => {
   const [allAnswers, setAllAnswers] = useState<string[]>([]);
   const [userAnswer, setUserAnswer] = useState('');
   const [counter, setCounter] = useState(0);
- 
-  const [testEnd, setTestEnd] = useState(false);
   
   const questions = useSelector(getQuestions);
   const questionsPending = useSelector(getQuestionsPending);
   const user = useSelector(getAccountSelector);
 
   const { level, test_passed, name } = user;
-  const { topic, questLevel } = props;
+  const { topic, multLevel } = props;
 
   const submitQuestion = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,18 +54,24 @@ const Survey = (props: Props) => {
 
   useEffect(() => {
     if (counter === questions.length && counter !== 0) {
+      let answers = allAnswers;
 
       if (topic !== 'newcomers') {
         if (allAnswers.length > questions.length * 0.75) {
-          setAllAnswers([allAnswers[0]])
+          answers = [allAnswers[0]]
         } else {
+          answers = []
           setAllAnswers([])
         };
-        setTestEnd(true);
       };
-
-      dispatch(multfilmTestingRequire({ features: allAnswers, userId: user.id, topic, userLevel: level, questLevel }));
-    }
+      dispatch(multfilmTestingRequire({
+        features: answers,
+        userId: user.id,
+        topic, 
+        userLevel: level,
+        multLevel
+      }));
+    };
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
@@ -87,10 +91,10 @@ const Survey = (props: Props) => {
             />
             <div className="survey__answers">
               {questions[counter].answers.map((answer, index) => (
-                <div key={answer}>
+                <div className="survey__answer" key={answer}>
                   <label
                     htmlFor={`answer_button_${index}`}
-                    className="survey__answer text"
+                    className="text"
                   >
                     { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.${answer}`)}
                   </label>
@@ -108,8 +112,7 @@ const Survey = (props: Props) => {
             <Timer counterChange={counterChange} counter={counter} />
           }
         </> ||
-
-        testEnd && (
+        (
           allAnswers.length &&
           <div>NICE</div> ||
           <div>loose</div>

@@ -39,6 +39,10 @@
     }
   },
 
+  "main": {
+    "": ""
+  },
+
   "greetNew": {
     "greet": {
       "string1": "Greetings you in MultHospital",
@@ -59,6 +63,10 @@
     "title": "Rules",
     "text": "<0>First rule</0><1>Second rule</1><2>next rule</2>",
     "passTest": "Pass test"
+  },
+
+  "aboutProject": {
+    "text": "Цели проекта:<1><0>Помочь людям с \"Чтобы посмотреть сегодня?\"</0><1>Практика в создании сайтов</1></1>"
   },
 
   "statistics": {
@@ -171,13 +179,13 @@
         "title": "Infinity Train",
         "description": "<0>Infinity Train</0> is an animated series",
         "characters": {
-          "": {
-            "name": "",
-            "description": ""
+          "TulipOlsen": {
+            "name": "Tulip Olsen",
+            "description": "labyda mnogo texta only for check asdjakh waba laba dab dab"
           },
-          "2": {
-            "name": "",
-            "description": ""
+          "OneOne": {
+            "name": "One one",
+            "description": "labyda mnogo texta only for check asdjakh waba laba dab dab"
           }
         }
       },

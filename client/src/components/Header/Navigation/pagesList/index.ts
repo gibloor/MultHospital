@@ -12,10 +12,10 @@ const pagesList:PagesList[] = [
     name: 'aboutProject',
     access: 'free',
   },
-  {
-    name: 'setting',
-    access: 'free',
-  },
+  // {
+  //  name: 'setting',
+  //  access: 'free',
+  // },
   // {
   //   name: '',
   //   access: '',

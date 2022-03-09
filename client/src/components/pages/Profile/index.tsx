@@ -4,10 +4,13 @@ import { useParams } from 'react-router';
 
 import { profileTakeRequire } from 'redux-saga/actions/profileActions';
 import { profileIdSelector } from 'redux-saga/selectors/profileSelector';
+import { getAccountIdSelector, getUserPosition } from 'redux-saga/selectors/userSelector';
 
 import Avatar from './Avatar';
 import Statistic from './Statistic';
 import UserOffer from './UserOffer';
+import LevelChanger from './LevelChanger';
+import AdminMenu from './AdminMenu';
 
 import './styles.scss';
 
@@ -18,10 +21,12 @@ interface Params {
 const Profile = () => {
 
   const dispatch = useDispatch();
+  
   const params:Params = useParams();
-
   const id = Number(params.id);
   const profileId = useSelector(profileIdSelector);
+  const ownId = useSelector(getAccountIdSelector);
+  const position = useSelector(getUserPosition);
 
   useEffect(() => {
     if (profileId !== id) {
@@ -29,13 +34,21 @@ const Profile = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [id, profileId])
 
   return (
     <div className='profile'>
       <div className='profile__case'>
         <Avatar id={id} />
         <Statistic />
+        {
+          ownId === id && position === 'HospitalLord' &&
+          <AdminMenu />
+        }
+        { ownId === id &&
+          <LevelChanger />
+        }
+
         <UserOffer />
       </div>
     </div>

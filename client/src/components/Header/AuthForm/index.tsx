@@ -112,7 +112,7 @@ const FormAuthorization = (props:Props) => {
                 ))}
               </div>
 
-              <button type="submit" className="auth__submit">
+              <button type="submit" className="auth__submit auth__input">
                 {t(`head.buttons.${typeForm}`)}
               </button>
 
@@ -147,7 +147,6 @@ const FormAuthorization = (props:Props) => {
                   {t(`head.authentication.errors.used.${error}`)}
                 </span>
               }
-              
             </Form>
           )}
         </Formik>

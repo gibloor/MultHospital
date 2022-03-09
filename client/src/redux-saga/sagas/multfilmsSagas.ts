@@ -11,15 +11,19 @@ import axios, { AxiosResponse } from 'axios';
 import {
   MULTFILM_TAKE_REQUARE,
   MULTFILM_TESTING_REQUIRE,
+  VIEWED_SAVE_REQUEST,
+
   multfilmsTake,
-  multfilmsFailure,
   multfilmTesting,
+  viewedSave,
+  multfilmsFailure,
 } from '../actions/multfilmsActions';
 
 import {
   MultfilmList,
   MultfilmTakeRequare,
-  MultfilmTestingRequire
+  MultfilmTestingRequire,
+  ViewedSaveRequest
 } from '../types/multfilmsTypes';
 
 import { userTestingRequire } from 'redux-saga/actions/userActions';
@@ -40,16 +44,16 @@ function* multfilmTakeSaga(action: MultfilmTakeRequare) {
 
 function* multfilmTestingSaga(action: MultfilmTestingRequire) {
   try {
-    const { userId, userLevel, topic, features, questLevel } = action.payload;
+    const { userId, userLevel, topic, features, multLevel } = action.payload;
 
     const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
       { features, level: userLevel, topic }
     );
     const response: AxiosResponse<string> = yield call(acceptAnswer);
     
-    if (topic !== 'newcomers' && questLevel) {
+    if (topic !== 'newcomers' && multLevel) {
       const topic = features[0];
-      yield put(multfilmTesting({ topic, level:questLevel }));
+      yield put(multfilmTesting({ topic, level: multLevel }));
     } else {
       yield put(userTestingRequire());
     }
@@ -63,10 +67,26 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
   }
 }
 
+function* viewedSaveSaga(action: ViewedSaveRequest) {
+  try {
+    const viewed = action.payload.viewed
+    yield axios.put<string[]>(`http://localhost:5000/watched/viewed/${action.payload.userId}`,
+    { viewed });
+    yield put(viewedSave());
+  } catch (e: any) {
+    yield put(
+      multfilmsFailure({
+        error: e.message,
+      }),
+    );
+  }
+}
+
 function* multfilmsSagas() {
   yield all([
     takeLatest(MULTFILM_TAKE_REQUARE, multfilmTakeSaga),
-    takeEvery(MULTFILM_TESTING_REQUIRE, multfilmTestingSaga)
+    takeEvery(MULTFILM_TESTING_REQUIRE, multfilmTestingSaga),
+    takeLatest(VIEWED_SAVE_REQUEST, viewedSaveSaga)
   ]);
 }
 

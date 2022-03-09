@@ -8,4 +8,4 @@ const pool = new poolState({
   database: "multhospital"
 });
 
-module.exports = pool;
+export default pool;

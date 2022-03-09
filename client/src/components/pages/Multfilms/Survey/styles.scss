@@ -6,7 +6,7 @@
   align-items: center;
   border-radius: 30px;
   width: 100%;
-  height: 60vh;
+  min-height: 60vh;
 
   &__image {
     height: 400px;
@@ -15,7 +15,6 @@
   &__answers {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-around;
   }
 
@@ -29,6 +28,7 @@
 
   &__answer_button {
     visibility: hidden;
+    position: absolute;
   }
 }
 

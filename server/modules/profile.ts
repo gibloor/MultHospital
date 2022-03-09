@@ -1,7 +1,9 @@
-const express = require('express');
+import express from 'express';
+import fs from 'fs';
+
+import pool from '../db';
+
 const profile = express.Router();
-const fs = require('fs');
-const pool = require("../db");
 
 profile.post('/saveAvatar/:id', async (req, res) => {
   try  {
@@ -19,7 +21,7 @@ profile.post('/saveAvatar/:id', async (req, res) => {
       console.log('The file has been saved!');
     });
   }
-  catch (err) {
+  catch (err: any) {
     console.error(err.message);
   }
 });
@@ -42,23 +44,39 @@ profile.get('/takeAvatar/:id', async (req, res) => {
       }
     }); 
   }
-  catch (err) {
+  catch (err: any) {
     console.error(err.message);
   }
 });
 
 profile.get('/takeInfo/:id', async (req, res) => {
   try  {
+
     const { id } = req.params;
 
-    const login = await pool.query(
-      "SELECT login FROM accounts WHERE id = $1", [id]
+    const loginSelect = await pool.query(
+      "SELECT login, level FROM accounts WHERE id = $1", [id]
     );
-    const watched = await pool.query(
+    const watchedSelect = await pool.query(
       "SELECT multfilm, level, date FROM watched WHERE user_id = $1", [id]
     );
-    
-    let statistics = {
+
+    interface Watched {
+      multfilm: string,
+      level: number,
+      date: Date,
+    }
+
+    const { login } = loginSelect.rows[0];
+    const watched: Watched[] = watchedSelect.rows;
+    const level: number = loginSelect.rows[0].level;
+
+    interface Statistics {
+      [key: string]: number,
+    }
+
+    let statistics: Statistics = {
+      level: level,
       totalAmount: 0,
       level1: 0,
       level2: 0,
@@ -66,13 +84,12 @@ profile.get('/takeInfo/:id', async (req, res) => {
       firstTime: 0,
     };
 
-    if (watched.rows.length) {
+    if (watched.length) {
 
-      statistics.totalAmount = watched.rows.length;
+      statistics.totalAmount = watched.length;
+      const firstTime = watched[0].date;
 
-      const firstTime = watched.rows[0].date;
-
-      watched.rows.map(watched => {
+      watched.map(watched => {
         statistics[`level${watched.level}`] += 1;
 
         if (watched.date === firstTime) {
@@ -81,7 +98,7 @@ profile.get('/takeInfo/:id', async (req, res) => {
       });
     }
 
-    fs.readFile(`./app_data/images/users/${login.rows[0].login}/avatar.png`, function (err, data) {
+    fs.readFile(`./app_data/images/users/${login}/avatar.png`, function (err, data) {
       if (!data) {
         res.send({
           avatar: '',
@@ -97,9 +114,9 @@ profile.get('/takeInfo/:id', async (req, res) => {
       }
     }); 
   }
-  catch (err) {
+  catch (err: any) {
     console.error(err.message);
   }
 });
 
-module.exports = profile;
+export default profile;

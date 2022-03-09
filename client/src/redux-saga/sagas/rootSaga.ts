@@ -3,15 +3,15 @@ import { all, fork } from 'redux-saga/effects';
 import userSagas from './userSagas';
 import questionsSagas from './questionsSagas';
 import multfilmsSagas from './multfilmsSagas';
-import viewedSagas from './viewedSagas';
 import profileSagas from './profileSagas';
+import adminInfoSagas from './adminInfoSagas';
 
 export default function* rootSaga() {
   yield all([
     fork(userSagas),
     fork(questionsSagas),
     fork(multfilmsSagas),
-    fork(viewedSagas),
-    fork(profileSagas)
+    fork(profileSagas),
+    fork(adminInfoSagas),
   ]);
 }

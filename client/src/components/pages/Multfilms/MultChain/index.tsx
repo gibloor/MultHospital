@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
-import { viewedSaveRequest } from 'redux-saga/actions/viewedActions';
+import { viewedSaveRequest } from 'redux-saga/actions/multfilmsActions';
 
 import MultfilmBlock from './MultfilmBlock';
 
@@ -26,7 +26,7 @@ const MultChain = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [viewed]);
 
   return (
     <div className="multChain">

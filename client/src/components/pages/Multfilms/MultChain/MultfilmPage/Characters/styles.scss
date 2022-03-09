@@ -35,20 +35,20 @@
     animation: shiftGlobal linear forwards 0.4s;
   }
 
-  .characters__big_slider &__info {
+  &__big_slider &__info {
     animation: shiftGlobalBig linear forwards 0.4s;
     width: calc(300% + 100px);
   }
-  .characters__increased_slider &__info {
+  &__increased_slider &__info {
     width: calc(200% + 40px);
   }
-  .characters__average_slider &__info {
+  &__average_slider &__info {
     width: calc(150% + 30px);
   }
-  .characters__decreased_slider &__info {
+  &__decreased_slider &__info {
     width: calc(100% + 20px);
   }
-  .characters__small_slider &__info {
+  &__small_slider &__info {
     width: 50%;
   }
 
@@ -75,7 +75,6 @@
 
   &__text_container {
     overflow: hidden;
-
   }
 
   &__text {
@@ -101,7 +100,7 @@
   100% {
     transform: translateX(33%);
   }
-}
+} 
 
 @keyframes shiftGlobal {
   50% {
@@ -128,5 +127,40 @@
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .characters {
+    &__increased_slider &__info {
+      width: calc(300% + 80px);
+    }
+    &__average_slider &__info {
+      width: calc(200% + 60px);
+      animation: shiftAvirage linear forwards 0.4s;
+    }
+    &__decreased_slider &__info {
+      width: calc(150% + 20px);
+    }
+    &__small_slider &__info {
+      width: 50%;
+    }
+  }
+  
+  @keyframes shiftGlobal {
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(16.65%);
+    }
+  }
+  @keyframes shiftAvirage {
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(25%);
+    }
   }
 }

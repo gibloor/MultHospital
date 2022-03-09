@@ -2,16 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   &__img {
     width: 100%;
     height: 100%;
   }
 
-  &__crop {
-    position: absolute;
+  &__crop_case {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  &__crop_button {
     background-color: brown;
-    margin-top: 375px;
     cursor: pointer;
   }
   
@@ -19,6 +25,9 @@
     position: absolute;
     color: white;
     background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 0.6;
   }
   
   &__drop_case {

@@ -20,13 +20,13 @@ const Avatar = (props: Props) => {
   const user = useSelector(getAccountSelector);
 
   const [drag, setDrag] = useState(false);
-  const [image, setImage] = useState<any>();
+  const [cropImage, setCropImage] = useState<any>();
   const [crop, setCrop] = useState<any>();
 
-  const id = props.id;
+  const { id } = props;
 
   const settings = {
-    src: image,
+    src: cropImage,
     initialAspectRatio: 1 / 1,
     guides: false,
     minCropBoxHeight: 30,
@@ -44,7 +44,7 @@ const Avatar = (props: Props) => {
   const takeImg = (file: File) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setImage(reader.result as any);
+      setCropImage(reader.result as any);
     };
     reader.readAsDataURL(file);
   }
@@ -79,7 +79,7 @@ const Avatar = (props: Props) => {
       avatar: crop.getCroppedCanvas().toDataURL(),
       id: id,
     }));
-    setImage('');
+    setCropImage('');
   };
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
@@ -88,12 +88,19 @@ const Avatar = (props: Props) => {
 
   return (
     <div className='avatar drop_avatar' >
-      {image &&
+      {cropImage &&
         <>
           <Cropper className='avatar__img' {...settings} />
-          <div className='avatar__crop' onClick={() => getCrop()}>Обрезать</div>
-        </>
-      || user.id === id &&
+          <div className='avatar__crop_case'>
+            <span className='avatar__crop_button' onClick={() => setCropImage('')}>
+              Отмена
+            </span>
+            <span className='avatar__crop_button' onClick={() => getCrop()}>
+              Обрезать
+            </span>
+          </div>
+        </> ||
+      user.id === id &&
         <>
           <img
             className='avatar__img'
@@ -118,7 +125,7 @@ const Avatar = (props: Props) => {
           }
           <input accept="image/png, image/jpeg" onChange={e => onDrop(e)} id='drop_box' type='file' />
         </>
-      ||
+        ||
         <img
           className='avatar__img'
           src={avatar}

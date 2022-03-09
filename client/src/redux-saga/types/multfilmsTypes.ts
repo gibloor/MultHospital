@@ -5,6 +5,9 @@ import {
   MULTFILM_TESTING,
   MULTFILM_TESTING_REQUIRE,
 
+  VIEWED_SAVE,
+  VIEWED_SAVE_REQUEST,
+
   MULTFILM_FAILURE,
 } from "../actions/multfilmsActions";
 
@@ -15,13 +18,14 @@ export interface Character {
 
 export interface Multfilm {
   id: number,
-  level: string,
+  level: number,
   name: string,
-  serial_number: string,
+  serial: number,
   watched: boolean,
   viewed: boolean,
   delay: number,
   characters: Character[],
+  [key: string]: string | number | boolean | Character[]
 }
 
 export interface Id {
@@ -41,9 +45,13 @@ export interface Answer {
 export interface UserAnswer {
   userId: number,
   userLevel: number,
-  questLevel?: number,
+  multLevel?: number,
   features: string[],
   topic: string,
+}
+export interface Viewed {
+  userId: number,
+  viewed: string[],
 }
 
 export interface MultfilmTakeRequare {
@@ -64,6 +72,14 @@ export interface MultfilmTestingRequire {
   payload: UserAnswer,
 }
 
+export interface ViewedSaveRequest {
+  type: typeof VIEWED_SAVE_REQUEST;
+  payload: Viewed;
+}
+export interface ViewedSave {
+  type: typeof VIEWED_SAVE;
+}
+
 export interface MultfilmFailure {
   type: typeof MULTFILM_FAILURE;
   payload: {error: boolean};
@@ -74,4 +90,6 @@ export type MultfilmsActions =
 | MultfilmTake
 | MultfilmTestingRequire
 | MultfilmTesting
+| ViewedSaveRequest
+| ViewedSave
 | MultfilmFailure

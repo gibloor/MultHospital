@@ -9,34 +9,12 @@ import './styles.scss';
 
 const GreetNew = () => {
 
-  interface Select {
-    text: string,
-    image: string,
-    level: number,
-  }
-
   const userId = useSelector(getAccountIdSelector);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const chooser = [
-    {
-      text: 'text1',
-      image: 'https://i.ibb.co/1dyPjPX/first-List-Face-Up.png',
-      level: 1,
-    },
-    {
-      text: 'text2',
-      image: 'https://i.ibb.co/0VfV5Hv/first-List-Futurama.png',
-      level: 2,
-    },
-    {
-      text: 'text3',
-      image: 'https://i.ibb.co/1fGdYLC/first-List-Watashi.png',
-      level: 3,
-    },
-  ];
+  const chooser = [1, 2, 3];
 
   const saveInvolvement = (level: number) => {
     dispatch(userInvolvementChangeRequire({
@@ -53,28 +31,31 @@ const GreetNew = () => {
         {t('greetNew.greet.string2')}
       </span>
       <div className="greet__answers">
-        {chooser.map((choose: Select) => (
+        {chooser.map((choose) => (
           <div
             role="button"
             className="greet__answer"
-            key={choose.level}
+            key={choose}
             tabIndex={0}
-            onKeyPress={() => (saveInvolvement(choose.level))}
-            onClick={() => (saveInvolvement(choose.level))}
+            onKeyPress={() => (saveInvolvement(choose))}
+            onClick={() => (saveInvolvement(choose))}
           >
             <div className="greet__answer_carcas">
               <img
                 className="greet__answer_image"
-                alt={choose.text}
-                src={choose.image}
+                alt={t(`greetNew.chooser.text${choose}`)}
+                src={`/assets/images/greetNew/answers/${choose}.png`}
               />
             </div>
             <span className="text greet__text">
-              {t(`greetNew.chooser.${choose.text}`)}
+              {t(`greetNew.chooser.text${choose}`)}
             </span>
           </div>
         ))}
       </div>
+      <span className="greet__warning">
+        {t('greetNew.warning')}
+      </span>
     </div>
   );
 };

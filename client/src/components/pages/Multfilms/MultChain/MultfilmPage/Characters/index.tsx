@@ -113,7 +113,7 @@ const Characters = (props:Props) => {
                               {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                             </p>
                             <p className="characters__text_info">
-                            {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
+                              {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
                             </p>
                         </div>
                       </div>

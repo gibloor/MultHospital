@@ -5,6 +5,8 @@ import {
   MULTFILM_TAKE_REQUARE,
   MULTFILM_TESTING,
   MULTFILM_TESTING_REQUIRE,
+  VIEWED_SAVE,
+  VIEWED_SAVE_REQUEST,
   MULTFILM_FAILURE,
 } from '../actions/multfilmsActions';
 
@@ -39,12 +41,16 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
       };
     
     case MULTFILM_TESTING:
+      // need check
       let multfilms = state.multfilms;
       multfilms[action.payload.level].map(multfilm => {
         if (multfilm.name === action.payload.topic) {
           multfilm.watched = true
-        }
+        };
+        multfilm.delay -= 5;
       });
+      // need check
+      // add delay animation like need
       return {
         ...state,
         multfilms: multfilms,
@@ -56,6 +62,17 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
         ...state,
         pending: true,
       }
+    
+    case VIEWED_SAVE_REQUEST:
+      return {
+        ...state,
+        pending: true,
+      };
+    case VIEWED_SAVE:
+      return {
+        ...state,
+        pending: false,
+      };
     
     case MULTFILM_FAILURE:
       return {

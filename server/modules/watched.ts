@@ -1,29 +1,34 @@
-const express = require('express');
+import express from 'express';
+
+import pool from '../db';
+
 const watched = express.Router();
-const pool = require("../db");
 
 watched.put('/tested/:userId', async (req, res) => {
   try {
-    const { features, level } = req.body;
+    const { level, topic } = req.body;
     const { userId } = req.params;
-
     const date = Date().toLocaleString();
 
-    for (multfilm of features) {
-      await pool.query(
-        "INSERT INTO watched (user_id, level, multfilm, date) VALUES($1, $2, $3, $4)", [userId, level, multfilm, date]
+    const features: string[] = req.body.features;
+
+    features.map(feature => {
+      pool.query(
+        "INSERT INTO watched (user_id, level, multfilm, date) VALUES($1, $2, $3, $4)", [userId, level, feature, date]
       )
-    };
-    await pool.query("UPDATE accounts SET test_passed = $1 WHERE id = $2", [true, userId]);
+    });
+    if (topic === "newcomers") {
+      await pool.query("UPDATE accounts SET test_passed = $1 WHERE id = $2", [true, userId]);
+    }
     res.json('test complited');
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message);
   }
 })
 
 watched.put('/viewed/:userId', async (req, res) => {
   try {
-    const { viewed } = req.body;
+    const viewed: string[] = req.body.viewed;
     const { userId } = req.params;
   
     viewed.map(multfilm => {
@@ -32,10 +37,10 @@ watched.put('/viewed/:userId', async (req, res) => {
       )
     })
     res.json('save complited');
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message);
   }
 })
 
-module.exports = watched;
+export default watched;
 

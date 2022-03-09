@@ -14,14 +14,15 @@ const AutoSignUp = (props: Props) => {
   const dispatch = useDispatch();
 
   const authInfo = useSelector(getAccountSelector);
-  const token = localStorage.getItem('token') || '';
+  const token = localStorage.getItem('token');
   
   useEffect(() => {
-    (token && !authInfo.name)
-    && dispatch(userAutoAuthRequire({token: token}));
+    if (token && !authInfo.name) {
+      dispatch(userAutoAuthRequire({token: token}));
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [token]);
 
   return (
     <>

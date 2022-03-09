@@ -14,14 +14,14 @@ interface Props {
 
 const MultfilmBlock = (props: Props) => {
 
-  const multfilm = props.multfilm;
+  const { multfilm, viewedChange } = props;
   const { t } = useTranslation();
 
   useEffect(() => {
     if (!multfilm.viewed) {
-      props.viewedChange(multfilm.name);
+      viewedChange(multfilm.name);
       multfilm.viewed = true;
-    }  
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

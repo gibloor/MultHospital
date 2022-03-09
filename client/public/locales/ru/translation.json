@@ -39,6 +39,10 @@
     }
   },
 
+  "main": {
+    "": ""
+  },
+
   "greetNew": {
     "greet": {
       "string1": "Приветствуем вас в MultHospital",
@@ -52,7 +56,8 @@
       "text1": "Мультики только для детей",
       "text2": "Смотрю время от времени",
       "text3": "Мультфильмы - это жизнь"
-    }
+    },
+    "warning": "Сложность можно поменять в любой момент в профиле"
   },
   
 
@@ -62,8 +67,8 @@
     "passTest": "Пройти тест"
   },
 
-  "basement": {
-
+  "aboutProject": {
+    "text": "Цели проекта:<1><0>Помочь людям с \"Чтобы посмотреть сегодня?\"</0><1>Практика в создании сайтов</1></1>"
   },
 
   "statistics": {
@@ -112,19 +117,43 @@
           }
         },
         "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "commonQuestion1": {
+            "question": "Для чего был создан этот робот?",
+            "right": "Подавать масло",
+            "blende1": "Победа на выставке *или как рна там называлась чекнуть*",
+            "blende2": "Осуществлять слежку"
+          },
+          "commonQuestion2": {
+            "question": "Лучший способ транспортировки данного объекта через *пост федерации или как там*",
+            "right": "Внутри собственной задницы",
+            "blende1": "Во внутренностях шкрубелов",
+            "blende2": "Замаскировать пол секс игрушки"
           }
         },
         "3": {
           "chooseSuitable1": {
-            "question": "Choose the most suitable",
-            "right": "Smarf",
-            "blende1": "Alcohol",
-            "blende2": "Best friend"
+            "question": "Выберите наиболее подходящее",
+            "right": "Смэрф",
+            "blende1": "Алкоголь",
+            "blende2": "Лучший друг"
+          },
+          "commonQuestion1": {
+            "question": "На кого по мнению директора школы пытались списать убийство *пчела с ножиком*",
+            "right": "Латино-американцев *хз как пишется*",
+            "blende1": "Канадцев",
+            "blende2": "Мексиканцев"
+          },
+          "commonQuestion2": {
+            "question": "Какая родная вселенная Морти",
+            "right": "С-137",
+            "blende1": "B-243",
+            "blende2": "D-198"
+          },
+          "commonQuestion3": {
+            "question": "Основной *бзик/проблема* *пчела с ножом",
+            "right": "Финансовое положение семьи",
+            "blende1": "Отсутствие популярности у противоположного пола",
+            "blende2": "Плохие оценки"
           }
         }
       }
@@ -146,19 +175,19 @@
       },
       "questions": {
         "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "relationships1": {
+            "question": "Какие между ними отношения?",
+            "right": "Братья",
+            "blende1": "Друзья",
+            "blende2": "Соседи"
           }
         },
         "2": {
           "chooseSuitable1": {
-            "question": "Choose the most suitable",
-            "right": "Tree Trunk",
-            "blende1": "Apples",
-            "blende2": "Granny"
+            "question": "Выберите наиболее подходящее",
+            "right": "Деревяшка",
+            "blende1": "Яблоки",
+            "blende2": "Бабушку"
           }
         },
         "3": {
@@ -176,13 +205,13 @@
         "title": "Бесконечный поезд",
         "description": "<0>Бесконечный поезд</0> is an animated series",
         "characters": {
-          "": {
-            "name": "",
-            "description": ""
+          "TulipOlsen": {
+            "name": "Тюльпана",
+            "description": "Девочка подросткового возроста попавшая в непонятное место после глупой ссоры с семьёй"
           },
-          "2": {
-            "name": "",
-            "description": ""
+          "OneOne": {
+            "name": "Раз раз",
+            "description": "Круглый робот разделяющийся на 2 с противоположными характерами"
           }
         }
       },
@@ -239,9 +268,9 @@
         },
         "2": {
           "gameCompite1": {
-            "question": "In which game did he compete with the main character",
-            "right": "Pochinko",
-            "blende1": "Dice with special rules",
+            "question": "В какой игре он противостоял главному герою",
+            "right": "Починко",
+            "blende1": "Кости со специальными правилами",
             "blende2": "Black Jack"
           }
         },
@@ -315,10 +344,10 @@
       "questions": {
         "1": {
           "genre1": {
-            "question": "The genre of this anime",
-            "right": "Thriller",
-            "blende1": "Detective",
-            "blende2": "Everyday life"
+            "question": "Жанр этого аниме",
+            "right": "Триллер",
+            "blende1": "Детектив",
+            "blende2": "Повседневная жизнь"
           }
         },
         "2": {
@@ -357,9 +386,9 @@
       "questions": {
         "1": {
           "seriesDescription1": {
-            "question": "What is this animated series",
-            "right": "Satirical",
-            "blende1": "Racist and intolerant",
+            "question": "Какой это анимационный сериал",
+            "right": "Сатирический",
+            "blende1": "Расистский и нетерпимый",
             "blende2": "Nonsensical"
           }
         },
@@ -449,10 +478,10 @@
         },
         "2": {
           "relationshipStatus1": {
-            "question": "Relationship status at the end of the animated series",
-            "right": "Lonely",
-            "blende1": "with Diane Nguyen",
-            "blende2": "with Pickles"
+            "question": "Статус отношений вконце сериала",
+            "right": "Одинок",
+            "blende1": "С Дианой Нгуин",
+            "blende2": "С Огурчик *Проверить имя сабачки*"
           }
         },
         "3": {

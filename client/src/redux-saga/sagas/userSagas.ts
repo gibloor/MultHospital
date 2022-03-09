@@ -36,8 +36,8 @@ import {
 
 function* authSaga(dates: UserInfoTaked) {
   try {
-    yield put(userAuth(dates));
     localStorage.setItem('token', dates.token);
+    yield put(userAuth(dates));
   } catch (e: any) {
     yield put(
       userFailure({error: e.message}),

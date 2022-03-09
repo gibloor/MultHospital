@@ -46,10 +46,9 @@ const MultfilmPage = () => {
 
   return (
     <div className="multfilm_page">
-      {!pendingAccount && authInfo.test_passed && characters
-      && (
-        surveyOn && <SurveyRules />
-        || <>
+      {!pendingAccount && authInfo.test_passed && characters &&
+        (surveyOn && <SurveyRules /> ||
+        <>
           <div className="multfilm_page__container">
             <div className="multfilm_page__title_img_container">
               <img
@@ -73,7 +72,9 @@ const MultfilmPage = () => {
             Проверить себя
           </div>
         </>
-      )}
+        ) ||
+        <span>P4ela</span>
+      }
     </div>
   )
 }

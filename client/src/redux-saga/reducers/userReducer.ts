@@ -52,24 +52,14 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
     case USER_AUTH:
       return {
         ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        test_passed: action.payload.test_passed,
-        level: action.payload.level,
-        login: action.payload.login,
-        position: action.payload.position,
-        avatar: action.payload.avatar,
-
-        errorType: action.payload.errorType,
+        ...action.payload,
         pending: false,
       };
-
     case USER_AUTH_REQUIRE:
       return {
         ...state,
         pending: true,
       };
-      
     case USER_AUTO_AUTH_REQUIRE:
       return {
         ...state,
@@ -79,12 +69,7 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
     case USER_DEAUTH:
       return {
         ...state,
-        id: 0,
-        name: '',
-        image: false,
-        test_passed: false,
-        level: 0,
-        pending: false,
+        ...initialState,
       };
     case USER_DEAUTH_REQUIRE:
       return {
