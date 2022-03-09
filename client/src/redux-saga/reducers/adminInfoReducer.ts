@@ -27,6 +27,7 @@ const adminInfoReducer: Reducer<InitialState, AdminInfoActions> = (
     case ADMIN_INFO_TAKE:
       return {
         ...state,
+        ...action.payload,
         pending: false,
       };
     case ADMIN_INFO_TAKE_REQUIRE:

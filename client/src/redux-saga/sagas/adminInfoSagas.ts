@@ -20,11 +20,11 @@ function* adminInfoTakeSaga() {
     const token = localStorage.getItem('token') || '';
     const headers = {authorization: `Bearer ${token}`};
     
-    const takeInfo = () => axios.post('http://localhost:5000/admin/takeInfo', {},
+    const takeInfo = () => axios.post('http://localhost:5000/admin/takeInfo', {permission: 2},
     { headers: headers });
 
     const response: AxiosResponse<AdminInfo> = yield call(takeInfo);
-
+    
     yield put(adminInfoTake({
       ...response.data
     }));

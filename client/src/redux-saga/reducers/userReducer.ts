@@ -40,7 +40,7 @@ const initialState: InitialState = {
   test_passed: false,
   level: 0,
   login: '',
-  position: '',
+  permission: 1,
   avatar: '',
 };
 

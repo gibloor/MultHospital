@@ -40,7 +40,7 @@ export interface UserInfo extends Involvement {
   name: string,
   test_passed: boolean,
   login: string,
-  position: string,
+  permission: number,
   avatar: string,
   errorType: string,
 }

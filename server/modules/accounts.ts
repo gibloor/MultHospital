@@ -25,7 +25,7 @@ interface Account {
   password: string,
   email: string,
   mailing: boolean,
-  position: string,
+  permission: number,
   level: number,
   test_passed: boolean,
 };
@@ -34,7 +34,7 @@ const tokenCreate = (account: Account, res: Response) => {
   const user = account;
   if (user) {
     const token = jsw.sign(
-      {id: user.id},
+      {id: user.id, permission: user.permission},
       'GibloorKey'
     );
 

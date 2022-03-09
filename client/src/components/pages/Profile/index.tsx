@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 
 import { profileTakeRequire } from 'redux-saga/actions/profileActions';
 import { profileIdSelector } from 'redux-saga/selectors/profileSelector';
-import { getAccountIdSelector, getUserPosition } from 'redux-saga/selectors/userSelector';
+import { getAccountIdSelector, getUserPermission } from 'redux-saga/selectors/userSelector';
 
 import Avatar from './Avatar';
 import Statistic from './Statistic';
@@ -26,7 +26,7 @@ const Profile = () => {
   const id = Number(params.id);
   const profileId = useSelector(profileIdSelector);
   const ownId = useSelector(getAccountIdSelector);
-  const position = useSelector(getUserPosition);
+  const permission = useSelector(getUserPermission);
 
   useEffect(() => {
     if (profileId !== id) {
@@ -42,7 +42,7 @@ const Profile = () => {
         <Avatar id={id} />
         <Statistic />
         {
-          ownId === id && position === 'HospitalLord' &&
+          ownId === id && permission >= 4 &&
           <AdminMenu />
         }
         { ownId === id &&
