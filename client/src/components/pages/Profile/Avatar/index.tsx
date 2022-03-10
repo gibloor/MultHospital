@@ -108,9 +108,11 @@ const Avatar = (props: Props) => {
             alt='avatar'
             onError={(e) => (imageCheck(e))}
           />
+          {!user.avatar &&
           <span className='avatar__message'>
             drop you img
-          </span> 
+          </span>
+          } 
           <label
             className='avatar__drop_case drop_avatar'
             onDragLeave={e => dragLeave(e)}

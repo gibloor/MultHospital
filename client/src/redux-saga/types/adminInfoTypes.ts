@@ -10,8 +10,9 @@ export interface Token {
 }
 export interface Multfilm {
   name: string,
-  leveL: number,
+  level: number,
   serial: number,
+  [key: string]: string | number,
 }
 export interface Staff {
   login: string,
