@@ -11,6 +11,7 @@ import './styles.scss';
 
 
 interface MultInfo {
+  id: number,
   name: string,
   level: number,
   serial: number,
@@ -29,10 +30,19 @@ const MultChanger = () => {
 
   const [multfilms, setMultfilms] = useState<Multfilms>({});
 
-  const saveChanges = async (date: Multfilms) => {
+  let decryptedData = [...multSelector];
+
+  const saveChanges = async (data: Multfilms) => {
     try {
+      Object.keys(data).map(field => {
+        const index = Number(field.slice(-1));
+        const property = field.substring(0, field.length - 1);
+        decryptedData[index][property] = data[field];
+      });
       // dispatch(multfilmsChanges({date));
-      console.log(date);
+      console.log(decryptedData);
+
+      setMultfilms(multfilms)
     } catch (err: any) {
       console.error(err.message);
     }
@@ -48,10 +58,6 @@ const MultChanger = () => {
     setMultfilms(mults);
   }, [multSelector]);
 
-  // useEffect(() => {
-  //   console.log(multfilms);
-  // }, [multfilms]);
-
   return (
     <div className='multChanger'>
       <span>
@@ -60,7 +66,7 @@ const MultChanger = () => {
       
       <div className="multChanger__row">
         {columns.map(column => (
-          <span key={column.name}>
+          <span className={`multChanger__field_${column.name} multChanger__field`} key={column.name}>
             {column.name}
           </span>
         ))}
@@ -76,41 +82,45 @@ const MultChanger = () => {
               <div key={index} className="multChanger__row">
                 {columns.map(column => (
                   column.tag === 'input' &&
-                  <div key={`${column.name}${index}`}>
+                  <div
+                    key={`${column.name}${index}`}
+                    className={`multChanger__field_${column.name} multChanger__field`}
+                  >
                     <Field
-
                       name={`${column.name}${index}`}
                       validate={column.validator}
-                      
-                      placeholder={`${column.name}${index}`}
+                      placeholder={`${column.name}`}
                       // placeholder={t(`head.authentication.${input.name}`)}
 
                       className={classNames(
-                        { 'auth__input': !errors[`${column.name}${index}`] || !touched[`${column.name}${index}`] },
-                        { 'auth__input error_border': errors[`${column.name}${index}`] && touched[`${column.name}${index}`] },
+                        { 'multChanger__text_input': !errors[`${column.name}${index}`] || !touched[`${column.name}${index}`] },
+                        { 'error_border multChanger__text_input': errors[`${column.name}${index}`] && touched[`${column.name}${index}`] },
                       )}
                     />
-                    
-                    {errors[`${column.name}${index}`] && touched[`${column.name}${index}`] &&
-                      <div className="auth__error_case">
-                        <div className="auth__error_block">
-                          <span className="auth__error_text">
-                            {/* {t(`head.authentication.errors.${input.name}.${errors[input.name]}`)} */}
+    
+                    {/* {errors[`${column.name}${index}`] && touched[`${column.name}${index}`] &&
+                      <div className="multChanger__error_case">
+                        <div className="multChanger__error_block">
+                          <span className="multChanger__error_text">
+                            {t(``)}
                             error
                           </span>
                         </div>
                       </div>
-                    }
+                    } */}
                   </div>
                   ||
                   column.tag === 'span' &&
-                  <span key={column.name}>
+                  <span
+                    key={column.name}
+                    className={`multChanger__field_${column.name} multChanger__field`}
+                  >
                     {multfilm[column.name]}
                   </span>
                 ))}
               </div>
             ))}
-            <button type="submit" className="auth__submit auth__input">
+            <button type="submit" className="multChanger__submit">
               Go
             </button>
           </Form>

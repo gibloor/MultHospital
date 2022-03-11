@@ -4,7 +4,7 @@ export const validateMultName = (value: string) => {
   let error;
   if (!value) {
     error = 'required';
-  } else if (!/^[A-ZА-Я&._%+-]{3,14}$/i.test(value)) {
+  } else if (!/^[A-ZА-Я0-9&._%+-]{3,14}$/i.test(value)) {
     error = 'invalid';
   }
   return error;
