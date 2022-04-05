@@ -61,7 +61,7 @@ const Avatar = (props: Props) => {
     e.preventDefault();
     let file = e.dataTransfer.files[0];
     setDrag(false);
-    if (file.type === 'image/png' || file.type === 'image/jpeg') {
+    if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
       takeImg(file);
     }
 

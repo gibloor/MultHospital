@@ -1,13 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import './styles.scss';
 
 const Basement = () => {
 
+  const { t } = useTranslation();
+
   return (
-    <div className="text basement">
+    <div className="basement text">
       <div className='basement__case'>
-        site basement
+        {t('basement.bigText')}
       </div>
     </div>
   )

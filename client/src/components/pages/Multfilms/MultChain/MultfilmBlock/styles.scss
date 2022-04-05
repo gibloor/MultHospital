@@ -3,7 +3,7 @@
   &__list {
     display: flex;
     align-items: center;
-
+    justify-content: center;
     flex-direction: column;
     height: 100%;
     width: 100%;
@@ -38,6 +38,8 @@
     height: 90%;
     width: 90%;
     background: url(../../../../assets/decorations/Stamp_seal.png) no-repeat center/100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    transform: rotate(-30deg); 
   }
 
   &__viewed {

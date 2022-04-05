@@ -59,9 +59,9 @@ const MultfilmBlock = (props: Props) => {
             src={`assets/images/multfilms/${multfilm.name}/multPosters/${multfilm.name}.png`}
           />
         </div>
-        <span className="multfilm__name">
+        {/* <span className="multfilm__name">
           {t(`multfilms.${multfilm.name}.personal.title`)}
-        </span>
+        </span> */}
       </Link>
     </div>
   )

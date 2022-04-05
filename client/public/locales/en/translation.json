@@ -16,24 +16,24 @@
       "password": "Password",
       "errors": {
         "name": {
-          "required": "1",
-          "invalid": "2"
+          "required": "Write your name",
+          "invalid": "Name must be 3+ letters long"
         },
         "email": {
-          "required": "1",
-          "invalid": "2"
+          "required": "Write your e-mail",
+          "invalid": "Incorrect e-mail"
         },
         "login": {
-          "required": "1",
-          "invalid": "2"
+          "required": "Write your login",
+          "invalid": "Login must be 6+ letters long"
         },
         "password": {
-          "required": "1",
-          "invalid": "2"
+          "required": "Write your password",
+          "invalid": "Login must be 6+ letters and numbers long"
         },
         "used": {
-          "signIn": "Wrong dates",
-          "signUp": "Такие логин или почта уже используются end"
+          "signIn": "Incorrect data",
+          "signUp": "Login or mail is already in use"
         }
       }
     }
@@ -45,7 +45,7 @@
 
   "greetNew": {
     "greet": {
-      "string1": "Greetings you in MultHospital",
+      "string1": "Greetings you in Mult Hospital",
       "string2": "Choose your case"
     },
     "buttons": {
@@ -56,12 +56,19 @@
       "text1": "Cartoons for kids only",
       "text2": "I watch from time to time",
       "text3": "Cartoons are life"
+    },
+    "warning": "Difficulty can be changed at any time in the profile"
+  },
+
+  "mulfilmPage": {
+    "buttons": {
+      "toRules": "Test yourself"
     }
   },
 
   "rules": {
     "title": "Rules",
-    "text": "<0>First rule</0><1>Second rule</1><2>next rule</2>",
+    "text": "<0>You have 15 seconds to answer</0><1>There are 3 answers to choose from</1><2>The complexity of the questions depends on the passion you have previously chosen for animated series</2><3>Minimum number of questions - 10</3><4>You only need to answer 70% of the questions to pass the test</4><5>The test can be retaken an unlimited number of times</5><6>Please don't cheat</6>",
     "passTest": "Pass test"
   },
 
@@ -70,11 +77,17 @@
   },
 
   "statistics": {
+    "title": "Statistic",
+    "level": "Now level",
     "totalAmount": "Total views",
     "level1": "Viewed 1 difficulty",
     "level2": "Viewed 2 difficulty",
     "level3": "Viewed 3 difficulty",
     "firstTime": "Credited for welcome test"
+  },
+
+  "basement": {
+    "bigText": "To contact me, just search by nickname Gibloor in: Telegram, LinkenIn, Discord, Steam, Twitch, Google  (At the time of writing text, for this keyword the first link - my twitch, before was and steam). And, of course, e-mail: gibloor@yandex.ru"
   },
 
   "multfilms": {

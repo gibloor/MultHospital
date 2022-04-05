@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
+import Arrow from './Arrow';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles.scss';
@@ -47,9 +49,12 @@ const Characters = (props:Props) => {
   const settings = {
     speed: 100,
     infinity: true,
+    focusOnSelect: true,
     className: classChecker(5),
     slidesToShow: lengthChecker(5),
     slidesToScroll: 1,
+    nextArrow:  <Arrow direction='next' /> ,
+    prevArrow: <Arrow direction='prev' />,
     responsive: [
       {
         breakpoint: 1400,
@@ -90,6 +95,7 @@ const Characters = (props:Props) => {
             characters.map((character) => (
               <div key={character.name}>
                 <div className="characters__block">
+
                   <div className="characters__head">
                     <span className="characters__name">
                       {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
@@ -100,6 +106,7 @@ const Characters = (props:Props) => {
                       alt={character.name}
                     />
                   </div>
+
                   <div className="characters__info">
                     <div className="characters__info_container">
                       <img
@@ -109,16 +116,17 @@ const Characters = (props:Props) => {
                       />
                       <div className="characters__text_container">
                         <div className="characters__text">
-                            <p className="characters__text_name">
-                              {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
-                            </p>
-                            <p className="characters__text_info">
-                              {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
-                            </p>
+                          <p className="characters__text_name">
+                            {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
+                          </p>
+                          <p className="characters__text_info">
+                            {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             ))

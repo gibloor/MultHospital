@@ -8,22 +8,25 @@
   width: 100%;
   min-height: 60vh;
 
+  &__question {
+    font-size: 16pt;
+    margin-bottom: 10px;
+  }
+
   &__image {
     height: 400px;
   }
   
   &__answers {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
   }
 
   &__answer {
-    height: 30px;
     margin: 10px 10px 0px 0px;
     padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
     cursor: pointer;
-    background-color: black;
   }
 
   &__answer_button {

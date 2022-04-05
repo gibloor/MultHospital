@@ -6,7 +6,6 @@ import Basement from 'components/Basement';
 import Main from 'components/pages/Main';
 import Multfilms from 'components/pages/Multfilms';
 import AboutProject from 'components/pages/AboutProject';
-import Setting from 'components/pages/Setting';
 import Multfilm from 'components/pages/Multfilms/MultChain/MultfilmPage';
 import Profile from 'components/pages/Profile';
 import AutoSignUp from 'components/AutoSignUp';
@@ -24,7 +23,6 @@ function App() {
           <Route exact path="/" component={() => <Main />} />
           <Route path="/aboutProject" component={() => <AboutProject />} />
           <Route path="/profile/:id" component={() => <Profile />} />
-          <Route path="/setting" component={() => <Setting />} />
           <Route exact path="/multfilms" component={() => <Multfilms />} />
           <Route path="/multfilms/:section/:name" component={() => <Multfilm />} />
         </Switch>

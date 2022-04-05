@@ -5,25 +5,18 @@
   flex-direction: column;
   font-weight: bold;
 
-  &__video {
-    height: 700px;
-    margin-bottom: 10px;
-  }
-
   &__h2 {
     font-size: 24pt;
     margin-top: 0px;
   }
 
-  &__staff {
-    width: 65%;
+  &__picture {
+    max-height: 70vh;
   }
 }
 
 @media screen and (max-width: 850px) {
   .main {
-    &__video {
-      height: 400px;
-    }
+
   }
 }

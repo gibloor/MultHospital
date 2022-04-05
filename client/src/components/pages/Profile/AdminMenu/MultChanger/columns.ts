@@ -5,22 +5,19 @@ import {
 
 const columns = [
   {
-    name: 'id',
-    tag: 'span',
-  },
-  {
     name: 'name',
-    tag: 'input',
+    type: 'string',
     validator: validateMultName,
   },
   {
     name: 'level',
-    tag: 'input',
+    type: 'number',
     validator: validateMultLevel,
   },
   {
     name: 'serial',
-    tag: 'span',
+    type: 'number',
+    validator: validateMultLevel,
   },  
 ]
 

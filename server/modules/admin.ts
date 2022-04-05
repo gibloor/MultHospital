@@ -24,7 +24,7 @@ const verify = (req: Request, res: Response, next: NextFunction) => {
 
 admin.post('/takeInfo', verify, async (req, res) => {
   try  {
-    const multfilms = await pool.query('SELECT * FROM multfilms ORDER BY level, serial');
+    const multfilms = await pool.query('SELECT name, level, serial FROM multfilms ORDER BY level, serial');
 
     res.json({multfilms: multfilms.rows});
   }

@@ -49,7 +49,7 @@ const Profile = () => {
           <LevelChanger />
         }
 
-        <UserOffer />
+        {/* <UserOffer /> */}
       </div>
     </div>
   )

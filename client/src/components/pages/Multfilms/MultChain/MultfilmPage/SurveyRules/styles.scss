@@ -3,9 +3,12 @@
   align-items: center;
   flex-direction: column;
 
-  &__test_button {
-    cursor: pointer;
-    padding: 10px;
-    background-color: rgba(207, 182, 134, 0.397);
+  &__title {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  &__list li {
+    margin-bottom: 8px;
   }
 }

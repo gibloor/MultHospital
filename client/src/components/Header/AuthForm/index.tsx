@@ -96,7 +96,7 @@ const FormAuthorization = (props:Props) => {
                       placeholder={t(`head.authentication.${input.name}`)}
                       className={classNames(
                         { 'auth__input': !errors[input.name] || !touched[input.name] },
-                        { 'auth__input error_border': errors[input.name] && touched[input.name] },
+                        { 'auth__input auth__error_border': errors[input.name] && touched[input.name] },
                       )}
                     />
                     {errors[input.name] && touched[input.name] &&

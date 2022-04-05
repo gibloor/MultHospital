@@ -29,7 +29,7 @@ const Timer = (props: Props) => {
   },[counter]);
 
   return (
-    <span>
+    <span className='timer'>
       {`${timer}s`}
     </span>
   )

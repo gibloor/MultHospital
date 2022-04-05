@@ -96,6 +96,11 @@
     font-size: 10pt;
   }
 
+  &__error_border {
+    border: 1px solid rgb(197, 1, 1);
+    outline: none;
+  }
+
   &__global_error {
     color: red;
     font-size: 14pt;
@@ -112,6 +117,7 @@
     background-color: transparent;
     color: azure;
     border-color: azure;
+    margin-bottom: 5px;
   }
 
   &__checkbox_case {

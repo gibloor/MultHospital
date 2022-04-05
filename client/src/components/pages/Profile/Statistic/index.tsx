@@ -14,7 +14,7 @@ const Statistic = () => {
   return (
     <div className='statistics'>
       <div className='statistics__title'>
-        statistics
+      { t('statistics.title')}
       </div>
       <div>
         {Object.keys(statistics).map(statistic => (

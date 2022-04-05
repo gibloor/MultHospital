@@ -1,0 +1,25 @@
+.arrow {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 85px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+
+  &__prev {
+    left: -25px;
+    transform: rotate(180deg);
+  }
+
+  &__next {
+    right: -25px;
+  }
+
+  &__img {
+    height: 50%;
+    width: 40%;
+  }
+};

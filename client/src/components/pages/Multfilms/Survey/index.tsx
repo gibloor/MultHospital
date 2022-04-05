@@ -8,6 +8,7 @@ import { multfilmTestingRequire } from 'redux-saga/actions/multfilmsActions';
 import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
 
 import Timer from './Timer';
+import SurveyResult from './SurveyResult';
 
 import './styles.scss';
 
@@ -81,7 +82,7 @@ const Survey = (props: Props) => {
       {counter < questions.length && !questionsPending &&
         <>
           <form className="survey" onSubmit={(e) => submitQuestion(e)}>
-            <span className="text">
+            <span className="survey__question">
               { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.question`)}
             </span>
             <img
@@ -114,8 +115,8 @@ const Survey = (props: Props) => {
         </> ||
         (
           allAnswers.length &&
-          <div>NICE</div> ||
-          <div>loose</div>
+          <SurveyResult result='win' /> ||
+          <SurveyResult result='loose' />
         )
       }
     </>
