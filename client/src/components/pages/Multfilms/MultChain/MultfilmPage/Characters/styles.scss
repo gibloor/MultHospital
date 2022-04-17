@@ -92,6 +92,10 @@
     text-align: justify;
     text-indent: 30px;
   }
+
+  &__text_info p {
+    margin: 5px 0px;
+  }
 }
 
 @keyframes shiftGlobalBig {

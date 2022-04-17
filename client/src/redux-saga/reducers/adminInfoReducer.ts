@@ -3,6 +3,10 @@ import { Reducer } from 'redux';
 import {
   ADMIN_INFO_TAKE,
   ADMIN_INFO_TAKE_REQUIRE,
+
+  ADMIN_MULTFILMS_SAVE,
+  ADMIN_MULTFILMS_SAVE_REQUIRE,
+
   ADMIN_INFO_FAILURE,
 } from '../actions/adminInfoActions';
 
@@ -35,6 +39,18 @@ const adminInfoReducer: Reducer<InitialState, AdminInfoActions> = (
         ...state,
         pending: true,
       };
+
+    case ADMIN_MULTFILMS_SAVE:
+      return {
+        ...state,
+        multfilms: action.payload.multfilms,
+        pending: false,
+      }
+    case ADMIN_MULTFILMS_SAVE_REQUIRE:
+      return {
+        ...state,
+        pending: true,
+      }  
 
     case ADMIN_INFO_FAILURE:
       return {

@@ -1,0 +1,32 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: calc(100vh - 100px);
+
+  &__message_case {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid azure;
+    border-radius: 20px;
+  }
+
+  &__img {
+    height: 400px;
+  }
+
+  &__special_message {
+    font-weight: bold;
+  }
+
+  &__message {
+
+  }
+
+  &__button {
+    text-decoration: none;
+  }
+}

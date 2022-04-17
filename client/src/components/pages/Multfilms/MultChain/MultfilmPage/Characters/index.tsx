@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
@@ -120,7 +120,17 @@ const Characters = (props:Props) => {
                             {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                           </p>
                           <p className="characters__text_info">
-                            {t(`multfilms.${multName}.personal.characters.${character.name}.description`)}
+                            <Trans i18nKey={`multfilms.${multName}.personal.characters.${character.name}.description`}>
+                              <strong>Name</strong> - short description
+                              <p>text1</p>
+                              <p>text2</p>
+                              <p>text3</p>
+                              <p>text4</p>
+                              <p>text5</p>
+                              <p>text6</p>
+                              <p>text7</p>
+                              <p>text8</p>
+                            </Trans>
                           </p>
                         </div>
                       </div>

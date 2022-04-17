@@ -5,6 +5,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { getMultfilmsSelector } from 'redux-saga/selectors/adminInfoSelector';
+import { adminMultfilmsSaveRequire } from 'redux-saga/actions/adminInfoActions';
 
 import columns from './columns';
 import FullField from './FullField';
@@ -18,10 +19,6 @@ export interface MultInfo {
   [key: string]: string | number,
 }
 
-interface Multfilms {
-  multfilms: MultInfo[]
-}
-
 const MultChanger = () => {
 
   const dispatch = useDispatch();
@@ -29,11 +26,9 @@ const MultChanger = () => {
   const multSelector = useSelector(getMultfilmsSelector);
   const multfilms = [...multSelector];
 
-  const saveChanges = async (data: Multfilms) => {
+  const saveChanges = async (data: MultInfo[]) => {
     try {
-      // dispatch(multfilmsChanges({date));
-      console.log('I\`m work')
-      console.log(data);
+      dispatch(adminMultfilmsSaveRequire({multfilms: data}))
     } catch (err: any) {
       console.error(err.message);
     }
@@ -56,7 +51,7 @@ const MultChanger = () => {
       {multfilms.length !== 0 &&
       <Formik
         initialValues={{ multfilms: multfilms }}
-        onSubmit={(value) => { console.log(value.multfilms) }}
+        onSubmit={(value) => { saveChanges(value.multfilms) }}
       >
         {({ errors, touched, values }: any) => (
           <Form className="multChanger__form">

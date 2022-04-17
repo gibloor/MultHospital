@@ -72,6 +72,38 @@
     "passTest": "Pass test"
   },
 
+  "result": {
+    "victory": {
+      "message": "Congratulations on your successful completion",
+
+      "Frog": "*Easy melody*",
+      "Zoos": "«I foresaw this a year ago!»",
+      "Tanya": "«From today you are no longer a pitiful insect!»",
+      "KaijiF": "*Mad cries of joy*",
+      "Scheimpough": "«My congratulations»",
+      "WellDoneMen": "«Well done!»",
+      "Kevin": "«You're just soooooo good!»",
+      "MrSlave": "«How lovely»",
+      "Jake": "*Victory dance*",
+      "LaserDog": "*Joyful WAF*"
+    },
+    "losing": {
+      "message": "Correct answers were not enough.",
+
+      "Daria": "*Judgmental look*",
+      "Boss": "«I have bad news...»",
+      "Benson": "«It happens again and you're fired!»",
+      "Harli": "*screams of rage*",
+      "HardWorker": "«You're fucking retard!»",
+      "Tokk": "«Killing you is an act of mercy»",
+      "Bender": "«Bag of bones...»",
+      "Pickle": "«How so...»",
+      "Charli": "*sad sigh*",
+      "Aqua": "«Here is such a thing...»"
+    },
+    "button": "Return to mane page"
+  },
+
   "aboutProject": {
     "text": "Цели проекта:<1><0>Помочь людям с \"Чтобы посмотреть сегодня?\"</0><1>Практика в создании сайтов</1></1>"
   },

@@ -8,7 +8,7 @@ import { multfilmTestingRequire } from 'redux-saga/actions/multfilmsActions';
 import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
 
 import Timer from './Timer';
-import SurveyResult from './SurveyResult';
+import Result from './Result';
 
 import './styles.scss';
 
@@ -25,6 +25,7 @@ const Survey = (props: Props) => {
   const [allAnswers, setAllAnswers] = useState<string[]>([]);
   const [userAnswer, setUserAnswer] = useState('');
   const [counter, setCounter] = useState(0);
+  const [result, setResult] = useState(false);
   
   const questions = useSelector(getQuestions);
   const questionsPending = useSelector(getQuestionsPending);
@@ -64,6 +65,7 @@ const Survey = (props: Props) => {
           answers = []
           setAllAnswers([])
         };
+        setResult(true)
       };
       dispatch(multfilmTestingRequire({
         features: answers,
@@ -113,11 +115,7 @@ const Survey = (props: Props) => {
             <Timer counterChange={counterChange} counter={counter} />
           }
         </> ||
-        (
-          allAnswers.length &&
-          <SurveyResult result='win' /> ||
-          <SurveyResult result='loose' />
-        )
+        result && <Result surveyResult = {allAnswers.length} />
       }
     </>
   );
