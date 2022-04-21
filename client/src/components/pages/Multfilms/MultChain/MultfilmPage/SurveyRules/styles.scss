@@ -2,10 +2,17 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 100px);
 
   &__title {
     font-size: 18pt;
     font-weight: bold;
+  }
+
+  &__condition_case {
+    width: 100%;
+    text-align: center;
   }
 
   &__list li {

@@ -116,7 +116,7 @@ const Characters = (props:Props) => {
                       />
                       <div className="characters__text_container">
                         <div className="characters__text">
-                          <p className="characters__text_name">
+                          <p className="characters__name">
                             {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                           </p>
                           <p className="characters__text_info">

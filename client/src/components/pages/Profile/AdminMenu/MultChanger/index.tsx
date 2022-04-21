@@ -81,7 +81,7 @@ const MultChanger = () => {
                   </button>
                   
                   <button type="button"
-                    onClick={() => arrayHelpers.insert(values.multfilms.length, { id: -1, name:'new', level: 0, serial: 0})}
+                    onClick={() => arrayHelpers.insert(values.multfilms.length, { id: -1, name:'new', level: 4, serial: 1})}
                   >
                     +1
                   </button>

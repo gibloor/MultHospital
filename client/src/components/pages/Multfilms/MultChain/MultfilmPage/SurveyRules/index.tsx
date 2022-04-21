@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Trans, useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { getUserLevel } from 'redux-saga/selectors/userSelector';
 
 import Survey from 'components/pages/Multfilms/Survey';
 
@@ -11,6 +14,7 @@ const MultfilmPage = () => {
   const { t } = useTranslation();
 
   const [surveyOn, setSurveyOn] = useState(false);
+  const userLevel = useSelector(getUserLevel);
 
   interface Params {
     name: string,
@@ -23,9 +27,9 @@ const MultfilmPage = () => {
   return (
     surveyOn && <Survey topic={name} multLevel={ Number(section) } /> ||
     <div className="rules">
-      <div className='rules__title'>
+      <span className='rules__title'>
         {t('rules.title')}
-      </div>
+      </span>
       <span>
         <ol className='rules__list'>
           <Trans i18nKey={'rules.text'}>
@@ -38,6 +42,14 @@ const MultfilmPage = () => {
             <li>7 rule</li>
           </Trans>
         </ol>
+      </span>
+      <span className='rules__condition_case'>
+        <p className='rules__title'>
+          {t('rules.condition')}
+        </p>
+        <p>
+          {t(`multfilms.${name}.conditions.${userLevel}`)}
+        </p>
       </span>
       <div onClick={() => setSurveyOn(true)} className="button__general">
         {t('rules.passTest')}

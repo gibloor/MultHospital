@@ -84,8 +84,9 @@
     animation: shiftPartial linear forwards 0.4s;
   }
 
-  &__text_name {
+  &__name {
     text-align: center;
+    font-weight: bold;
   }
 
   &__text_info {
