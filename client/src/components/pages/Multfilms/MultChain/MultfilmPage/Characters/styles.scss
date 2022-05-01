@@ -170,3 +170,65 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .characters {
+    &__small_slider &__info {
+      width: 110%;
+      // animation: none;
+    }
+
+    // &__info {
+    //   animation: shiftGlobal linear forwards 0.4s;
+    // }  
+
+    &__full_length {
+      max-width: 100px;
+      max-height: 350px;
+      animation: none;
+    }
+
+    // &__info_container {
+    //   animation: emergence linear forwards 0.4s;
+    // }
+
+    &__text {
+      padding-left: 5px;
+    }
+
+    &__text_info {
+      font-size: 12pt;
+      text-indent: 10px;
+    }
+  }
+
+  // @keyframes emergence {
+  //   0% {
+  //     transform: translateY(-100%);
+  //   }
+  
+  //   50% {
+  //     transform: translateY(0);
+  //   }
+
+  //   100% {
+  //     transform: translateX(-5%);
+  //   }
+  // }
+  // @keyframes shiftMobile {
+  //   50% {
+  //     transform: translateX(0);
+  //   }
+  //   100% {
+  //     transform: translateX(-10%);
+  //   }
+  // }
+  @keyframes shiftGlobal {
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-5%);
+    }
+  }
+}

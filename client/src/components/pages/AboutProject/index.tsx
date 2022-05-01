@@ -1,15 +1,19 @@
 import React from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import './styles.scss';
 
 const AboutProject = () => {
 
+  const { t } = useTranslation();
+
   return (
-    <div className='aboutProject'>
+    <div className='aboutProject content'>
       <span className='aboutProject__text'>
+      <p>
+        {t('aboutProject.title')}
+      </p>
         <Trans i18nKey={'aboutProject.text'}>
-          goals
           <ol>
             <li>goal1</li>
             <li>goal2</li>

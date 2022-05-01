@@ -36,3 +36,20 @@
     text-indent: 30px;
   }
 }
+
+@media screen and (max-width: 850px) {
+  .multfilm_page {
+    &__container {
+      display: block;
+      width: 90%;
+    }
+
+    &__title_img_container {
+      width: 100%;
+    }
+
+    &__title_container {
+      width: 100%;
+    }
+  }
+}

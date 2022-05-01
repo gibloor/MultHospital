@@ -105,7 +105,8 @@
   },
 
   "aboutProject": {
-    "text": "Цели проекта:<1><0>Помочь людям с \"Чтобы посмотреть сегодня?\"</0><1>Практика в создании сайтов</1></1>"
+    "title": "Project goals:",
+    "text": "<0><0>Help people with \"What to watch today?\"</0><1>Practice in building websites</1></0>"
   },
 
   "statistics": {

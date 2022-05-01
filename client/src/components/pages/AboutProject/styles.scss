@@ -3,9 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 90px);
 
-  &__text {
-    
+  &__text p {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .aboutProject {
+
   }
 }

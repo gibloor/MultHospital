@@ -119,7 +119,7 @@ const Characters = (props:Props) => {
                           <p className="characters__name">
                             {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                           </p>
-                          <p className="characters__text_info">
+                          <div className="characters__text_info">
                             <Trans i18nKey={`multfilms.${multName}.personal.characters.${character.name}.description`}>
                               <strong>Name</strong> - short description
                               <p>text1</p>
@@ -131,7 +131,7 @@ const Characters = (props:Props) => {
                               <p>text7</p>
                               <p>text8</p>
                             </Trans>
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>

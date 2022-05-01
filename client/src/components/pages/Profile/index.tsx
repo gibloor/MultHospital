@@ -8,8 +8,8 @@ import { getAccountIdSelector, getUserPermission } from 'redux-saga/selectors/us
 
 import Avatar from './Avatar';
 import Statistic from './Statistic';
-import UserOffer from './UserOffer';
-import LevelChanger from './LevelChanger';
+// import UserOffer from './UserOffer';
+// import LevelChanger from './LevelChanger';
 import AdminMenu from './AdminMenu';
 
 import './styles.scss';
@@ -37,7 +37,7 @@ const Profile = () => {
   }, [id, profileId])
 
   return (
-    <div className='profile'>
+    <div className='profile content'>
       <div className='profile__case'>
         <Avatar id={id} />
         <Statistic />
@@ -45,9 +45,10 @@ const Profile = () => {
           ownId === id && permission >= 4 &&
           <AdminMenu />
         }
-        { ownId === id &&
+        {/* { 
+          ownId === id &&
           <LevelChanger />
-        }
+        } */}
 
         {/* <UserOffer /> */}
       </div>

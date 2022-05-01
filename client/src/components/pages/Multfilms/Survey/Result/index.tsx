@@ -19,7 +19,7 @@ const Result = (props: Props) => {
   const { surveyResult } = props;
 
   const [result, setResult] = useState('');
-  const [message, setMessage] = useState(0);
+  const [message, setMessage] = useState(-1);
 
   const messagePool: MessagePool = {
     victory: [
@@ -55,20 +55,20 @@ const Result = (props: Props) => {
       setResult('losing');
     };
 
-    const messageNumber = Math.floor(Math.random() * 10);
+    const messageNumber = Math.floor(Math.random() * 10) + 1;
     setMessage(messageNumber);
   }, []);
 
   return (
     <div className='result'>
-      {message &&
+      {(message >= 0) &&
         <>
-        <div className='result__message_case'>
-          <img className='result__img' src={`/assets/images/result/${result}/${messagePool[result][message]}.png`} />
-          <span className='result__special_message'>
-            {t(`result.${result}.${messagePool[result][message]}`)}
-          </span>
-        </div>
+          <div className='result__message_case'>
+            <img className='result__img' src={`/assets/images/result/${result}/${messagePool[result][message]}.png`} />
+            <span className='result__special_message'>
+              {t(`result.${result}.${messagePool[result][message]}`)}
+            </span>
+          </div>
           <span className='result__message'>
             {t(`result.${result}.message`)}
           </span>

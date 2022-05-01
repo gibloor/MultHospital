@@ -6,7 +6,7 @@ import {
   getAccountSelector
 } from 'redux-saga/selectors/userSelector';
 
-import GreetNew from 'components/pages/Multfilms/GreetNew';
+import GreetNew from './GreetNew';
 import Survey from './Survey';
 import MultChain from './MultChain';
 

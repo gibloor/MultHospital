@@ -10,7 +10,7 @@ const Main = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="main">
+    <div className="main content">
       <h2 className="main__h2">
         Mult Hospital
       </h2>

@@ -60,12 +60,12 @@ const Survey = (props: Props) => {
 
       if (topic !== 'newcomers') {
         if (allAnswers.length > questions.length * 0.75) {
-          answers = [allAnswers[0]]
+          answers = [allAnswers[0]];
         } else {
-          answers = []
-          setAllAnswers([])
+          answers = [];
+          setAllAnswers([]);
         };
-        setResult(true)
+        setResult(true);
       };
       dispatch(multfilmTestingRequire({
         features: answers,

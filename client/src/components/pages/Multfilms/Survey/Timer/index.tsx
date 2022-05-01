@@ -10,6 +10,7 @@ interface Props {
 const Timer = (props: Props) => {
 
   const [timer, setTimer] = useState(15);
+  
   const { counterChange, counter } = props;
 
   useEffect(() => {

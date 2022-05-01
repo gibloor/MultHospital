@@ -3,12 +3,12 @@ import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 import { userAuthRequire, userErrorCleaning } from 'redux-saga/actions/userActions';
 import { getAccountSelector, getAuthErrorTypeSelector } from 'redux-saga/selectors/userSelector';
 
 import inputs from './inputs';
-import OutsideClickHandler from 'react-outside-click-handler';
 
 import './styles.scss';
 

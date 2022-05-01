@@ -17,6 +17,8 @@
 
 @media screen and (max-width: 850px) {
   .main {
-
+    &__picture {
+      width: 90%;
+    }
   }
 }

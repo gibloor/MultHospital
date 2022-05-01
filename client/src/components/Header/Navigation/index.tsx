@@ -39,8 +39,8 @@ const Navigation = (props: Props) => {
           <div className="navigation__menu_list">
             <div className="navigation__list">
               {pagesList.map((button) => (
-                (authInfo.name || button.access === 'free')
-                  && (
+                (authInfo.name || button.access === 'free') &&
+                (
                   <Link
                     className="navigation__button"
                     key={button.name}
@@ -49,8 +49,8 @@ const Navigation = (props: Props) => {
                   >
                     {t(`head.buttons.${button.name}`)}
                   </Link>
-                  )
-                  || (
+                ) || 
+                (
                   <span
                     role="button"
                     tabIndex={0}
@@ -61,7 +61,7 @@ const Navigation = (props: Props) => {
                   >
                     {t(`head.buttons.${button.name}`)}
                   </span>
-                  )
+                )
               ))}
             </div>
             <div className="navigation__right_side">
