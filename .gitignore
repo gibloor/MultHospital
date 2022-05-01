@@ -88,3 +88,5 @@ typings/
 .dynamodb/
 
 server/app_data/images/users/
+client/build
+server/db.development.ts

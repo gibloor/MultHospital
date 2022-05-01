@@ -4,7 +4,7 @@ import {
   put,
   call,
   takeLatest,
-} from 'redux-saga/effects';6
+} from 'redux-saga/effects';
 import { QuestionTake, QuestionsTakeRequest } from '../types/questionsTypes';
 import {
   QUESTIONS_TAKE_REQUEST,
