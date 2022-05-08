@@ -130,12 +130,13 @@ const FormAuthorization = (props:Props) => {
                     />
                   </label>
                 </div>
-                ||
+              }
+              {typeForm === 'login' &&
                 <span
-                  onClick={() => (
+                  onClick={() => ((
                     dispatch(userErrorCleaning()),
                     setTypeForm('registration')
-                  )}
+                  ))}
                   className="auth__form_changer"
                 >
                   {t('head.buttons.registration')}

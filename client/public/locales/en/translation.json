@@ -119,6 +119,26 @@
     "firstTime": "Credited for welcome test"
   },
 
+  "offers": {
+    "question": {
+      "title": "You can offer question to multfilms what you watched before",
+      "inputs": {
+        "question": "Вопрос",
+        "answer": "Правильный ответ",
+        "false1": "Ложный ответ",
+        "false2": "Ложный ответ"
+      }
+    },
+    "errors": {
+      "unavailable": "You can't offered, you need watch more cartoons"
+    },
+    "button": "Отправить",
+    "messages": {
+      "confirm": "Спасибо за твоё предложение",
+      "error": "Что-то пошло не так"
+    }
+  },
+
   "basement": {
     "bigText": "To contact me, just search by nickname Gibloor in: Telegram, LinkenIn, Discord, Steam, Twitch, Google  (At the time of writing text, for this keyword the first link - my twitch, before was and steam). And, of course, e-mail: gibloor@yandex.ru"
   },

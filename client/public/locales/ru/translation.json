@@ -120,6 +120,26 @@
     "firstTime": "Засчитано за приветственный тест"
   },
 
+  "offers": {
+    "question": {
+      "title": "Вы можете предложить вопрос к просмотренному ранее мультфильму",
+      "inputs": {
+        "question": "Вопрос",
+        "answer": "Правильный ответ",
+        "false1": "Ложный ответ",
+        "false2": "Ложный ответ"
+      }
+    },
+    "errors": {
+      "unavailable": "Вы не можете ничего не предложить, так как ничего не посмотрели"
+    },
+    "button": "Отправить",
+    "messages": {
+      "confirm": "Спасибо за ваше предложение",
+      "error": "Что-то пошло не так"
+    }
+  },
+
   "basement": {
     "bigText": "Для связи со мной достаточно искать по нику Gibloor в: Telegram, LinkenIn, Discord, Steam, Twitch, Google (На момемт написания текста по этому ключевому слову мой твитч топ 1, раньше был и steam). Ну и конечно же почта: gibloor@yandex.ru"
   },
@@ -1183,7 +1203,7 @@
           }
         }
       }
-    } 
+    }
   },
   
   "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png"

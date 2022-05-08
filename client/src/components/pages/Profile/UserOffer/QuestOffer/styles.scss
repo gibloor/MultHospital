@@ -1,0 +1,39 @@
+.questoffer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin-bottom: 20px;
+    width: 70%;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__case {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+  }
+
+  &__replay {
+    height: 50px;
+    font-size: 18px;
+  }
+
+  &__replay_short {
+    width: 12.5%;
+  }
+  &__replay_long {
+    width: 20%;
+  }
+  &__error_border {
+    border: 1.5px solid red;
+  }
+}

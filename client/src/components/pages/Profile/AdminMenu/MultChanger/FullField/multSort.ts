@@ -47,12 +47,15 @@ export const multSort = (index: number, type: string, multfilm: MultInfo, multfi
   };
 
   if (
-    multfilms[index + 1] &&
-    multfilm.level === multfilms[index + 1].level &&
-    multfilm.serial === multfilms[index + 1].serial - 1 ||
-    multfilms[index - 1] &&
-    multfilm.level === multfilms[index - 1].level &&
-    multfilm.serial === multfilms[index - 1].serial + 1
+    (
+      multfilms[index + 1] &&
+      multfilm.level === multfilms[index + 1].level &&
+      multfilm.serial === multfilms[index + 1].serial - 1
+    ) || (
+      multfilms[index - 1] &&
+      multfilm.level === multfilms[index - 1].level &&
+      multfilm.serial === multfilms[index - 1].serial + 1
+    )
     ) {
     return;
   };

@@ -7,6 +7,7 @@ import multfilms from './modules/multfilms';
 import watched from './modules/watched';
 import profile from './modules/profile';
 import admin from './modules/admin';
+import offer from './modules/offer';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/multfilms', multfilms);
 app.use('/watched', watched);
 app.use('/profile', profile);
 app.use('/admin', admin);
+app.use('/offers', offer);
 
 app.listen(5000, () => {
   console.log('server has started on port 5000');

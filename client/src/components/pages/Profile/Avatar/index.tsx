@@ -99,8 +99,9 @@ const Avatar = (props: Props) => {
               Обрезать
             </span>
           </div>
-        </> ||
-      user.id === id &&
+        </>
+      }
+      {user.id === id && !cropImage &&
         <>
           <img
             className='avatar__img'
@@ -127,7 +128,8 @@ const Avatar = (props: Props) => {
           }
           <input accept="image/png, image/jpeg" onChange={e => onDrop(e)} id='drop_box' type='file' />
         </>
-        ||
+      }
+      {user.id !== id && !cropImage &&
         <img
           className='avatar__img'
           src={avatar}

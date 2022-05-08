@@ -32,14 +32,14 @@ const AuthMenu = (props: Props) => {
             role="button"
             tabIndex={0}
             className="auth__button"
-            onKeyPress={() => (
+            onKeyPress={() => ((
               props.changeAuthVariant('login'),
               props.closeMenu()
-            )}
-            onClick={() => (
+            ))}
+            onClick={() => ((
               props.changeAuthVariant('login'),
               props.closeMenu()
-            )}
+            ))}
           >
             {t('head.buttons.login')}
           </div>
@@ -48,24 +48,26 @@ const AuthMenu = (props: Props) => {
             role="button"
             tabIndex={0}
             className="auth__button"
-            onKeyPress={() => (
+            onKeyPress={() => ((
               props.changeAuthVariant('registration'),
               props.closeMenu()
-            )}
-            onClick={() => (
+            ))}
+            onClick={() => ((
               props.changeAuthVariant('registration'),
               props.closeMenu()
-            )}
+            ))}
           >
             {t('head.buttons.registration')}
           </div>
         </>
-        || 
+      }
+      {user.name && 
         <>
           <Link to={`/profile/${user.id}`} className='auth_menu__profile'>
             <img
               className='auth_menu__avatar'
               src={user.avatar}
+              alt='avatar'
               onError={(e) => (imageCheck(e))}
             />
             <span>
@@ -77,16 +79,16 @@ const AuthMenu = (props: Props) => {
             role="button"
             tabIndex={0}
             className="auth__button"
-            onKeyPress={() => (
+            onKeyPress={() => ((
               localStorage.removeItem('token'),
               dispatch(userDeauthRequire()),
               props.closeMenu()
-            )}
-            onClick={() => (
+            ))}
+            onClick={() => ((
               localStorage.removeItem('token'),
               dispatch(userDeauthRequire()),
               props.closeMenu()
-            )}
+            ))}
           >
             {t('head.buttons.deactive')}
           </div>

@@ -13,6 +13,8 @@ const AdminMenu = () => {
 
   useEffect(() => {
     dispatch(adminInfoTakeRequire());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

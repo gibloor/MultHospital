@@ -39,29 +39,26 @@ const Navigation = (props: Props) => {
           <div className="navigation__menu_list">
             <div className="navigation__list">
               {pagesList.map((button) => (
-                (authInfo.name || button.access === 'free') &&
-                (
-                  <Link
-                    className="navigation__button"
-                    key={button.name}
-                    to={`/${button.name}`}
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    {t(`head.buttons.${button.name}`)}
-                  </Link>
-                ) || 
-                (
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="navigation__button"
-                    key={button.name}
-                    onKeyPress={() => (props.changeAuthVariant('login'))}
-                    onClick={() => (props.changeAuthVariant('login'))}
-                  >
-                    {t(`head.buttons.${button.name}`)}
-                  </span>
-                )
+                <div key={button.name} className="navigation__button">
+                  {(authInfo.name || button.access === 'free') &&
+                    <Link
+                      to={`/${button.name}`}
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      {t(`head.buttons.${button.name}`)}
+                    </Link>
+                  }
+                  {(!authInfo.name && button.access !== 'free') &&
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      onKeyPress={() => (props.changeAuthVariant('login'))}
+                      onClick={() => (props.changeAuthVariant('login'))}
+                    >
+                      {t(`head.buttons.${button.name}`)}
+                    </span>
+                  }
+                </div>
               ))}
             </div>
             <div className="navigation__right_side">
@@ -78,7 +75,7 @@ const Navigation = (props: Props) => {
         className="navigation__burger_menu"
         onClick={() => setMenuVisible(true)}
       >
-        <img src="https://img.icons8.com/color/48/000000/hamburger.png"/>
+        <img alt='hamburger' src="https://img.icons8.com/color/48/000000/hamburger.png"/>
       </div>
     </>
   )

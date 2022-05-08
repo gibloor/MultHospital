@@ -57,6 +57,8 @@ const Result = (props: Props) => {
 
     const messageNumber = Math.floor(Math.random() * 10) + 1;
     setMessage(messageNumber);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -64,7 +66,7 @@ const Result = (props: Props) => {
       {(message >= 0) &&
         <>
           <div className='result__message_case'>
-            <img className='result__img' src={`/assets/images/result/${result}/${messagePool[result][message]}.png`} />
+            <img alt='result' className='result__img' src={`/assets/images/result/${result}/${messagePool[result][message]}.png`} />
             <span className='result__special_message'>
               {t(`result.${result}.${messagePool[result][message]}`)}
             </span>

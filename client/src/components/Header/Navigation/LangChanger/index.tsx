@@ -36,8 +36,14 @@ const LangChanger = () => {
               role="button"
               tabIndex={0}
               key={lang}
-              onKeyPress={() => (i18n.changeLanguage(lang), setLangDisplay(false))}
-              onClick={() => (i18n.changeLanguage(lang), setLangDisplay(false))}
+              onKeyPress={() => ((
+                i18n.changeLanguage(lang),
+                setLangDisplay(false)
+              ))}
+              onClick={() => ((
+                i18n.changeLanguage(lang),
+                setLangDisplay(false)
+              ))}
               alt={lang}
               className="langchanger__img"
               src={langs[lang].img}

@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import { Character } from 'redux-saga/types/multfilmsTypes';
 
 import Characters from './Characters';
@@ -18,7 +18,7 @@ const MultfilmPage = () => {
 
   const pendingAccount = useSelector(getAccountPendingSelector);
   const authInfo = useSelector(getAccountSelector);
-  const multfilms = useSelector(getMultfilmsSelector);
+  const multfilms = useSelector(multfilmsSelector);
 
   const [characters, setCharacters] = useState<Character[] > (); 
   const [surveyOn, setSurveyOn] = useState(false);
@@ -34,7 +34,7 @@ const MultfilmPage = () => {
 
   useEffect(() => {
     if (multfilms[multSection] !== undefined) {
-      multfilms[multSection].map(multfilm => {
+      multfilms[multSection].forEach(multfilm => {
         if (multfilm.name === multName) {
           setCharacters(multfilm.characters)
         }
@@ -46,12 +46,13 @@ const MultfilmPage = () => {
 
   return (
     <div className="multfilm_page">
-      {!pendingAccount && authInfo.test_passed && characters &&
-        (surveyOn && <SurveyRules /> ||
+      {!pendingAccount && authInfo.test_passed && characters && surveyOn && <SurveyRules /> }
+      {!pendingAccount && authInfo.test_passed && characters && !surveyOn &&
         <>
           <div className="multfilm_page__container">
             <div className="multfilm_page__title_img_container">
               <img
+                alt='collective'
                 className="multfilm_page__title_img"
                 src={`/assets/images/multfilms/${multName}/collective/${multName}.png`}
               />
@@ -72,7 +73,6 @@ const MultfilmPage = () => {
             {t('mulfilmPage.buttons.toRules')}
           </div>
         </>
-        )
       }
     </div>
   )

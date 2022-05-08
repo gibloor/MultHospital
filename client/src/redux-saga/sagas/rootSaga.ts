@@ -5,6 +5,7 @@ import questionsSagas from './questionsSagas';
 import multfilmsSagas from './multfilmsSagas';
 import profileSagas from './profileSagas';
 import adminInfoSagas from './adminInfoSagas';
+import offerSagas from './offerSagas';
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     fork(multfilmsSagas),
     fork(profileSagas),
     fork(adminInfoSagas),
+    fork(offerSagas)
   ]);
 }

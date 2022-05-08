@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getMultfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
 import { viewedSaveRequest } from 'redux-saga/actions/multfilmsActions';
 
@@ -11,7 +11,7 @@ import './styles.scss';
 
 const MultChain = () => {
   const dispatch = useDispatch();
-  const multfilms = useSelector(getMultfilmsSelector);
+  const multfilms = useSelector(multfilmsSelector);
   const userId = useSelector(getAccountIdSelector);
 
   let viewed: string[] = [];

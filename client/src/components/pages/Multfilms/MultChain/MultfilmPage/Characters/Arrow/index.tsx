@@ -15,7 +15,7 @@ const Arrow = (props: Props) => {
 
   return (
     <div onClick={onClick} className={`arrow arrow__${direction}`}>
-      <img className='arrow__img' src={arrow} />
+      <img alt='arrow' className='arrow__img' src={arrow} />
     </div>
   )
 };

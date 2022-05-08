@@ -114,8 +114,10 @@ const Survey = (props: Props) => {
           {topic !== 'newcomers' &&
             <Timer counterChange={counterChange} counter={counter} />
           }
-        </> ||
-        result && <Result surveyResult = {allAnswers.length} />
+        </>
+      }
+      {counter >= questions.length && questionsPending && result &&
+        <Result surveyResult = {allAnswers.length} />
       }
     </>
   );
