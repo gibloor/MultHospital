@@ -42,7 +42,7 @@ function* adminMultfilmsSaveSaga(action: AdminMultfilmsSaveRequire) {
     const saveMultfilms = () => axios.post('http://localhost:5000/admin/saveMultfilms', {permission: 5, multfilms},
     { headers: headers });
 
-    const response: AxiosResponse = yield call(saveMultfilms);
+    yield call(saveMultfilms);
     
     yield put(adminMultfilmsSave({
       multfilms

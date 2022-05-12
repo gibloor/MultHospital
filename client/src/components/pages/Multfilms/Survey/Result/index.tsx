@@ -23,7 +23,7 @@ const Result = (props: Props) => {
 
   const messagePool: MessagePool = {
     victory: [
-      'Frog',
+      'Stone',
       'Zoos',
       'Tanya',
       'KaijiF',

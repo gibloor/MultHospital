@@ -81,7 +81,7 @@ const Survey = (props: Props) => {
 
   return (
     <>
-      {counter < questions.length && !questionsPending &&
+      {(counter < questions.length && !questionsPending &&
         <>
           <form className="survey" onSubmit={(e) => submitQuestion(e)}>
             <span className="survey__question">
@@ -115,9 +115,10 @@ const Survey = (props: Props) => {
             <Timer counterChange={counterChange} counter={counter} />
           }
         </>
-      }
-      {counter >= questions.length && questionsPending && result &&
-        <Result surveyResult = {allAnswers.length} />
+      ) || (
+          result &&
+          <Result surveyResult = {allAnswers.length} />
+        )
       }
     </>
   );

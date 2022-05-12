@@ -76,7 +76,7 @@
     "victory": {
       "message": "Congratulations on your successful completion",
 
-      "Frog": "*Easy melody*",
+      "Stone": "You're great and that's a hard fact!",
       "Zoos": "«I foresaw this a year ago!»",
       "Tanya": "«From today you are no longer a pitiful insect!»",
       "KaijiF": "*Mad cries of joy*",
@@ -127,6 +127,14 @@
         "answer": "Правильный ответ",
         "false1": "Ложный ответ",
         "false2": "Ложный ответ"
+      }
+    },
+    "multfilm": {
+      "title": "Простенькая форма для предложения мультфильма",
+      "text": "Попрошу не советовать всякий треш, конечно если он не настолько трешовый что хорош",
+      "inputs": {
+        "multfilm": "Название мультфильма",
+        "description": "Описание мультсериала"
       }
     },
     "errors": {
@@ -618,7 +626,5 @@
         }
       }
     }
-  },
-
-  "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png"
+  }
 }

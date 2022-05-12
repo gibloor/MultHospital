@@ -26,7 +26,7 @@ const UserOffer = (props: Props) => {
       <Chooser changeOffer={changeOffer} offer={offer} />
       {
         offer === 'multOffer' &&
-        <MultOffer />
+        <MultOffer id={props.id} />
       }
       {
         offer === 'questOffer' &&

@@ -15,10 +15,13 @@
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
-  }
-  &__button a {
     text-decoration: none;
     color: white;
+  }
+  &__link {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   &__button:hover {
@@ -29,6 +32,7 @@
 
   &__right_side {
     display: flex;
+    align-items: center;
     margin-left: auto;
     margin-right: 10px;
   }

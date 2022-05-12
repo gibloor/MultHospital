@@ -9,30 +9,37 @@ const LangChanger = () => {
   const [langDisplay, setLangDisplay] = useState(false);
   const { t, i18n } = useTranslation();
 
-  interface Img {
-    img: string
-  }
-
-  const langs: {[lang: string]: Img} = {
-    en: { img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png' },
-    ru: { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png' },
-  };
+  const langs = [
+    'en',
+    'ru',
+  ];
 
   return (
     <div className="langchanger">
       <OutsideClickHandler onOutsideClick={() => setLangDisplay(false)}>
         <div className="langchanger__block">
-          <img
+          <div
             role="button"
             tabIndex={0}
             onKeyPress={() => setLangDisplay(!langDisplay)}
             onClick={() => setLangDisplay(!langDisplay)}
-            alt={t('flag')}
-            className="langchanger__img"
-            src={t('flag')}
-          />
-          {langDisplay && Object.keys(langs).map((lang) => (
+            className="langchanger__flag_case"
+          >
             <img
+              alt={`flag ${i18n.language}`}
+              className="langchanger__flag"
+              src={`/assets/images/languages/${i18n.language}/flag.png`}
+            />
+            <img
+              alt={`symbol ${i18n.language}`}
+              className="langchanger__symbol"
+              src={`/assets/images/languages/${i18n.language}/symbol.png`}
+            />
+          </div>
+          {langDisplay && langs.map((lang) => (
+            i18n.language !== lang &&
+            <div
+              className="langchanger__flag_case"
               role="button"
               tabIndex={0}
               key={lang}
@@ -44,10 +51,18 @@ const LangChanger = () => {
                 i18n.changeLanguage(lang),
                 setLangDisplay(false)
               ))}
-              alt={lang}
-              className="langchanger__img"
-              src={langs[lang].img}
-            />
+            >
+              <img
+                alt={`flag ${lang}`}
+                className="langchanger__flag"
+                src={`/assets/images/languages/${lang}/flag.png`}
+              />
+              <img
+                alt={`symbol ${t('lang')}`}
+                className="langchanger__symbol"
+                src={`/assets/images/languages/${lang}/symbol.png`}
+              />
+            </div>
           ))}
         </div>
       </OutsideClickHandler>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const validateQuestion = (value: string) => {
   let error;
   if (!value) {
@@ -15,6 +13,16 @@ export const validateShortText = (value: string) => {
   if (!value) {
     error = 'required';
   } else if (value.length > 50) {
+    error = 'invalid';
+  }
+  return error;
+};
+
+export const validateLongText = (value: string) => {
+  let error;
+  if (!value) {
+    error = 'required';
+  } else if (value.length > 1000) {
     error = 'invalid';
   }
   return error;

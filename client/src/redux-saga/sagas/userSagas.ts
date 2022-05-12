@@ -96,6 +96,7 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
     const userId = action.payload.id
     const saveInvolvement = () => axios.put<string[]>(`http://localhost:5000/accounts/saveInvolvement/${userId}`,
       { level });
+      
     yield call(saveInvolvement);
     yield put(userInvolvementChange({level: level}));
   } catch (e: any) {
@@ -113,8 +114,9 @@ function* avatarSaveSaga(action: UserAvatarSaveRequire) {
     const saveAvatar = () => axios.post<string[]>(`http://localhost:5000/profile/saveAvatar/${id}`,
       { avatar }
     );
+
     yield put(userAvatarSave({avatar: avatar}));
-    const response: AxiosResponse<string> = yield call(saveAvatar);
+    yield call(saveAvatar);
   } catch (e: any) {
     yield put(
       userFailure({

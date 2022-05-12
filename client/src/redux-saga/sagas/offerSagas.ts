@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {
   all,
   put,
@@ -8,7 +8,11 @@ import {
 import { QuestOfferTakeRequest } from '../types/offerTypes';
 import {
   QUEST_OFFER_TAKE_REQUEST,
+  MULT_OFFER_TAKE_REQUEST,
+
+  multOfferTake,
   questOfferTake,
+  
   offerFailure,
 } from '../actions/offerActions';
 
@@ -17,8 +21,8 @@ function* questOfferSelectSaga(action: QuestOfferTakeRequest) {
     const saveOffer = () => axios.post('http://localhost:5000/offers/questOffer/save', {
       params: { ...action.payload }
     });
-    const response: AxiosResponse<string> = yield call(saveOffer);
 
+    yield call(saveOffer);
     yield put(questOfferTake());
   } catch (e: any) {
     yield put(
@@ -27,10 +31,30 @@ function* questOfferSelectSaga(action: QuestOfferTakeRequest) {
       }),
     );
   }
-}
+};
+
+function* multOfferSelectSaga(action: QuestOfferTakeRequest) {
+  try {
+    const saveOffer = () => axios.post('http://localhost:5000/offers/multOffer/save', {
+      params: { ...action.payload }
+    });
+
+    yield call(saveOffer);
+    yield put(multOfferTake());
+  } catch (e: any) {
+    yield put(
+      offerFailure({
+        error: e.message,
+      }),
+    );
+  }
+};
 
 function* offerSagas() {
-  yield all([takeLatest(QUEST_OFFER_TAKE_REQUEST, questOfferSelectSaga)]);
+  yield all([
+    takeLatest(QUEST_OFFER_TAKE_REQUEST, questOfferSelectSaga),
+    takeLatest(MULT_OFFER_TAKE_REQUEST, multOfferSelectSaga)
+  ]);
 }
 
 export default offerSagas;

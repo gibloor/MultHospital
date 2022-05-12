@@ -49,7 +49,8 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
     const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
       { features, level: userLevel, topic }
     );
-    const response: AxiosResponse<string> = yield call(acceptAnswer);
+    
+    yield call(acceptAnswer);
     
     if (topic !== 'newcomers' && multLevel) {
       const topic = features[0];

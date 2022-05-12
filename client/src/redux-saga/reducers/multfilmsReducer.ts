@@ -41,20 +41,17 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
       };
     
     case MULTFILM_TESTING:
-      // need check
       let multfilms = state.multfilms;
-      multfilms[action.payload.level].map(multfilm => {
+      multfilms[action.payload.level].forEach(multfilm => {
         if (multfilm.name === action.payload.topic) {
           multfilm.watched = true
         };
         multfilm.delay -= 5;
       });
-      // need check
-      // add delay animation like need
+
       return {
         ...state,
         multfilms: multfilms,
-
         pending: false,
       }
     case MULTFILM_TESTING_REQUIRE:

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+
+import { questOfferTakeRequest } from 'redux-saga/actions/offerActions';
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
 
 import inputs from './inputs';
 
 import './styles.scss';
-import { questOfferTakeRequest } from 'redux-saga/actions/offerActions';
 
 interface Props {
   id: number
@@ -33,7 +34,7 @@ const QuestOffer = (props: Props) => {
     false2: string,
   }
 
-  const authentication = async (date: Dates) => {
+  const pushOffer = async (date: Dates) => {
     try {
       const { multfilm, question, answer, false1, false2 } = date;
       dispatch(questOfferTakeRequest({
@@ -78,7 +79,7 @@ const QuestOffer = (props: Props) => {
               false1: '',
               false2: '',
             }}
-            onSubmit={(values, { resetForm }) => { authentication(values); resetForm() }}
+            onSubmit={(values, { resetForm }) => { pushOffer(values); resetForm() }}
           >
             {({ errors, touched }: any) => (
               <Form className='questoffer__form'>

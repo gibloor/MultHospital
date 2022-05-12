@@ -86,7 +86,7 @@
 
   @keyframes multLeftShift {
     100% {
-      transform: translateX(calc(-100% + 150px));
+      transform: translateX(calc(-100% + 200px));
     }
   }
   @keyframes multRightShift {
@@ -102,18 +102,18 @@
   }
   @keyframes questRightShift {
     100% {
-      transform: translateX(calc(100% - 150px));
+      transform: translateX(calc(100% - 200px));
     }
   }
 
   @keyframes gereralLeftShift {
     100% {
-      transform: translateX(calc(-200% + 150px + 20%));
+      transform: translateX(calc(-200% + 200px + 20%));
     }
   }
   @keyframes generalRightShift {
     100% {
-      transform: translateX(calc(200% - 150px - 20%));
+      transform: translateX(calc(200% - 200px - 20%));
     }
   }
 }

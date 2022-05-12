@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const validateMultName = (value: string) => {
   let error;
   if (!value) {

@@ -39,26 +39,27 @@ const Navigation = (props: Props) => {
           <div className="navigation__menu_list">
             <div className="navigation__list">
               {pagesList.map((button) => (
-                <div key={button.name} className="navigation__button">
-                  {(authInfo.name || button.access === 'free') &&
-                    <Link
-                      to={`/${button.name}`}
-                      onClick={() => setMenuVisible(false)}
-                    >
-                      {t(`head.buttons.${button.name}`)}
-                    </Link>
-                  }
-                  {(!authInfo.name && button.access !== 'free') &&
-                    <span
-                      role="button"
-                      tabIndex={0}
-                      onKeyPress={() => (props.changeAuthVariant('login'))}
-                      onClick={() => (props.changeAuthVariant('login'))}
-                    >
-                      {t(`head.buttons.${button.name}`)}
-                    </span>
-                  }
-                </div>
+                ((authInfo.name || button.access === 'free') &&
+                  <Link
+                    key={button.name}
+                    to={`/${button.name}`}
+                    onClick={() => setMenuVisible(false)}
+                    className="navigation__button"
+                  >
+                    {t(`head.buttons.${button.name}`)}
+                  </Link>
+                ) || (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={() => (props.changeAuthVariant('login'))}
+                    onClick={() => (props.changeAuthVariant('login'))}
+                    className="navigation__button"
+                    key={button.name}
+                  >
+                    {t(`head.buttons.${button.name}`)}
+                  </span>             
+                )
               ))}
             </div>
             <div className="navigation__right_side">
