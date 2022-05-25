@@ -34,6 +34,8 @@ import {
   UserAvatarSaveRequire,
 } from '../types/userTypes';
 
+import { DOMAIN } from './rootSaga';
+
 function* authSaga(dates: UserInfoTaked) {
   try {
     localStorage.setItem('token', dates.token);
@@ -48,7 +50,7 @@ function* authSaga(dates: UserInfoTaked) {
 function* hendAuthSaga(action: UserAuthRequire) {
   try {
     const { dates, typeForm } = action.payload;
-    const authorization = () => axios.post(`http://localhost:5000/accounts/${typeForm}`,
+    const authorization = () => axios.post(`http://${DOMAIN}/accounts/${typeForm}`,
       { ...dates });
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization);
     yield authSaga(response.data);
@@ -65,8 +67,9 @@ function* autoAuthSaga(action: UserAutoAuthRequire) {
   try {
     const { token } = action.payload;
     const headers = {authorization: `Bearer ${token}`} 
-    const authorization = () => axios.post('http://localhost:5000/accounts/auto_auth', {},
-      { headers: headers });
+    const authorization = () => axios.post(`http://${DOMAIN}/accounts/auto_auth`,
+      {}, { headers: headers }
+    );
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization);
     yield authSaga({...response.data});
   } catch (e: any) {
@@ -94,8 +97,9 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   try {
     const level = action.payload.level;
     const userId = action.payload.id
-    const saveInvolvement = () => axios.put<string[]>(`http://localhost:5000/accounts/saveInvolvement/${userId}`,
-      { level });
+    const saveInvolvement = () => axios.put<string[]>(`http://${DOMAIN}/accounts/saveInvolvement/${userId}`,
+      { level }
+    );
       
     yield call(saveInvolvement);
     yield put(userInvolvementChange({level: level}));
@@ -111,7 +115,7 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
 function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   try {
     const { id, avatar } = action.payload;
-    const saveAvatar = () => axios.post<string[]>(`http://localhost:5000/profile/saveAvatar/${id}`,
+    const saveAvatar = () => axios.post<string[]>(`http://${DOMAIN}/profile/saveAvatar/${id}`,
       { avatar }
     );
 

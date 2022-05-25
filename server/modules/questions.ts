@@ -4,7 +4,13 @@ import pool from '../db';
 
 const questions = express.Router();
 
-const shuffler = (array: string[]) => {
+interface Question {
+  question: string,
+  multfilm: string,
+  answers?: string[]
+};
+
+const shuffler = (array: any[]) => {
   let currentIndex = array.length;
 
   while (0 !== currentIndex) {
@@ -29,12 +35,6 @@ questions.get('/', async (req, res) =>{
 
 questions.get('/take', async (req, res) => {
 
-  interface Question {
-    question: string,
-    multfilm: string,
-    answers?: string[]
-  };
-
   try {
     const { level, topic } = req.query;
     let quest = {
@@ -55,8 +55,7 @@ questions.get('/take', async (req, res) => {
         ]
       )
     ));
-
-    //Перенести шафлер на фронт
+    questions = shuffler(questions);
 
     await res.json(questions);
   } catch (err: any) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { getQuestions, getQuestionsPending } from 'redux-saga/selectors/questionsSelector';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
@@ -9,6 +10,8 @@ import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
 
 import Timer from './Timer';
 import Result from './Result';
+
+import lazy from 'components/assets/survey/lazy.png'
 
 import './styles.scss';
 
@@ -46,6 +49,16 @@ const Survey = (props: Props) => {
     setCounter(counter + 1);
   };
 
+  const freeWin = () => {
+    dispatch(multfilmTestingRequire({
+      features: [topic],
+      userId: user.id,
+      topic, 
+      userLevel: level,
+      multLevel
+    }));
+  }
+
   useEffect(() => {
     if (name) {
       dispatch(questionsTakeRequest({ level, topic }));
@@ -81,40 +94,55 @@ const Survey = (props: Props) => {
 
   return (
     <>
-      {(counter < questions.length && !questionsPending &&
-        <>
-          <form className="survey" onSubmit={(e) => submitQuestion(e)}>
-            <span className="survey__question">
-              { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.question`)}
-            </span>
-            <img
-              alt={questions[counter].topic}
-              className="survey__image"
-              src={`/assets/images/multfilms/${questions[counter].multfilm}/multTests/${level}/${questions[counter].question}.png`}
-            />
-            <div className="survey__answers">
-              {questions[counter].answers.map((answer, index) => (
-                <div className="survey__answer" key={answer}>
-                  <label
-                    htmlFor={`answer_button_${index}`}
-                    className="text"
-                  >
-                    { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.${answer}`)}
-                  </label>
-                  <input
-                    className="survey__answer_button"
-                    type="submit"
-                    onClick={() => setUserAnswer(answer)}
-                    id={`answer_button_${index}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </form>
-          {topic !== 'newcomers' &&
-            <Timer counterChange={counterChange} counter={counter} />
-          }
-        </>
+      {counter < questions.length && !questionsPending && (
+        (topic !== 'newcomers' && (questions.length === 0 || questions[counter].question == null) &&
+          <div className='survey'>
+            <img src={lazy} className='survey__lazy' />
+            <p>
+              { t('survey.lazy.text')}
+            </p>
+            <Link to='/multfilms'>
+              <button className='button__general' onClick={() => freeWin()}>
+                { t('survey.lazy.button')}
+              </button>
+            </Link>
+          </div>
+        ) || (
+        counter < questions.length && !questionsPending &&
+          <>
+            <form className="survey" onSubmit={(e) => submitQuestion(e)}>
+              <span className="survey__question">
+                { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.question`)}
+              </span>
+              <img
+                alt={questions[counter].topic}
+                className="survey__image"
+                src={`/assets/images/multfilms/${questions[counter].multfilm}/multTests/${level}/${questions[counter].question}.png`}
+              />
+              <div className="survey__answers">
+                {questions[counter].answers.map((answer, index) => (
+                  <div className="survey__answer" key={answer}>
+                    <label
+                      htmlFor={`answer_button_${index}`}
+                      className="text"
+                    >
+                      { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.${answer}`)}
+                    </label>
+                    <input
+                      className="survey__answer_button"
+                      type="submit"
+                      onClick={() => setUserAnswer(answer)}
+                      id={`answer_button_${index}`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </form>
+            {topic !== 'newcomers' &&
+              <Timer counterChange={counterChange} counter={counter} />
+            }
+          </>
+        )
       ) || (
           result &&
           <Result surveyResult = {allAnswers.length} />

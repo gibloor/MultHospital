@@ -12,9 +12,11 @@ import {
   questionsTakeFailure,
 } from '../actions/questionsActions';
 
+import { DOMAIN } from './rootSaga';
+
 function* questionsSelectSaga(action: QuestionsTakeRequest) {
   try {
-    const getQuestions = () => axios.get<QuestionTake[]>('http://localhost:5000/questions/take/', {
+    const getQuestions = () => axios.get<QuestionTake[]>(`http://${DOMAIN}/questions/take/`, {
       params: {
         level: action.payload.level,
         topic: action.payload.topic

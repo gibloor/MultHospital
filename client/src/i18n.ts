@@ -5,7 +5,8 @@ import Backend from 'i18next-http-backend';
 
 i18n
   .use(Backend)
-  .use(LanguageDetector)
+  //  need fix, broken images
+  // .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     debug: true,

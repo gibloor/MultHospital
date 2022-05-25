@@ -10,6 +10,7 @@ import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 import AuthMenu from './AuthMenu';
 import LangChanger from './LangChanger';
 import pagesList from './pagesList';
+import hamburger from 'components/assets/decorations/hamburger.png'
 
 import './styles.scss';
 
@@ -76,7 +77,7 @@ const Navigation = (props: Props) => {
         className="navigation__burger_menu"
         onClick={() => setMenuVisible(true)}
       >
-        <img alt='hamburger' src="https://img.icons8.com/color/48/000000/hamburger.png"/>
+        <img alt='hamburger' src={hamburger} />
       </div>
     </>
   )

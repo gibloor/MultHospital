@@ -28,9 +28,11 @@ import {
 
 import { userTestingRequire } from 'redux-saga/actions/userActions';
 
+import { DOMAIN } from './rootSaga';
+
 function* multfilmTakeSaga(action: MultfilmTakeRequare) {
   try {
-    const getQuestions = () => axios.get(`http://localhost:5000/multfilms/${action.payload.id}`);
+    const getQuestions = () => axios.get(`http://${DOMAIN}/multfilms/${action.payload.id}`);
     const response: AxiosResponse<MultfilmList> = yield call(getQuestions);
     yield put(multfilmsTake({multfilms: response.data}));
   } catch (e: any) {
@@ -46,7 +48,7 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
   try {
     const { userId, userLevel, topic, features, multLevel } = action.payload;
 
-    const acceptAnswer = () => axios.put<string[]>(`http://localhost:5000/watched/tested/${userId}`,
+    const acceptAnswer = () => axios.put<string[]>(`http://${DOMAIN}/watched/tested/${userId}`,
       { features, level: userLevel, topic }
     );
     
@@ -71,8 +73,9 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
 function* viewedSaveSaga(action: ViewedSaveRequest) {
   try {
     const viewed = action.payload.viewed
-    yield axios.put<string[]>(`http://localhost:5000/watched/viewed/${action.payload.userId}`,
-    { viewed });
+    yield axios.put<string[]>(`http://${DOMAIN}/watched/viewed/${action.payload.userId}`,
+      { viewed }
+    );
     yield put(viewedSave());
   } catch (e: any) {
     yield put(
