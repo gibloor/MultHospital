@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 
 import pool from '../db';
+import { userImgPath } from '..';
 
 const profile = express.Router();
 
@@ -16,7 +17,7 @@ profile.post('/saveAvatar/:id', async (req, res) => {
       "SELECT login FROM accounts WHERE id = $1", [id]
     );
 
-    fs.writeFile(`./app_data/images/users/${login.rows[0].login}/avatar.png`, buf, (err) => {
+    fs.writeFile(`${userImgPath}/app_data/images/users/${login.rows[0].login}.png`, buf, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
@@ -34,10 +35,11 @@ profile.get('/takeAvatar/:id', async (req, res) => {
       "SELECT login FROM accounts WHERE id = $1", [id]
     );
 
-    fs.readFile(`./app_data/images/users/${login.rows[0].login}/avatar.png`, function (err, data) {
+    fs.readFile(`${userImgPath}/app_data/images/users/${login.rows[0].login}.png`, function (err, data) {
       if (!data) {
         res.send('');
       } else {
+
         let base64 = Buffer.from(data).toString('base64');
         base64 = 'data:image/png;base64,' + base64;
         res.send(base64);
@@ -98,7 +100,7 @@ profile.get('/takeInfo/:id', async (req, res) => {
       });
     }
 
-    fs.readFile(`./app_data/images/users/${login}/avatar.png`, function (err, data) {
+    fs.readFile(`${userImgPath}/app_data/images/users/${login}.png`, function (err, data) {
       if (!data) {
         res.send({
           avatar: '',

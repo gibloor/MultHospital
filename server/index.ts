@@ -24,6 +24,11 @@ app.use('/profile', profile);
 app.use('/admin', admin);
 app.use('/offers', offer);
 
+export let userImgPath = '.';
+if (process.env.USER_IMG_PATH) {
+  userImgPath = process.env.USER_IMG_PATH
+}
+
 app.listen(5000, () => {
   console.log('server has started on port 5000');
 });

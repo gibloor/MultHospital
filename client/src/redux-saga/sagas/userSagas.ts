@@ -50,6 +50,7 @@ function* authSaga(dates: UserInfoTaked) {
 function* hendAuthSaga(action: UserAuthRequire) {
   try {
     const { dates, typeForm } = action.payload;
+    
     const authorization = () => axios.post(`http://${DOMAIN}/accounts/${typeForm}`,
       { ...dates });
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization);

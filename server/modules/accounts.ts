@@ -3,6 +3,7 @@ import jsw from 'jsonwebtoken';
 import fs from 'fs';
 
 import pool from '../db';
+import { userImgPath } from '..';
 
 const accounts = express.Router();
 
@@ -32,13 +33,14 @@ interface Account {
 
 const tokenCreate = (account: Account, res: Response) => {
   const user = account;
+
   if (user) {
     const token = jsw.sign(
       {id: user.id, permission: user.permission},
       'GibloorKey'
     );
 
-    fs.readFile(`./app_data/images/users/${user.login}/avatar.png`, (err, data) => {
+    fs.readFile(`${userImgPath}/app_data/images/users/${user.login}.png`, (err, data) => {
       if (data) {
         let base64 = Buffer.from(data).toString('base64');
         base64 = 'data:image/png;base64,' + base64;
@@ -72,11 +74,6 @@ accounts.post('/registration', async (req, res) => {
         [name, login, password, email, mailing]
       );
 
-      fs.mkdir(`./app_data/images/users/${login}`, (err) => {
-        if (err) throw err;
-        console.log('The dir has been created!');
-      });
-      
       tokenCreate(account.rows[0], res);
     } else {
       res.json({errorType: 'signUp'})
