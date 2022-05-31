@@ -234,7 +234,7 @@
             "question": "Как называется это шоу?",
             "right": "Яйцелюбы",
             "blende1": "Разгромители",
-            "blende2": "Меньшинства атакуют"
+            "blende2": "Спецсолянка"
           },
           "e7s2Hunt": {
             "question": "Кто оказался вампиром?",
@@ -363,8 +363,8 @@
           "e7s4Queen": {
             "question": "Что помогло Саммер стать королевой",
             "right": "Зубочистка",
-            "blende1": "",
-            "blende2": ""
+            "blende1": "Топик",
+            "blende2": "навыки в маникюре"
           },
           "e3s5Hero": {
             "question": "Почему Морти расстался с Планетиной",
@@ -473,7 +473,7 @@
           }
         },
         "2": {
-          "chooseSuitable1": {
+          "e4s1Granny": {
             "question": "Выберите наиболее подходящее",
             "right": "Деревяшка",
             "blende1": "Яблоки",
@@ -594,32 +594,6 @@
             "right": "",
             "blende1": "",
             "blende2": ""
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "relationships1": {
-            "question": "Какие между ними отношения?",
-            "right": "Братья",
-            "blende1": "Друзья",
-            "blende2": "Соседи"
-          }
-        },
-        "2": {
-          "chooseSuitable1": {
-            "question": "Выберите наиболее подходящее",
-            "right": "Деревяшка",
-            "blende1": "Яблоки",
-            "blende2": "Бабушку"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
           }
         }
       }
@@ -707,7 +681,7 @@
           }
         },
         "2": {
-          "relationshipStatus1": {
+          "e16s6Relationship": {
             "question": "Статус отношений вконце сериала",
             "right": "Одинок",
             "blende1": "С Дианой Нгуин",
@@ -728,48 +702,6 @@
       "personal": {
         "title": "Радуга",
         "description": "<0>Радуга</0> is an animated series",
-        "characters": {
-          "": {
-            "name": "",
-            "description": ""
-          },
-          "2": {
-            "name": "",
-            "description": ""
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        }
-      }
-    },
-    "10": {
-      "personal": {
-        "title": "",
-        "description": "<0></0> is an animated series",
         "characters": {
           "": {
             "name": "",

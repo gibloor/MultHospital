@@ -55,7 +55,7 @@ const Result = (props: Props) => {
       setResult('losing');
     };
 
-    const messageNumber = Math.floor(Math.random() * 10) + 1;
+    const messageNumber = Math.floor(Math.random() * 10);
     setMessage(messageNumber);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

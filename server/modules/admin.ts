@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import jsw from 'jsonwebtoken';
 
+import { secretKey } from '..';
 import pool from '../db';
 
 const admin = express.Router();
@@ -8,7 +9,7 @@ const admin = express.Router();
 const verify = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (token) {
-    jsw.verify(token, 'GibloorKey', (err, user: any) => {
+    jsw.verify(token, secretKey, (err, user: any) => {
       if (err) {
         return res.json('Token ' + token + ' so bad, we go to you')
       }

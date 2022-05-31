@@ -25,8 +25,7 @@ const AuthMenu = (props: Props) => {
 
   return (
     <div className="auth_menu">
-      {
-        !user.name && 
+      {(!user.name && 
         <>
           <div
             role="button"
@@ -60,8 +59,7 @@ const AuthMenu = (props: Props) => {
             {t('head.buttons.registration')}
           </div>
         </>
-      }
-      {user.name && 
+      ) ||
         <>
           <Link to={`/profile/${user.id}`} className='auth_menu__profile'>
             <img

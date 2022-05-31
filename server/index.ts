@@ -29,6 +29,11 @@ if (process.env.USER_IMG_PATH) {
   userImgPath = process.env.USER_IMG_PATH
 }
 
+export let secretKey = 'GibloorKey'
+if (process.env.SECRET_KEY) {
+  secretKey = process.env.SECRET_KEY
+}
+
 app.listen(5000, () => {
   console.log('server has started on port 5000');
 });

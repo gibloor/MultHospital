@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { getQuestions, getQuestionsPending } from 'redux-saga/selectors/questionsSelector';
+import { getQuestions } from 'redux-saga/selectors/questionsSelector';
 import { getAccountSelector } from 'redux-saga/selectors/userSelector';
 import { multfilmTestingRequire } from 'redux-saga/actions/multfilmsActions';
 import { questionsTakeRequest } from 'redux-saga/actions/questionsActions';
@@ -31,7 +31,6 @@ const Survey = (props: Props) => {
   const [result, setResult] = useState(false);
   
   const questions = useSelector(getQuestions);
-  const questionsPending = useSelector(getQuestionsPending);
   const user = useSelector(getAccountSelector);
 
   const { level, test_passed, name } = user;
@@ -94,10 +93,10 @@ const Survey = (props: Props) => {
 
   return (
     <>
-      {counter < questions.length && !questionsPending && (
-        (topic !== 'newcomers' && (questions.length === 0 || questions[counter].question == null) &&
+      {
+        (topic !== 'newcomers' && (questions.length < 10 || (questions[counter] && questions[counter].question == null)) &&
           <div className='survey'>
-            <img src={lazy} className='survey__lazy' />
+            <img src={lazy} alt='lazy character' className='survey__lazy' />
             <p>
               { t('survey.lazy.text')}
             </p>
@@ -108,8 +107,8 @@ const Survey = (props: Props) => {
             </Link>
           </div>
         ) || (
-        counter < questions.length && !questionsPending &&
-          <>
+          (counter < questions.length &&
+            <>
             <form className="survey" onSubmit={(e) => submitQuestion(e)}>
               <span className="survey__question">
                 { t(`multfilms.${questions[counter].multfilm}.questions.${level}.${questions[counter].question}.question`)}
@@ -137,15 +136,29 @@ const Survey = (props: Props) => {
                   </div>
                 ))}
               </div>
+              <div className="survey__answer">
+                <label
+                  htmlFor='answer_button_dontnow'
+                  className="text"
+                >
+                  I don't now
+                </label>
+                <input
+                  className="survey__answer_button"
+                  type="submit"
+                  onClick={() => setUserAnswer('')}
+                  id='answer_button_dontnow'
+                />
+              </div>
             </form>
             {topic !== 'newcomers' &&
               <Timer counterChange={counterChange} counter={counter} />
             }
           </>
-        )
-      ) || (
-          result &&
-          <Result surveyResult = {allAnswers.length} />
+          ) ||  (
+            result &&
+            <Result surveyResult = {allAnswers.length} />
+          )
         )
       }
     </>

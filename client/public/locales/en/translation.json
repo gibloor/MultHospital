@@ -9,7 +9,7 @@
       "deactive": "Exit",
       "mailing": "Receive mailing"
     },
-    "authentication": {
+    "authentication":  {
       "name": "Name",
       "email": "E-mail",
       "login": "Login",
@@ -68,6 +68,7 @@
 
   "rules": {
     "title": "Rules",
+    "condition": "Condition for your difficulty:",
     "text": "<0>You have 15 seconds to answer</0><1>There are 3 answers to choose from</1><2>The complexity of the questions depends on the passion you have previously chosen for animated series</2><3>Minimum number of questions - 10</3><4>You only need to answer 70% of the questions to pass the test</4><5>The test can be retaken an unlimited number of times</5><6>Please don't cheat</6>",
     "passTest": "Pass test"
   },
@@ -130,27 +131,27 @@
     "question": {
       "title": "You can offer question to multfilms what you watched before",
       "inputs": {
-        "question": "Вопрос",
-        "answer": "Правильный ответ",
-        "false1": "Ложный ответ",
-        "false2": "Ложный ответ"
+        "question": "Question",
+        "answer": "Correct answer",
+        "false1": "False response",
+        "false2": "False response"
       }
     },
     "multfilm": {
-      "title": "Простенькая форма для предложения мультфильма",
-      "text": "Попрошу не советовать всякий треш, конечно если он не настолько трешовый что хорош",
+      "title": "A simple cartoon suggestion form",
+      "text": "Please don't recommend any trash, of course, if it's not so trash that it's good",
       "inputs": {
-        "multfilm": "Название мультфильма",
-        "description": "Описание мультсериала"
+        "multfilm": "Name of the cartoon",
+        "description": "Description of the show"
       }
     },
     "errors": {
       "unavailable": "You can't offered, you need watch more cartoons"
     },
-    "button": "Отправить",
+    "button": "Submit",
     "messages": {
-      "confirm": "Спасибо за твоё предложение",
-      "error": "Что-то пошло не так"
+      "confirm": "Thank you for your offer",
+      "error": "Something went wrong"
     }
   },
 
@@ -160,270 +161,460 @@
 
   "multfilms": {
     "Rick&Morty": {
+      "conditions": {
+          "1": "To successfully complete the test, it is enough to watch the first 2 seasons",
+          "2": "To successfully complete the test, you need to watch 5 seasons",
+          "3": "You need to watch 5 seasons to pass the test"
+      },
       "personal": {
         "title": "Rick and Morty",
-        "description": "<0>Rik and Morty</0> is an animated series",
+        "description": "<0>Rick and Morty</0> is an animated series about the adventures of a duo: a genius, an alcoholic, and a lunatic on a universal scale - Rick and his stupid, naive and attached to his grandfather - Morty.",
         "characters": {
           "RickSanchez": {
             "name": "Rick Sanchez",
-            "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+            "description": "<0>Rick</0> is the main character of this animated series, not a single episode can do without him. <2>Telling his backstory = spoilers, so we'll skip it.</2><3>From that what is revealed in the first episodes: he does not look for easy ways, and breaking the law is the norm for him.</3>"
           },
           "MortySmith": {
             "name": "Morty Smith",
-            "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+            "description": "<0>Morty</0> is a (probably) 14-year-old teenager. <2>Intellectually \"gifted\", kind (relatively) and a little anxious young man.</2><3>Morty is one one of the main components of Rick's adventures, as he talks about in one of the episodes.</3>"
           },
           "JerrySmith": {
             "name": "Jerry Smith",
-            "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+            "description": "<0>Jerry</0> is the show's main woooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo the show head.<2>Jerry's \"accomplishments\" in brief:</2><3>1. Hiding in a secluded place while his wife is in danger (and more than once)</3><4>2. Seizes every opportunity to get rid of Rick</4><5>3. Begs his daughter for money</5>"
           },
           "SummerSmith": {
             "name": "Summer Smith",
-            "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+            "description": "<0>Summer</0> - in the series, she appears as a representative of an ordinary teenager of her age. <2>Of course, this changes throughout the series, since it is impossible to remain a standard Earthling after adventures in the universe.</2> "
           },
           "BethSmith": {
             "name": "Beth Smith",
-            "description": "Текст с описанием лень придумывать сейчас, но надо написать много текста чтобы проверить размеры, как вписываается в дизайн и тому подобное, также я уже завис и печатаю лижбы что, ибо великий пчелом осенил меня своим вдохновением, или нет, неизвестно. Факт остаётся фактом, я печатаю, буковки появляются, а пчелуки кружатся!"
+            "description": "<0>Beth</0> is the family's breadwinner and Rick's daughter<"
           }
         }
       },
       "questions": {
         "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "e3s1Worker": {
+            "question": "What prompted Poncho to rob the Park?",
+            "right": "Gifts for the holidays",
+            "blende1": "Low salary",
+            "blende2": "Scientific interest"
+          },
+          "e2s1Dog": {
+            "question": "What name did this cutie give himself?",
+            "right": "Snowball",
+            "blende1": "Sniffles",
+            "blende2": "Sky"
+          },
+          "e5s1JaryGame": {
+            "question": "What game did Jerry want to learn?",
+            "right": "Golf",
+            "blende1": "billiard",
+            "blende2": "Bowling"
+          },
+          "e6s1Virus": {
+            "question": "What virus was involved in turning everyone into Cronenbergs?",
+            "right": "Flu",
+            "blende1": "Hepatitis B",
+            "blende2": "Madness"
+          },
+          "e2s2BestGame": {
+            "question": "The best Blips and Chitz game",
+            "right": "Roy",
+            "blende1": "Face race",
+            "blende2": "Flobo"
+          },
+          "e4s2JaryLove": {
+            "question": "What is the relationship between Sleepy Gary and Jerry?",
+            "right": "Lovers",
+            "blende1": "Close friends",
+            "blende2": "Vie for Beth"
+          },
+          "e8s1Show": {
+            "question": "What's the name of this show?",
+            "right": "Egg Lovers",
+            "blende1": "Destroyers",
+            "blende2": "Special Salt"
+          },
+          "e7s2hunt": {
+            "question": "Who turned out to be a vampire?",
+            "right": "Fizruk",
+            "blende1": "Cleaner",
+            "blende2": "Watchman"
+          },
+          "e10s2Delivery": {
+            "question": "How did Jerry get to the wedding?",
+            "right": "In a courier bag",
+            "blende1": "Through the portal",
+            "blende2": "In the monster's stomach"
+          },
+          "e2s2Character": {
+            "question": "What is the name of this character?",
+            "right": "Whisperer",
+            "blende1": "Mist",
+            "blende2": "Iris"
           }
         },
         "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "e9s1Robot": {
+            "question": "The purpose of this robot",
+            "right": "Serve oil",
+            "blende1": "Win at the show",
+            "blende2": "Spying on cars"
+          },
+          "e1s1Ass": {
+            "question": "The best way to transport this object",
+            "right": "Inside your own ass",
+            "blende1": "In the guts of shrubels",
+            "blende2": "Disguise as sex toys"
+          },
+          "e5s2Potato": {
+            "question": "What vegetable does the Space Heads religion spread?",
+            "right": "Potato",
+            "blende1": "Beets",
+            "blende2": "Corn"
+          },
+          "e3s1Park": {
+            "question": "Rick's favorite ride in this park",
+            "right": "Pirates of the Pancreatic Sea",
+            "blende1": "Heart mermaids",
+            "blende2": "Gastric whirlpool"
+          },
+          "e10s2Work": {
+            "question": "What did Jerry get from the galactic government",
+            "right": "Work",
+            "blende1": "Rick's bounty",
+            "blende2": "2 pairs of pants"
+          },
+          "e4s3Vindicator": {
+            "question": "Best vindicator according to Rick",
+            "right": "Nub-nub",
+            "blende1": "Riley",
+            "blende2": "Synthesizer"
+          },
+          "e7s3Waffles": {
+            "question": "The main ingredient of \"Simple Waffles\"",
+            "right": "Secretions of happy hormones",
+            "blende1": "Shmebulock milk",
+            "blende2": "Uranium remnants"
+          },
+          "e3s4Work": {
+            "question": "What Mr. Asshole started working as",
+            "right": "Professor",
+            "blende1": "Businessman",
+            "blende2": "Swindler"
+          },
+          "e1s1Guy": {
+            "question": "Who did the principal think Frank's death was blamed on",
+            "right": "Latino *xs how to spell*",
+            "blende1": "Canadians",
+            "blende2": "Mexicans"
+          },
+          "e5s1Money": {
+            "question": "Currency in the stair tavern",
+            "right": "Schmekli",
+            "blende1": "floorbo",
+            "blende2": "Budriks"
           }
         },
         "3": {
-          "chooseSuitable1": {
-            "question": "Choose the most suitable",
-            "right": "Smarf",
-            "blende1": "Alcohol",
+          "e1s2Character": {
+            "question": "Choose the most appropriate",
+            "right": "Smurfs",
+            "blende1": "Alcoholism",
             "blende2": "Best friend"
+          },
+          "e10s1Morty": {
+            "question": "What is our Morty's home universe",
+            "right": "S-137",
+            "blende1": "B-243",
+            "blende2": "D-198"
+          },
+          "e1s1Franky": {
+            "question": "Frank's main problem in life",
+            "right": "Family financial situation",
+            "blende1": "Lack of popularity with the opposite sex",
+            "blende2": "Bad grades"
+          },
+          "e5s1Cost": {
+            "question": "How many shmeckles did the waitress's buffers cost",
+            "right": "25",
+            "blend1": "45",
+            "blend2": "35"
+          },
+          "e3s4Millz": {
+            "question": "Miles' chip",
+            "right": "Origami",
+            "blende1": "Coin with his face",
+            "blende2": "Business Card"
+          },
+          "e2s4Work": {
+            "question": "What job does Jerry dream of",
+            "right": "Water Delivery",
+            "blende1": "Ice cream vendor",
+            "blende2": "Consultant"
+          },
+          "e4s4Cat": {
+            "question": "Where did the cat want to go",
+            "right": "To Florida",
+            "blende1": "In New Jersey",
+            "blende2": "To Las Vegas"
+          },
+          "e7s4Queen": {
+            "question": "What made Summer queen",
+            "right": "Toothpick",
+            "blende1": "Topic",
+            "blende2": "manicure skills"
+          },
+          "e3s5Hero": {
+            "question": "Why did Morty break up with Planeta",
+            "right": "Genocide",
+            "blende1": "Age",
+            "blende2": "perverse"
+          },
+          "e7s5Help": {
+            "question": "What are these bugs doing",
+            "right": "Distributing AIDS drug",
+            "blende1": "Peacefully take over planets",
+            "blende2": "Recycle children into fuel"
           }
         }
       }
     },
     "AdventureTime": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, you need to watch 10 seasons",
+        "3": "To successfully complete the test, you need to watch all the seasons and feature films"
+      },
       "personal": {
         "title": "Adventure Time",
-        "description": "<0>Adventure Time</0> is an animated series",
+        "description": "<0>Adventure Time</0> - an animated series about the adventures of Finn and Jake",
         "characters": {
-          "": {
-            "name": "",
-            "description": ""
+          "jake": {
+            "name": "Jake",
+            "description": "<0>Jake</0> magic dog <2>Chil master</2>"
           },
-          "2": {
-            "name": "",
-            "description": ""
+          "IceKing": {
+            "name": "Ice King",
+            "description": "<0>Ice King</0> lover of princesses <2>Professional in stealing innocents</2>"
+          },
+          "Finn": {
+            "name": "Fin",
+            "description": "<0>Fin</0> lad <2>Local knight</2>"
+            },
+          "Bubblegum": {
+            "name": "Bubblegum",
+            "description": "<0>Bubblegum</0> is the queen of the candy kingdom <2>The smartest creature on their island</2>"
           }
         }
       },
       "questions": {
         "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "relations1": {
+            "question": "What is the relationship between them?",
+            "right": "Brothers",
+            "blende1": "Friends",
+            "blende2": "Neighbours"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         },
         "2": {
-          "chooseSuitable1": {
-            "question": "Choose the most suitable",
-            "right": "Tree Trunk",
+          "e4s1Granny": {
+            "question": "Choose the most appropriate",
+            "right": "Tree",
             "blende1": "Apples",
-            "blende2": "Granny"
+            "blende2": "Grandma"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         },
         "3": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         }
       }
     },
     "InfinityTrain": {
       "personal": {
-        "title": "Infinity Train",
+        "title": "Endless Train",
         "description": "<0>Infinity Train</0> is an animated series",
         "characters": {
           "TulipOlsen": {
-            "name": "Tulip Olsen",
-            "description": "labyda mnogo texta only for check asdjakh waba laba dab dab"
+            "name": "Tulip",
+            "description": "A teenage girl stranded in a strange place after a stupid fight with her family"
           },
           "OneOne": {
-            "name": "One one",
-            "description": "labyda mnogo texta only for check asdjakh waba laba dab dab"
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "name": "One time",
+            "description": "Round robot that splits into 2 with opposite personalities"
           }
         }
       }
-    },
-    "Kaiji": {
-      "personal": {
-        "title": "Kaiji",
-        "description": "<0>Kaiji</0> is an animated series",
-        "characters": {
-          "": {
-            "name": "",
-            "description": ""
-          },
-          "2": {
-            "name": "",
-            "description": ""
-          }
-        }
       },
-      "questions": {
-        "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "2": {
-          "gameCompite1": {
-            "question": "In which game did he compete with the main character",
-            "right": "Pochinko",
-            "blende1": "Dice with special rules",
-            "blende2": "Black Jack"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        }
-      }
-    },
-    "Neverland": {
-      "personal": {
-        "title": "The promised neverland",
-        "description": "<0>The promised neverland</0> is an animated series",
-        "characters": {
-          "": {
-            "name": "",
-            "description": ""
-          },
-          "2": {
-            "name": "",
-            "description": ""
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        }
-      }
-    },
-    "SchoolLive": {
-      "personal": {
-        "title": "School Live",
-        "description": "<0>School Live</0> is an animated series",
-        "characters": {
-          "": {
-            "name": "",
-            "description": ""
-          },
-          "2": {
-            "name": "",
-            "description": ""
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "genre1": {
-            "question": "The genre of this anime",
-            "right": "Thriller",
-            "blende1": "Detective",
-            "blende2": "Everyday life"
-          }
-        },
-        "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        }
-      }
-    },
-    "SouthPark": {
+    "South Park": {
       "personal": {
         "title": "South Park",
         "description": "<0>South Park</0> is an animated series",
@@ -432,7 +623,7 @@
             "name": "",
             "description": ""
           },
-          "2": {
+            "2": {
             "name": "",
             "description": ""
           }
@@ -441,76 +632,34 @@
       "questions": {
         "1": {
           "seriesDescription1": {
-            "question": "What is this animated series",
+            "question": "What animated series is this",
             "right": "Satirical",
             "blende1": "Racist and intolerant",
-            "blende2": "Nonsensical"
+            "blende2": "nonsensical"
           }
         },
         "2": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         },
         "3": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        }
-      }
-    },
-    "Futurama": {
-      "personal": {
-        "title": "Futurama",
-        "description": "<0>Futurama</0> is an animated series",
-        "characters": {
-          "": {
-            "name": "",
-            "description": ""
-          },
-          "2": {
-            "name": "",
-            "description": ""
-          }
-        }
-      },
-      "questions": {
-        "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
-          }
-        },
-        "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         }
       }
     },
     "HorseBojack": {
       "personal": {
-        "title": "Horse Bojack",
-        "description": "<0>Horse Bojack</0> is an animated series",
+        "title": "Bojack Horseman",
+        "description": "<0>Bojack Horseman</0> is an animated series",
         "characters": {
           "": {
             "name": "",
@@ -527,24 +676,24 @@
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         },
         "2": {
-          "relationshipStatus1": {
-            "question": "Relationship status at the end of the animated series",
-            "right": "Lonely",
-            "blende1": "with Diane Nguyen",
-            "blende2": "with Pickles"
+          "e16s6Relationship": {
+            "question": "Relationship status at the end of the series",
+            "right": "Alone",
+            "blende1": "With Diana Nguyin",
+            "blende2": "Cucumber *Check dog name*"
           }
         },
         "3": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         }
       }
@@ -569,66 +718,2146 @@
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         },
         "2": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         },
         "3": {
           "nameQuestion": {
             "question": "text question",
             "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+            "blend1": "blend text 1",
+            "blende2": "blendetext2"
           }
         }
       }
     },
-    "10": {
+    "InsideJob": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the first season",
+        "3": "You only need to watch the first season to pass the test"
+      },
       "personal": {
-        "title": "",
-        "description": "<0></0> is an animated series",
+        "title": "Inside Job Corporation",
+        "description": "<0>Inside Job</0> is an animated series about Reagan Ridley and her work at Cognito Inc, 51% not a bad company",
         "characters": {
-          "": {
-            "name": "",
-            "description": ""
+          "Reagan": {
+            "name": "Reagan Ridley",
+            "description": "<0>Reagan</0> is a 40 year old gadget genius with poor communication skills<2>Reagan has dedicated her entire life to her work.</2>"
           },
-          "2": {
-            "name": "",
-            "description": ""
+          "Brett": {
+            "name": "Brett Hand",
+            "description": "<0>Brett</0> is a mascot and the second head of the Reagan team. <2>Brett is not very competent, but he is good at connecting with people</2><3>Despite the previously stated skill, Brett has a very bad relationship with relatives and \"friends\" from college</3>"
           }
         }
       },
       "questions": {
         "1": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "e1s1Hate": {
+            "question": "What made the robot president hate humanity",
+            "right": "Internet",
+            "blende1": "Going to traffic police",
+            "blende2": "Communicating with children"
+          },
+          "e4s1Date": {
+            "question": "How did Reagan prepare for the date?",
+            "right": "Created a copy robot",
+            "blende1": "Prepared the memory-erasing liquid",
+            "blende2": "Followed partner"
+          },
+          "e6s1Wedding": {
+            "question": "Who did Tamiko Ridley marry",
+            "right": "Myself",
+            "blende1": "Pool cleaner",
+            "blende2": "Brother Dolphman"
+          },
+          "e1s1Corp@": {
+            "question": "Name of the company where Reagan works",
+            "right": "Cognito Inc",
+            "blende1": "masonry",
+            "blende2": "NWO"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         },
         "2": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "e1s1Spy": {
+            "question": "Who is Glen following with drones",
+            "right": "wife",
+            "blende1": "Crabman",
+            "blende2": "Glen from accounting"
+          },
+          "e2s1Reward": {
+            "question": "What did he get as a reward for helping with the clones",
+            "right": "Season 1 of \"Friends\"",
+            "blende1": "Ice cream simulator",
+            "blende2": "15 grams of uranium"
+          },
+          "e3s1Problem": {
+            "question": "What problem did the cutters solve",
+            "right": "Hug",
+            "blende1": "Whipping cream",
+            "blende2": "Fingerboard"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         },
         "3": {
-          "nameQuestion": {
-            "question": "text question",
-            "right": "right answer",
-            "blende1": "blende text 1",
-            "blende2": "blende text 2"
+          "e3s1Controller": {
+            "question": "What does this remote control do",
+            "right": "Launches a rocket",
+            "blende1": "Releases Cerberus",
+            "blende2": "Informing the Illuminati"
+          },
+          "e3s1Contract": {
+            "question": "What caused problems with signing the contract",
+            "right": "Tweet",
+            "blende1": "Insults from Dolphman",
+            "blende2": "Brett's Past"
+          },
+          "e3s1Court": {
+            "question": "What do they swear on in the reptilian court",
+            "right": "On the disc \"Godzilla 2000\"",
+            "blende1": "On the reptile book",
+            "blende2": "On the encyclopedia of dinosaurs"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "SmilingFriends": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the first season",
+        "3": "You only need to watch the first season to pass the test"
+      },
+      "personal": {
+        "title": "Smiling Friends",
+        "description": "<0>Smiling Friends</0> - An animated series about Critter and Pym's efforts to bring joy to others",
+        "characters": {
+          "Critter": {
+            "name": "Critter",
+            "description": "<0>Critter</0> is calmer and more sensible. <2>Sometimes plays Rust</2>"
+          },
+          "Pim": {
+            "name": "Pim",
+            "description": "<0>Pym</0> is always positive. <2>I love fantasy</2>"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "e1s1Hate": {
+            "question": "What made the robot president hate humanity",
+            "right": "Internet",
+            "blende1": "Going to traffic police",
+            "blende2": "Communicating with children"
+          },
+          "e4s1Date": {
+            "question": "How did Reagan prepare for the date?",
+            "right": "Created a copy robot",
+            "blende1": "Prepared the memory-erasing liquid",
+            "blende2": "Followed partner"
+          },
+          "e6s1Wedding": {
+            "question": "Who did Tamiko Ridley marry",
+            "right": "Myself",
+            "blende1": "Pool cleaner",
+            "blende2": "Brother Dolphman"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "e1s1Spy": {
+            "question": "Who is Glen following with drones",
+            "right": "wife",
+            "blende1": "Crabman",
+            "blende2": "Glen from accounting"
+          },
+          "e2s1Reward": {
+            "question": "What did he get as a reward for helping with the clones",
+            "right": "Season 1 of \"Friends\"",
+            "blende1": "Ice cream simulator",
+            "blende2": "15 grams of uranium"
+          },
+          "e3s1Problem": {
+            "question": "What problem did the cutters solve",
+            "right": "Hug",
+            "blende1": "Whipping cream",
+            "blende2": "Fingerboard"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "e3s1Controller": {
+            "question": "What does this remote control do",
+            "right": "Launches a rocket",
+            "blende1": "Releases Cerberus",
+            "blende2": "Informing the Illuminati"
+          },
+          "e3s1Contract": {
+            "question": "What caused problems with signing the contract",
+            "right": "Tweet",
+            "blende1": "Insults from Dolphman",
+            "blende2": "Brett's Past"
+          },
+          "e3s1Court": {
+            "question": "What do they swear on in a reptilian court",
+            "right": "On the disc \"Godzilla 2000\"",
+            "blende1": "On the reptile book",
+            "blende2": "On the encyclopedia of dinosaurs"
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "Invincible": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the first season",
+        "3": "You only need to watch the first season to pass the test"
+      },
+      "personal": {
+        "title": "Invincible",
+        "description": "<0>Invincible</0> is a hardcore take on a superhero",
+        "characters": {
+          "Invincible": {
+            "name": "Invincible",
+            "description": "<0>Invulnerable</0> - as you can guess from the name, the main character of the series.<2>A 17-year-old teenager who was born with the super strength of an enhanced body</2>"
+          },
+          "OmniMan": {
+            "name": "Omni Man",
+            "description": "<0>Omni Man</0> is the father of the protagonist. <2>Earth's strongest superhero</2>"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "GravityFalls": {
+      "conditions": {
+        "1": "To successfully complete the test, it is enough to watch both seasons",
+        "2": "To successfully complete the test, you only need to watch both seasons",
+        "3": "You only need to watch both seasons to successfully complete the test"
+      },
+      "personal": {
+        "title": "Gravity Falls",
+        "description": "<0>Gravity Falls</0> - an animated series about 2 children who came to a wonderful town for the summer",
+        "characters": {
+          "Dipper": {
+            "name": "Dipper",
+            "description": "<0>Dipper</0> is a teenage boy <2>Brother Mabel</2>"
+          },
+          "Mabel": {
+            "name": "Mabel",
+            "description": "<0>Mabel</0> is a sweater lover"
+          },
+          "Soos": {
+            "name": "Zus",
+            "description": "<0>Zus</0> is the jack-of-all-trades in the shack of secrets"
+          },
+          "Wendy": {
+            "name": "Wendy",
+            "description": "<0>Wendy</0> is the cashier and head filler at the hut"
+          },
+          "StanPainz": {
+            "name": "Stan",
+            "description": "<0>Stan Pines</0> is Mabel and Dipper's uncle"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "Futurama": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "You only need to watch 4 seasons to successfully complete the test",
+        "3": "To successfully complete the test, you just need to watch all the seasons and feature films"
+      },
+      "personal": {
+        "title": "Futurama",
+        "description": "<0>Futurama</0> is an animated series about interplanetary delivery workers and their adventures",
+        "characters": {
+          "Fry": {
+            "name": "Fry",
+            "description": "<0>Fry</0> is a former pizza delivery man in 1999, now a parcel delivery man in 3000"
+          },
+          "Bender": {
+            "name": "Bender",
+            "description": "<0>Bender</0> is an alcoholic, reveler and the best character on the show."
+          },
+          "Leela": {
+            "name": "Leela",
+            "description": "<0>Leela</0> is the captain of the ship"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "Neverland": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the second season",
+        "3": "To successfully complete the test, you only need to watch the second season"
+      },
+      "personal": {
+        "title": "The Promised Neverland",
+        "description": "<0>The Promised Neverland</0> is an anime with a great opening (Season 1) and a mediocre ending",
+        "characters": {
+          "Emma": {
+            "name": "Emma",
+            "description": "<0>Name</0> - description"
+          },
+          "Norman": {
+            "name": "Norman",
+            "description": "<0>Name</0> - description"
+          },
+          "Ray": {
+            "name": "Ray",
+            "description": "<0>Name</0> - description"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "Kaiji": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, you only need to watch 2 seasons",
+        "3": "You only need to watch 2 seasons to pass the test"
+      },
+      "personal": {
+        "title": "Kaiji",
+        "description": "<0>Kaiji</0> description",
+        "characters": {
+          "KaijiIto": {
+            "name": "Kaiji",
+            "description": "<0>Name</0> - description"
+          },
+          "YukioTonegawa": {
+            "name": "Tonegawa",
+            "description": "<0>Name</0> - description"
+          },
+          "KazutakaHyodo": {
+            "name": "Hyoda",
+            "description": "<0>Name</0> - description"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "CrossingSwords": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the first season",
+        "3": "You only need to watch the first season to pass the test"
+      },
+      "personal": {
+        "title": "Title of the cartoon",
+        "description": "<0>Animation name</0> - description",
+        "characters": {
+          "Patrick": {
+            "name": "Patrick",
+            "description": "<0>Name</0> - description"
+          },
+          "Broth": {
+            "name": "Bouillon",
+            "description": "<0>Name</0> - description"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "SchoolLive": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "To successfully complete the test, just watch the first season",
+        "3": "You only need to watch the first season to pass the test"
+      },
+      "personal": {
+        "title": "School Life",
+        "description": "<0>Animation name</0> - description",
+        "characters": {
+          "YuuriWakasa": {
+            "name": "Yuri",
+            "description": "<0>Name</0> - description"
+          },
+          "YukiTakeya":  {
+            "name": "Yuki",
+            "description": "<0>Name</0> - description"
+          },
+          "MikiNaoki":  {
+            "name": "Miki",
+            "description": "<0>Name</0> - description"
+          },
+          "KurumiEbisuzawa":  {
+            "name": "Kurumi",
+            "description": "<0>Name</0> - description"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        }
+      }
+    },
+    "Daria": {
+      "conditions": {
+        "1": "To successfully complete the test, just watch the first season",
+        "2": "You only need to watch three seasons to successfully complete the test",
+        "3": "To successfully complete the test, it is enough to watch 5 seasons and lightning films"
+      },
+      "personal": {
+        "title": "Daria",
+        "description": "<0>Animation name</0> - description",
+        "characters": {
+          "daria":  {
+            "name": "",
+            "description": "<0>Name</0> - description"
+          },
+          "charName2":  {
+            "name": "",
+            "description": "<0>Name</0> - description"
+          }
+        }
+      },
+      "questions": {
+        "1": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "2": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          }
+        },
+        "3": {
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
+          },
+          "": {
+            "question": "",
+            "right": "",
+            "blend1": "",
+            "blend2": ""
           }
         }
       }

@@ -34,8 +34,7 @@ const MultfilmBlock = (props: Props) => {
           )}
           style={{ animationDelay: `${multfilm.delay + 3}s` }}
         /> 
-        {!multfilm.viewed
-          &&
+        {!multfilm.viewed &&
           <>
             <div className="pour" 
               style={{ animationDelay: `${multfilm.delay + 2}s` }}
@@ -47,8 +46,8 @@ const MultfilmBlock = (props: Props) => {
         }
       </div>
       <Link className="multfilm__list" to={`/multfilms/${multfilm.level}/${multfilm.name}`}>
-        {multfilm.watched
-          && <div className="multfilm__watched" key={multfilm.name}/>
+        {multfilm.watched &&
+          <div className="multfilm__watched" key={multfilm.name}/>
         }
         <div className="multfilm__image_block">
           <img

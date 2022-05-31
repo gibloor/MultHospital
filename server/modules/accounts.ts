@@ -3,7 +3,7 @@ import jsw from 'jsonwebtoken';
 import fs from 'fs';
 
 import pool from '../db';
-import { userImgPath } from '..';
+import { userImgPath, secretKey } from '..';
 
 const accounts = express.Router();
 
@@ -37,7 +37,7 @@ const tokenCreate = (account: Account, res: Response) => {
   if (user) {
     const token = jsw.sign(
       {id: user.id, permission: user.permission},
-      'GibloorKey'
+      secretKey
     );
 
     fs.readFile(`${userImgPath}/app_data/images/users/${user.login}.png`, (err, data) => {
@@ -97,7 +97,7 @@ accounts.post('/login', async (req, res) => {
 export const verify = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (token) {
-    jsw.verify(token, 'GibloorKey', (err, user: any) => {
+    jsw.verify(token, secretKey, (err, user: any) => {
       if (err) {
         return res.json('Token ' + token + ' so bad, we go to you')
       }
