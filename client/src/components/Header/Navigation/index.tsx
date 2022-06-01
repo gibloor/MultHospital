@@ -55,7 +55,7 @@ const Navigation = (props: Props) => {
                     tabIndex={0}
                     onKeyPress={() => (props.changeAuthVariant('login'))}
                     onClick={() => (props.changeAuthVariant('login'))}
-                    className="navigation__button"
+                    className="navigation__button button"
                     key={button.name}
                   >
                     {t(`head.buttons.${button.name}`)}

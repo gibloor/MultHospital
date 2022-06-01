@@ -30,7 +30,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button"
+            className="auth__button button"
             onKeyPress={() => ((
               props.changeAuthVariant('login'),
               props.closeMenu()
@@ -46,7 +46,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button"
+            className="auth__button button"
             onKeyPress={() => ((
               props.changeAuthVariant('registration'),
               props.closeMenu()
@@ -76,7 +76,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button"
+            className="auth__button button"
             onKeyPress={() => ((
               localStorage.removeItem('token'),
               dispatch(userDeauthRequire()),

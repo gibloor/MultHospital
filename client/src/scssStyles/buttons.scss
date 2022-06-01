@@ -1,4 +1,6 @@
 .button {
+  cursor: url('../components/assets/decorations/Pointer.png'), auto;
+
   &__general {
     padding: 15px;
     background-color: rgb(255, 255, 255);
@@ -7,6 +9,5 @@
     color: black;
     font-weight: bold;
     font-size: 16pt;
-    cursor: pointer;
   }
 }

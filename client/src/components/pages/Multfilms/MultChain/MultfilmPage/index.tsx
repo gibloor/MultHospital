@@ -69,7 +69,7 @@ const MultfilmPage = () => {
             </div>
           </div>
           <Characters multName={multName} characters={characters} />
-          <div className="button__general" onClick={() => setSurveyOn(true)}>
+          <div className="button__general button" onClick={() => setSurveyOn(true)}>
             {t('mulfilmPage.buttons.toRules')}
           </div>
         </>

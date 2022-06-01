@@ -74,7 +74,7 @@ const Result = (props: Props) => {
           <span className='result__message'>
             {t(`result.${result}.message`)}
           </span>
-          <Link to='/multfilms' className='button__general result__button'>
+          <Link to='/multfilms' className='button__general result__button button'>
             {t('result.button')}
           </Link>
         </>

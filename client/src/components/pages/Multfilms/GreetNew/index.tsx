@@ -34,7 +34,7 @@ const GreetNew = () => {
         {chooser.map((choose) => (
           <div
             role="button"
-            className="greet__answer"
+            className="greet__answer button"
             key={choose}
             tabIndex={0}
             onKeyPress={() => (saveInvolvement(choose))}

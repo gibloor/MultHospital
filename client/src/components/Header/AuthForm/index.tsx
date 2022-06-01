@@ -125,7 +125,7 @@ const FormAuthorization = (props:Props) => {
                     <Field
                       type="checkbox"
                       name="mailing"
-                      className="auth__checkbox"
+                      className="auth__checkbox button"
                       checked
                     />
                   </label>
@@ -137,7 +137,7 @@ const FormAuthorization = (props:Props) => {
                     dispatch(userErrorCleaning()),
                     setTypeForm('registration')
                   ))}
-                  className="auth__form_changer"
+                  className="auth__form_changer button"
                 >
                   {t('head.buttons.registration')}
                 </span>
