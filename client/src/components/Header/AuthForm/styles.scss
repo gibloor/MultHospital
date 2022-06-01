@@ -27,7 +27,7 @@
 
   &__close_button {
     float: right;
-    cursor: pointer;
+    ;
   }
 
   &__form_name {
@@ -35,7 +35,7 @@
   }
   
   &__button {
-    cursor: pointer;
+    ;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -106,12 +106,12 @@
   }
 
   &__form_changer {
-    cursor: pointer;
+    ;
   }
 
   &__submit {
     font-weight: bold;
-    cursor: pointer;
+    ;
     font-size: 16pt;
     background-color: transparent;
     color: azure;
@@ -128,7 +128,7 @@
   &__checkbox {
     width: 16px;
     height: 16px;
-    cursor: pointer;
+    ;
   }
 }
 

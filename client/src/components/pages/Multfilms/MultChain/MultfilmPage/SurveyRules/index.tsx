@@ -53,7 +53,7 @@ const MultfilmPage = () => {
               {t(`multfilms.${name}.conditions.${userLevel}`)}
             </p>
           </span>
-          <div onClick={() => setSurveyOn(true)} className="button__general">
+          <div onClick={() => setSurveyOn(true)} className="button__general button">
             {t('rules.passTest')}
           </div>
         </div>

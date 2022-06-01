@@ -23,7 +23,7 @@ const LangChanger = () => {
             tabIndex={0}
             onKeyPress={() => setLangDisplay(!langDisplay)}
             onClick={() => setLangDisplay(!langDisplay)}
-            className="langchanger__flag_case"
+            className="langchanger__flag_case button"
           >
             <img
               alt={`flag ${i18n.language}`}
@@ -39,7 +39,7 @@ const LangChanger = () => {
           {langDisplay && langs.map((lang) => (
             i18n.language !== lang &&
             <div
-              className="langchanger__flag_case"
+              className="langchanger__flag_case button"
               role="button"
               tabIndex={0}
               key={lang}
