@@ -10,7 +10,6 @@ import Multfilm from 'components/pages/Multfilms/MultChain/MultfilmPage';
 import Profile from 'components/pages/Profile';
 import AutoSignUp from 'components/AutoSignUp';
 import TakeMultfilms from 'components/TakeMultfilms';
-import PagesHelmet from 'components/PagesHelmet';
 
 import './App.scss';
 
@@ -19,7 +18,6 @@ function App() {
   return (
     <AutoSignUp>
       <TakeMultfilms>
-        <PagesHelmet/>
         <Header />
         <Switch>
           <Route exact path="/" component={() => <Main />} />
