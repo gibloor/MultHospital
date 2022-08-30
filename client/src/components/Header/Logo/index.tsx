@@ -6,7 +6,7 @@ import './styles.scss';
 const Logo = () => {
   
   return (
-    <Link to="/">
+    <Link to="/" data-testid='main-link'>
       <svg className="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 283.46">
         <g fill="#FFFFFF">
           <path d="M129.19,139.91c-0.95-17.86-2.09-39.33-1.9-55.29h-0.57c-4.37,15.01-9.69,30.97-16.15,48.64l-22.61,62.13H75.42

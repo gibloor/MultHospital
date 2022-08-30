@@ -9,7 +9,7 @@ const pagesList:PagesList[] = [
     access: 'close',
   },
   {
-    name: 'aboutProject',
+    name: 'about-project',
     access: 'free',
   }
 ];

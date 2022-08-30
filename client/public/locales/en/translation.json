@@ -4,7 +4,7 @@
       "login": "Sign in",
       "registration": "Sign up",
       "multfilms": "Multfilms",
-      "aboutProject": "About project",
+      "about-project": "About project",
       "setting": "Settings",
       "deactive": "Exit",
       "mailing": "Receive mailing"
@@ -112,7 +112,7 @@
     }
   },
 
-  "aboutProject": {
+  "about-project": {
     "title": "Project goals:",
     "text": "<0><0>Help people with \"What to watch today?\"</0><1>Practice in building websites</1></0>"
   },

@@ -7,7 +7,7 @@ import './styles.scss';
 const Main = () => {
 
   return (
-    <div className="main content">
+    <div className="main content" data-testid='main-page'>
       <h2 className="main__h2">
         Mult Hospital
       </h2>

@@ -8,12 +8,12 @@ const AboutProject = () => {
   const { t } = useTranslation();
 
   return (
-    <div className='aboutProject content'>
+    <div className='aboutProject content' data-testid='about-project-page'>
       <span className='aboutProject__text'>
       <p>
-        {t('aboutProject.title')}
+        {t('about-project.title')}
       </p>
-        <Trans i18nKey={'aboutProject.text'}>
+        <Trans i18nKey={'about-project.text'}>
           <ol>
             <li>goal1</li>
             <li>goal2</li>

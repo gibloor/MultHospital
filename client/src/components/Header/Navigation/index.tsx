@@ -20,9 +20,10 @@ interface Props {
 
 const Navigation = (props: Props) => {
 
+  const { t } = useTranslation();
+
   const [menuVisible, setMenuVisible] = useState(false);
   const authInfo = useSelector(getAccountSelector);
-  const { t } = useTranslation();
 
   const closeMenu = () => {
     setMenuVisible(false);
@@ -39,15 +40,16 @@ const Navigation = (props: Props) => {
         <OutsideClickHandler onOutsideClick={() => setMenuVisible(false)}>
           <div className="navigation__menu_list">
             <div className="navigation__list">
-              {pagesList.map((button) => (
-                ((authInfo.name || button.access === 'free') &&
+              {pagesList.map((page) => (
+                ((authInfo.name || page.access === 'free') &&
                   <Link
-                    key={button.name}
-                    to={`/${button.name}`}
+                    data-testid={`${page.name}-link`}
+                    key={page.name}
+                    to={`/${page.name}`}
                     onClick={() => setMenuVisible(false)}
                     className="navigation__button"
                   >
-                    {t(`head.buttons.${button.name}`)}
+                    {t(`head.buttons.${page.name}`)}
                   </Link>
                 ) || (
                   <span
@@ -56,9 +58,9 @@ const Navigation = (props: Props) => {
                     onKeyPress={() => (props.changeAuthVariant('login'))}
                     onClick={() => (props.changeAuthVariant('login'))}
                     className="navigation__button button"
-                    key={button.name}
+                    key={page.name}
                   >
-                    {t(`head.buttons.${button.name}`)}
+                    {t(`head.buttons.${page.name}`)}
                   </span>             
                 )
               ))}
