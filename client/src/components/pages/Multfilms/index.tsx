@@ -21,7 +21,7 @@ const Multfilms = () => {
     <div className="multfilms">
       {!pendingAccount &&
         (
-          (!authInfo.name && <span>Ты не авторизован</span>) ||
+          (!authInfo.name && <span data-testid='multfilms-page-off'>Ты не авторизован</span>) ||
           (!authInfo.level && <GreetNew />) ||
           (!authInfo.test_passed && <Survey topic='newcomers' />) ||
           (<MultChain />)

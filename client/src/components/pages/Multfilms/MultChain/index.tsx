@@ -29,7 +29,7 @@ const MultChain = () => {
   }, [viewed]);
 
   return (
-    <div className="multChain">
+    <div className="multChain" data-testid='multfilms-page'>
       {Object.keys(multfilms).map((category) => (
         <div key={category}>
           {multfilms[category].map((multfilm, index) => (
