@@ -40,7 +40,8 @@ const Chooser = (props: Props) => {
             { 'chooser__option_text': true },
             { 'chooser__option_text_left': offer === 'option' },
           )}
-          onClick={() => (changeButtons('multOffer'))}>
+          onClick={() => (changeButtons('multOffer'))}
+        >
           Multfilm
         </span>
       </div>

@@ -88,7 +88,6 @@ const FullField = (props: Props) => {
   return (
     <div
       ref={ref}
-      // data-handler-id={handlerId}
       className="multChanger__row"
     >
       {columns.map(column => (
@@ -99,7 +98,6 @@ const FullField = (props: Props) => {
             name={`multfilms.${index}.${column.name}`}
             validate={column.validator}
             placeholder={`${column.name}`}
-            // placeholder={t(`head.authentication.${input.name}`)}
             onKeyUp={() => callMultSort(index, column.name)}
             type={column.type}
             className={classNames(

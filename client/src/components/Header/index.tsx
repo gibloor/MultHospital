@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { userErrorCleaningRequire } from 'redux-saga/actions/userActions';
 
 import Logo from './Logo';
-import Navigation from './Navigation';
+import Functionality from './Functionality';
 import AuthForm from './AuthForm';
 
 import './styles.scss';
@@ -27,7 +27,7 @@ const Header = () => {
     <div className="header">
       <h1 className="header__h1">Mult Hospital</h1>
       <Logo />
-      <Navigation changeAuthVariant={changeAuthVariant}/>
+      <Functionality changeAuthVariant={changeAuthVariant}/>
       {authVariant &&
         <AuthForm
           authClose={authClose}

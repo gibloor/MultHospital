@@ -11,7 +11,6 @@ import {
   profileFailure,
 } from '../actions/profileActions';
 import {
-
   ProfileTakeRequire,
 
   Profile,

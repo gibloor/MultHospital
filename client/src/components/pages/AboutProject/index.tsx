@@ -10,9 +10,9 @@ const AboutProject = () => {
   return (
     <div className='aboutProject content' data-testid='about-project-page'>
       <span className='aboutProject__text'>
-      <p>
-        {t('about-project.title')}
-      </p>
+        <p>
+          {t('about-project.title')}
+        </p>
         <Trans i18nKey={'about-project.text'}>
           <ol>
             <li>goal1</li>

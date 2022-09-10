@@ -18,7 +18,7 @@ interface Props {
   changeAuthVariant: (variant: string) => void,
 }
 
-const Navigation = (props: Props) => {
+const Functionality = (props: Props) => {
 
   const { t } = useTranslation();
 
@@ -85,4 +85,4 @@ const Navigation = (props: Props) => {
   )
 }
 
-export default Navigation;
+export default Functionality;

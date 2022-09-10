@@ -61,17 +61,17 @@ const MultChanger = () => {
                   <DndProvider backend={HTML5Backend}>
                     {values.multfilms.map((multfilm: MultInfo, index: number) => (
                       <div key={index}>
-                      {(index === 0 || multfilm.level !== values.multfilms[index - 1].level) &&
-                      <span>{multfilm.level || 'undefined'}</span>}
-                      <FullField
-                        key={index}
-                        errors={errors}
-                        touched={touched}
-                        multfilms={values.multfilms}
-                        arrayHelpers={arrayHelpers}
-                        multfilm={multfilm}
-                        index={index}
-                      />
+                        {(index === 0 || multfilm.level !== values.multfilms[index - 1].level) &&
+                        <span>{multfilm.level}</span>}
+                        <FullField
+                          key={index}
+                          errors={errors}
+                          touched={touched}
+                          multfilms={values.multfilms}
+                          arrayHelpers={arrayHelpers}
+                          multfilm={multfilm}
+                          index={index}
+                        />
                       </div>
                     ))}
                   </DndProvider>
@@ -81,7 +81,9 @@ const MultChanger = () => {
                   </button>
                   
                   <button type="button"
-                    onClick={() => arrayHelpers.insert(values.multfilms.length, { id: -1, name:'new', level: 4, serial: 1})}
+                    onClick={() => arrayHelpers.insert(values.multfilms.length, {
+                      id: -1, name:'new', level: 4, serial: 1
+                    })}
                   >
                     +1
                   </button>

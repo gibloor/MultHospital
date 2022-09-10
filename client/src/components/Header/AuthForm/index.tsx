@@ -131,6 +131,7 @@ const FormAuthorization = (props:Props) => {
                   </label>
                 </div>
               }
+              
               {typeForm === 'login' &&
                 <span
                   onClick={() => ((

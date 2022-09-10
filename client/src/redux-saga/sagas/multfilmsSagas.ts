@@ -34,6 +34,7 @@ function* multfilmTakeSaga(action: MultfilmTakeRequare) {
   try {
     const getQuestions = () => axios.get(`http://${DOMAIN}/multfilms/${action.payload.id}`);
     const response: AxiosResponse<MultfilmList> = yield call(getQuestions);
+
     yield put(multfilmsTake({multfilms: response.data}));
   } catch (e: any) {
     yield put(
@@ -60,7 +61,6 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
     } else {
       yield put(userTestingRequire());
     }
-
   } catch (e: any) {
     yield put(
       multfilmsFailure({
@@ -72,7 +72,8 @@ function* multfilmTestingSaga(action: MultfilmTestingRequire) {
 
 function* viewedSaveSaga(action: ViewedSaveRequest) {
   try {
-    const viewed = action.payload.viewed
+    const viewed = action.payload.viewed;
+
     yield axios.put<string[]>(`http://${DOMAIN}/watched/viewed/${action.payload.userId}`,
       { viewed }
     );

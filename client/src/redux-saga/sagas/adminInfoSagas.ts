@@ -13,13 +13,16 @@ import { AdminInfo, AdminMultfilmsSaveRequire } from '../types/adminInfoTypes'
 
 import { DOMAIN } from './rootSaga';
 
+const MODER_PERMISSION = 2;
+const OWNER_PERMISSION = 5;
+
 function* adminInfoTakeSaga() {
   try {
     const token = localStorage.getItem('token') || '';
     const headers = {authorization: `Bearer ${token}`};
     
     const takeInfo = () => axios.post(`http://${DOMAIN}/admin/takeInfo`,
-      { permission: 2 }, { headers: headers }
+      { permission: MODER_PERMISSION }, { headers: headers }
     );
 
     const response: AxiosResponse<AdminInfo> = yield call(takeInfo);
@@ -43,7 +46,7 @@ function* adminMultfilmsSaveSaga(action: AdminMultfilmsSaveRequire) {
     const headers = {authorization: `Bearer ${token}`};
     
     const saveMultfilms = () => axios.post(`http://${DOMAIN}/admin/saveMultfilms`,
-      { permission: 5, multfilms }, { headers: headers }
+      { permission: OWNER_PERMISSION, multfilms }, { headers: headers }
     );
 
     yield call(saveMultfilms);

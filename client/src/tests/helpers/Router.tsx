@@ -1,4 +1,3 @@
-import i18n from 'i18n';
 import React, { Suspense } from 'react';
 import { MemoryRouter } from "react-router-dom";
 

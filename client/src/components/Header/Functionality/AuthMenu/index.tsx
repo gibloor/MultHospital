@@ -42,7 +42,9 @@ const AuthMenu = (props: Props) => {
           >
             {t('head.buttons.login')}
           </div>
+
           <span className='auth_menu__delimiter'>|</span>
+
           <div
             role="button"
             tabIndex={0}
@@ -72,7 +74,9 @@ const AuthMenu = (props: Props) => {
               {user.name}
             </span>
           </Link>
+
           <span className='auth_menu__delimiter'>|</span>
+          
           <div
             role="button"
             tabIndex={0}

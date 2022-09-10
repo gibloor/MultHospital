@@ -24,6 +24,6 @@ const Routes = () => {
       <Basement />
     </>
   )
-}
+};
 
 export default Routes;

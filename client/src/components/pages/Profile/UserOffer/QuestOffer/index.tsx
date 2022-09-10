@@ -40,8 +40,6 @@ const QuestOffer = (props: Props) => {
       dispatch(questOfferTakeRequest({
         multfilm, question, answer, false1, false2, id: id
       }));
-
-      
       
     } catch (err: any) {
       console.error(err.message);
@@ -65,8 +63,7 @@ const QuestOffer = (props: Props) => {
 
   return (
     <div className='questoffer'>
-      {
-        options.length &&
+      {options.length &&
         <>
           <span className='questoffer__title title'>
             {t('offers.question.title')}

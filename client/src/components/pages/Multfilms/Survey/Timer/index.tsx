@@ -14,7 +14,6 @@ const Timer = (props: Props) => {
   const { counterChange, counter } = props;
 
   useEffect(() => {
-
     if (timer < 0) {
       counterChange();
     }

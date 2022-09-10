@@ -23,7 +23,7 @@ const GreetNew = () => {
   };
 
   return (
-    <div className="greet">
+    <div className="greet" data-testid='multfilms-page-greet'>
       <p className="title">
         {t('greetNew.greet.string1')}
       </p>

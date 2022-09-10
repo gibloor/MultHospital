@@ -9,7 +9,6 @@ i18n
     debug: true,
     fallbackLng: 'en',
     preload: ['en'],
-
     interpolation: {
       escapeValue: false,
     },
