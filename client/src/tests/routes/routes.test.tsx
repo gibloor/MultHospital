@@ -15,7 +15,7 @@ describe('ROUTES TEST', () => {
   });
 
   test('route to MULTFILMS-OFF page', () => {
-    render(RoutRenderWithRedux({route: '/multfilms', }));
+    render(RoutRenderWithRedux({route: '/multfilms'}));
     expect(screen.getByTestId('multfilms-page-unauthorized')).toBeInTheDocument();
   });
 

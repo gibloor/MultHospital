@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { MemoryRouter } from "react-router-dom";
 
-import Routes from 'Routes';
+import App from 'App';
 
 interface Options {
   route: string;
@@ -18,7 +18,7 @@ const Router = (props: Props) => {
   return (
     <Suspense fallback="Time to fix i18next">
       <MemoryRouter initialEntries={[options.route]}>
-        <Routes />
+        <App />
       </MemoryRouter>
     </Suspense>
   )

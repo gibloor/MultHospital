@@ -19,7 +19,7 @@ interface Options {
   initialState?: RecursivePartial<InitialState>,
 }
 
-const RoutRenderWithRedux = (options: Options) => {
+const RouterWithRedux = (options: Options) => {
 
   const { initialState } = options;
 
@@ -41,4 +41,4 @@ const RoutRenderWithRedux = (options: Options) => {
   )
 }
 
-export default RoutRenderWithRedux;
+export default RouterWithRedux;

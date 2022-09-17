@@ -34,17 +34,17 @@ const FormAuthorization = (props:Props) => {
 
   const [typeForm, setTypeForm] = useState(props.typeForm);
 
-  const authentication = async (date: AcDate) => {
+  const authentication = async (data: AcDate) => {
     try {
       const dates = {
-        name: date.name,
-        login: date.login,
-        password: date.password,
-        email: date.email,
-        mailing: date.mailing,
+        name: data.name,
+        login: data.login,
+        password: data.password,
+        email: data.email,
+        mailing: data.mailing,
       };
-      dispatch(userAuthRequire({dates, typeForm}));    
       
+      dispatch(userAuthRequire({dates, typeForm}));    
     } catch (err: any) {
       console.error(err.message);
     }
