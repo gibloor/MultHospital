@@ -32,7 +32,10 @@ export interface Id {
   id: number,
 }
 export interface MultfilmList {
-  [category:string]: Multfilm[],
+  1: Multfilm[],
+  2: Multfilm[],
+  3: Multfilm[],
+  [category: string]: Multfilm[],
 }
 export interface Multfilms {
   multfilms: MultfilmList
