@@ -20,11 +20,7 @@ interface InitialState extends Multfilms {
 const initialState: InitialState = {
   error: false,
   pending: false,
-  multfilms: {
-    1: [],
-    2: [],
-    3: []
-  },
+  multfilms: {},
 };
 
 const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (

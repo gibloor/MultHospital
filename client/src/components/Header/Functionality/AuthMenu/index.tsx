@@ -39,6 +39,7 @@ const AuthMenu = (props: Props) => {
               props.changeAuthVariant('login'),
               props.closeMenu()
             ))}
+            data-testid='sign-in'
           >
             {t('head.buttons.login')}
           </div>
@@ -57,6 +58,7 @@ const AuthMenu = (props: Props) => {
               props.changeAuthVariant('registration'),
               props.closeMenu()
             ))}
+            data-testid='sign-up'
           >
             {t('head.buttons.registration')}
           </div>
