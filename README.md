@@ -20,6 +20,4 @@ Note: Make sure you have Node.js and npm installed before proceeding with the in
 
 Feel free to explore the project and dive into the captivating world of animation and web development!
 
-[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=gibloor&theme=default)](https://github.com/gibloor/MultHospital)
-
 [![Top Languages](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=gibloor&theme=default)](https://github.com/gibloor/MultHospital)
