@@ -19,3 +19,7 @@ Run the command: nodemon index.ts to start the back-end server.
 Note: Make sure you have Node.js and npm installed before proceeding with the installation steps.
 
 Feel free to explore the project and dive into the captivating world of animation and web development!
+
+[![GitHub Profile Summary Cards](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=gibloor&theme=dracula)](https://github.com/gibloor/MultHospital)
+
+[![Top Languages](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=gibloor&theme=dracula)](https://github.com/gibloor/MultHospital)
