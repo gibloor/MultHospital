@@ -1,26 +1,26 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { userInvolvementChangeRequire } from 'redux-saga/actions/userActions';
-import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
+import { userInvolvementChangeRequire } from 'redux-saga/actions/userActions'
+import { getAccountIdSelector } from 'redux-saga/selectors/userSelector'
 
-import './styles.scss';
+import './styles.scss'
 
 const GreetNew = () => {
 
-  const userId = useSelector(getAccountIdSelector);
+  const userId = useSelector(getAccountIdSelector)
 
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
 
-  const chooser = [1, 2, 3];
+  const chooser = [1, 2, 3]
 
   const saveInvolvement = (level: number) => {
     dispatch(userInvolvementChangeRequire({
       level: level, id: userId
-    }));
-  };
+    }))
+  }
 
   return (
     <div className="greet" data-testid='multfilms-page-greet'>
@@ -57,7 +57,7 @@ const GreetNew = () => {
         {t('greetNew.warning')}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default GreetNew;
+export default GreetNew

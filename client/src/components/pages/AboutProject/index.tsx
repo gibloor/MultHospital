@@ -1,11 +1,11 @@
-import React from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import React from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 
-import './styles.scss';
+import './styles.scss'
 
 const AboutProject = () => {
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className='aboutProject content' data-testid='about-project-page'>
@@ -21,7 +21,7 @@ const AboutProject = () => {
         </Trans>
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default AboutProject;
+export default AboutProject

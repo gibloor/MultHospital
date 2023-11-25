@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   QUEST_OFFER_TAKE,
@@ -8,9 +8,9 @@ import {
   MULT_OFFER_TAKE_REQUEST,
 
   OFFER_FAILURE,
-} from '../actions/offerActions';
+} from '../actions/offerActions'
 
-import { OfferActions } from '../types/offerTypes';
+import { OfferActions } from '../types/offerTypes'
 
 interface InitialState {
   error: boolean,
@@ -20,7 +20,7 @@ interface InitialState {
 const initialState: InitialState = {
   error: false,
   pending: false,
-};
+}
 
 const offerReducer: Reducer<InitialState, OfferActions> = (state = initialState, action) => {
   switch (action.type) {
@@ -29,36 +29,36 @@ const offerReducer: Reducer<InitialState, OfferActions> = (state = initialState,
         ...state,
         error: false,
         pending: false,
-      };
+      }
     case QUEST_OFFER_TAKE_REQUEST:
       return {
         ...state,
         pending: true,
-      };
+      }
 
     case MULT_OFFER_TAKE:
       return {
         ...state,
         error: false,
         pending: false,
-      };
+      }
     case MULT_OFFER_TAKE_REQUEST:
       return {
         ...state,
         pending: true,
-      };
+      }
   
     case OFFER_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
 
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default offerReducer;
+export default offerReducer

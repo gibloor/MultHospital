@@ -1,32 +1,32 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
-import { getAccountIdSelector } from 'redux-saga/selectors/userSelector';
-import { viewedSaveRequest } from 'redux-saga/actions/multfilmsActions';
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector'
+import { getAccountIdSelector } from 'redux-saga/selectors/userSelector'
+import { viewedSaveRequest } from 'redux-saga/actions/multfilmsActions'
 
-import MultfilmBlock from './MultfilmBlock';
+import MultfilmBlock from './MultfilmBlock'
 
-import './styles.scss';
+import './styles.scss'
 
 const MultChain = () => {
-  const dispatch = useDispatch();
-  const multfilms = useSelector(multfilmsSelector);
-  const userId = useSelector(getAccountIdSelector);
+  const dispatch = useDispatch()
+  const multfilms = useSelector(multfilmsSelector)
+  const userId = useSelector(getAccountIdSelector)
 
-  let viewed: string[] = [];
+  let viewed: string[] = []
 
   const viewedChange = (name: string) => {
     viewed.push(name)
-  };
+  }
 
   useEffect(() => {
     return function viewedSave() {
-      (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}));
+      (viewed.length) && dispatch(viewedSaveRequest({userId, viewed}))
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewed]);
+  }, [viewed])
 
   return (
     <div className="multChain" data-testid='multfilms-page'>
@@ -40,10 +40,7 @@ const MultChain = () => {
                 key={multfilm.name}
               />
               :
-              <div
-                key={multfilm.name}
-                className="multfilm__block multfilm__locked"
-              />
+              <div key={multfilm.name} className="multfilm__block multfilm__locked" />
           ))}
         </div>
       ))}
@@ -51,4 +48,4 @@ const MultChain = () => {
   )
 }
 
-export default MultChain;
+export default MultChain

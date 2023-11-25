@@ -1,4 +1,4 @@
-import { validateQuestion, validateShortText } from "components/validate/offerValidate";
+import { validateQuestion, validateShortText } from "components/validate/offerValidate"
 
 const inputs = [
   {
@@ -23,4 +23,4 @@ const inputs = [
   },
   
 ]
-export default inputs;
+export default inputs

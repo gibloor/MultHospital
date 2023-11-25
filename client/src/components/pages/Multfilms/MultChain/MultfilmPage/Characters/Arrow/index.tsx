@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import arrow from 'components/assets/decorations/Arrow.png';
+import arrow from 'components/assets/decorations/Arrow.png'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   direction: string,
@@ -11,13 +11,13 @@ interface Props {
 
 const Arrow = (props: Props) => {
 
-  const { direction, onClick } = props;
+  const { direction, onClick } = props
 
   return (
     <div onClick={onClick} className={`arrow arrow__${direction}`}>
-      <img alt='arrow' className='arrow__img' src={arrow} />
+      <img alt='arrow' className='arrow__img close' src={arrow} />
     </div>
   )
-};
+}
 
-export default Arrow;
+export default Arrow

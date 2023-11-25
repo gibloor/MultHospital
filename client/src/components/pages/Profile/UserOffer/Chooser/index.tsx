@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import React, { useState } from 'react'
+import classNames from 'classnames'
 
-import slash from 'components/assets/decorations/slash.png';
+import slash from 'components/assets/decorations/slash.png'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   changeOffer: (offer: string) => void,
@@ -11,15 +11,15 @@ interface Props {
 }
 
 const Chooser = (props: Props) => {
-  const { changeOffer, offer } = props;
+  const { changeOffer, offer } = props
 
-  const [chosen, setChosen] = useState(-1);
+  const [chosen, setChosen] = useState(-1)
 
   const changeButtons = (option: string) => {
     if (option !== offer) {
-      setChosen(chosen + 1);
-      changeOffer(option);
-    };
+      setChosen(chosen + 1)
+      changeOffer(option)
+    }
   }
 
   return (
@@ -37,7 +37,7 @@ const Chooser = (props: Props) => {
       >
         <span
           className={classNames(
-            { 'chooser__option_text': true },
+            { 'chooser__option_text button': true },
             { 'chooser__option_text_left': offer === 'option' },
           )}
           onClick={() => (changeButtons('multOffer'))}
@@ -65,7 +65,7 @@ const Chooser = (props: Props) => {
       >
         <span
           className={classNames(
-            { 'chooser__option_text': true },
+            { 'chooser__option_text button': true },
             { 'chooser__option_text_right': offer === 'option' },
           )}
           onClick={() => (changeButtons('questOffer'))}
@@ -75,6 +75,6 @@ const Chooser = (props: Props) => {
       </div>
     </div>
   )
-};
+}
 
-export default Chooser;
+export default Chooser

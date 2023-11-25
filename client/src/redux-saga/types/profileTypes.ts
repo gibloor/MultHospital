@@ -3,7 +3,7 @@ import {
   PROFILE_TAKE_REQUIRE,
   
   PROFILE_FAILURE,
-} from "../actions/profileActions";
+} from "../actions/profileActions"
 
 export interface Id {
   id: number,
@@ -22,17 +22,17 @@ export interface Profile extends Id {
 }
 
 export interface ProfileTake {
-  type: typeof PROFILE_TAKE;
-  payload: Profile;
+  type: typeof PROFILE_TAKE
+  payload: Profile
 }
 export interface ProfileTakeRequire {
-  type: typeof PROFILE_TAKE_REQUIRE;
-  payload: Id;
+  type: typeof PROFILE_TAKE_REQUIRE
+  payload: Id
 }
 
 export interface ProfileFailure {
-  type: typeof PROFILE_FAILURE;
-  payload: {error: boolean};
+  type: typeof PROFILE_FAILURE
+  payload: {error: boolean}
 }
 
 export type ImagesActions =

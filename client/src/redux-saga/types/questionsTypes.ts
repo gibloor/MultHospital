@@ -2,7 +2,7 @@ import {
   QUESTIONS_TAKE,
   QUESTIONS_TAKE_FAILURE,
   QUESTIONS_TAKE_REQUEST,
-} from "../actions/questionsActions";
+} from "../actions/questionsActions"
 
 interface QuestionForm {
   id: number,

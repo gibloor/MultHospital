@@ -1,21 +1,24 @@
-.multChanger {
+.mult-changer {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 16pt;
 
+  &__title {
+    margin-bottom: 0;
+  }
+
   &__form {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 5px;
   }
 
   &__row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 500px;
-    border: 1px azure solid;
-    margin-bottom: 3px;
   }
 
   &__text_input {
@@ -52,12 +55,16 @@
     height: 35px;
     border-radius: 5px;
     font-weight: bold;
-    margin-top: 10px;
-    ;
     background-color: transparent;
     color: azure;
     border-color: azure;
     font-size: 16pt;
+  }
+
+  &__submit:hover {
+    background-color: azure;
+    transition: 0.25s;
+    color:#010522;
   }
 
   &__error {
@@ -65,5 +72,57 @@
     outline: none;
     box-sizing: border-box;
     background-color: rgb(247, 222, 222);
+  }
+
+  &__leveller {
+    width: 25px;
+  }
+
+  &__section_title_container {
+    margin-top: 25px;
+  }
+
+  &__section_title {
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  &__add-button {
+    padding: 5px 10px;
+    background-color: transparent;
+    color: azure;
+    border-color: azure;
+    border-radius: 5px;
+    font-size: 14pt;
+  }
+
+  &__add-button:hover {
+    background-color: azure;
+    transition: 0.25s;
+    color:#010522;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  &__second-leveller {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mult-changer {
+    &__row {
+      width: 90vw;
+    }
+
+    &__field_name {
+      width: 140px;
+    }  
   }
 }

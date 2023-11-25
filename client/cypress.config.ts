@@ -1,4 +1,4 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from "cypress"
 
 export default defineConfig({
   projectId: 'm6gk3f',
@@ -12,4 +12,4 @@ export default defineConfig({
       "**/2-advanced-examples/*.js"
     ]
   },
-});
+})

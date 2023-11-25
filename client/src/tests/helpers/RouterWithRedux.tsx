@@ -1,18 +1,18 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import createSagaMiddleware from 'redux-saga';
+import React from 'react'
+import { Provider } from 'react-redux'
+import configureMockStore from 'redux-mock-store'
+import createSagaMiddleware from 'redux-saga'
 
-import { AppState } from 'redux-saga/reducers/rootReducer';
-import Router from './Router';
-import basicStore from 'redux-saga/store';
+import { AppState } from 'redux-saga/reducers/rootReducer'
+import Router from './Router'
+import basicStore from 'redux-saga/store'
 
 interface InitialState extends AppState {
-  [key: string]: object;
-};
+  [key: string]: object
+}
 type RecursivePartial<T> = { 
   [P in keyof T]?: RecursivePartial<T[P]>
-};
+}
 
 interface Options {
   route: string,
@@ -21,18 +21,18 @@ interface Options {
 
 const RouterWithRedux = (options: Options) => {
 
-  const { initialState } = options;
+  const { initialState } = options
 
-  const sagaMiddleware = createSagaMiddleware();
-  const mockStore = configureMockStore([sagaMiddleware]);
+  const sagaMiddleware = createSagaMiddleware()
+  const mockStore = configureMockStore([sagaMiddleware])
 
-  let modifState: Partial<InitialState> = {...basicStore.getState()};
+  let modifState: Partial<InitialState> = {...basicStore.getState()}
 
   for (const key in initialState) {
     modifState[key] = initialState[key]
   }
 
-  const store = mockStore({ ...modifState });
+  const store = mockStore({ ...modifState })
 
   return (
     <Provider store={store}>
@@ -41,4 +41,4 @@ const RouterWithRedux = (options: Options) => {
   )
 }
 
-export default RouterWithRedux;
+export default RouterWithRedux

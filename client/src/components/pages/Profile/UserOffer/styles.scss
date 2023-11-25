@@ -1,8 +1,12 @@
-.useroffer {
+.user-offer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 18pt;
+
+  &__opened {
+    min-height: 550px;
+  }
 }
 

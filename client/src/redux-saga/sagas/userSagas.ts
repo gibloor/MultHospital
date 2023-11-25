@@ -4,9 +4,9 @@ import {
   call,
   takeLatest,
   takeEvery,
-} from 'redux-saga/effects';
+} from 'redux-saga/effects'
 
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios'
 
 import {
   USER_AUTH_REQUIRE,
@@ -24,7 +24,7 @@ import {
   userAvatarSave,
   userErrorCleaning,
   userTesting,
-} from '../actions/userActions';
+} from '../actions/userActions'
 
 import {
   UserAuthRequire,
@@ -32,115 +32,115 @@ import {
   UserInfoTaked,
   UserInvolvementChangeRequire,
   UserAvatarSaveRequire,
-} from '../types/userTypes';
+} from '../types/userTypes'
 
-import { DOMAIN } from './rootSaga';
+import { DOMAIN } from './rootSaga'
 
 function* authSaga(dates: UserInfoTaked) {
   try {
-    localStorage.setItem('token', dates.token);
-    yield put(userAuth(dates));
+    localStorage.setItem('token', dates.token)
+    yield put(userAuth(dates))
   } catch (e: any) {
     yield put(
       userFailure({error: e.message}),
-    );
+    )
   }
 }
 
 function* hendAuthSaga(action: UserAuthRequire) {
   try {
-    const { dates, typeForm } = action.payload;
+    const { dates, typeForm } = action.payload
     const authorization = () => axios.post(`http://${DOMAIN}/accounts/${typeForm}`,
-      { ...dates });
-    const response: AxiosResponse<UserInfoTaked> = yield call(authorization);
+      { ...dates })
+    const response: AxiosResponse<UserInfoTaked> = yield call(authorization)
 
-    yield authSaga(response.data);
+    yield authSaga(response.data)
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
 function* autoAuthSaga(action: UserAutoAuthRequire) {
   try {
-    const { token } = action.payload;
+    const { token } = action.payload
     const headers = {authorization: `Bearer ${token}`} 
     const authorization = () => axios.post(`http://${DOMAIN}/accounts/auto_auth`,
       {}, { headers: headers }
-    );
-    const response: AxiosResponse<UserInfoTaked> = yield call(authorization);
+    )
+    const response: AxiosResponse<UserInfoTaked> = yield call(authorization)
 
-    yield authSaga({...response.data});
+    yield authSaga({...response.data})
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
 function* deuthSaga() {
   try {
-    yield put(userDeauth());
+    yield put(userDeauth())
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
 function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   try {
-    const level = action.payload.level;
+    const level = action.payload.level
     const userId = action.payload.id
     const saveInvolvement = () => axios.put<string[]>(`http://${DOMAIN}/accounts/saveInvolvement/${userId}`,
       { level }
-    );
+    )
       
-    yield call(saveInvolvement);
-    yield put(userInvolvementChange({level: level}));
+    yield call(saveInvolvement)
+    yield put(userInvolvementChange({level: level}))
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
 function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   try {
-    const { id, avatar } = action.payload;
+    const { id, avatar } = action.payload
     const saveAvatar = () => axios.post<string[]>(`http://${DOMAIN}/profile/saveAvatar/${id}`,
       { avatar }
-    );
+    )
 
-    yield put(userAvatarSave({avatar: avatar}));
-    yield call(saveAvatar);
+    yield put(userAvatarSave({avatar: avatar}))
+    yield call(saveAvatar)
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
 function* userTestingSaga() {
   try {
-    yield put(userTesting());
+    yield put(userTesting())
   } catch (e: any) {
     yield put(
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
@@ -152,7 +152,7 @@ function* errorCleaningSaga() {
       userFailure({
         error: e.message,
       }),
-    );
+    )
   }
 }
 
@@ -165,7 +165,7 @@ function* userSagas() {
     takeEvery(USER_AVATAR_SAVE_REQUIRE, avatarSaveSaga),
     takeEvery(USER_ERROR_CLEANING_REQUIRE, errorCleaningSaga),
     takeEvery(USER_TESTING_REQUIRE, userTestingSaga)
-  ]);
+  ])
 }
 
-export default userSagas;
+export default userSagas

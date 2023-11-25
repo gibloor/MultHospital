@@ -6,7 +6,7 @@ import {
   MULT_OFFER_TAKE_REQUEST,
 
   OFFER_FAILURE,
-} from "../actions/offerActions";
+} from "../actions/offerActions"
 
 export interface QuestOffer {
   multfilm: string,

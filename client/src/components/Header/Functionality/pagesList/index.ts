@@ -1,7 +1,7 @@
 interface PagesList {
   access: string,
   name: string,
-};
+}
 
 const pagesList:PagesList[] = [
   {
@@ -12,6 +12,6 @@ const pagesList:PagesList[] = [
     name: 'about-project',
     access: 'free',
   }
-];
+]
 
-export default pagesList;
+export default pagesList

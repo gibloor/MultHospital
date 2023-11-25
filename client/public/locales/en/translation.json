@@ -6,8 +6,7 @@
       "multfilms": "Multfilms",
       "about-project": "About project",
       "setting": "Settings",
-      "deactive": "Exit",
-      "mailing": "Receive mailing"
+      "deactive": "Exit"
     },
     "authentication":  {
       "name": "Name",
@@ -119,12 +118,12 @@
 
   "statistics": {
     "title": "Statistic",
-    "level": "Now level",
-    "totalAmount": "Total views",
-    "level1": "Viewed 1 difficulty",
-    "level2": "Viewed 2 difficulty",
-    "level3": "Viewed 3 difficulty",
-    "firstTime": "Credited for welcome test"
+    "level": "Current level of difficulty",
+    "totalAmount": "Total number of tests passed",
+    "levelsTitle": "Passed test of:",
+    "level1": " - First difficulty",
+    "level2": " - Second difficulty",
+    "level3": " - Third difficulty"
   },
 
   "offers": {
@@ -160,6 +159,8 @@
   },
 
   "multfilms": {
+    "unauthorised": "You're not authorised",
+
     "Rick&Morty": {
       "conditions": {
           "1": "To successfully complete the test, it is enough to watch the first 2 seasons",
@@ -411,6 +412,12 @@
       },
       "questions": {
         "1": {
+          "relationships1": {
+            "question": "What is the relationship between the two?",
+            "right": "Brothers",
+            "blende1": "Friends",
+            "blende2": "Neighbours"
+          },
           "relations1": {
             "question": "What is the relationship between them?",
             "right": "Brothers",

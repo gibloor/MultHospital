@@ -11,8 +11,13 @@ body {
   font-size: 14pt;
   font-family: 'Roboto', sans-serif;
 
-  a, label, button {
+  a, label, button, .close {
     cursor: url('components/assets/decorations/Pointer.png'), auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: azure;
   }
 }
 input[type=file] {

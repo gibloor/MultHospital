@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     background-color:rgba(19, 19, 53, 0.911);
-    padding: 20px 30px 20px 30px;
+    padding: 20px 30px;
     border-radius: 20px;
     font-size: 14pt;
     border: 1px solid azure;
@@ -26,33 +26,31 @@
   }
 
   &__close_button {
+    opacity: 0.85;
     float: right;
-    ;
+  }
+
+  &__close_button:hover {
+    opacity: 1;
   }
 
   &__form_name {
     font-size: 20pt;
   }
   
-  &__button {
-    ;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
   &__inputs{
     display: flex;
     justify-content: space-around;
     width: 300px;
     flex-wrap: wrap;
     margin: 20px 0px 20px 0px;
+    gap: 10px;
   }
 
   &__input_case {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 5px;
   }
 
   &__input {
@@ -75,18 +73,18 @@
   &__error_block {
     background-color: rgb(146, 54, 54);
     position: relative;
-    height: 41px;
+    height: 33px;
     display: flex;
     align-items: center;
     text-align: center;
     right: calc(100% + 15px);
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px;
   }
 
   &__error_block::after {
     content: ''; 
     position: absolute;
-    right: -20px; top: 10.5px;
+    right: -20px; top: 6.5px;
     border: 10px solid transparent;
     border-left: 10px solid rgb(146, 54, 54);
   }
@@ -106,17 +104,25 @@
   }
 
   &__form_changer {
-    ;
+    opacity: 0.85;
+  }
+
+  &__form_changer:hover {
+    opacity: 1;
   }
 
   &__submit {
     font-weight: bold;
-    ;
     font-size: 16pt;
     background-color: transparent;
     color: azure;
     border-color: azure;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  &__submit:hover {
+    background-color: azure;
+    color: #010522;
   }
 
   &__checkbox_case {
@@ -128,12 +134,19 @@
   &__checkbox {
     width: 16px;
     height: 16px;
-    ;
   }
 }
 
 @media screen and (max-width: 850px) {
   .auth {
     z-index: 101;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .auth {
+    &__form {
+      padding: 20px 19px;
+    }
   }
 }

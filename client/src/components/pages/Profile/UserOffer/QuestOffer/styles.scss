@@ -18,13 +18,19 @@
   &__case {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 30px;
+    gap: 10px;
   }
 
   &__replay {
-    height: 50px;
     font-size: 18px;
+    min-width: 150px;
+    height: 56px;
+    padding: 2px;
+    border: 1px solid black;
+    box-sizing: border-box;
   }
 
   &__replay_short {

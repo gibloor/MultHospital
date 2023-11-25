@@ -9,7 +9,7 @@ import {
   VIEWED_SAVE_REQUEST,
 
   MULTFILM_FAILURE,
-} from "../actions/multfilmsActions";
+} from "../actions/multfilmsActions"
 
 export interface Character {
   name: string,
@@ -55,12 +55,12 @@ export interface Viewed {
 }
 
 export interface MultfilmTakeRequare {
-  type: typeof MULTFILM_TAKE_REQUARE;
-  payload: Id;
+  type: typeof MULTFILM_TAKE_REQUARE
+  payload: Id
 }
 export interface MultfilmTake {
-  type: typeof MULTFILM_TAKE;
-  payload: Multfilms;
+  type: typeof MULTFILM_TAKE
+  payload: Multfilms
 }
 
 export interface MultfilmTesting {
@@ -73,16 +73,16 @@ export interface MultfilmTestingRequire {
 }
 
 export interface ViewedSaveRequest {
-  type: typeof VIEWED_SAVE_REQUEST;
-  payload: Viewed;
+  type: typeof VIEWED_SAVE_REQUEST
+  payload: Viewed
 }
 export interface ViewedSave {
-  type: typeof VIEWED_SAVE;
+  type: typeof VIEWED_SAVE
 }
 
 export interface MultfilmFailure {
-  type: typeof MULTFILM_FAILURE;
-  payload: {error: boolean};
+  type: typeof MULTFILM_FAILURE
+  payload: {error: boolean}
 }
 
 export type MultfilmsActions =

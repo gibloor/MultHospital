@@ -1,7 +1,7 @@
 .header {
   height: 60px;
   display: flex;
-  margin-bottom: 30px;
+  margin: 10px 25px 30px 25px;
   font-size: 18pt;
   font-weight: bold;
 
@@ -10,3 +10,10 @@
     position: absolute;
   }
 };
+
+
+@media screen and (max-width: 850px) {
+  .header {
+    margin: 0;
+  }
+}

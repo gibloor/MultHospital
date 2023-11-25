@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Cropper from 'react-cropper';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Cropper from 'react-cropper'
 
-import { userAvatarSaveRequire } from 'redux-saga/actions/userActions';
-import { avatarSelector } from 'redux-saga/selectors/profileSelector';
-import { getAccountSelector } from 'redux-saga/selectors/userSelector';
+import { userAvatarSaveRequire } from 'redux-saga/actions/userActions'
+import { avatarSelector } from 'redux-saga/selectors/profileSelector'
+import { getAccountSelector } from 'redux-saga/selectors/userSelector'
 
-import 'cropperjs/dist/cropper.css';
-import './styles.scss';
+import 'cropperjs/dist/cropper.css'
+import './styles.scss'
 
 interface Props {
   id: number,
@@ -15,15 +15,15 @@ interface Props {
 
 const Avatar = (props: Props) => {
 
-  const dispatch = useDispatch();
-  const avatar = useSelector(avatarSelector);
-  const user = useSelector(getAccountSelector);
+  const dispatch = useDispatch()
+  const avatar = useSelector(avatarSelector)
+  const user = useSelector(getAccountSelector)
 
-  const [drag, setDrag] = useState(false);
-  const [cropImage, setCropImage] = useState<any>();
-  const [crop, setCrop] = useState<any>();
+  const [drag, setDrag] = useState(false)
+  const [cropImage, setCropImage] = useState<any>()
+  const [crop, setCrop] = useState<any>()
 
-  const { id } = props;
+  const { id } = props
 
   const settings = {
     src: cropImage,
@@ -37,40 +37,40 @@ const Avatar = (props: Props) => {
     aspectRatio: 1 / 1,
     checkOrientation: false,
     onInitialized: (instance: any) => {
-      setCrop(instance);
+      setCrop(instance)
     }
   }
 
   const takeImg = (file: File) => {
-    const reader = new FileReader();
+    const reader = new FileReader()
     reader.onload = () => {
-      setCropImage(reader.result as any);
-    };
-    reader.readAsDataURL(file);
+      setCropImage(reader.result as any)
+    }
+    reader.readAsDataURL(file)
   }
 
   const dragLeave = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault();
-    setDrag(false);
+    e.preventDefault()
+    setDrag(false)
   }
   const dragOver = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault();
-    setDrag(true);
+    e.preventDefault()
+    setDrag(true)
   }
   const onDropHandler = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault();
-    let file = e.dataTransfer.files[0];
-    setDrag(false);
+    e.preventDefault()
+    let file = e.dataTransfer.files[0]
+    setDrag(false)
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
-      takeImg(file);
+      takeImg(file)
     }
 
   }
   const onDrop = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     if (e.target.files) {
-      let file = e.target.files[0];
-      takeImg(file);
+      let file = e.target.files[0]
+      takeImg(file)
     }
   }
 
@@ -78,12 +78,12 @@ const Avatar = (props: Props) => {
     dispatch(userAvatarSaveRequire({
       avatar: crop.getCroppedCanvas().toDataURL(),
       id: id,
-    }));
-    setCropImage('');
-  };
+    }))
+    setCropImage('')
+  }
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = '/assets/images/users/default.png';
+    e.currentTarget.src = '/assets/images/users/default.png'
   }
 
   return (
@@ -141,4 +141,4 @@ const Avatar = (props: Props) => {
   )
 }
 
-export default Avatar;
+export default Avatar

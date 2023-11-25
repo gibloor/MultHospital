@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   MULTFILM_TAKE,
@@ -8,9 +8,9 @@ import {
   VIEWED_SAVE,
   VIEWED_SAVE_REQUEST,
   MULTFILM_FAILURE,
-} from '../actions/multfilmsActions';
+} from '../actions/multfilmsActions'
 
-import { MultfilmsActions, Multfilms } from '../types/multfilmsTypes';
+import { MultfilmsActions, Multfilms } from '../types/multfilmsTypes'
 
 interface InitialState extends Multfilms {
   error: boolean,
@@ -21,7 +21,7 @@ const initialState: InitialState = {
   error: false,
   pending: false,
   multfilms: {},
-};
+}
 
 const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
   state = initialState,
@@ -32,22 +32,22 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
       return {
         ...state,
         pending: true,
-      };
+      }
     case MULTFILM_TAKE:
       return {
         ...state,
         multfilms: action.payload.multfilms,
         pending: false,
-      };
+      }
     
     case MULTFILM_TESTING:
-      let multfilms = state.multfilms;
+      let multfilms = state.multfilms
       multfilms[action.payload.level].forEach(multfilm => {
         if (multfilm.name === action.payload.topic) {
           multfilm.watched = true
-        };
-        multfilm.delay -= 5;
-      });
+        }
+        multfilm.delay -= 5
+      })
 
       return {
         ...state,
@@ -64,23 +64,23 @@ const multfilmsReducer: Reducer<InitialState, MultfilmsActions> = (
       return {
         ...state,
         pending: true,
-      };
+      }
     case VIEWED_SAVE:
       return {
         ...state,
         pending: false,
-      };
+      }
     
     case MULTFILM_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default multfilmsReducer;
+export default multfilmsReducer

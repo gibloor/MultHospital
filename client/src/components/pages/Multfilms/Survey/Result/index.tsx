@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   surveyResult: number,
-};
+}
 
 interface MessagePool {
   [key: string]: string[]
@@ -14,12 +14,12 @@ interface MessagePool {
 
 const Result = (props: Props) => {
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const { surveyResult } = props;
+  const { surveyResult } = props
 
-  const [result, setResult] = useState('');
-  const [message, setMessage] = useState(-1);
+  const [result, setResult] = useState('')
+  const [message, setMessage] = useState(-1)
 
   const messagePool: MessagePool = {
     victory: [
@@ -50,16 +50,16 @@ const Result = (props: Props) => {
 
   useEffect(() => {
     if (surveyResult) {
-      setResult('victory');
+      setResult('victory')
     } else {
-      setResult('losing');
-    };
+      setResult('losing')
+    }
 
-    const messageNumber = Math.floor(Math.random() * 10);
-    setMessage(messageNumber);
+    const messageNumber = Math.floor(Math.random() * 10)
+    setMessage(messageNumber)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className='result'>
@@ -83,4 +83,4 @@ const Result = (props: Props) => {
   )
 }
 
-export default Result;
+export default Result

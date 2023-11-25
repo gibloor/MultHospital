@@ -1,11 +1,15 @@
 .chooser {
   display: flex;
   width: 100%;
+  position: relative;
   overflow: hidden;
+  height: 50px;
+  margin-bottom: 10px;
 
-  &__option_chosed {
+  &__option_chosed > &__option_text {
     font-weight: bold;
-    text-decoration: underline;
+    border: 1.5px solid azure;
+    border-radius: 10px;
   }
 
   &__option {
@@ -85,34 +89,48 @@
 
   @keyframes multLeftShift {
     100% {
-      transform: translateX(calc(-100% + 200px));
+      transform: translateX(calc(-75% - 7.5px));
     }
   }
   @keyframes multRightShift {
     100% {
-      transform: translateX(100%);
+      transform: translateX(calc(100% - 7.5px));
     }
   }
 
   @keyframes questLeftShift {
     100% {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% + 7.5px));
     }
   }
   @keyframes questRightShift {
     100% {
-      transform: translateX(calc(100% - 200px));
+      transform: translateX(calc(75% + 15px));
     }
   }
 
   @keyframes gereralLeftShift {
     100% {
-      transform: translateX(calc(-200% + 200px + 20%));
+      transform: translateX(calc(-160% + 7.5px));
     }
   }
   @keyframes generalRightShift {
     100% {
-      transform: translateX(calc(200% - 200px - 20%));
+      transform: translateX(calc(160% + 7.5px));
     }
   }
 }
+
+// @media screen and (max-width: 1250px) {
+
+//   @keyframes gereralLeftShift {
+//     100% {
+//       transform: translateX(calc(-160% + 7.5px));
+//     }
+//   }
+//   @keyframes generalRightShift {
+//     100% {
+//       transform: translateX(calc(155%));
+//     }
+//   }
+// }

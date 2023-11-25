@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   ADMIN_INFO_TAKE,
@@ -8,9 +8,9 @@ import {
   ADMIN_MULTFILMS_SAVE_REQUIRE,
 
   ADMIN_INFO_FAILURE,
-} from '../actions/adminInfoActions';
+} from '../actions/adminInfoActions'
 
-import { AdminInfoActions, AdminInfo } from '../types/adminInfoTypes';
+import { AdminInfoActions, AdminInfo } from '../types/adminInfoTypes'
 
 interface InitialState extends AdminInfo {
   error: boolean,
@@ -21,7 +21,7 @@ const initialState: InitialState = {
   pending: false,
   staff: [],
   multfilms: [],
-};
+}
 
 const adminInfoReducer: Reducer<InitialState, AdminInfoActions> = (
   state = initialState,
@@ -33,12 +33,12 @@ const adminInfoReducer: Reducer<InitialState, AdminInfoActions> = (
         ...state,
         ...action.payload,
         pending: false,
-      };
+      }
     case ADMIN_INFO_TAKE_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
 
     case ADMIN_MULTFILMS_SAVE:
       return {
@@ -56,13 +56,13 @@ const adminInfoReducer: Reducer<InitialState, AdminInfoActions> = (
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
 
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default adminInfoReducer;
+export default adminInfoReducer

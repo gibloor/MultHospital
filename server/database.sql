@@ -9,7 +9,7 @@ CREATE TABLE questions (
   image VARCHAR(255),
   answer VARCHAR(30),
   blende1 VARCHAR(30),
-  blende2 VARCHAR(30),
+  blende2 VARCHAR(30)
 );
 
 CREATE TABLE accounts (
@@ -21,7 +21,7 @@ CREATE TABLE accounts (
   features VARCHAR(20)[],
   test_passed BOOLEAN,
   level VARCHAR(20),
-  acsess_token VARCHAR(255),
+  acsess_token VARCHAR(255)
 );
 
 CREATE TABLE multfilms (
@@ -29,7 +29,7 @@ CREATE TABLE multfilms (
   logo VARCHAR(250),
   level VARCHAR(20),
   name VARCHAR(30),
-  direction VARCHAR(15),
+  direction VARCHAR(15)
 );
 
 CREATE TABLE viewed (

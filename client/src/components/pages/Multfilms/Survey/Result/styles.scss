@@ -30,3 +30,15 @@
     text-decoration: none;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .result {
+    
+    &__img {
+      height: auto;
+      max-height: 400px;
+      max-width: 90%;
+      margin: 0 10px;
+    }
+  }
+}

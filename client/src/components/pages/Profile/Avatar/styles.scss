@@ -23,7 +23,6 @@
     padding: 5px;
     border-radius: 5px;
     font-weight: bold;
-    ;
     background-color: transparent;
     color: azure;
     border: 1px solid azure;
@@ -34,6 +33,7 @@
     position: absolute;
     color: white;
     background-color: black;
+    border: 1px solid azure;
     border-radius: 10px;
     padding: 10px;
     opacity: 0.6;
@@ -63,6 +63,11 @@
 .drop_avatar {
   width: 350px;
   height: 350px;
+}
+
+
+.drop_avatar:hover > .avatar__message {
+  opacity: 1;
 }
 
 @media screen and (max-width: 500px) {

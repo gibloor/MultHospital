@@ -1,38 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import classNames from 'classnames';
-import OutsideClickHandler from 'react-outside-click-handler';
+import React, { useState, useEffect } from 'react'
+import { Formik, Form, Field, useFormik } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import classNames from 'classnames'
+import OutsideClickHandler from 'react-outside-click-handler'
 
-import { userAuthRequire, userErrorCleaning } from 'redux-saga/actions/userActions';
-import { getAccountSelector, getAuthErrorTypeSelector } from 'redux-saga/selectors/userSelector';
+import { userAuthRequire, userErrorCleaning } from 'redux-saga/actions/userActions'
+import { getAccountSelector, getAuthErrorTypeSelector } from 'redux-saga/selectors/userSelector'
 
-import inputs from './inputs';
+import inputs from './inputs'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   authClose: () => void,
   typeForm: string,
-};
+}
 
 interface AcDate {
   name: string,
   login: string,
   password: string,
   email: string,
-  mailing: boolean,
-};
+}
 
 const FormAuthorization = (props:Props) => {
-
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const authInfo = useSelector(getAccountSelector);
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const authInfo = useSelector(getAccountSelector)
   const error = useSelector(getAuthErrorTypeSelector)
 
-  const [typeForm, setTypeForm] = useState(props.typeForm);
+  const [typeForm, setTypeForm] = useState(props.typeForm)
 
   const authentication = async (data: AcDate) => {
     try {
@@ -41,27 +39,25 @@ const FormAuthorization = (props:Props) => {
         login: data.login,
         password: data.password,
         email: data.email,
-        mailing: data.mailing,
-      };
+      }
       
-      dispatch(userAuthRequire({dates, typeForm}));    
+      dispatch(userAuthRequire({dates, typeForm}))  
     } catch (err: any) {
-      console.error(err.message);
+      console.error(err.message)
     }
-  };
+  }
 
   useEffect(() => {
     authInfo.name && props.authClose()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authInfo]);
+  }, [authInfo])
 
   return (
     <div className="auth">
       <OutsideClickHandler onOutsideClick={() => props.authClose()}>
         <Formik
           initialValues={{
-            mailing: false,
             name: '',
             login: '',
             password: '',
@@ -71,12 +67,11 @@ const FormAuthorization = (props:Props) => {
         >
           {({ errors, touched }: any) => (
             <Form className="auth__form">
-
               <div className="auth__close_form">
                 <div
                   onKeyPress={() => props.authClose()}
                   onClick={() => props.authClose()}
-                  className="auth__close_button"
+                  className="auth__close_button close"
                 >
                   X
                 </div>
@@ -115,34 +110,16 @@ const FormAuthorization = (props:Props) => {
               <button type="submit" className="auth__submit auth__input">
                 {t(`head.buttons.${typeForm}`)}
               </button>
-
-              {typeForm === 'registration' &&
-                <div className="auth__checkbox_case">
-                  <span>
-                    {t('head.buttons.mailing')}
-                  </span>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="mailing"
-                      className="auth__checkbox button"
-                      checked
-                    />
-                  </label>
-                </div>
-              }
               
-              {typeForm === 'login' &&
-                <span
-                  onClick={() => ((
-                    dispatch(userErrorCleaning()),
-                    setTypeForm('registration')
-                  ))}
-                  className="auth__form_changer button"
-                >
-                  {t('head.buttons.registration')}
-                </span>
-              }
+              <span
+                onClick={() => ((
+                  dispatch(userErrorCleaning()),
+                  setTypeForm(typeForm === 'login' ? 'registration' : 'login')
+                ))}
+                className="auth__form_changer button"
+              >
+                {t(`head.buttons.${typeForm === 'login' ? 'registration' : 'login'}`)}
+              </span>
 
               {error &&
                 <span className="auth__global_error">
@@ -157,4 +134,4 @@ const FormAuthorization = (props:Props) => {
   )
 }
 
-export default FormAuthorization;
+export default FormAuthorization

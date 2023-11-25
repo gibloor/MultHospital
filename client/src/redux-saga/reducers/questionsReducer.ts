@@ -1,12 +1,12 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   QUESTIONS_TAKE,
   QUESTIONS_TAKE_FAILURE,
   QUESTIONS_TAKE_REQUEST,
-} from '../actions/questionsActions';
+} from '../actions/questionsActions'
 
-import { Questions, QuestionsActions } from '../types/questionsTypes';
+import { Questions, QuestionsActions } from '../types/questionsTypes'
 
 interface InitialState extends Questions {
   error: boolean,
@@ -17,7 +17,7 @@ const initialState: InitialState = {
   questions: [],
   error: false,
   pending: false,
-};
+}
 
 const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initialState, action) => {
   switch (action.type) {
@@ -25,7 +25,7 @@ const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initi
       return {
         ...state,
         pending: true,
-      };
+      }
 
     case QUESTIONS_TAKE:
       return {
@@ -33,19 +33,19 @@ const questionsReducer: Reducer<InitialState, QuestionsActions> = (state = initi
         error: false,
         questions: action.payload.questions,
         pending: false,
-      };
+      }
 
     case QUESTIONS_TAKE_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
 
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default questionsReducer;
+export default questionsReducer

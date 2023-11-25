@@ -6,7 +6,7 @@ import {
   ADMIN_MULTFILMS_SAVE_REQUIRE,
   
   ADMIN_INFO_FAILURE,
-} from "../actions/adminInfoActions";
+} from "../actions/adminInfoActions"
 
 export interface Token {
   token: string,
@@ -29,11 +29,11 @@ export interface AdminInfo extends Multfilms {
 }
 
 export interface AdminInfoTake {
-  type: typeof ADMIN_INFO_TAKE;
-  payload: AdminInfo;
+  type: typeof ADMIN_INFO_TAKE
+  payload: AdminInfo
 }
 export interface AdminInfoTakeRequire {
-  type: typeof ADMIN_INFO_TAKE_REQUIRE;
+  type: typeof ADMIN_INFO_TAKE_REQUIRE
 }
 
 export interface AdminMultfilmsSave {
@@ -46,8 +46,8 @@ export interface AdminMultfilmsSaveRequire {
 }
 
 export interface AdminInfoFailure {
-  type: typeof ADMIN_INFO_FAILURE;
-  payload: {error: boolean};
+  type: typeof ADMIN_INFO_FAILURE
+  payload: {error: boolean}
 }
 
 export type AdminInfoActions =

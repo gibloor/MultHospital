@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router';
-import { Trans, useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useParams } from 'react-router'
+import { Trans, useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 
-import { getUserLevel } from 'redux-saga/selectors/userSelector';
+import { getUserLevel } from 'redux-saga/selectors/userSelector'
 
-import Survey from 'components/pages/Multfilms/Survey';
+import Survey from 'components/pages/Multfilms/Survey'
 
-import './styles.scss';
+import './styles.scss'
 
 const MultfilmPage = () => {
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const [surveyOn, setSurveyOn] = useState(false);
-  const userLevel = useSelector(getUserLevel);
+  const [surveyOn, setSurveyOn] = useState(false)
+  const userLevel = useSelector(getUserLevel)
 
   interface Params {
     name: string,
     section: string,
   }
 
-  const params:Params = useParams();
-  const { name, section } = params;
+  const params:Params = useParams()
+  const { name, section } = params
 
   return (
     <>
@@ -62,4 +62,4 @@ const MultfilmPage = () => {
   )
 }
 
-export default MultfilmPage;
+export default MultfilmPage

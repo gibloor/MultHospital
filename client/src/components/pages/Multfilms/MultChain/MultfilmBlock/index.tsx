@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
-import { Multfilm } from 'redux-saga/types/multfilmsTypes';
+import { Multfilm } from 'redux-saga/types/multfilmsTypes'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   multfilm: Multfilm,
@@ -13,12 +13,12 @@ interface Props {
 
 const MultfilmBlock = (props: Props) => {
 
-  const { multfilm, viewedChange } = props;
+  const { multfilm, viewedChange } = props
 
   useEffect(() => {
     if (!multfilm.viewed) {
-      viewedChange(multfilm.name);
-      multfilm.viewed = true;
+      viewedChange(multfilm.name)
+      multfilm.viewed = true
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
