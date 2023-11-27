@@ -88,7 +88,7 @@ const FullField = (props: Props) => {
   return (
     <div
       ref={ref}
-      className="mult-changer__row"
+      className="full-field"
     >
       {columns.map(column => (
         <div key={`${column.name}${index}`}

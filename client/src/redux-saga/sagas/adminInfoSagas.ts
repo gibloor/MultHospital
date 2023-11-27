@@ -45,11 +45,11 @@ function* adminMultfilmsSaveSaga(action: AdminMultfilmsSaveRequire) {
     const token = localStorage.getItem('token') || ''
     const headers = {authorization: `Bearer ${token}`}
     
-    const saveMultfilms = () => axios.post(`http://${DOMAIN}/admin/saveMultfilms`,
-      { permission: OWNER_PERMISSION, multfilms }, { headers: headers }
-    )
+    // const saveMultfilms = () => axios.post(`http://${DOMAIN}/admin/saveMultfilms`,
+    //   { permission: OWNER_PERMISSION, multfilms }, { headers: headers }
+    // )
 
-    yield call(saveMultfilms)
+    // yield call(saveMultfilms)
     
     yield put(adminMultfilmsSave({
       multfilms

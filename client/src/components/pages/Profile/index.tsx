@@ -41,14 +41,15 @@ const Profile = () => {
       <div className='profile__case'>
         <Avatar id={id} />
         <Statistic />
-        {
+        {/* {
           ownId === id && permission >= 4 &&
           <AdminMenu />
+        } */}
+        {
+          ownId === id && <AdminMenu />
         }
         { 
-          ownId === id &&
-          <UserOffer id={id} />
-          // <LevelChanger />
+          ownId === id && <UserOffer id={id} />
         }
       </div>
     </div>

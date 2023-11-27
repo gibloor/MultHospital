@@ -20,7 +20,12 @@ body {
     color: azure;
   }
 }
+
 input[type=file] {
   visibility: hidden;
   position: absolute;
+}
+
+textarea {
+  border-radius: 5px;
 }

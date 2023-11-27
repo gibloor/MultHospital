@@ -3,48 +3,50 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  justify-content: center;
   height: 50px;
   margin-bottom: 10px;
 
   &__option_chosed > &__option_text {
     font-weight: bold;
     border: 1.5px solid azure;
+    background-color: azure;
+    color: #010522;
     border-radius: 10px;
   }
 
+  &__option_unchosed {
+    border: 1.5px solid azure;
+    border-radius: 10px;
+  }
+
+  &__option_unchosed:hover {
+    background-color: azure;
+    color: #010522;
+    transition: 0.25s;
+  }
+
   &__option {
-    width: calc(50% - 7.5px);
     display: flex;
     align-items: center;
   }
 
-  &__option_left {
+  &__option_left-to-right {
     position: absolute;
-    right: 10%;
-    justify-content: right;
-    animation: gereralLeftShift forwards 2s;
+    left: 50px;
+    animation: GeneralLeftToRight forwards 2s;
   }
-  &__option_right {
+  &__option_right-to-left {
     position: absolute;
-    left: 10%;
-    animation: generalRightShift forwards 2s;
-  }
-
-  &__option_multOffer_left {
-    animation: multLeftShift forwards 2s;
-  }
-  &__option_multOffer_right {
-    animation: multRightShift forwards 2s;
-  }
-  &__option_questOffer_left {
-    animation: questLeftShift forwards 2s;
-  }
-  &__option_questOffer_right {
-    animation: questRightShift forwards 2s;
+    animation: GeneralRightToLeft forwards 2s;
+    right: 50px;
   }
 
   &__option_text {
     padding: 10px;
+    top: -1px;
+    width: 120px;
+    text-align: center;
   }
 
   &__option_text_left {
@@ -63,6 +65,7 @@
     position: relative;
     right: 18px;
   }
+
   &__option_text_right:hover {
     background:linear-gradient(105deg, transparent 15px, azure 0);
     border-radius: 0px 10px 10px 0px;
@@ -87,50 +90,127 @@
     }
   }
 
-  @keyframes multLeftShift {
+  &__option_first-click-on-left_left-to-left {
+    animation: FirstClickOnLeft_LeftToLeft forwards 2s;
+  }
+  &__option_first-click-on-right_left-to-right {
+    animation: FirstClickOnRight_LeftToRight forwards 2s;
+  }
+
+  &__option_first-click-on-left_right-to-right {
+    animation: FirstClickOnLeft_RightToRight forwards 2s;
+  }
+  &__option_first-click-on-right_right-to-left {
+    animation: FirstClickOnRight_RightToLeft forwards 2s;
+  }
+
+  @keyframes FirstClickOnLeft_LeftToLeft {
     100% {
-      transform: translateX(calc(-75% - 7.5px));
+      transform: translateX(-400px);
     }
   }
-  @keyframes multRightShift {
+  @keyframes FirstClickOnRight_LeftToRight {
     100% {
-      transform: translateX(calc(100% - 7.5px));
+      transform: translateX(550px);
+    }
+  }
+  @keyframes FirstClickOnLeft_RightToRight {
+    100% {
+      transform: translateX(400px);
+    }
+  }
+  @keyframes FirstClickOnRight_RightToLeft {
+    100% {
+      transform: translateX(-550px);
     }
   }
 
-  @keyframes questLeftShift {
+  @keyframes GeneralRightToLeft {
     100% {
-      transform: translateX(calc(-100% + 7.5px));
+      transform: translateX(-950px);
     }
   }
-  @keyframes questRightShift {
+  @keyframes GeneralLeftToRight {
     100% {
-      transform: translateX(calc(75% + 15px));
-    }
-  }
-
-  @keyframes gereralLeftShift {
-    100% {
-      transform: translateX(calc(-160% + 7.5px));
-    }
-  }
-  @keyframes generalRightShift {
-    100% {
-      transform: translateX(calc(160% + 7.5px));
+      transform: translateX(950px);
     }
   }
 }
 
-// @media screen and (max-width: 1250px) {
+@media screen and (max-width: 1200px) {
+  @keyframes FirstClickOnLeft_LeftToLeft {
+    100% {
+      transform: translateX(-33vw);
+    }
+  }
+  @keyframes FirstClickOnRight_LeftToRight {
+    100% {
+      transform: translateX(calc(50vw - 50px));
+    }
+  }
+  @keyframes FirstClickOnLeft_RightToRight {
+    100% {
+      transform: translateX(33vw);
+    }
+  }
+  @keyframes FirstClickOnRight_RightToLeft {
+    100% {
+      transform: translateX(calc(-50vw + 50px));
+    }
+  }
 
-//   @keyframes gereralLeftShift {
-//     100% {
-//       transform: translateX(calc(-160% + 7.5px));
-//     }
-//   }
-//   @keyframes generalRightShift {
-//     100% {
-//       transform: translateX(calc(155%));
-//     }
-//   }
-// }
+  @keyframes GeneralRightToLeft {
+    100% {
+      transform: translateX(calc(-100vw + 250px));
+    }
+  }
+  @keyframes GeneralLeftToRight {
+    100% {
+      transform: translateX(calc(100vw - 250px));
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .chooser {
+    &__option_left-to-right {
+      left: 10px;
+    }
+    &__option_right-to-left {
+      right: 10px;
+    }
+  }
+
+  @keyframes FirstClickOnLeft_LeftToLeft {
+    100% {
+      transform: translateX(calc(-50vw + 160px));
+    }
+  }
+  @keyframes FirstClickOnRight_LeftToRight {
+    100% {
+      transform: translateX(calc(50vw - 10px));
+    }
+  }
+  @keyframes FirstClickOnLeft_RightToRight {
+    100% {
+      transform: translateX(calc(50vw - 160px));
+    }
+  }
+  @keyframes FirstClickOnRight_RightToLeft {
+    100% {
+      transform: translateX(calc(-50vw + 10px));
+    }
+  }
+
+  @keyframes GeneralRightToLeft {
+    100% {
+      transform: translateX(calc(-100vw + 180px));
+    }
+  }
+  @keyframes GeneralLeftToRight {
+    100% {
+      transform: translateX(calc(100vw - 180px));
+    }
+  }
+}
