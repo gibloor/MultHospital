@@ -84,6 +84,7 @@ const Avatar = (props: Props) => {
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = '/assets/images/users/default.png'
+    console.log(user, e)
   }
 
   return (

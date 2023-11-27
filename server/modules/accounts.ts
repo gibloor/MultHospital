@@ -42,7 +42,7 @@ const tokenCreate = (account: Account, res: Response) => {
     fs.readFile(`${userImgPath}/app_data/images/users/${user.login}.png`, (err, data) => {
       if (data) {
         let base64 = Buffer.from(data).toString('base64')
-        base64 = 'data:image/pngbase64,' + base64
+        base64 = 'data:image/png;base64,' + base64
         res.json({
           ...user,
           avatar: base64,
@@ -124,9 +124,7 @@ accounts.put(`/saveInvolvement/:id`, async (req, res) => {
   try {
     const { id } = req.params
     const { level } = req.body
-
-    console.log(level == 1, level)
-
+    
     await pool.query(
       "UPDATE accounts SET level = $1, test_passed = $2 WHERE id = $3", [level, level == 1, id]
     )

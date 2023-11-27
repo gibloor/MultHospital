@@ -10,14 +10,15 @@ profile.post('/saveAvatar/:id', async (req, res) => {
   try  {
     const { id } = req.params
     const { avatar } = req.body
-    const data = avatar.replace(/^data:image\/\w+base64,/, "")
-    const buf = Buffer.from(data, 'base64')
 
     const login = await pool.query(
       "SELECT login FROM accounts WHERE id = $1", [id]
     )
 
-    fs.writeFile(`${userImgPath}/app_data/images/users/${login.rows[0].login}.png`, buf, (err) => {
+    const base64Image = avatar.split(';base64,').pop()
+    const imageBuffer = Buffer.from(base64Image, 'base64')
+
+    fs.writeFile(`${userImgPath}/app_data/images/users/${login.rows[0].login}.png`, imageBuffer, (err) => {
       if (err) throw err
       console.log('The file has been saved!')
     })
@@ -44,7 +45,7 @@ profile.get('/takeAvatar/:id', async (req, res) => {
         base64 = 'data:image/pngbase64,' + base64
         res.send(base64)
       }
-    }) 
+    })
   }
   catch (err: any) {
     console.error(err.message)
@@ -52,8 +53,7 @@ profile.get('/takeAvatar/:id', async (req, res) => {
 })
 
 profile.get('/takeInfo/:id', async (req, res) => {
-  try  {
-
+  try {
     const { id } = req.params
 
     const loginSelect = await pool.query(
@@ -71,7 +71,7 @@ profile.get('/takeInfo/:id', async (req, res) => {
 
     const { login } = loginSelect.rows[0]
     const watched: Watched[] = watchedSelect.rows
-    const level: number = loginSelect.rows[0].level
+    const level: number = login.level
 
     interface Statistics {
       [key: string]: number,
@@ -87,7 +87,6 @@ profile.get('/takeInfo/:id', async (req, res) => {
     }
 
     if (watched.length) {
-
       statistics.totalAmount = watched.length
       const firstTime = watched[0].date
 
@@ -108,7 +107,7 @@ profile.get('/takeInfo/:id', async (req, res) => {
         })
       } else {
         let base64 = Buffer.from(data).toString('base64')
-        base64 = 'data:image/pngbase64,' + base64
+        base64 = 'data:image/png;base64,' + base64
         res.send({
           avatar: base64,
           statistics: statistics
