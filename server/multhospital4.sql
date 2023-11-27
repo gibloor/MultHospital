@@ -35,7 +35,6 @@ CREATE TABLE public.accounts (
     test_passed boolean DEFAULT false NOT NULL,
     level character varying(20),
     email character varying(40),
-    mailing boolean DEFAULT true NOT NULL,
     permission integer DEFAULT 1 NOT NULL
 );
 
@@ -324,7 +323,7 @@ ALTER TABLE ONLY public.watched ALTER COLUMN id SET DEFAULT nextval('public.view
 -- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.accounts (id, login, name, password, test_passed, level, email, mailing, permission) FROM stdin;
+COPY public.accounts (id, login, name, password, test_passed, level, email, permission) FROM stdin;
 31	GibloorFlex	GibloorFlex	KJRTH32dfh13	t	uncommon	\N	t	1
 32	Giboos	GibloorX	KJRTH32dfh13	t	uncommon	\N	t	1
 33	Gibloorik	Gibloorik	KJRTH32dfh13	t	rare	\N	t	1

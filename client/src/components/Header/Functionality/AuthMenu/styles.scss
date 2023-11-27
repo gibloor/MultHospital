@@ -18,4 +18,22 @@
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  &__button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+
+  &__button:hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .auth_menu {
+    &__button {
+      opacity: 1;
+    }
+  }
 }

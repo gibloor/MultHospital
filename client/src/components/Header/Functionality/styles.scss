@@ -1,4 +1,4 @@
-.navigation {
+.functionality {
   &__menu {
     width: 100%;
   }
@@ -14,7 +14,6 @@
   &__button {
     padding: 15px;
     border-radius: 10px;
-    ;
     text-decoration: none;
     color: white;
   }
@@ -27,14 +26,14 @@
   &__button:hover {
     color: rgb(31, 28, 28);
     background-color: rgb(213, 219, 226);
-    transition: 0.7s;
+    transition: 0.25s;
   }
 
   &__right_side {
     display: flex;
     align-items: center;
+    gap: 10px;
     margin-left: auto;
-    margin-right: 10px;
   }
   
   &__burger_menu {
@@ -43,7 +42,8 @@
 }
 
 @media screen and (max-width: 850px) {
-  .navigation {
+  .functionality {
+
     &__menu {
       display: none;
     }
@@ -63,6 +63,8 @@
     &__menu_list {
       flex-direction: column;
       align-items: center;
+      padding: 10px 0;
+      gap: 10px;
     }
 
     &__right_side {

@@ -1,7 +1,7 @@
 import {
   validateMultLevel,
   validateMultName
-} from 'components/validate/adminValidate';
+} from 'components/validate/adminValidate'
 
 const columns = [
   {
@@ -21,4 +21,4 @@ const columns = [
   },  
 ]
 
-export default columns;
+export default columns

@@ -11,12 +11,16 @@ Front-end:
 Open the command line interface.
 Execute the command: npm install to install the necessary dependencies.
 Run the command: npm start to start the front-end server.
+
+
 Back-end:
 
 Open the command line interface.
 Execute the command: npm install to install the required dependencies.
 Run the command: nodemon index.ts to start the back-end server.
 Note: Make sure you have Node.js and npm installed before proceeding with the installation steps.
+
+To restore PostgreSQL database - pg_restore -U postgres -d multhospital -v path/multhospital.sql
 
 Feel free to explore the project and dive into the captivating world of animation and web development!
 

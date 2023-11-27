@@ -19,7 +19,7 @@ import {
   USER_TESTING_REQUIRE,
 
   USER_FAILURE,
-} from "../actions/userActions";
+} from "../actions/userActions"
 
 export interface UserAuthDates {
   name: string,
@@ -74,10 +74,10 @@ export interface UserAutoAuthRequire {
 }
 
 export interface UserDeauth {
-  type: typeof USER_DEAUTH;
+  type: typeof USER_DEAUTH
 }
 export interface UserDeauthRequire {
-  type: typeof USER_DEAUTH_REQUIRE;
+  type: typeof USER_DEAUTH_REQUIRE
 }
 
 export interface UserTesting {
@@ -106,10 +106,10 @@ export interface UserAvatarSaveRequire {
 }
 
 export interface UserErrorCleaning {
-  type: typeof USER_ERROR_CLEANING;
+  type: typeof USER_ERROR_CLEANING
 }
 export interface UserErrorCleaningRequire {
-  type: typeof USER_ERROR_CLEANING_REQUIRE;
+  type: typeof USER_ERROR_CLEANING_REQUIRE
 }
 
 export interface UserFailure {
@@ -131,4 +131,4 @@ export type UserAuthActions =
 | UserAvatarSaveRequire
 | UserErrorCleaning
 | UserErrorCleaningRequire
-| UserFailure;
+| UserFailure

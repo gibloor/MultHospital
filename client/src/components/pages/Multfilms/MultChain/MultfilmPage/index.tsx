@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { Trans, useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { Trans, useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 
-import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector';
-import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
-import { Character } from 'redux-saga/types/multfilmsTypes';
+import { getAccountPendingSelector, getAccountSelector } from 'redux-saga/selectors/userSelector'
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector'
+import { Character } from 'redux-saga/types/multfilmsTypes'
 
-import Characters from './Characters';
-import SurveyRules from './SurveyRules';
+import Characters from './Characters'
+import SurveyRules from './SurveyRules'
 
-import './styles.scss';
+import './styles.scss'
 
 const MultfilmPage = () => {
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const pendingAccount = useSelector(getAccountPendingSelector);
-  const authInfo = useSelector(getAccountSelector);
-  const multfilms = useSelector(multfilmsSelector);
+  const pendingAccount = useSelector(getAccountPendingSelector)
+  const authInfo = useSelector(getAccountSelector)
+  const multfilms = useSelector(multfilmsSelector)
 
-  const [characters, setCharacters] = useState<Character[] > (); 
-  const [surveyOn, setSurveyOn] = useState(false);
+  const [characters, setCharacters] = useState<Character[] > () 
+  const [surveyOn, setSurveyOn] = useState(false)
 
   interface Params {
     name: string,
     section: string,
   }
 
-  const params:Params = useParams();
-  const multName = params.name;
-  const multSection = params.section;
+  const params:Params = useParams()
+  const multName = params.name
+  const multSection = params.section
 
   useEffect(() => {
     if (multfilms[multSection] !== undefined) {
@@ -38,14 +38,14 @@ const MultfilmPage = () => {
         if (multfilm.name === multName) {
           setCharacters(multfilm.characters)
         }
-      });
-    };
+      })
+    }
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [multfilms]);
+  }, [multfilms])
 
   return (
-    <div className="multfilm_page">
+    <div className="multfilm_page content">
       {!pendingAccount && authInfo.test_passed && characters && surveyOn && <SurveyRules /> }
       {!pendingAccount && authInfo.test_passed && characters && !surveyOn &&
         <>
@@ -69,7 +69,7 @@ const MultfilmPage = () => {
             </div>
           </div>
           <Characters multName={multName} characters={characters} />
-          <div className="button__general button" onClick={() => setSurveyOn(true)}>
+          <div className="button__general button multfilm_page__button_to-rules" onClick={() => setSurveyOn(true)}>
             {t('mulfilmPage.buttons.toRules')}
           </div>
         </>
@@ -78,4 +78,4 @@ const MultfilmPage = () => {
   )
 }
 
-export default MultfilmPage;
+export default MultfilmPage

@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   USER_AUTH,
@@ -21,9 +21,9 @@ import {
   USER_ERROR_CLEANING_REQUIRE,
     
   USER_FAILURE,
-} from '../actions/userActions';
+} from '../actions/userActions'
 
-import { UserAuthActions, UserInfo } from '../types/userTypes';
+import { UserAuthActions, UserInfo } from '../types/userTypes'
 
 interface InitialState extends UserInfo {
   error: boolean,
@@ -42,7 +42,7 @@ const initialState: InitialState = {
   login: '',
   permission: 1,
   avatar: '',
-};
+}
 
 const userReducer: Reducer<InitialState, UserAuthActions> = (
   state = initialState,
@@ -54,65 +54,65 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
         ...state,
         ...action.payload,
         pending: false,
-      };
+      }
     case USER_AUTH_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
     case USER_AUTO_AUTH_REQUIRE:
       return {
         ...state,
         pending: true
-      };
+      }
 
     case USER_DEAUTH:
       return {
         ...state,
         ...initialState,
-      };
+      }
     case USER_DEAUTH_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
 
     case USER_TESTING:
       return {
         ...state,
         pending: false,
-      };
+      }
     case USER_TESTING_REQUIRE:
       return {
         ...state,
         pending: true,
         test_passed: true,
-      };
+      }
     
     case USER_INVOLVEMENT_CHANGE:
       return {
         ...state,
         pending: false,
-        level: action.payload.level
-      };
+        level: action.payload.level,
+        test_passed: action.payload.level == 1,
+      }
     case USER_INVOLVEMENT_CHANGE_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
 
-    
     case USER_AVATAR_SAVE:
       return {
         ...state,
         avatar: action.payload.avatar,
         pending: false,
-      };
+      }
     case USER_AVATAR_SAVE_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
   
     case USER_ERROR_CLEANING:
       return {
@@ -130,13 +130,13 @@ const userReducer: Reducer<InitialState, UserAuthActions> = (
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
       
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default userReducer;
+export default userReducer

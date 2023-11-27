@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react'
+import { Formik, Form, Field } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
-import { questOfferTakeRequest } from 'redux-saga/actions/offerActions';
-import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector';
+import { questOfferTakeRequest } from 'redux-saga/actions/offerActions'
+import { multfilmsSelector } from 'redux-saga/selectors/multfilmsSelector'
 
-import inputs from './inputs';
+import inputs from './inputs'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   id: number
 }
 
 const QuestOffer = (props: Props) => {
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const { id } = props
 
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const multfilms = useSelector(multfilmsSelector)
 
-  const { id } = props;
-
-  const multfilms = useSelector(multfilmsSelector);
-
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<string[]>([])
 
   interface Dates {
     multfilm: string,
@@ -36,18 +34,18 @@ const QuestOffer = (props: Props) => {
 
   const pushOffer = async (date: Dates) => {
     try {
-      const { multfilm, question, answer, false1, false2 } = date;
+      const { multfilm, question, answer, false1, false2 } = date
       dispatch(questOfferTakeRequest({
         multfilm, question, answer, false1, false2, id: id
-      }));
+      }))
       
     } catch (err: any) {
-      console.error(err.message);
+      console.error(err.message)
     }
-  };
+  }
 
   useEffect(() => {
-    let sorted: string[] = [];
+    let sorted: string[] = []
 
     Object.keys(multfilms).forEach(category => {
       multfilms[category].forEach(multfilm => {
@@ -55,7 +53,7 @@ const QuestOffer = (props: Props) => {
           sorted.push(multfilm.name)
         }
       })
-    });
+    })
     if (sorted.length) {
       setOptions(sorted)
     }
@@ -122,6 +120,6 @@ const QuestOffer = (props: Props) => {
       }
     </div>
   )
-};
+}
 
-export default QuestOffer;
+export default QuestOffer

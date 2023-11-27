@@ -18,20 +18,29 @@
   }
   
   &__answers {
+    margin: 10px 10px 25px 10px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
   &__answer {
-    margin: 10px 10px 0px 0px;
     padding: 10px;
     border: 2px solid white;
     border-radius: 10px;
-    ;
+  }
+
+  &__answer:hover {
+    color: #010522;
+    background-color: azure;
+    transition: 0.25s;
   }
 
   &__answer_button {
     visibility: hidden;
     position: absolute;
+    left: 0;
   }
 
   &__lazy {
@@ -47,8 +56,18 @@
     }
 
     &__image {
-      max-height: 300px;
       max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .survey {
+    &__image {
+      height: auto;
+      max-height: 400px;
+      max-width: 90%;
+      margin: 0 10px;
     }
   }
 }

@@ -9,5 +9,13 @@
     color: black;
     font-weight: bold;
     font-size: 16pt;
+    border: 1px solid #010522;
+  }
+
+  &__general:hover {
+    color: rgb(213, 219, 226);
+    background-color: #010522;
+    transition: 0.25s;
+    border-color: azure;
   }
 }

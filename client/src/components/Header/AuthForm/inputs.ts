@@ -3,7 +3,7 @@ import {
   validateLogin,
   validatePassword,
   validateEmail
-} from 'components/validate/authValidate';
+} from 'components/validate/authValidate'
 
 const inputs = [
   {
@@ -28,4 +28,4 @@ const inputs = [
   },
 ]
 
-export default inputs;
+export default inputs

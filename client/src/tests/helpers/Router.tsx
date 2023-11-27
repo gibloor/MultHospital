@@ -1,19 +1,19 @@
-import React, { Suspense } from 'react';
-import { MemoryRouter } from "react-router-dom";
+import React, { Suspense } from 'react'
+import { MemoryRouter } from "react-router-dom"
 
-import App from 'App';
+import App from 'App'
 
 interface Options {
-  route: string;
+  route: string
 }
 
 interface Props {
-  options: Options;
+  options: Options
 }
 
 const Router = (props: Props) => {
 
-  const { options } = props;
+  const { options } = props
 
   return (
     <Suspense fallback="Time to fix i18next">
@@ -24,4 +24,4 @@ const Router = (props: Props) => {
   )
 }
 
-export default Router;
+export default Router

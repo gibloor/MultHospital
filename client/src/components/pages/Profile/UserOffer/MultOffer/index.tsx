@@ -1,14 +1,14 @@
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { Formik, Form, Field } from 'formik'
+import { useDispatch } from 'react-redux'
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
-import { multOfferTakeRequest } from 'redux-saga/actions/offerActions';
+import { multOfferTakeRequest } from 'redux-saga/actions/offerActions'
 
-import { validateLongText, validateShortText } from "components/validate/offerValidate";
+import { validateLongText, validateShortText } from "components/validate/offerValidate"
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   id: number
@@ -16,10 +16,10 @@ interface Props {
 
 const MultOffer = (props: Props) => {
 
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
 
-  const { id } = props;
+  const { id } = props
 
   interface Dates {
     multfilm: string,
@@ -28,15 +28,15 @@ const MultOffer = (props: Props) => {
 
   const pushOffer = async (date: Dates) => {
     try {
-      const { multfilm, description } = date;
+      const { multfilm, description } = date
       dispatch(multOfferTakeRequest({
         multfilm, description, id: id
-      }));
+      }))
       
     } catch (err: any) {
-      console.error(err.message);
+      console.error(err.message)
     }
-  };
+  }
 
   return (
     <div className='multoffer'>
@@ -84,6 +84,6 @@ const MultOffer = (props: Props) => {
       </Formik>
     </div>
   )
-};
+}
 
-export default MultOffer;
+export default MultOffer

@@ -1,13 +1,13 @@
-import { Reducer } from 'redux';
+import { Reducer } from 'redux'
 
 import {
   PROFILE_TAKE,
   PROFILE_TAKE_REQUIRE,
 
   PROFILE_FAILURE
-} from '../actions/profileActions';
+} from '../actions/profileActions'
 
-import { ImagesActions, Profile } from '../types/profileTypes';
+import { ImagesActions, Profile } from '../types/profileTypes'
 
 interface InitialState extends Profile {
   error: boolean,
@@ -20,7 +20,7 @@ const initialState: InitialState = {
   id: 0,
   avatar: '',
   statistics: {},
-};
+}
 
 const profileReducer: Reducer<InitialState, ImagesActions> = (
   state = initialState,
@@ -34,24 +34,24 @@ const profileReducer: Reducer<InitialState, ImagesActions> = (
         avatar: action.payload.avatar,
         statistics: action.payload.statistics,
         pending: false,
-      };
+      }
     case PROFILE_TAKE_REQUIRE:
       return {
         ...state,
         pending: true,
-      };
+      }
 
     case PROFILE_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-      };
+      }
 
     default:
       return {
         ...state,
-      };
+      }
   }
-};
+}
 
-export default profileReducer;
+export default profileReducer

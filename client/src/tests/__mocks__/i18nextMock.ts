@@ -6,9 +6,9 @@ const i18nextMock = () => jest.mock('react-i18next', () => ({
       i18n: {
         changeLanguage: () => new Promise(() => {}),
       },
-    };
+    }
   },
   Trans: ({ children }: { children: any }) => children,
-}));
+}))
 
-export default i18nextMock;
+export default i18nextMock

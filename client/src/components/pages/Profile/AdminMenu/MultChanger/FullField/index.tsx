@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import classNames from 'classnames';
-import { ArrayHelpers, Field } from 'formik';
-import { useDrag, useDrop } from 'react-dnd';
+import React, { useRef } from 'react'
+import classNames from 'classnames'
+import { ArrayHelpers, Field } from 'formik'
+import { useDrag, useDrop } from 'react-dnd'
 
-import { MultInfo } from '..';
-import columns from '../columns';
-import { multSort, newPosChange, oldPosChange, specialPosChange } from './multSort';
+import { MultInfo } from '..'
+import columns from '../columns'
+import { multSort, newPosChange, oldPosChange, specialPosChange } from './multSort'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   errors: any,
@@ -27,51 +27,51 @@ const FullField = (props: Props) => {
     multfilm,
     multfilms,
     index,
-  } = props;
+  } = props
   
   interface DragItem {
     index: number
     id: string
-  };
+  }
 
   const callMultSort = (index: number, name: string) => {
     multSort(index, name, multfilm, multfilms, arrayHelpers)
   }
 
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null)
 
   const [ , drop] = useDrop<DragItem>({
     accept: 'field',
     hover(item: DragItem) {
 
       if (!ref.current) {
-        return;
-      };
-      const dragIndex = item.index;
-      const hoverIndex = index;
+        return
+      }
+      const dragIndex = item.index
+      const hoverIndex = index
 
       if (dragIndex === hoverIndex) {
-        return;
-      };
+        return
+      }
 
       if (multfilms[dragIndex].level !== multfilms[hoverIndex].level) {
-        oldPosChange(dragIndex, multfilms);
+        oldPosChange(dragIndex, multfilms)
       }
 
-      multfilms[dragIndex].serial = multfilms[hoverIndex].serial;
+      multfilms[dragIndex].serial = multfilms[hoverIndex].serial
 
       if (multfilms[dragIndex].level !== multfilms[hoverIndex].level && dragIndex < hoverIndex) {
-        specialPosChange(multfilms, hoverIndex);
-        arrayHelpers.move(dragIndex, hoverIndex - 1);
+        specialPosChange(multfilms, hoverIndex)
+        arrayHelpers.move(dragIndex, hoverIndex - 1)
       } else {
-        newPosChange(dragIndex, multfilms, hoverIndex);
-        arrayHelpers.move(dragIndex, hoverIndex);
+        newPosChange(dragIndex, multfilms, hoverIndex)
+        arrayHelpers.move(dragIndex, hoverIndex)
       }
 
-      multfilms[dragIndex].level = multfilms[hoverIndex].level;
-      item.index = hoverIndex;
+      multfilms[dragIndex].level = multfilms[hoverIndex].level
+      item.index = hoverIndex
     },
-  });
+  })
 
   const [ , drag] = useDrag({
     type: 'field',
@@ -81,18 +81,18 @@ const FullField = (props: Props) => {
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  });
+  })
 
-  drag(drop(ref));
+  drag(drop(ref))
 
   return (
     <div
       ref={ref}
-      className="multChanger__row"
+      className="full-field"
     >
       {columns.map(column => (
         <div key={`${column.name}${index}`}
-          className={`multChanger__field_${column.name} multChanger__field`}
+          className={`mult-changer__field_${column.name} mult-changer__field`}
         >
           <Field
             name={`multfilms.${index}.${column.name}`}
@@ -101,7 +101,7 @@ const FullField = (props: Props) => {
             onKeyUp={() => callMultSort(index, column.name)}
             type={column.type}
             className={classNames(
-              { 'multChanger__text_input':
+              { 'mult-changer__text_input':
                 !errors.multfilms || 
                 !errors.multfilms[index] ||
                 !errors.multfilms[index][column.name] ||
@@ -109,7 +109,7 @@ const FullField = (props: Props) => {
                 !touched.multfilms[index] ||
                 !touched.multfilms[index][column.name]
               },
-              { 'multChanger__text_input multChanger__error':
+              { 'mult-changer__text_input mult-changer__error':
                 errors.multfilms &&
                 errors.multfilms[index] &&
                 errors.multfilms[index][column.name] &&
@@ -128,4 +128,4 @@ const FullField = (props: Props) => {
   )
 }
 
-export default FullField;
+export default FullField

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import OutsideClickHandler from 'react-outside-click-handler';
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import OutsideClickHandler from 'react-outside-click-handler'
 
-import './styles.scss';
+import './styles.scss'
 
 const LangChanger = () => {
 
-  const [langDisplay, setLangDisplay] = useState(false);
-  const { t, i18n } = useTranslation();
+  const [langDisplay, setLangDisplay] = useState(false)
+  const { t, i18n } = useTranslation()
 
   const langs = [
     'en',
     'ru',
-  ];
+  ]
 
   return (
     <div className="langchanger">
@@ -70,4 +70,4 @@ const LangChanger = () => {
   )
 }
 
-export default LangChanger;
+export default LangChanger

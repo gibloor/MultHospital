@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Chooser from './Chooser';
-import MultOffer from './MultOffer';
-import QuestOffer from './QuestOffer';
+import Chooser from './Chooser'
+import MultOffer from './MultOffer'
+import QuestOffer from './QuestOffer'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   id: number
@@ -12,14 +12,14 @@ interface Props {
 
 const UserOffer = (props: Props) => {
 
-  const [offer, setOffer] = useState('option');
+  const [offer, setOffer] = useState('option')
 
   const changeOffer = (option: string) => {
-    setOffer(option);
+    setOffer(option)
   }
 
   return (
-    <div className='useroffer'>
+    <div className={`user-offer ${offer != 'option' ? 'user-offer__opened' : ''}`}>
       <p>
         User offer
       </p>
@@ -34,6 +34,6 @@ const UserOffer = (props: Props) => {
       }
     </div>
   )
-};
+}
 
-export default UserOffer;
+export default UserOffer

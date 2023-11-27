@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import userReducer from './userReducer';
-import questionsReducer from './questionsReducer';
-import multfilmsReducer from './multfilmsReducer';
-import profileReducer from './profileReducer';
-import adminInfoReducer from './adminInfoReducer';
-import offerReducer from './offerReducer';
+import { combineReducers } from 'redux'
+import userReducer from './userReducer'
+import questionsReducer from './questionsReducer'
+import multfilmsReducer from './multfilmsReducer'
+import profileReducer from './profileReducer'
+import adminInfoReducer from './adminInfoReducer'
+import offerReducer from './offerReducer'
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -13,8 +13,8 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   adminInfo: adminInfoReducer,
   offerInfo: offerReducer,
-});
+})
 
-export type AppState = ReturnType<typeof rootReducer>;
+export type AppState = ReturnType<typeof rootReducer>
 
-export default rootReducer;
+export default rootReducer

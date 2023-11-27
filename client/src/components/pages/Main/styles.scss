@@ -12,13 +12,6 @@
 
   &__picture {
     max-height: 70vh;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .main {
-    &__picture {
-      width: 90%;
-    }
+    max-width: 90%;
   }
 }

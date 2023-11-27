@@ -1,14 +1,14 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { Trans, useTranslation } from 'react-i18next';
+import React from 'react'
+import Slider from 'react-slick'
+import { Trans, useTranslation } from 'react-i18next'
 
-import { Character } from 'redux-saga/types/multfilmsTypes';
+import { Character } from 'redux-saga/types/multfilmsTypes'
 
-import Arrow from './Arrow';
+import Arrow from './Arrow'
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './styles.scss';
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import './styles.scss'
 
 interface Props {
   multName: string,
@@ -17,34 +17,34 @@ interface Props {
 
 const Characters = (props:Props) => {
 
-  const extension = [1, 2];
-  const { characters, multName } = props;
-  const { t } = useTranslation();
+  const extension = [1, 2]
+  const { characters, multName } = props
+  const { t } = useTranslation()
 
   const classChecker = (length: number) => {
     if (characters.length < length) {
-      length = characters.length;
+      length = characters.length
     }
       switch (length) {
         case 4 :
-          return 'characters__increased_slider';
+          return 'characters__increased_slider'
 
         case 3 :
-          return 'characters__average_slider';
+          return 'characters__average_slider'
 
         case 2 :
-          return 'characters__decreased_slider';
+          return 'characters__decreased_slider'
 
         case 1 :
-          return 'characters__small_slider';
+          return 'characters__small_slider'
 
         default :
-          return 'characters__big_slider';
+          return 'characters__big_slider'
       }
-  };
+  }
 
   const lengthChecker = (length: number) => 
-    characters.length > length ? length : characters.length;
+    characters.length > length ? length : characters.length
 
   const settings = {
     speed: 100,
@@ -85,7 +85,7 @@ const Characters = (props:Props) => {
         }
       },
     ]
-  };
+  }
 
   return (
     <div className="characters">
@@ -96,7 +96,7 @@ const Characters = (props:Props) => {
               <div key={character.name}>
                 <div className="characters__block">
 
-                  <div className="characters__head">
+                  <div className="characters__head close">
                     <span className="characters__name">
                       {t(`multfilms.${multName}.personal.characters.${character.name}.name`)}
                     </span>
@@ -147,4 +147,4 @@ const Characters = (props:Props) => {
   )
 }
 
-export default Characters;
+export default Characters

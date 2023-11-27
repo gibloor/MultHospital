@@ -1,0 +1,14 @@
+.full-field {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  border: 1px solid azure;
+  border-radius: 10px;
+  padding: 10px 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .full-field {
+    width: 90vw;
+  }
+}

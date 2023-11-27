@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import React, { useState } from 'react'
+import classNames from 'classnames'
 
-import slash from 'components/assets/decorations/slash.png';
+import slash from 'components/assets/decorations/slash.png'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   changeOffer: (offer: string) => void,
@@ -11,15 +11,15 @@ interface Props {
 }
 
 const Chooser = (props: Props) => {
-  const { changeOffer, offer } = props;
+  const { changeOffer, offer } = props
 
-  const [chosen, setChosen] = useState(-1);
+  const [chosen, setChosen] = useState(-1)
 
   const changeButtons = (option: string) => {
     if (option !== offer) {
-      setChosen(chosen + 1);
-      changeOffer(option);
-    };
+      setChosen(chosen + 1)
+      changeOffer(option)
+    }
   }
 
   return (
@@ -28,16 +28,16 @@ const Chooser = (props: Props) => {
         className={classNames(
           { 'chooser__option': true },
           { 'chooser__option_chosed': offer === 'multOffer' },
-          { 'left': chosen < 1 },
-          { 'chooser__option_multOffer_left': offer === 'multOffer' && chosen < 1 },
-          { 'chooser__option_multOffer_right': offer === 'questOffer' && chosen < 1 },
-          { 'chooser__option_left': offer === 'multOffer' && chosen >= 1 },
-          { 'chooser__option_right': offer === 'questOffer' && chosen >= 1 },
+          { 'chooser__option_unchosed': offer === 'questOffer' },
+          { 'chooser__option_first-click-on-left_left-to-left': offer === 'multOffer' && chosen < 1 },
+          { 'chooser__option_first-click-on-right_left-to-right': offer === 'questOffer' && chosen < 1 },
+          { 'chooser__option_right-to-left': offer === 'multOffer' && chosen >= 1 },
+          { 'chooser__option_left-to-right': offer === 'questOffer' && chosen >= 1 },
         )}
       >
         <span
           className={classNames(
-            { 'chooser__option_text': true },
+            { 'chooser__option_text button': true },
             { 'chooser__option_text_left': offer === 'option' },
           )}
           onClick={() => (changeButtons('multOffer'))}
@@ -57,15 +57,16 @@ const Chooser = (props: Props) => {
         className={classNames(
           { 'chooser__option': true },
           { 'chooser__option_chosed': offer === 'questOffer' },
-          { 'chooser__option_questOffer_right': offer === 'multOffer' && chosen < 1 },
-          { 'chooser__option_questOffer_left': offer === 'questOffer' && chosen < 1 },
-          { 'chooser__option_right': offer === 'multOffer' && chosen >= 1 },
-          { 'chooser__option_left': offer === 'questOffer' && chosen >= 1 },
+          { 'chooser__option_unchosed': offer === 'multOffer' },
+          { 'chooser__option_first-click-on-left_right-to-right': offer === 'multOffer' && chosen < 1 },
+          { 'chooser__option_first-click-on-right_right-to-left': offer === 'questOffer' && chosen < 1 },
+          { 'chooser__option_left-to-right': offer === 'multOffer' && chosen >= 1 },
+          { 'chooser__option_right-to-left': offer === 'questOffer' && chosen >= 1 },
         )}
       >
         <span
           className={classNames(
-            { 'chooser__option_text': true },
+            { 'chooser__option_text button': true },
             { 'chooser__option_text_right': offer === 'option' },
           )}
           onClick={() => (changeButtons('questOffer'))}
@@ -75,6 +76,6 @@ const Chooser = (props: Props) => {
       </div>
     </div>
   )
-};
+}
 
-export default Chooser;
+export default Chooser

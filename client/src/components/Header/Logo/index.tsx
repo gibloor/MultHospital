@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import './styles.scss';
+import './styles.scss'
 
 const Logo = () => {
   
@@ -19,6 +19,6 @@ const Logo = () => {
       </svg>
     </Link>
   )
-};
+}
 
-export default Logo;
+export default Logo

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './styles.scss';
+import './styles.scss'
 
 const LevelChanger = () => {
 
@@ -13,4 +13,4 @@ const LevelChanger = () => {
   )
 }
 
-export default LevelChanger;
+export default LevelChanger

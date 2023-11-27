@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import mainPicture from 'components/assets/mainPage/mainPicture.png';
+import mainPicture from 'components/assets/mainPage/mainPicture.png'
 
-import './styles.scss';
+import './styles.scss'
 
 const Main = () => {
 
@@ -14,7 +14,7 @@ const Main = () => {
 
       <img alt='main' src={mainPicture} className="main__picture" />
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

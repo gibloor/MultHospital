@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { userErrorCleaningRequire } from 'redux-saga/actions/userActions';
+import { userErrorCleaningRequire } from 'redux-saga/actions/userActions'
 
-import Logo from './Logo';
-import Functionality from './Functionality';
-import AuthForm from './AuthForm';
+import Logo from './Logo'
+import Functionality from './Functionality'
+import AuthForm from './AuthForm'
 
-import './styles.scss';
+import './styles.scss'
 
 const Header = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [authVariant, setAuthVariant] = useState('');
+  const [authVariant, setAuthVariant] = useState('')
 
   const authClose = () => {
-    setAuthVariant('');
-    dispatch(userErrorCleaningRequire());
-  };
+    setAuthVariant('')
+    dispatch(userErrorCleaningRequire())
+  }
   const changeAuthVariant = (variant:string) => {
-    setAuthVariant(variant);
-  };
+    setAuthVariant(variant)
+  }
 
   return (
     <div className="header">
@@ -35,7 +35,7 @@ const Header = () => {
         />
       }
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

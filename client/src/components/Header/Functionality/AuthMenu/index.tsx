@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
-import { userDeauthRequire } from 'redux-saga/actions/userActions';
-import { getAccountSelector } from 'redux-saga/selectors/userSelector';
+import { userDeauthRequire } from 'redux-saga/actions/userActions'
+import { getAccountSelector } from 'redux-saga/selectors/userSelector'
 
-import './styles.scss';
+import './styles.scss'
 
 interface Props {
   closeMenu: () => void,
@@ -15,12 +15,12 @@ interface Props {
 
 const AuthMenu = (props: Props) => {
 
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
-  const user = useSelector(getAccountSelector);
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const user = useSelector(getAccountSelector)
 
   const imageCheck = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = '/assets/images/users/default.png';
+    e.currentTarget.src = '/assets/images/users/default.png'
   }
 
   return (
@@ -30,7 +30,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button button"
+            className="auth_menu__button button"
             onKeyPress={() => ((
               props.changeAuthVariant('login'),
               props.closeMenu()
@@ -49,7 +49,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button button"
+            className="auth_menu__button button"
             onKeyPress={() => ((
               props.changeAuthVariant('registration'),
               props.closeMenu()
@@ -82,7 +82,7 @@ const AuthMenu = (props: Props) => {
           <div
             role="button"
             tabIndex={0}
-            className="auth__button button"
+            className="auth_menu__button button"
             onKeyPress={() => ((
               localStorage.removeItem('token'),
               dispatch(userDeauthRequire()),
@@ -102,4 +102,4 @@ const AuthMenu = (props: Props) => {
   )
 }
 
-export default AuthMenu;
+export default AuthMenu

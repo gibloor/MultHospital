@@ -1,16 +1,16 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ArrayHelpers, FieldArray, Form, Formik } from 'formik';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { ArrayHelpers, FieldArray, Form, Formik } from 'formik'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
-import { getMultfilmsSelector } from 'redux-saga/selectors/adminInfoSelector';
-import { adminMultfilmsSaveRequire } from 'redux-saga/actions/adminInfoActions';
+import { getMultfilmsSelector } from 'redux-saga/selectors/adminInfoSelector'
+import { adminMultfilmsSaveRequire } from 'redux-saga/actions/adminInfoActions'
 
-import columns from './columns';
-import FullField from './FullField';
+import columns from './columns'
+import FullField from './FullField'
 
-import './styles.scss';
+import './styles.scss'
 
 export interface MultInfo {
   name: string,
@@ -21,32 +21,24 @@ export interface MultInfo {
 
 const MultChanger = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const multSelector = useSelector(getMultfilmsSelector);
-  const multfilms = [...multSelector];
+  const multSelector = useSelector(getMultfilmsSelector)
+  const multfilms = [...multSelector]
 
   const saveChanges = async (data: MultInfo[]) => {
     try {
       dispatch(adminMultfilmsSaveRequire({multfilms: data}))
     } catch (err: any) {
-      console.error(err.message);
+      console.error(err.message)
     }
-  };
+  }
 
   return (
-    <div className='multChanger'>
-      <span>
+    <div className='mult-changer'>
+      <p className='mult-changer__title'>
         MultChanger
-      </span>
-
-      <div className="multChanger__row">
-        {columns.map(column => (
-          <span className={`multChanger__field_${column.name} multChanger__field`} key={column.name}>
-            {column.name}
-          </span>
-        ))}
-      </div>
+      </p>
 
       {multfilms.length !== 0 &&
       <Formik
@@ -54,15 +46,29 @@ const MultChanger = () => {
         onSubmit={(value) => { saveChanges(value.multfilms) }}
       >
         {({ errors, touched, values }: any) => (
-          <Form className="multChanger__form">
+          <Form className="mult-changer__form">
             <FieldArray name="multfilms">
               {(arrayHelpers: ArrayHelpers) => (
                 <>
                   <DndProvider backend={HTML5Backend}>
                     {values.multfilms.map((multfilm: MultInfo, index: number) => (
-                      <div key={index}>
+                      <div key={index} className={(index === 0 || multfilm.level !== values.multfilms[index - 1].level) ? 'mult-changer__section_title_container' : ''}>
                         {(index === 0 || multfilm.level !== values.multfilms[index - 1].level) &&
-                        <span>{multfilm.level}</span>}
+                          <>
+                            <span className='mult-changer__section_title'>
+                              Level of difficulty: {multfilm.level}
+                            </span>
+                            <div className="mult-changer__row">
+                              {columns.map(column => (
+                                <span className={`mult-changer__field_${column.name} mult-changer__field`} key={column.name}>
+                                  {column.name}
+                                </span>
+                              ))}
+    
+                              <div className='mult-changer__leveller' />
+                            </div>
+                          </>
+                        }
                         <FullField
                           key={index}
                           errors={errors}
@@ -76,17 +82,23 @@ const MultChanger = () => {
                     ))}
                   </DndProvider>
 
-                  <button type="submit" className="multChanger__submit">
-                    Go
-                  </button>
-                  
-                  <button type="button"
-                    onClick={() => arrayHelpers.insert(values.multfilms.length, {
-                      id: -1, name:'new', level: 4, serial: 1
-                    })}
-                  >
-                    +1
-                  </button>
+                  <div className='mult-changer__buttons'>
+                    <div className='mult-changer__second-leveller' />
+
+                    <button type="submit" className="mult-changer__submit">
+                      Save
+                    </button>
+                    
+                    <button
+                      type="button"
+                      className='mult-changer__add-button'
+                      onClick={() => arrayHelpers.insert(values.multfilms.length, {
+                        id: -1, name:'new', level: 4, serial: 1
+                      })}
+                    >
+                      Add row
+                    </button>
+                  </div>
                 </>
               )}
             </FieldArray>
@@ -96,6 +108,6 @@ const MultChanger = () => {
       }
     </div>
   )
-};
+}
 
-export default MultChanger;
+export default MultChanger
