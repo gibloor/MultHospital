@@ -50,7 +50,7 @@ function* authSaga(dates: UserInfoTaked) {
 function* hendAuthSaga(action: UserAuthRequire) {
   try {
     const { dates, typeForm } = action.payload
-    const authorization = () => axios.post(`http://${DOMAIN}/accounts/${typeForm}`,
+    const authorization = () => axios.post(`${DOMAIN}/accounts/${typeForm}`,
       { ...dates })
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization)
 
@@ -68,7 +68,7 @@ function* autoAuthSaga(action: UserAutoAuthRequire) {
   try {
     const { token } = action.payload
     const headers = {authorization: `Bearer ${token}`} 
-    const authorization = () => axios.post(`http://${DOMAIN}/accounts/auto_auth`,
+    const authorization = () => axios.post(`${DOMAIN}/accounts/auto_auth`,
       {}, { headers: headers }
     )
     const response: AxiosResponse<UserInfoTaked> = yield call(authorization)
@@ -99,7 +99,7 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
   try {
     const level = action.payload.level
     const userId = action.payload.id
-    const saveInvolvement = () => axios.put<string[]>(`http://${DOMAIN}/accounts/saveInvolvement/${userId}`,
+    const saveInvolvement = () => axios.put<string[]>(`${DOMAIN}/accounts/saveInvolvement/${userId}`,
       { level }
     )
       
@@ -117,7 +117,7 @@ function* changeInvolvementSaga(action: UserInvolvementChangeRequire) {
 function* avatarSaveSaga(action: UserAvatarSaveRequire) {
   try {
     const { id, avatar } = action.payload
-    const saveAvatar = () => axios.post<string[]>(`http://${DOMAIN}/profile/saveAvatar/${id}`,
+    const saveAvatar = () => axios.post<string[]>(`${DOMAIN}/profile/saveAvatar/${id}`,
       { avatar }
     )
 

@@ -23,7 +23,7 @@ import { DOMAIN } from './rootSaga'
 
 function* questionsSelectSaga(action: QuestionsTakeRequest) {
   try {
-    const getQuestions = () => axios.get<QuestionTake[]>(`http://${DOMAIN}/questions/take/`, {
+    const getQuestions = () => axios.get<QuestionTake[]>(`${DOMAIN}/questions/take/`, {
       params: {
         level: action.payload.level,
         topic: action.payload.topic

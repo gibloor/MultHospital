@@ -21,7 +21,7 @@ function* adminInfoTakeSaga() {
     const token = localStorage.getItem('token') || ''
     const headers = {authorization: `Bearer ${token}`}
     
-    const takeInfo = () => axios.post(`http://${DOMAIN}/admin/takeInfo`,
+    const takeInfo = () => axios.post(`${DOMAIN}/admin/takeInfo`,
       { permission: MODER_PERMISSION }, { headers: headers }
     )
 
@@ -45,7 +45,7 @@ function* adminMultfilmsSaveSaga(action: AdminMultfilmsSaveRequire) {
     const token = localStorage.getItem('token') || ''
     const headers = {authorization: `Bearer ${token}`}
     
-    // const saveMultfilms = () => axios.post(`http://${DOMAIN}/admin/saveMultfilms`,
+    // const saveMultfilms = () => axios.post(`${DOMAIN}/admin/saveMultfilms`,
     //   { permission: OWNER_PERMISSION, multfilms }, { headers: headers }
     // )
 

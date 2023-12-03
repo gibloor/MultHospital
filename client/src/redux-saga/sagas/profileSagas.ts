@@ -22,7 +22,7 @@ import { DOMAIN } from './rootSaga'
 function* profileTakeSaga(action: ProfileTakeRequire ) {
   try {
     const { id } = action.payload
-    const takeProfile = () => axios.get<string[]>(`http://${DOMAIN}/profile/takeInfo/${id}`)
+    const takeProfile = () => axios.get<string[]>(`${DOMAIN}/profile/takeInfo/${id}`)
     const response: AxiosResponse<Profile> = yield call(takeProfile)
     const { avatar, statistics } = response.data
 

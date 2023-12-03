@@ -7,7 +7,7 @@ import profileSagas from './profileSagas'
 import adminInfoSagas from './adminInfoSagas'
 import offerSagas from './offerSagas'
 
-export const DOMAIN = process.env.REACT_APP_DOMAIN || 'localhost:5000'
+export const DOMAIN = process.env.REACT_APP_DOMAIN || 'http://localhost:5000/api'
 
 export default function* rootSaga() {
   yield all([

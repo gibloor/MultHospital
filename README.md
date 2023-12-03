@@ -24,4 +24,9 @@ To restore PostgreSQL database - pg_restore -U postgres -d multhospital -v path/
 
 Feel free to explore the project and dive into the captivating world of animation and web development!
 
+
+Deploy:
+
+install nginx, put multhospital.conf in /etc/nginx/conf/ - front-end work.
+
 [![Top Languages](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=gibloor&theme=default)](https://github.com/gibloor/MultHospital)

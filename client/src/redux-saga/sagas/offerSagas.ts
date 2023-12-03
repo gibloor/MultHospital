@@ -20,7 +20,7 @@ import { DOMAIN } from './rootSaga'
 
 function* questOfferSelectSaga(action: QuestOfferTakeRequest) {
   try {
-    const saveOffer = () => axios.post(`http://${DOMAIN}/offers/questOffer/save`, {
+    const saveOffer = () => axios.post(`${DOMAIN}/offers/questOffer/save`, {
       params: { ...action.payload }
     })
 
@@ -37,7 +37,7 @@ function* questOfferSelectSaga(action: QuestOfferTakeRequest) {
 
 function* multOfferSelectSaga(action: QuestOfferTakeRequest) {
   try {
-    const saveOffer = () => axios.post(`http://${DOMAIN}/offers/multOffer/save`, {
+    const saveOffer = () => axios.post(`${DOMAIN}/offers/multOffer/save`, {
       params: { ...action.payload }
     })
 
